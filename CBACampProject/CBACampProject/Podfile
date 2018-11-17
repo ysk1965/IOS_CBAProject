@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'CBACampProject' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+pod 'MenuSlider', '~> 0.1.5'
+pod "SimpleAnimation"
+  # Pods for CBACampProject
+
+  target 'CBACampProjectTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'CBACampProjectUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
