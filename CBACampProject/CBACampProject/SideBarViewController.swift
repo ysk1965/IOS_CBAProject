@@ -8,6 +8,7 @@
 
 import UIKit
 import MenuSlider
+import FirebaseAuth
 
 class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     @IBOutlet var scrollView: UIScrollView!
@@ -24,6 +25,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     var image : UIImage?
     var Check : Bool?
+    var userID : String?
     
     @IBAction func BackScreenAction(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
@@ -122,9 +124,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         loadVisiblePages()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userID = Auth.auth().currentUser?.email
         //menu.expand(onController: self)
         //self.scrollView.frame.origin.y = 10
         self.scrollView.frame.size.width = self.view.frame.size.width
@@ -138,6 +140,22 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         self.pageControl.frame.origin.x = self.view.frame.size.width / 2 - self.pageControl.frame.size.width / 2
         
         // Creating a Menu Item with title string, with an action
+        let menuItem0: SideMenuItem = SideMenuItemFactory.make(title: "GBS 확인"){
+            for view in self.pageViews {
+                view?.removeFromSuperview()
+            }
+            
+            if(!((Auth.auth().currentUser?.email) != nil)){
+                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+            }
+            else{
+                // 있을때는 어떻게 
+            }
+            
+            print("Check Out")
+        }
+        
+        
         let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "캠퍼스 모임장소") {
             for view in self.pageViews {
                 view?.removeFromSuperview()
@@ -304,22 +322,31 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let headerButton = UIButton()
         headerButton.backgroundRect(forBounds: CGRect(x: 1, y: 1, width: 1, height: 1))
-        headerButton.backgroundColor = UIColor.brown
+        headerButton.backgroundColor = UIColor.blue
         //headerButton.
         
         let headerLabel = UILabel()
-        headerLabel.text = ""
+        headerLabel.text = userID
         headerLabel.textAlignment = NSTextAlignment.center
         headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        let headerView: UIImageView = UIImageView()
-        headerButton.frame = headerView.frame
+        //let headerView: UIImageView = UIImageView()
+        //headerButton.frame = headerView.frame
         //headerView.addSubview(headerLabel)
         //headerView.addSubview(headerButton)
         //headerView.image = UIImage(named: "Main.jpg")
+        let headerView: UIView = UIView()
+        //headerView.subviews(headerButton)
+        headerView.backgroundColor = UIColor.brown
+        
+        //headerView.subviews.append()
+        headerView.addSubview(headerLabel)
+        
+        
+        //headerView.tintColor = UIColor.blue
+        
         
         // Creating a Menu Footer with an UIView
         let menuheader = SideMenuHeaderFactory.make(view: headerView)
-        
         
         
         // Creating a Menu Header with title string
@@ -340,7 +367,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         let menufooter = SideMenuFooterFactory.make(view: footerView)
         
         // Setting itens to the SideMenuViewController
-        let menuBuild = SideMenu(menuItems: [menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader,
+        let menuBuild = SideMenu(menuItems: [menuItem0 ,menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader,
                                  footer: menufooter)
         
         // Building the Menu SideMenuViewController
