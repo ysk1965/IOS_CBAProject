@@ -16,6 +16,10 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    @IBAction func UnwindAction(segue: UIStoryboard){
+        
+    }
+    
     @IBAction func CreateID(_ sender: Any) {
         Auth.auth().createUser(withEmail: email.text!, password: password.text!)
         {
@@ -42,6 +46,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func LoginAction(_ sender: Any) {
+        // Email을 쓰는 곳
         Auth.auth().createUser(withEmail: email.text!, password: password.text!)
         {
             (user, error) in
@@ -57,11 +62,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
                 }
             }
             else{
-                let alert = UIAlertController(title: "알림", message: "로그인", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title:
-                    "확인", style:UIAlertActionStyle.default, handler: nil))
-                
-                self.present(alert, animated: true, completion: nil)
+                // 로그인에 실패하셨습니다.
             }
         }
     }
@@ -69,10 +70,12 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        
+        // User가 존재한다.
+        // addStateDidChangeListener
         Auth.auth().addStateDidChangeListener({(user, err) in
-            if user != nil{
-                self.performSegue(withIdentifier: "Home", sender: nil)
+            if user.currentUser != nil{
+                // Login상태라면 뒤로 돌아가
             }
         })
     }

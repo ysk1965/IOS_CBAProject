@@ -27,6 +27,12 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     var Check : Bool?
     var userID : String?
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "UnwindToSegue"{
+
+        }
+    }
+    
     @IBAction func BackScreenAction(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
@@ -149,10 +155,13 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
                 self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }
             else{
-                // 있을때는 어떻게 
+                // 있을때는 어떻게
+                let alert = UIAlertController(title: "Login", message: "로그인", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title:
+                    "확인", style:UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
             }
-            
-            print("Check Out")
         }
         
         
@@ -321,12 +330,18 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let headerButton = UIButton()
-        headerButton.backgroundRect(forBounds: CGRect(x: 1, y: 1, width: 1, height: 1))
-        headerButton.backgroundColor = UIColor.blue
-        //headerButton.
+        headerButton.setTitle("LogOut", for: .normal)
+        headerButton.setTitleColor(UIColor.blue, for: .normal)
+        headerButton.backgroundColor = UIColor.black
+        headerButton.frame = CGRect(x: 200, y: 100, width: 50, height: 30)
+        headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         
         let headerLabel = UILabel()
-        headerLabel.text = userID
+        if((Auth.auth().currentUser) != nil){
+            headerLabel.text = Auth.auth().currentUser?.email
+        } else{
+            headerLabel.text = "로그인이 필요합니다."
+        }
         headerLabel.textAlignment = NSTextAlignment.center
         headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         //let headerView: UIImageView = UIImageView()
@@ -340,6 +355,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         //headerView.subviews.append()
         headerView.addSubview(headerLabel)
+        if((Auth.auth().currentUser) != nil){
+            headerView.addSubview(headerButton)
+        }
         
         
         //headerView.tintColor = UIColor.blue
@@ -384,6 +402,16 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             Check = false
         }
         
+    }
+    
+    @objc func Logout(_ sender:UIButton){
+        do {
+            try Auth.auth().signOut()
+        } catch{
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

@@ -71,32 +71,6 @@
             </objects>
             <point key="canvasLocation" x="1125" y="1138"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="dh4-T9-hHq">
-            <objects>
-                <viewController id="cxQ-9P-2Kw" customClass="ExamplePersonController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yjy-xs-VhB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caf-cF-wrL">
-                                <rect key="frame" x="135" y="269" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="LogOut"/>
-                                <connections>
-                                    <action selector="Logout:" destination="cxQ-9P-2Kw" eventType="touchUpInside" id="Sgd-d0-h0I"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="wId-dr-Hvq"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="oYB-Qj-evJ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R3E-D2-4Nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4941" y="2306"/>
-        </scene>
         <!--MassageTab-->
         <scene sceneID="vBs-0e-AfM">
             <objects>
@@ -480,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnc-OZ-fop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="-327"/>
+            <point key="canvasLocation" x="2698" y="-327"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="NUd-Lw-ycV">
@@ -546,7 +520,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="CreateID:" destination="Jle-r2-8ZY" eventType="touchUpInside" id="3Po-op-GgS"/>
-                                    <action selector="LoginAction:" destination="Jle-r2-8ZY" eventType="touchUpInside" id="tF7-Hh-r2O"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -568,40 +541,11 @@
                     <connections>
                         <outlet property="email" destination="3Rv-u2-7yy" id="9ds-jC-J7T"/>
                         <outlet property="password" destination="OXM-Jn-bvF" id="BgE-td-E4y"/>
-                        <segue destination="96c-xF-JbF" kind="show" identifier="Home" id="TF8-Yd-lpb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KU-sg-lC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3082.5" y="1948.943661971831"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="gXN-Xg-qqm">
-            <objects>
-                <viewController id="J7K-2G-QeX" customClass="ExampleHomeController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UI2-9y-wrE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4I-Cf-60z">
-                                <rect key="frame" x="35" y="259" width="250" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="oog-C8-DuP"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="Home" id="eA8-ey-wV3"/>
-                    <connections>
-                        <outlet property="userLabel" destination="J4I-Cf-60z" id="1Ci-ne-SA0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BQe-05-aSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4941" y="1605"/>
+            <point key="canvasLocation" x="3348.75" y="1161.9718309859154"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="YPl-aZ-t89">
@@ -640,29 +584,9 @@
             </objects>
             <point key="canvasLocation" x="1958" y="-327"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="gR9-SZ-Rvw">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="96c-xF-JbF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SXX-0y-4Je">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="J7K-2G-QeX" kind="relationship" relationship="viewControllers" id="nhw-OY-bXZ"/>
-                        <segue destination="cxQ-9P-2Kw" kind="relationship" relationship="viewControllers" id="UuU-cq-Bwc"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jb0-gH-Nul" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3872" y="1949"/>
-        </scene>
     </scenes>
     <resources>
         <image name="CampPoster.jpeg" width="3508" height="4961"/>
-        <image name="Home" width="16" height="16"/>
         <image name="applybutton.png" width="1000" height="1000"/>
         <image name="blog.png" width="586" height="463"/>
         <image name="hamberger.png" width="128" height="110"/>
@@ -679,6 +603,6 @@
         <image name="차량봉사자.png" width="854" height="231"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="miU-wD-BVm"/>
+        <segue reference="QTj-Pz-pqL"/>
     </inferredMetricsTieBreakers>
 </document>
