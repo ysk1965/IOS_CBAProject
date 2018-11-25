@@ -29,7 +29,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "UnwindToSegue"{
-
         }
     }
     
@@ -45,12 +44,14 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     }
     @IBOutlet weak var openMenuOutlet: UIButton!
     @IBAction func openMenu(_ sender: Any) {
+        MenuSetting()
         // call the menu method expand(*controller*) to open
         menu.expand(onController: self)
     }
 
     // Optionally function onMenuClose(), fired when user closes menu
     func onMenuClose() {
+        MenuSetting()
         print("Action on Close Menu")
         //MainView.fadeIn(duration: 0.5, delay: 0.0)
         //MainView.popIn()
@@ -59,79 +60,11 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     // Optionally function onMenuClose(), fired when user open menu
     func onMenuOpen() {
+        MenuSetting()
         print("Action on Open Menu")
     }
     
-    func loadPage(_ page: Int){
-        if page < 0 || page >= pageImages.count{
-            return
-        }
-        
-        if pageViews[page] != nil {
-            // x
-        } else{
-            var frame = scrollView.bounds
-            frame.origin.x = frame.size.width * CGFloat(page)
-            frame.origin.y = 0.0
-            
-            let newPageView = UIImageView(image: pageImages[page])
-            newPageView.contentMode = .scaleAspectFit
-            newPageView.frame = frame
-            if (downloadImageNames.count > page) {
-                print("downloading!", downloadImageNames.count, "/", page)
-                firebaseModel.downloadImage(name: downloadImageNames[page], imageView: newPageView)
-            }
-            scrollView.addSubview(newPageView)
-            
-            pageViews[page] = newPageView
-        }
-    }
-    
-    func purgePage(_ page: Int){
-        if page < 0 || page >= pageImages.count{
-            return
-        }
-        if let pageView = pageViews[page]{
-            pageView.removeFromSuperview()
-            pageViews[page] = nil
-        }
-    }
-    
-    func loadVisiblePages(){
-        self.imageView.isHidden = true
-        let pageWidth = scrollView.frame.width
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
-        pageControl.currentPage = page
-        
-        let firstPage = 0
-        let lastPage = pageImages.count - 1
-        
-        
-        for i in 0 ..< firstPage+1{
-            purgePage(i)
-            print("purging...", i)
-        }
-        for i in firstPage ... lastPage{
-            loadPage(i)
-            print("loading...",i)
-        }
-        /*
-        for i in lastPage+1 ..< pageImages.count+1{
-            purgePage(i)
-        }
-        */
-        for i in stride(from: lastPage+1  , to: pageImages.count+1, by: 1)
-        {
-            purgePage(i)
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        loadVisiblePages()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func MenuSetting(){
         userID = Auth.auth().currentUser?.email
         //menu.expand(onController: self)
         //self.scrollView.frame.origin.y = 10
@@ -197,8 +130,8 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             }
             self.pageViews = []
             self.pageImages = [UIImage(named: "gbs장소1.png")!,
-                          UIImage(named: "gbs장소2.png")!,
-                          UIImage(named: "gbs장소3.png")!]
+                               UIImage(named: "gbs장소2.png")!,
+                               UIImage(named: "gbs장소3.png")!]
             let pageCount = self.pageImages.count
             
             self.pageControl.currentPage = 0
@@ -344,16 +277,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         }
         headerLabel.textAlignment = NSTextAlignment.center
         headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        //let headerView: UIImageView = UIImageView()
-        //headerButton.frame = headerView.frame
-        //headerView.addSubview(headerLabel)
-        //headerView.addSubview(headerButton)
-        //headerView.image = UIImage(named: "Main.jpg")
         let headerView: UIView = UIView()
-        //headerView.subviews(headerButton)
         headerView.backgroundColor = UIColor.brown
         
-        //headerView.subviews.append()
         headerView.addSubview(headerLabel)
         if((Auth.auth().currentUser) != nil){
             headerView.addSubview(headerButton)
@@ -368,7 +294,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         
         // Creating a Menu Header with title string
-
+        
         let footerLabel = UILabel()
         footerLabel.text = "환언, 우리의 사명"
         footerLabel.font = UIFont.boldSystemFont(ofSize: 20)
@@ -386,7 +312,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         // Setting itens to the SideMenuViewController
         let menuBuild = SideMenu(menuItems: [menuItem0 ,menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader,
-                                 footer: menufooter)
+                             footer: menufooter)
         
         // Building the Menu SideMenuViewController
         self.menu = menuBuild.build()
@@ -394,6 +320,80 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         // Finally, setting self class for MenuController Delegate
         menu.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    func loadPage(_ page: Int){
+        if page < 0 || page >= pageImages.count{
+            return
+        }
+        
+        if pageViews[page] != nil {
+            // x
+        } else{
+            var frame = scrollView.bounds
+            frame.origin.x = frame.size.width * CGFloat(page)
+            frame.origin.y = 0.0
+            
+            let newPageView = UIImageView(image: pageImages[page])
+            newPageView.contentMode = .scaleAspectFit
+            newPageView.frame = frame
+            if (downloadImageNames.count > page) {
+                print("downloading!", downloadImageNames.count, "/", page)
+                firebaseModel.downloadImage(name: downloadImageNames[page], imageView: newPageView)
+            }
+            scrollView.addSubview(newPageView)
+            
+            pageViews[page] = newPageView
+        }
+    }
+    
+    func purgePage(_ page: Int){
+        if page < 0 || page >= pageImages.count{
+            return
+        }
+        if let pageView = pageViews[page]{
+            pageView.removeFromSuperview()
+            pageViews[page] = nil
+        }
+    }
+    
+    func loadVisiblePages(){
+        self.imageView.isHidden = true
+        let pageWidth = scrollView.frame.width
+        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+        pageControl.currentPage = page
+        
+        let firstPage = 0
+        let lastPage = pageImages.count - 1
+        
+        
+        for i in 0 ..< firstPage+1{
+            purgePage(i)
+            print("purging...", i)
+        }
+        for i in firstPage ... lastPage{
+            loadPage(i)
+            print("loading...",i)
+        }
+        /*
+        for i in lastPage+1 ..< pageImages.count+1{
+            purgePage(i)
+        }
+        */
+        for i in stride(from: lastPage+1  , to: pageImages.count+1, by: 1)
+        {
+            purgePage(i)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        loadVisiblePages()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        MenuSetting()
         
         if Check == true{
             print("GET IN")
@@ -401,7 +401,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             MainView.bounceIn(from: .right)
             Check = false
         }
-        
     }
     
     @objc func Logout(_ sender:UIButton){
@@ -410,6 +409,8 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         } catch{
             
         }
+        
+        MenuSetting()
         
         dismiss(animated: true, completion: nil)
     }

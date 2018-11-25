@@ -62,6 +62,12 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
                 }
             }
             else{
+                let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                
+                self.present(alert, animated: true)
                 // 로그인에 실패하셨습니다.
             }
         }
@@ -70,7 +76,6 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // User가 존재한다.
         // addStateDidChangeListener
         Auth.auth().addStateDidChangeListener({(user, err) in
@@ -84,7 +89,4 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-
 }
