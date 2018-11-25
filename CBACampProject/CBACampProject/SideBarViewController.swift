@@ -89,11 +89,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             }
             else{
                 // 있을때는 어떻게
-                let alert = UIAlertController(title: "Login", message: "로그인", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title:
-                    "확인", style:UIAlertActionStyle.default, handler: nil))
                 
-                self.present(alert, animated: true, completion: nil)
             }
         }
         

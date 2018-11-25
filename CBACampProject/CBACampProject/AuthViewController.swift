@@ -29,18 +29,20 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
             if (error != nil){
                 Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!){
                     (user, error) in
-                    //...
-                    let alert = UIAlertController(title: "알림", message: "로그인", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title:
-                        "확인", style:UIAlertActionStyle.default, handler: nil))
+                    
+                    if(error != nil){
+                        let alert = UIAlertController(title: "회원가입 실패", message: "회원가입에 실패하셨습니다.", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title:
+                            "확인", style:UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    } else{
+                        let alert = UIAlertController(title: "회원가입 성공", message: "회원가입에 성공하셨습니다." + "\n UserID : " + (user?.user.email)!, preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title:
+                            "확인", style:UIAlertActionStyle.default, handler: nil))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
-            }
-            else{
-                let alert = UIAlertController(title: "알림", message: "회원가입완료", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title:
-                    "확인", style:UIAlertActionStyle.default, handler: nil))
-                
-                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -56,19 +58,22 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
                 Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!){
                     (user, error) in
                     //...
-                    let alert = UIAlertController(title: "알림", message: "로그인", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title:
-                        "확인", style:UIAlertActionStyle.default, handler: nil))
+                    if(error != nil){
+                        let alert = UIAlertController(title: "로그인 실패", message: "로그인에 실패하셨습니다. \n 다시 로그인해주세요", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title:
+                            "확인", style:UIAlertActionStyle.default, handler: nil))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    } else{
+                        let alert = UIAlertController(title: "로그인 성공", message:"["+(user?.user.email)! + "] \n 로그인에 성공하셨습니다.", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title:
+                            "확인", style:UIAlertActionStyle.default, handler: nil))
+                        
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
                 }
-            }
-            else{
-                let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
-                alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-                
-                self.present(alert, animated: true)
-                // 로그인에 실패하셨습니다.
             }
         }
     }
