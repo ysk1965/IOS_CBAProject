@@ -276,13 +276,19 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         let headerView: UIView = UIView()
         headerView.backgroundColor = UIColor.brown
         
+        var headerImage = UIImageView()
+        headerImage.image = UIImage(named: "이미지준비중.png")!
+    
+        headerImage.frame.origin = self.view.frame.origin
+        headerImage.frame.size.width = self.view.frame.size.width / 4
+        headerImage.frame.size.height = self.view.frame.size.height / 5
+        headerImage.frame.offsetBy(dx: 1, dy: 1)
+        
         headerView.addSubview(headerLabel)
+        headerView.addSubview(headerImage)
         if((Auth.auth().currentUser) != nil){
             headerView.addSubview(headerButton)
         }
-        
-        
-        //headerView.tintColor = UIColor.blue
         
         
         // Creating a Menu Footer with an UIView
@@ -290,7 +296,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         
         // Creating a Menu Header with title string
-        
         let footerLabel = UILabel()
         footerLabel.text = "환언, 우리의 사명"
         footerLabel.font = UIFont.boldSystemFont(ofSize: 20)
