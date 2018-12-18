@@ -15,6 +15,7 @@ class MassageTabViewController: UIViewController {
     }
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var buttonView: UIView!
     
     var url = URL(string:"http://cbapray.sungrak.or.kr/RetreatSite/RetreatAdd")
     
@@ -46,6 +47,7 @@ class MassageTabViewController: UIViewController {
         scrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: scrollView.frame)
         scrollView.addSubview(scrollcontainerView)
+        //scrollView.addSubview(buttonView)
         
         var inypos = 2
         let inxpos = 20
@@ -122,15 +124,8 @@ class MassageTabViewController: UIViewController {
             
             nextypos += Int(timelabel.frame.size.height) + 12
             
-            // add Button
-            let SendButton = UIButton()
-            SendButton.setTitle("Send", for: .normal)
-            SendButton.setTitleColor(UIColor.blue, for: .normal)
-            SendButton.backgroundColor = UIColor.black
-            SendButton.frame = CGRect(x: 200, y: 500, width: 50, height: 30)
-            SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
             
-            scrollView.addSubview(SendButton)
+            //buttonView.addSubview(SendButton)
             
             
             cellview.frame.size.height = CGFloat(nextypos)
@@ -140,6 +135,15 @@ class MassageTabViewController: UIViewController {
         scrollView.contentSize = CGSize(width: scrollView.frame.width-1, height: max(CGFloat(inypos),scrollView.frame.height+1))
         scrollView.isScrollEnabled = true
         self.view.addSubview(scrollView)
+        
+        // add Button
+        let SendButton = UIButton()
+        SendButton.setTitle("Send", for: .normal)
+        SendButton.setTitleColor(UIColor.blue, for: .normal)
+        SendButton.backgroundColor = UIColor.black
+        SendButton.frame = CGRect(x: scrollView.frame.width-65, y: scrollView.frame.height-5, width: 50, height: 50)
+        SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
+        self.view.addSubview(SendButton)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
