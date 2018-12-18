@@ -13,8 +13,6 @@ class MassageTabViewController: UIViewController {
     @IBAction func HambergerAction(_ sender: Any) {
         Hamberger.popIn(fromScale: 1.5, duration: 2, delay: 0)
     }
-
-    
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -68,7 +66,7 @@ class MassageTabViewController: UIViewController {
             profileimgview.contentMode = UIViewContentMode.scaleAspectFill
             profileimgview.clipsToBounds = true //image set 전에 해주어야 한다.
             if (FirebaseModel.messages[count - i - 1].auth == "STAFF") {
-                profileimgview.image = UIImage(named: "Icon-60@3x.png")
+                profileimgview.image = UIImage(named: "Icon-60@3x.png") // 스탭 이미지
             } else {
                 profileimgview.image = UIImage(named:"profile.png")
             }
@@ -87,7 +85,7 @@ class MassageTabViewController: UIViewController {
             
             ///ranknamelabel
             let ranknamelabel = UILabel()
-            ranknamelabel.text = "환언, 우리의 사명"
+            ranknamelabel.text = "진리수호 교회수호"
             ranknamelabel.font = UIFont(name:"NotoSans-Bold", size: 14.0)
             ranknamelabel.textColor = UIColor.lightGray
             ranknamelabel.sizeToFit()
@@ -124,16 +122,24 @@ class MassageTabViewController: UIViewController {
             
             nextypos += Int(timelabel.frame.size.height) + 12
             
+            // add Button
+            let SendButton = UIButton()
+            SendButton.setTitle("Send", for: .normal)
+            SendButton.setTitleColor(UIColor.blue, for: .normal)
+            SendButton.backgroundColor = UIColor.black
+            SendButton.frame = CGRect(x: 200, y: 500, width: 50, height: 30)
+            SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
+            
+            scrollView.addSubview(SendButton)
+            
             
             cellview.frame.size.height = CGFloat(nextypos)
             inypos += 7 + Int(cellview.frame.size.height) //다음 CellView의 위치
             cellview.addSubview(textview)
-            
         }
         scrollView.contentSize = CGSize(width: scrollView.frame.width-1, height: max(CGFloat(inypos),scrollView.frame.height+1))
         scrollView.isScrollEnabled = true
         self.view.addSubview(scrollView)
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -148,7 +154,12 @@ class MassageTabViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
+    @objc func Send(_ sender:UIButton){
+
+        print("in Send")
+        
+        dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

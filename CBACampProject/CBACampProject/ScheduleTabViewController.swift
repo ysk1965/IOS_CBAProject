@@ -26,7 +26,6 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
             if let navController = segue.destination as? UINavigationController{
                 if let SideMenuController = navController.topViewController as?
                     SideBarViewController {
-                    print("aaaa")
                     SideMenuController.Check = true
                 }
             }

@@ -20,7 +20,7 @@ class FirebaseModel {
         var ref: DatabaseReference!
         print("trying to get messages....")
         
-        ref = Database.database().reference().child("messages")
+        ref = Database.database().reference().child("2019messages")
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 FirebaseModel.messages = []

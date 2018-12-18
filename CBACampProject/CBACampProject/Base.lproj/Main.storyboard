@@ -107,7 +107,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CBA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cT-OY-5Ia">
-                                <rect key="frame" x="136" y="28" width="48" height="33"/>
+                                <rect key="frame" x="136.5" y="28" width="48" height="33"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SsT-4s-fJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="1949"/>
+            <point key="canvasLocation" x="1125" y="1948.943661971831"/>
         </scene>
         <!--NavController-->
         <scene sceneID="yQb-6D-xyl">

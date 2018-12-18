@@ -22,7 +22,6 @@
 		04842F9D211D8FDD006A84EE /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 04842F91211D8FB4006A84EE /* instagram.png */; };
 		04842F9E211D8FDD006A84EE /* 차량봉사자.png in Resources */ = {isa = PBXBuildFile; fileRef = 04842F92211D8FB7006A84EE /* 차량봉사자.png */; };
 		04842F9F211D8FDD006A84EE /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 04842F93211D8FBA006A84EE /* safari.png */; };
-		04842FA0211D8FDD006A84EE /* 예시b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04842F94211D8FBD006A84EE /* 예시b.jpg */; };
 		04842FA1211D8FDD006A84EE /* blog.png in Resources */ = {isa = PBXBuildFile; fileRef = 04842F95211D8FBF006A84EE /* blog.png */; };
 		04842FA2211D8FDD006A84EE /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = 04842F96211D8FC2006A84EE /* youtube.png */; };
 		04842FA3211D8FDD006A84EE /* 본부.png in Resources */ = {isa = PBXBuildFile; fileRef = 04842F97211D8FC5006A84EE /* 본부.png */; };
@@ -38,9 +37,6 @@
 		04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */; };
 		04F0F54D2109FBD6001B953B /* UIView+SimpleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */; };
 		04FC00DC210AEC0100528D7A /* CampPoster.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00CA210AEBFF00528D7A /* CampPoster.jpeg */; };
-		04FC00DD210AEC0100528D7A /* CampTimetable.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00CB210AEBFF00528D7A /* CampTimetable.png */; };
-		04FC00DF210AEC0100528D7A /* Test3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00CD210AEBFF00528D7A /* Test3.png */; };
-		04FC00E0210AEC0100528D7A /* Test4.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00CE210AEBFF00528D7A /* Test4.png */; };
 		04FC00E2210AEC0100528D7A /* hamberger.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D0210AEC0000528D7A /* hamberger.png */; };
 		04FC00E3210AEC0100528D7A /* Blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D1210AEC0000528D7A /* Blank.png */; };
 		04FC00E4210AEC0100528D7A /* Blog.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D2210AEC0000528D7A /* Blog.png */; };
@@ -48,11 +44,7 @@
 		04FC00E6210AEC0100528D7A /* hamgerger2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D4210AEC0000528D7A /* hamgerger2.png */; };
 		04FC00E7210AEC0100528D7A /* Main.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D5210AEC0000528D7A /* Main.jpg */; };
 		04FC00E9210AEC0100528D7A /* Heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D7210AEC0000528D7A /* Heart.png */; };
-		04FC00EA210AEC0100528D7A /* Test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D8210AEC0000528D7A /* Test1.png */; };
-		04FC00EB210AEC0100528D7A /* CampText.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D9210AEC0000528D7A /* CampText.png */; };
-		04FC00EC210AEC0100528D7A /* Test2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00DA210AEC0000528D7A /* Test2.png */; };
 		04FC00ED210AEC0100528D7A /* CBA.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00DB210AEC0100528D7A /* CBA.jpeg */; };
-		04FC00F1210AF31F00528D7A /* Berea1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00F0210AF31F00528D7A /* Berea1.png */; };
 		5699D27FFD7B4A68160C50C0 /* Pods_CBACampProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B955FCBB83F23A00B428D65 /* Pods_CBACampProjectUITests.framework */; };
 		CD336A15F030D36C9BF372D9 /* Pods_CBACampProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF2674131475F1006677968 /* Pods_CBACampProject.framework */; };
 		D0418F1886311AD4148F73D8 /* Pods_CBACampProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16957FFF49742B9F1DFD76B /* Pods_CBACampProjectTests.framework */; };
@@ -72,11 +64,6 @@
 		DB764E5D210E0915006E72EB /* hwanun-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E5C210E0915006E72EB /* hwanun-40@3x.png */; };
 		DB764E5F210E0A3D006E72EB /* applybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E5E210E0A3D006E72EB /* applybutton.png */; };
 		DB764E61210E1EB9006E72EB /* 환언_long.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DB764E60210E1EB8006E72EB /* 환언_long.jpeg */; };
-		DB764E67210E2AA9006E72EB /* winter-lecture.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E62210E2AA8006E72EB /* winter-lecture.png */; };
-		DB764E68210E2AA9006E72EB /* winter-timetable.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DB764E63210E2AA8006E72EB /* winter-timetable.jpeg */; };
-		DB764E69210E2AA9006E72EB /* winter-meal.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E64210E2AA9006E72EB /* winter-meal.png */; };
-		DB764E6A210E2AA9006E72EB /* winter-cleaning.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E65210E2AA9006E72EB /* winter-cleaning.png */; };
-		DB764E6B210E2AA9006E72EB /* winter-menu.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DB764E66210E2AA9006E72EB /* winter-menu.jpeg */; };
 		DBF11FB0211B35F100EE9B98 /* 청소구역.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DBF11FAF211B35F100EE9B98 /* 청소구역.jpeg */; };
 		DBF11FB2211B35F700EE9B98 /* 또래별강의.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DBF11FB1211B35F700EE9B98 /* 또래별강의.jpeg */; };
 		DBF11FC6211B46FF00EE9B98 /* 숙소1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DBF11FC5211B46FF00EE9B98 /* 숙소1.jpg */; };
@@ -127,7 +114,6 @@
 		04842F91211D8FB4006A84EE /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instagram.png; path = "어플/instagram.png"; sourceTree = "<group>"; };
 		04842F92211D8FB7006A84EE /* 차량봉사자.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "차량봉사자.png"; path = "어플/차량봉사자.png"; sourceTree = "<group>"; };
 		04842F93211D8FBA006A84EE /* safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = safari.png; path = "어플/safari.png"; sourceTree = "<group>"; };
-		04842F94211D8FBD006A84EE /* 예시b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "예시b.jpg"; path = "어플/예시b.jpg"; sourceTree = "<group>"; };
 		04842F95211D8FBF006A84EE /* blog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blog.png; path = "어플/blog.png"; sourceTree = "<group>"; };
 		04842F96211D8FC2006A84EE /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = youtube.png; path = "어플/youtube.png"; sourceTree = "<group>"; };
 		04842F97211D8FC5006A84EE /* 본부.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "본부.png"; path = "어플/본부.png"; sourceTree = "<group>"; };
@@ -143,9 +129,6 @@
 		04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAInfoTabViewController.swift; sourceTree = "<group>"; };
 		04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SimpleAnimation.swift"; sourceTree = "<group>"; };
 		04FC00CA210AEBFF00528D7A /* CampPoster.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CampPoster.jpeg; sourceTree = "<group>"; };
-		04FC00CB210AEBFF00528D7A /* CampTimetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CampTimetable.png; sourceTree = "<group>"; };
-		04FC00CD210AEBFF00528D7A /* Test3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test3.png; sourceTree = "<group>"; };
-		04FC00CE210AEBFF00528D7A /* Test4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test4.png; sourceTree = "<group>"; };
 		04FC00D0210AEC0000528D7A /* hamberger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamberger.png; sourceTree = "<group>"; };
 		04FC00D1210AEC0000528D7A /* Blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank.png; sourceTree = "<group>"; };
 		04FC00D2210AEC0000528D7A /* Blog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blog.png; sourceTree = "<group>"; };
@@ -153,11 +136,7 @@
 		04FC00D4210AEC0000528D7A /* hamgerger2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamgerger2.png; sourceTree = "<group>"; };
 		04FC00D5210AEC0000528D7A /* Main.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Main.jpg; sourceTree = "<group>"; };
 		04FC00D7210AEC0000528D7A /* Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart.png; sourceTree = "<group>"; };
-		04FC00D8210AEC0000528D7A /* Test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test1.png; sourceTree = "<group>"; };
-		04FC00D9210AEC0000528D7A /* CampText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CampText.png; sourceTree = "<group>"; };
-		04FC00DA210AEC0000528D7A /* Test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Test2.png; sourceTree = "<group>"; };
 		04FC00DB210AEC0100528D7A /* CBA.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CBA.jpeg; sourceTree = "<group>"; };
-		04FC00F0210AF31F00528D7A /* Berea1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Berea1.png; sourceTree = "<group>"; };
 		124EBD3FEB940942CFFD7D83 /* Pods-CBACampProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3B955FCBB83F23A00B428D65 /* Pods_CBACampProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBACampProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		681A44B45D21FD7ADF543EFB /* Pods-CBACampProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,11 +161,6 @@
 		DB764E5C210E0915006E72EB /* hwanun-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hwanun-40@3x.png"; sourceTree = "<group>"; };
 		DB764E5E210E0A3D006E72EB /* applybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applybutton.png; sourceTree = "<group>"; };
 		DB764E60210E1EB8006E72EB /* 환언_long.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "환언_long.jpeg"; sourceTree = "<group>"; };
-		DB764E62210E2AA8006E72EB /* winter-lecture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter-lecture.png"; sourceTree = "<group>"; };
-		DB764E63210E2AA8006E72EB /* winter-timetable.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "winter-timetable.jpeg"; sourceTree = "<group>"; };
-		DB764E64210E2AA9006E72EB /* winter-meal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter-meal.png"; sourceTree = "<group>"; };
-		DB764E65210E2AA9006E72EB /* winter-cleaning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winter-cleaning.png"; sourceTree = "<group>"; };
-		DB764E66210E2AA9006E72EB /* winter-menu.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "winter-menu.jpeg"; sourceTree = "<group>"; };
 		DB8291F6F1B62C27874E2A6E /* Pods-CBACampProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProjectTests/Pods-CBACampProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF11FAF211B35F100EE9B98 /* 청소구역.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "청소구역.jpeg"; sourceTree = "<group>"; };
 		DBF11FB1211B35F700EE9B98 /* 또래별강의.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "또래별강의.jpeg"; sourceTree = "<group>"; };
@@ -308,7 +282,6 @@
 				04842F9C211D8FD9006A84EE /* 어플용이미지a.jpg */,
 				04842F9A211D8FCD006A84EE /* 어플용이미지b.jpg */,
 				04842F9B211D8FD6006A84EE /* 예시a.jpg */,
-				04842F94211D8FBD006A84EE /* 예시b.jpg */,
 				04842F92211D8FB7006A84EE /* 차량봉사자.png */,
 				04842F95211D8FBF006A84EE /* blog.png */,
 				04842F91211D8FB4006A84EE /* instagram.png */,
@@ -328,23 +301,11 @@
 				04FC00D2210AEC0000528D7A /* Blog.png */,
 				04FC00D3210AEC0000528D7A /* CampBackground.jpeg */,
 				04FC00CA210AEBFF00528D7A /* CampPoster.jpeg */,
-				04FC00D9210AEC0000528D7A /* CampText.png */,
-				DB764E65210E2AA9006E72EB /* winter-cleaning.png */,
-				DB764E62210E2AA8006E72EB /* winter-lecture.png */,
-				DB764E64210E2AA9006E72EB /* winter-meal.png */,
-				DB764E66210E2AA9006E72EB /* winter-menu.jpeg */,
-				DB764E63210E2AA8006E72EB /* winter-timetable.jpeg */,
-				04FC00CB210AEBFF00528D7A /* CampTimetable.png */,
 				04FC00DB210AEC0100528D7A /* CBA.jpeg */,
 				04FC00D0210AEC0000528D7A /* hamberger.png */,
 				04FC00D4210AEC0000528D7A /* hamgerger2.png */,
 				04FC00D7210AEC0000528D7A /* Heart.png */,
 				04FC00D5210AEC0000528D7A /* Main.jpg */,
-				04FC00F0210AF31F00528D7A /* Berea1.png */,
-				04FC00D8210AEC0000528D7A /* Test1.png */,
-				04FC00DA210AEC0000528D7A /* Test2.png */,
-				04FC00CD210AEBFF00528D7A /* Test3.png */,
-				04FC00CE210AEBFF00528D7A /* Test4.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -521,11 +482,7 @@
 				04842FA5211D8FDD006A84EE /* 안산수양관.png in Resources */,
 				DBF11FB2211B35F700EE9B98 /* 또래별강의.jpeg in Resources */,
 				04FC00E9210AEC0100528D7A /* Heart.png in Resources */,
-				DB764E69210E2AA9006E72EB /* winter-meal.png in Resources */,
-				04FC00E0210AEC0100528D7A /* Test4.png in Resources */,
-				DB764E68210E2AA9006E72EB /* winter-timetable.jpeg in Resources */,
 				DB764E4E210C87EA006E72EB /* NotoSans-Regular.ttf in Resources */,
-				04FC00EB210AEC0100528D7A /* CampText.png in Resources */,
 				DB764E5F210E0A3D006E72EB /* applybutton.png in Resources */,
 				DBF11FCC211B478F00EE9B98 /* gbs장소1.png in Resources */,
 				DBF11FCE211B479300EE9B98 /* gbs장소2.png in Resources */,
@@ -533,14 +490,10 @@
 				042761D52106E41600928EB7 /* LaunchScreen.storyboard in Resources */,
 				04FC00E7210AEC0100528D7A /* Main.jpg in Resources */,
 				DBF11FCA211B470C00EE9B98 /* 숙소3.jpg in Resources */,
-				DB764E67210E2AA9006E72EB /* winter-lecture.png in Resources */,
 				DB764E57210CB9A1006E72EB /* Icon-60@3x.png in Resources */,
 				04842F9F211D8FDD006A84EE /* safari.png in Resources */,
-				04842FA0211D8FDD006A84EE /* 예시b.jpg in Resources */,
 				04FC00DC210AEC0100528D7A /* CampPoster.jpeg in Resources */,
 				04FC00E4210AEC0100528D7A /* Blog.png in Resources */,
-				04FC00DF210AEC0100528D7A /* Test3.png in Resources */,
-				04FC00DD210AEC0100528D7A /* CampTimetable.png in Resources */,
 				DB764E4F210C87EA006E72EB /* NotoSansKR_Regular.woff in Resources */,
 				042761D22106E41600928EB7 /* Assets.xcassets in Resources */,
 				DBF11FD2211B524400EE9B98 /* 이미지준비중.png in Resources */,
@@ -559,22 +512,17 @@
 				DBF11FC6211B46FF00EE9B98 /* 숙소1.jpg in Resources */,
 				04842FA4211D8FDD006A84EE /* 안산수양관위치.png in Resources */,
 				DB764E45210C74BC006E72EB /* GoogleService-Info.plist in Resources */,
-				04FC00F1210AF31F00528D7A /* Berea1.png in Resources */,
 				DB764E50210C87EA006E72EB /* NotoSansUI-Regular.ttf in Resources */,
-				04FC00EA210AEC0100528D7A /* Test1.png in Resources */,
 				DB764E43210C7207006E72EB /* profile.png in Resources */,
 				04FC00E3210AEC0100528D7A /* Blank.png in Resources */,
 				04842FA3211D8FDD006A84EE /* 본부.png in Resources */,
-				04FC00EC210AEC0100528D7A /* Test2.png in Resources */,
 				04842F9D211D8FDD006A84EE /* instagram.png in Resources */,
 				04842FA7211D8FDD006A84EE /* 예시a.jpg in Resources */,
 				DB764E4D210C87EA006E72EB /* NotoSans-Bold.ttf in Resources */,
 				04FC00E6210AEC0100528D7A /* hamgerger2.png in Resources */,
 				04842FA2211D8FDD006A84EE /* youtube.png in Resources */,
 				04842FA1211D8FDD006A84EE /* blog.png in Resources */,
-				DB764E6A210E2AA9006E72EB /* winter-cleaning.png in Resources */,
 				DBF11FC8211B470600EE9B98 /* 숙소2.jpg in Resources */,
-				DB764E6B210E2AA9006E72EB /* winter-menu.jpeg in Resources */,
 				04842FA8211D8FDD006A84EE /* 어플용이미지a.jpg in Resources */,
 				04842FA6211D8FDD006A84EE /* 어플용이미지b.jpg in Resources */,
 			);
