@@ -18,4 +18,10 @@ class Message {
         self.time = time
         self.auth = auth
     }
+    
+    func setMessage(text: String, time:String, auth:String){
+        self.text = text
+        self.time = time
+        self.auth = auth
+    }
 }

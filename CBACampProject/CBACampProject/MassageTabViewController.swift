@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MassageTabViewController: UIViewController {
     @IBOutlet weak var Hamberger: UIButton!
@@ -159,8 +160,19 @@ class MassageTabViewController: UIViewController {
     }
 
     @objc func Send(_ sender:UIButton){
-
-        print("in Send")
+        ////////////////////
+        let sendLabel = UILabel()
+        sendLabel.text = "Send"
+        sendLabel.font = UIFont(name:"NotoSansUI", size: 14.0)!
+        sendLabel.textColor = UIColor.lightGray
+        sendLabel.sizeToFit()
+        sendLabel.frame = CGRect(x: scrollView.frame.width-65, y: scrollView.frame.height-5, width: 50, height: 50)
+        self.view.addSubview(sendLabel)
+        sendLabel.popIn()
+        
+        FirebaseModel.sendMessageData.setMessage(text: "aaa", time: "bbb", auth: "ccc")
+        FirebaseModel().sendMessage()
+        
         
         dismiss(animated: true, completion: nil)
     }

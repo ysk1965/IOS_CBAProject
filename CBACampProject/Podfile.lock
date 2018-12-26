@@ -73,6 +73,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.0)
   - SimpleAnimation (0.4.0)
+  - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - Kingfisher (~> 4.0)
   - MenuSlider (~> 0.1.5)
   - SimpleAnimation
+  - TextFieldEffects
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -105,6 +107,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SimpleAnimation
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
@@ -125,7 +128,8 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   SimpleAnimation: a3473da5421c65100d68f98a44fc853b81091249
+  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: dcd26f352b3846639cb5b3a494630154caed96c4
+PODFILE CHECKSUM: 4fbe0e5f610cf8dbee7f0fc0c6c772bda98d3021
 
 COCOAPODS: 1.5.3

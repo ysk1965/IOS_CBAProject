@@ -14,6 +14,7 @@ import FirebaseStorage
 
 class FirebaseModel {
     static var messages = [Message]()
+    static var sendMessageData = Message(text: "default", time: "default", auth: "default")
     static var schedule = "" 
     
     func getMessages() {
@@ -35,6 +36,12 @@ class FirebaseModel {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got messages"), object: self)
             }
         })
+    }
+    
+    func sendMessage() {
+        Database.database().reference().child("2019messages").childByAutoId().setValue(FirebaseModel.sendMessageData);
+        
+        //Database.database().reference().child("2019messages").childByAutoId().setValue()
     }
     
     func downloadImage(name: String, imageView:UIImageView){

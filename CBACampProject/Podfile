@@ -13,6 +13,7 @@ pod 'Firebase/Messaging'
 pod 'Kingfisher', '~> 4.0'
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
+pod "TextFieldEffects"
   # Pods for CBACampProject
 
   target 'CBACampProjectTests' do
