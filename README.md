@@ -11,9 +11,8 @@
   * Appstore등록 : CBARetreat 검색
   
 - 19_겨울수련회
-  * Firebase Auth를 활용한 회원가입 미 로그인 구현
+  * Firebase Auth를 활용한 회원가입 및 로그인 구현
   * 자체Server와 연동하여 DB를 받을 수 있도록 구현
-  * Firebase와 연동한 뉴스피드 기능 구현
-
+  * Firebase와 연동한 뉴스피드 기능 구현 및 글쓰기 기능 추가
 
 - 개발docx : docs.google.com/spreadsheets/d/1bKv5PoJOsUbqKWwOhkd3rpRBAymicw8oerMh8_-gzyg/edit#gid=0
