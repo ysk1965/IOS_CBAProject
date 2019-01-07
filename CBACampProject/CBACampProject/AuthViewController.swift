@@ -19,7 +19,12 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
     @IBAction func UnwindAction(segue: UIStoryboard){
         
     }
+    @IBAction func CancleAction(_ sender: Any) {
+        print("put down cancle!")
+        dismiss(animated: true)
+    }
     
+    /*
     @IBAction func CreateID(_ sender: Any) {
         Auth.auth().createUser(withEmail: email.text!, password: password.text!)
         {
@@ -46,6 +51,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
             }
         }
     }
+    */
     
     @IBAction func LoginAction(_ sender: Any) {
         // Email을 쓰는 곳
