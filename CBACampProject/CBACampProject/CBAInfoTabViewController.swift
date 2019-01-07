@@ -25,6 +25,7 @@ class CBAInfoTabViewController: UIViewController {
                     SideBarViewController {
                     //SideMenuController.menu?.expand(onController: self)
                     SideMenuController.Check = true
+                    SideMenuController.SelectMenu = false
                 }
             }
         }

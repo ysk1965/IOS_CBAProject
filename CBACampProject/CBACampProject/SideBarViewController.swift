@@ -27,6 +27,8 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     var Check : Bool?
     var userID : String?
     
+    var SelectMenu : Bool?
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "UnwindToSegue"{
         }
@@ -47,11 +49,16 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         MenuSetting()
         // call the menu method expand(*controller*) to open
         menu.expand(onController: self)
+        SelectMenu = false
     }
 
     // Optionally function onMenuClose(), fired when user closes menu
     func onMenuClose() {
         MenuSetting()
+        if(SelectMenu == false){
+            dismiss(animated: true)
+        }
+        SelectMenu = false
         print("Action on Close Menu")
         //MainView.fadeIn(duration: 0.5, delay: 0.0)
         //MainView.popIn()
@@ -68,6 +75,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         userID = Auth.auth().currentUser?.email
         //menu.expand(onController: self)
         //self.scrollView.frame.origin.y = 10
+        
         self.scrollView.frame.size.width = self.view.frame.size.width
         self.scrollView.frame.size.height = self.view.frame.size.height - 90
         
@@ -79,7 +87,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         self.pageControl.frame.origin.x = self.view.frame.size.width / 2 - self.pageControl.frame.size.width / 2
         
         // Creating a Menu Item with title string, with an action
-        let menuItem0: SideMenuItem = SideMenuItemFactory.make(title: "GBS 확인"){
+        let menuItem0: SideMenuItem = SideMenuItemFactory.make(title: "  GBS 확인"){
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -94,7 +104,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         }
         
         
-        let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "캠퍼스 모임장소") {
+        let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -120,7 +132,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         }
         
         // Creating a Menu Item with title string, without an action
-        let menuItem2 = SideMenuItemFactory.make(title: "GBS장소") {
+        let menuItem2 = SideMenuItemFactory.make(title: "  GBS장소") {
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -144,7 +158,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             self.loadVisiblePages()
         }
         
-        let menuItem3 = SideMenuItemFactory.make(title: "또래별 강의") {
+        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -166,7 +182,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             self.loadVisiblePages()
         }
         
-        let menuItem4 = SideMenuItemFactory.make(title: "숙소 안내") {
+        let menuItem4 = SideMenuItemFactory.make(title: "  숙소 안내") {
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -190,7 +208,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             self.loadVisiblePages()
         }
         
-        let menuItem5 = SideMenuItemFactory.make(title: "식단 안내") {
+        let menuItem5 = SideMenuItemFactory.make(title: "  식단 안내") {
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -212,7 +232,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             self.loadVisiblePages()
         }
         
-        let menuItem6 = SideMenuItemFactory.make(title: "식당/간식 봉사") {
+        let menuItem6 = SideMenuItemFactory.make(title: "  식당/간식 봉사") {
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -234,7 +256,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             self.loadVisiblePages()
         }
         
-        let menuItem7 = SideMenuItemFactory.make(title: "청소구역") {
+        let menuItem7 = SideMenuItemFactory.make(title: "  청소구역") {
+            self.SelectMenu = true;
+            
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
@@ -259,25 +283,33 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let headerButton = UIButton()
-        headerButton.setTitle("LogOut", for: .normal)
+        headerButton.setTitle("LOG OUT", for: .normal)
         headerButton.setTitleColor(UIColor.blue, for: .normal)
-        headerButton.backgroundColor = UIColor.black
-        headerButton.frame = CGRect(x: 200, y: 100, width: 50, height: 30)
+        headerButton.backgroundColor = UIColor.white
+        headerButton.frame = CGRect(x: self.view.frame.origin.x + 20, y: self.view.frame.origin.y + 60, width: self.view.frame.width * 0.2, height: self.view.frame.height * 0.05)
         headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         
         let headerLabel = UILabel()
+        headerLabel.textColor = UIColor.white
+        headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        headerLabel.numberOfLines = 3
         if((Auth.auth().currentUser) != nil){
-            headerLabel.text = Auth.auth().currentUser?.email
+            headerButton.setTitle("LOG OUT", for: .normal)
+            headerLabel.text = "\n\n  " + (Auth.auth().currentUser?.email)!
         } else{
-            headerLabel.text = "로그인이 필요합니다."
+            headerButton.setTitle("LOG IN", for: .normal)
+            headerLabel.text = "\n\n  로그인 해주세요."
         }
-        headerLabel.frame.origin.x = self.view.frame.origin.x + 35
-        headerLabel.textAlignment = NSTextAlignment.center
-        headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        let headerView: UIView = UIView()
-        headerView.backgroundColor = UIColor.brown
+        headerLabel.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 50, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.12)
         
-        var headerImage = UIImageView()
+        headerLabel.backgroundColor = UIColor.darkGray
+        headerLabel.textAlignment = NSTextAlignment.left
+        //headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        let headerView: UIView = UIView()
+        headerView.backgroundColor = UIColor.black
+        
+        /*
+        let headerImage = UIImageView()
         headerImage.image = UIImage(named: "이미지준비중.png")!
     
         headerImage.frame.origin.x = self.view.frame.origin.x + 5
@@ -285,30 +317,43 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         headerImage.frame.size.width = self.view.frame.size.width / 5
         headerImage.frame.size.height = self.view.frame.size.height / 6
         headerImage.frame.offsetBy(dx: 1, dy: 1)
+        */
+        
+        let whiteLine = UILabel()
+        whiteLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 43, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.001)
+        whiteLine.backgroundColor = UIColor.white
         
         headerView.addSubview(headerLabel)
-        headerView.addSubview(headerImage)
-        if((Auth.auth().currentUser) != nil){
+        //headerView.addSubview(headerImage)
+        headerView.addSubview(whiteLine)
+        //if((Auth.auth().currentUser) != nil){
             headerView.addSubview(headerButton)
-        }
-        
+        //}
         
         // Creating a Menu Footer with an UIView
         let menuheader = SideMenuHeaderFactory.make(view: headerView)
         
         
         // Creating a Menu Header with title string
-        let footerLabel = UILabel()
-        footerLabel.text = "환언, 우리의 사명"
-        footerLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        footerLabel.textColor = UIColor.white
-        footerLabel.textAlignment = NSTextAlignment.center
-        footerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        //let footerLabel = UILabel()
+        //footerLabel.backgroundColor = UIColor.white
+        //footerLabel.text = "환언, 우리의 사명"
+        //footerLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        //footerLabel.textColor = UIColor.white
+        //footerLabel.textAlignment = NSTextAlignment.center
+        //footerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let footerView: UIImageView = UIImageView()
-        footerLabel.frame = footerView.frame
-        footerView.addSubview(footerLabel)
-        //footerView.backgroundColor = UIColor.gray
-        footerView.image = UIImage(named: "Main.jpg")
+        //footerLabel.frame = footerView.frame
+        //footerLabel.frame.size.height /= 5
+        //footerView.addSubview(footerLabel)
+        footerView.backgroundColor = UIColor.black
+        //footerView.image = UIImage(named: "Main.jpg")
+        
+        let whiteBottomLine = UILabel()
+        whiteBottomLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y * -1 + 55, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.001)
+        whiteBottomLine.backgroundColor = UIColor.white
+        
+        footerView.addSubview(whiteBottomLine)
         
         // Creating a Menu Footer with an UIView
         let menufooter = SideMenuFooterFactory.make(view: footerView)

@@ -175,7 +175,7 @@
         <!--SideBar-->
         <scene sceneID="orf-at-9TA">
             <objects>
-                <viewController title="SideBar" modalTransitionStyle="crossDissolve" id="Wx2-yc-o0D" customClass="SideBarViewController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SideBar" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Wx2-yc-o0D" customClass="SideBarViewController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tZc-lt-Qq0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,7 +183,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30Y-Uw-bsY">
                                 <rect key="frame" x="0.0" y="64" width="320" height="420"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CampPoster.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="oHg-Kv-XZg">
+                                    <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CampPoster.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="oHg-Kv-XZg">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGO-Ya-83f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="1161.9718309859154"/>
+            <point key="canvasLocation" x="2756" y="1162"/>
         </scene>
         <!--CBAInfoTab-->
         <scene sceneID="so7-2Q-FTU">

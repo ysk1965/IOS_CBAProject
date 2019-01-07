@@ -26,6 +26,7 @@ class MassageTabViewController: UIViewController {
                 if let SideMenuController = navController.topViewController as?
                     SideBarViewController {
                     SideMenuController.Check = true
+                    SideMenuController.SelectMenu = false
                 }
             }
         }

@@ -77,7 +77,6 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
                             "확인", style:UIAlertActionStyle.default, handler: nil))
                         
                         self.present(alert, animated: true, completion: nil)
-                        
                     }
                 }
             }
@@ -92,6 +91,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
         Auth.auth().addStateDidChangeListener({(user, err) in
             if user.currentUser != nil{
                 // Login상태라면 뒤로 돌아가
+                self.dismiss(animated: true)
             }
         })
     }
