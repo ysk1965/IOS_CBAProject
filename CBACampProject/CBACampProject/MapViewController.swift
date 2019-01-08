@@ -71,11 +71,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         
-        centerMapOnLocation(location: CLLocation(latitude: 37.322550, longitude: 126.793821))
+        centerMapOnLocation(location: CLLocation(latitude: 37.607486, longitude: 127.334884))
         
         mapView.delegate = self
         
-        let position = CampLocation(title: "안산수양관", locationName: "안산수양관", discipline: "교회", coordinate: CLLocationCoordinate2D(latitude: 37.322550, longitude: 126.793800))
+        let position = CampLocation(title: "삼봉리 베뢰아 아카데미 하우스", locationName: "삼봉리 베뢰아 아카데미 하우스", discipline: "교회", coordinate: CLLocationCoordinate2D(latitude: 37.607486, longitude: 127.334884))
         mapView.addAnnotation(position)
         // Do any additional setup after loading the view.
     }

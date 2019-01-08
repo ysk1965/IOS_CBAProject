@@ -213,7 +213,7 @@
                     <navigationItem key="navigationItem" id="f48-dW-bmW">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nIW-Up-zJ1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
                                 <rect key="frame" x="16" y="0.0" width="118" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>

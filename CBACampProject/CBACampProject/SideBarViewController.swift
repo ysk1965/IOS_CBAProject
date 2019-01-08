@@ -468,7 +468,10 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     }
     
     @objc func LogIn(_ sender:UIButton){
+        
         self.SelectMenu = true;
+        //self.menu.reduce(onController: self)
+        print("In Login tab")
         
         if(!((Auth.auth().currentUser?.email) != nil)){
             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
