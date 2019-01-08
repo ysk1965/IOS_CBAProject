@@ -150,11 +150,64 @@
                         <outlet property="ApplicationOutlet" destination="TYp-J9-3Wc" id="pvF-KH-8r3"/>
                         <outlet property="Hamberger" destination="RmI-rI-byP" id="BsH-Ar-6HJ"/>
                         <outlet property="scrollView" destination="2X5-97-sxg" id="1P7-Xc-cdV"/>
+                        <segue destination="Y2R-uA-Iuf" kind="show" identifier="ChatPageSegue" id="vuL-Yx-4k5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SsT-4s-fJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1125" y="1948.943661971831"/>
+        </scene>
+        <!--Send Message View Controller-->
+        <scene sceneID="hLD-d7-pus">
+            <objects>
+                <viewController id="Y2R-uA-Iuf" customClass="SendMessageViewController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bxI-EC-ce0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-Sr-z7D">
+                                <rect key="frame" x="16" y="176" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.70049384719999996" green="0.70049384719999996" blue="0.70049384719999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4MJ-ef-22v">
+                                <rect key="frame" x="16" y="220" width="288" height="180"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMq-nP-dLM">
+                                <rect key="frame" x="263" y="422" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Send"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqL-Ly-wbY">
+                                <rect key="frame" x="15" y="422" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Cancle"/>
+                                <connections>
+                                    <action selector="CancleButton:" destination="Y2R-uA-Iuf" eventType="touchUpInside" id="FLF-JA-ZNj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Mkw-Wa-nwV"/>
+                    </view>
+                    <connections>
+                        <outlet property="SendButton" destination="xMq-nP-dLM" id="xI9-nk-X7C"/>
+                        <outlet property="textAuthor" destination="sCl-Sr-z7D" id="pNV-5L-IXZ"/>
+                        <outlet property="textMessage" destination="4MJ-ef-22v" id="piZ-Mc-CNh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JAK-gb-NDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1993" y="1949"/>
         </scene>
         <!--NavController-->
         <scene sceneID="yQb-6D-xyl">
@@ -732,6 +785,6 @@
         <image name="차량봉사자.png" width="854" height="231"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X0h-v3-Nf3"/>
+        <segue reference="QTj-Pz-pqL"/>
     </inferredMetricsTieBreakers>
 </document>

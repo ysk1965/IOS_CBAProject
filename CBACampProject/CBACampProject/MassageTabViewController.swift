@@ -171,11 +171,9 @@ class MassageTabViewController: UIViewController {
         self.view.addSubview(sendLabel)
         sendLabel.popIn()
         
-        FirebaseModel.sendMessageData.setMessage(text: "aaa", time: "bbb", auth: "ccc")
-        FirebaseModel().sendMessage()
+        self.performSegue(withIdentifier: "ChatPageSegue", sender: nil)
         
-        
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
     }
 
     /*

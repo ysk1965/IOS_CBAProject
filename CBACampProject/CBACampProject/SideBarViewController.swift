@@ -471,6 +471,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         self.SelectMenu = true;
         //self.menu.reduce(onController: self)
+        
         print("In Login tab")
         
         if(!((Auth.auth().currentUser?.email) != nil)){

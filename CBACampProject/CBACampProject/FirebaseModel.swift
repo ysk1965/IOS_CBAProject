@@ -17,8 +17,9 @@ class FirebaseModel {
     static var sendMessageData = Message(text: "default", time: "default", auth: "default")
     static var schedule = "" 
     
+    var ref: DatabaseReference!
+    
     func getMessages() {
-        var ref: DatabaseReference!
         print("trying to get messages....")
         
         ref = Database.database().reference().child("2019messages")
@@ -38,10 +39,16 @@ class FirebaseModel {
         })
     }
     
-    func sendMessage() {
-        Database.database().reference().child("2019messages").childByAutoId().setValue(FirebaseModel.sendMessageData);
+    func sendMessage(name: String, message: String) {
+        let values = ["author":name, "message":message]
         
-        //Database.database().reference().child("2019messages").childByAutoId().setValue()
+        self.ref.child("2019messages").setValue(values, withCompletionBlock: {(err, ref) in
+            if(err == nil){
+            }
+        })
+        
+        //self.ref.child("2019messages").child("author").setValue(name)
+        //self.ref.child("2019messages").child("message").setValue(message)
     }
     
     func downloadImage(name: String, imageView:UIImageView){

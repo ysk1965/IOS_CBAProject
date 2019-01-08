@@ -30,6 +30,7 @@
 		04842FA6211D8FDD006A84EE /* 어플용이미지b.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04842F9A211D8FCD006A84EE /* 어플용이미지b.jpg */; };
 		04842FA7211D8FDD006A84EE /* 예시a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04842F9B211D8FD6006A84EE /* 예시a.jpg */; };
 		04842FA8211D8FDD006A84EE /* 어플용이미지a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04842F9C211D8FD9006A84EE /* 어플용이미지a.jpg */; };
+		04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04950AA921E508CD00213D42 /* SendMessageViewController.swift */; };
 		04955EFB210A24320057FD68 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04955EFA210A24320057FD68 /* Location.swift */; };
 		04A157B021083F410015DA0B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A157AF21083F410015DA0B /* TestViewController.swift */; };
 		04E3727F2107106A00FB7304 /* ScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */; };
@@ -122,6 +123,7 @@
 		04842F9A211D8FCD006A84EE /* 어플용이미지b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "어플용이미지b.jpg"; path = "어플/어플용이미지b.jpg"; sourceTree = "<group>"; };
 		04842F9B211D8FD6006A84EE /* 예시a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "예시a.jpg"; path = "어플/예시a.jpg"; sourceTree = "<group>"; };
 		04842F9C211D8FD9006A84EE /* 어플용이미지a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "어플용이미지a.jpg"; path = "어플/어플용이미지a.jpg"; sourceTree = "<group>"; };
+		04950AA921E508CD00213D42 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		04955EFA210A24320057FD68 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		04A157AF21083F410015DA0B /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				043A7FF7219A721C00451CE0 /* AuthViewController.swift */,
 				0451210321A06FD800313490 /* ExampleHomeController.swift */,
 				0451210521A06FFD00313490 /* ExamplePersonController.swift */,
+				04950AA921E508CD00213D42 /* SendMessageViewController.swift */,
 			);
 			path = CBACampProject;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				042761CB2106E41400928EB7 /* AppDelegate.swift in Sources */,
 				047CC6672108E8950054C395 /* SideBarViewController.swift in Sources */,
 				04E372812107146F00FB7304 /* MassageTabViewController.swift in Sources */,
+				04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */,
 				0451210421A06FD800313490 /* ExampleHomeController.swift in Sources */,
 				04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */,
 				043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */,
