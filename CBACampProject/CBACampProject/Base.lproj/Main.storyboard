@@ -520,7 +520,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96H-XR-Tiu">
                                 <rect key="frame" x="10" y="84" width="300" height="400"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Rv-u2-7yy">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" placeholder="Email" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="3Rv-u2-7yy">
                                         <rect key="frame" x="100" y="158" width="150" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="5s6-4b-nVl"/>
@@ -529,7 +529,7 @@
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OXM-Jn-bvF">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" placeholder="Password" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="OXM-Jn-bvF">
                                         <rect key="frame" x="100" y="192" width="150" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="09u-W5-pRe"/>

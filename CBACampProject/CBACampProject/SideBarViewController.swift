@@ -444,6 +444,30 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
+        scrollView.alwaysBounceVertical = false
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 2.0
+        scrollView.delegate = self
+        */
+        
+        /*
+        var doubleTapRecognizer = UITapGestureRecognizer(target : self, action : #selector(scrollViewDoubleTapped(_:)))
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        doubleTapRecognizer.numberOfTouchesRequired = 1
+        scrollView.addGestureRecognizer(doubleTapRecognizer)
+        
+        let scrollViewFrame = scrollView.frame
+        let scaleWidth = scrollViewFrame.width / scrollView.contentSize.width
+        let scaleHeight = scrollViewFrame.height / scrollView.contentSize.height
+        let minScale = min(scaleWidth, scaleHeight)
+        scrollView.minimumZoomScale = minScale
+        
+        scrollView.maximumZoomScale = 1.0
+        scrollView.zoomScale = minScale
+         */
+        
         MenuSetting()
         
         if Check == true{
@@ -488,6 +512,29 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         // Dispose of any resources that can be recreated.
     }
     
+    /*
+    @available(iOS 2.0, *)
+    public func viewForZooming(in ScrollView: UIScrollView)-> UIView?{
+        return self.imageView
+    }
+    
+    @objc func scrollViewDoubleTapped(_ recognizer: UITapGestureRecognizer){
+        let pointInView = recognizer.location(in : imageView)
+        
+        var newZoomScale = scrollView.zoomScale * 1.5
+        newZoomScale = min(newZoomScale, scrollView.maximumZoomScale)
+        
+        let scrollViewSize = scrollView.bounds.size
+        let w = scrollViewSize.width / newZoomScale
+        let h = scrollViewSize.height / newZoomScale
+        let x = pointInView.x - (w / 2.0)
+        let y = pointInView.y - (h / 2.0)
+        
+        let rectToZoomTo = CGRect(x: x, y: y, width: w, height: h)
+        
+        scrollView.zoom(to: rectToZoomTo, animated: true)
+    }
+    */
 
     /*
     // MARK: - Navigation
