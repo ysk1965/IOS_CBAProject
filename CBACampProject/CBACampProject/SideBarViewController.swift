@@ -287,7 +287,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         headerButton.setTitleColor(UIColor.blue, for: .normal)
         headerButton.backgroundColor = UIColor.white
         headerButton.frame = CGRect(x: self.view.frame.origin.x + 20, y: self.view.frame.origin.y + 60, width: self.view.frame.width * 0.2, height: self.view.frame.height * 0.05)
-        headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         
         let headerLabel = UILabel()
         headerLabel.textColor = UIColor.white
@@ -296,9 +295,11 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         if((Auth.auth().currentUser) != nil){
             headerButton.setTitle("LOG OUT", for: .normal)
             headerLabel.text = "\n\n  " + (Auth.auth().currentUser?.email)!
+            headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle("LOG IN", for: .normal)
             headerLabel.text = "\n\n  로그인 해주세요."
+            headerButton.addTarget(self, action: #selector(self.LogIn(_:)), for: .touchUpInside)
         }
         headerLabel.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 50, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.12)
         
@@ -438,6 +439,8 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         loadVisiblePages()
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -452,6 +455,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     }
     
     @objc func Logout(_ sender:UIButton){
+        
         do {
             try Auth.auth().signOut()
         } catch{
@@ -461,6 +465,18 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         MenuSetting()
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func LogIn(_ sender:UIButton){
+        self.SelectMenu = true;
+        
+        if(!((Auth.auth().currentUser?.email) != nil)){
+            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+        }
+        else{
+            // 있을때는 어떻게
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {

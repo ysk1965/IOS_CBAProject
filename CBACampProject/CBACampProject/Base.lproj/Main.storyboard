@@ -159,7 +159,6 @@
         <!--NavController-->
         <scene sceneID="yQb-6D-xyl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dVx-5F-cOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="NavController" modalTransitionStyle="crossDissolve" hidesBarsOnTap="YES" id="HIb-Oz-YIy" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oKx-Oa-lVf">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -169,6 +168,7 @@
                         <segue destination="Wx2-yc-o0D" kind="relationship" relationship="rootViewController" id="3jd-D4-RgR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dVx-5F-cOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1959" y="1163"/>
         </scene>
@@ -213,7 +213,7 @@
                     <navigationItem key="navigationItem" id="f48-dW-bmW">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nIW-Up-zJ1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
                                 <rect key="frame" x="16" y="0.0" width="118" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -454,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnc-OZ-fop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2698" y="-327"/>
+            <point key="canvasLocation" x="2696" y="362"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="NUd-Lw-ycV">
@@ -711,7 +711,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OS-04-98R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1958" y="-327"/>
+            <point key="canvasLocation" x="1958" y="362"/>
         </scene>
     </scenes>
     <resources>

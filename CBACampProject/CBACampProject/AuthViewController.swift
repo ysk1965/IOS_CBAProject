@@ -88,6 +88,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
         super.viewDidLoad()
         // User가 존재한다.
         // addStateDidChangeListener
+        
         Auth.auth().addStateDidChangeListener({(user, err) in
             if user.currentUser != nil{
                 // Login상태라면 뒤로 돌아가
