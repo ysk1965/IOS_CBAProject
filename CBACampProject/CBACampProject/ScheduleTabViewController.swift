@@ -62,6 +62,10 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         ScrollView.maximumZoomScale = 1.0
         ScrollView.zoomScale = minScale
         
+        //let pinchRecogniezer = UIPinchGestureRecognizer(target: self, action : #selector(pinchAction(_ :)))
+        
+        //ScrollView.addGestureRecognizer(pinchRecogniezer)
+        
         centerScrollViewContents()
         // Do any additional setup after loading the view.
         
@@ -107,6 +111,12 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         centerScrollViewContents()
+    }
+    
+    @objc func pinchAction(_ sender : UIPinchGestureRecognizer){
+        ScrollView.transform = ScrollView.transform.scaledBy(x: sender.scale, y: sender.scale)
+        
+        sender.scale = 1.0
     }
 
     override func didReceiveMemoryWarning() {

@@ -444,6 +444,11 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let pinchRecogniezer = UIPinchGestureRecognizer(target: self, action : #selector(pinchAction(_ :)))
+        
+        scrollView.addGestureRecognizer(pinchRecogniezer)
+        
+        
         /*
         scrollView.alwaysBounceVertical = false
         scrollView.alwaysBounceHorizontal = false
@@ -476,6 +481,12 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             MainView.bounceIn(from: .right)
             Check = false
         }
+    }
+    
+    @objc func pinchAction(_ sender : UIPinchGestureRecognizer){
+        scrollView.transform = scrollView.transform.scaledBy(x: sender.scale, y: sender.scale)
+        
+        sender.scale = 1.0
     }
     
     @objc func Logout(_ sender:UIButton){
