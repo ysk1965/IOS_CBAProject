@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SendMessageViewController: UIViewController {
+class SendMessageViewController: UIViewController, UITextViewDelegate {
     var dbRef : DatabaseReference!
     
     @IBOutlet weak var textAuthor: UITextField!
@@ -28,6 +28,12 @@ class SendMessageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textMessage.text = "하고 싶은 말을 남겨주세요"
+        textMessage.textColor = UIColor.lightGray
+        textMessage.font = UIFont(name: "verdana", size: 13.0)
+        textMessage.returnKeyType = .done
+        textMessage.delegate = self
+        
         dbRef = Database.database().reference()
 
         SendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
@@ -39,6 +45,28 @@ class SendMessageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "하고 싶은 말을 남겨주세요" {
+            textView.text = ""
+            textView.textColor = UIColor.black
+            textView.font = UIFont(name: "verdana", size: 18.0)
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "하고 싶은 말을 남겨주세요"
+            textView.textColor = UIColor.lightGray
+            textView.font = UIFont(name: "verdana", size: 13.0)
+        }
+    }
 
     /*
     // MARK: - Navigation
