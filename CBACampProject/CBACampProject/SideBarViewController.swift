@@ -98,8 +98,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
                 self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }
             else{
-                // 있을때는 어떻게
-                
+                self.performSegue(withIdentifier: "SearchGBSSegue", sender: nil)
             }
         }
         

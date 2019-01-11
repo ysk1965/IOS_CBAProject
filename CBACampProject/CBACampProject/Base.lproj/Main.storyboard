@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="30" id="w3p-Bk-uLp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
-                                <state key="normal" title="Button" image="hamberger.png"/>
+                                <state key="normal" title="Button" image="19겨울_샌드위치메뉴.png"/>
                                 <connections>
                                     <action selector="HambergerAction:" destination="1Cq-ox-43l" eventType="touchUpInside" id="b3O-3N-Wbl"/>
                                     <segue destination="HIb-Oz-YIy" kind="show" identifier="SegueToSideMenu" id="miU-wD-BVm"/>
@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPQ-40-k4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="1138"/>
+            <point key="canvasLocation" x="1125" y="1137.6760563380283"/>
         </scene>
         <!--MassageTab-->
         <scene sceneID="vBs-0e-AfM">
@@ -100,7 +100,7 @@
                                     <constraint firstAttribute="width" constant="30" id="3iY-fd-CFH"/>
                                     <constraint firstAttribute="height" constant="30" id="z7k-uY-djq"/>
                                 </constraints>
-                                <state key="normal" image="hamberger.png"/>
+                                <state key="normal" image="19겨울_샌드위치메뉴.png"/>
                                 <connections>
                                     <action selector="HambergerAction:" destination="YR7-ln-v5b" eventType="touchUpInside" id="kFy-KV-e6k"/>
                                     <segue destination="HIb-Oz-YIy" kind="show" identifier="SegueToSideMenu" id="QTj-Pz-pqL"/>
@@ -283,7 +283,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30Y-Uw-bsY">
                                 <rect key="frame" x="0.0" y="64" width="320" height="420"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="19겨울_메세지배경.png" translatesAutoresizingMaskIntoConstraints="NO" id="oHg-Kv-XZg">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="19겨울_메세지배경.png" translatesAutoresizingMaskIntoConstraints="NO" id="oHg-Kv-XZg">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -321,7 +321,7 @@
                                     <constraint firstAttribute="height" constant="26" id="uEc-0V-fUm"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="-10" minY="-5" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="hamberger.png"/>
+                                <state key="normal" image="19겨울_샌드위치메뉴.png"/>
                                 <connections>
                                     <action selector="openMenu:" destination="Wx2-yc-o0D" eventType="touchUpInside" id="eBh-CN-dNm"/>
                                 </connections>
@@ -421,7 +421,7 @@
                                     <constraint firstAttribute="height" constant="30" id="8dE-2b-d4Z"/>
                                     <constraint firstAttribute="width" constant="30" id="AKy-FG-e9Y"/>
                                 </constraints>
-                                <state key="normal" image="hamberger.png"/>
+                                <state key="normal" image="19겨울_샌드위치메뉴.png"/>
                                 <connections>
                                     <action selector="HambergerAction:" destination="Gy5-cZ-uVY" eventType="touchUpInside" id="ahu-dB-ADn"/>
                                     <segue destination="HIb-Oz-YIy" kind="show" identifier="SegueToSideMenu" id="X0h-v3-Nf3"/>
@@ -776,16 +776,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdJ-Wf-hg0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_메세지배경.png" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-gh-GXU">
                                 <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdJ-Wf-hg0">
+                                <rect key="frame" x="10" y="159" width="300" height="355"/>
                             </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_조장조원확인.png" translatesAutoresizingMaskIntoConstraints="NO" id="l4i-Kq-Q8f">
+                                <rect key="frame" x="10" y="94" width="300" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="dZQ-mq-6XO"/>
+                                    <constraint firstAttribute="height" constant="55" id="eNf-ce-l02"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="top" secondItem="yaA-ky-6Zf" secondAttribute="top" id="E74-9A-2uL"/>
-                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="trailing" secondItem="yaA-ky-6Zf" secondAttribute="trailing" id="GAU-sV-fSu"/>
-                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="bottom" secondItem="yaA-ky-6Zf" secondAttribute="bottom" id="g9S-Gw-Fgd"/>
-                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="leading" secondItem="yaA-ky-6Zf" secondAttribute="leading" id="pXx-CO-g76"/>
+                            <constraint firstItem="yaA-ky-6Zf" firstAttribute="bottom" secondItem="cdJ-Wf-hg0" secondAttribute="bottom" constant="10" id="1sq-3o-LRc"/>
+                            <constraint firstItem="gyc-gh-GXU" firstAttribute="trailing" secondItem="yaA-ky-6Zf" secondAttribute="trailing" id="J5J-9r-94W"/>
+                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="leading" secondItem="yaA-ky-6Zf" secondAttribute="leading" constant="10" id="KOe-NH-sbw"/>
+                            <constraint firstItem="l4i-Kq-Q8f" firstAttribute="centerX" secondItem="2Kw-1i-Ft2" secondAttribute="centerX" id="TPY-ow-DRJ"/>
+                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="top" secondItem="l4i-Kq-Q8f" secondAttribute="bottom" constant="10" id="Usv-uU-myJ"/>
+                            <constraint firstItem="yaA-ky-6Zf" firstAttribute="trailing" secondItem="cdJ-Wf-hg0" secondAttribute="trailing" constant="10" id="bP5-98-ll4"/>
+                            <constraint firstItem="gyc-gh-GXU" firstAttribute="top" secondItem="yaA-ky-6Zf" secondAttribute="top" id="cVi-Lr-mVS"/>
+                            <constraint firstItem="gyc-gh-GXU" firstAttribute="bottom" secondItem="yaA-ky-6Zf" secondAttribute="bottom" id="fY6-ec-C1z"/>
+                            <constraint firstItem="l4i-Kq-Q8f" firstAttribute="top" secondItem="yaA-ky-6Zf" secondAttribute="top" constant="30" id="rWn-Nf-vvo"/>
+                            <constraint firstItem="gyc-gh-GXU" firstAttribute="leading" secondItem="yaA-ky-6Zf" secondAttribute="leading" id="tol-tP-ylm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yaA-ky-6Zf"/>
                     </view>
@@ -837,11 +853,12 @@
         <image name="19겨울_메세지상단.png" width="431" height="87"/>
         <image name="19겨울_배경(텍스트-적용).png" width="750" height="1104"/>
         <image name="19겨울_본부.png" width="183" height="51"/>
+        <image name="19겨울_샌드위치메뉴.png" width="50" height="50"/>
         <image name="19겨울_수양관위치.png" width="183" height="51"/>
+        <image name="19겨울_조장조원확인.png" width="614" height="114"/>
         <image name="19겨울_차량봉사자.png" width="183" height="51"/>
-        <image name="19겨울_하단바(전체).png" width="750" height="154"/>
+        <image name="19겨울_하단바(전체).png" width="750" height="145"/>
         <image name="applybutton.png" width="1000" height="1000"/>
-        <image name="hamberger.png" width="128" height="110"/>
         <image name="ic_home_outline" width="33" height="33"/>
         <image name="ic_info" width="25" height="25"/>
         <image name="ic_news" width="26" height="26"/>
