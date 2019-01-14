@@ -281,11 +281,15 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
+        let BackImageView: UIImageView = UIImageView()
+        BackImageView.image = UIImage(named: "19겨울_로그인상자.png")
+        BackImageView.frame = CGRect(x : self.view.frame.origin.x, y : self.view.frame.origin.y + 40, width : self.view.frame.width * 0.65, height : self.view.frame.height * 0.16)
+        
         let headerButton = UIButton()
         headerButton.setTitle("LOG OUT", for: .normal)
         headerButton.setTitleColor(UIColor.blue, for: .normal)
         headerButton.backgroundColor = UIColor.white
-        headerButton.frame = CGRect(x: self.view.frame.origin.x + 20, y: self.view.frame.origin.y + 60, width: self.view.frame.width * 0.2, height: self.view.frame.height * 0.05)
+        headerButton.frame = CGRect(x: self.view.frame.origin.x + 15, y: self.view.frame.origin.y + 15 , width: self.view.frame.width * 0.3, height: self.view.frame.height * 0.05)
         
         let headerLabel = UILabel()
         headerLabel.textColor = UIColor.white
@@ -293,16 +297,19 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         headerLabel.numberOfLines = 3
         if((Auth.auth().currentUser) != nil){
             headerButton.setTitle("LOGOUT", for: .normal)
+            headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
             headerLabel.text = "\n" + "  " + (Auth.auth().currentUser?.email)!
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
-            headerButton.setTitle("LOG IN", for: .normal)
+            headerButton.setTitle(" ", for: .normal)
+            headerButton.setImage(UIImage(named: "19겨울_로그인텍스트.png"), for: .normal)
+            
             headerLabel.text = "\n\n  로그인 해주세요."
             headerButton.addTarget(self, action: #selector(self.LogIn(_:)), for: .touchUpInside)
         }
-        headerLabel.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 50, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.14)
+        headerLabel.frame = CGRect(x : self.view.frame.origin.x+10, y : self.view.frame.origin.y, width : self.view.frame.width * 0.6, height : self.view.frame.height * 0.13)
         
-        headerLabel.backgroundColor = UIColor.darkGray
+        //headerLabel.backgroundColor = UIColor.darkGray
         headerLabel.textAlignment = NSTextAlignment.left
         //headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let headerView: UIView = UIView()
@@ -323,11 +330,15 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         whiteLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 43, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.001)
         whiteLine.backgroundColor = UIColor.white
         
-        headerView.addSubview(headerLabel)
+        BackImageView.addSubview(headerLabel)
+        BackImageView.addSubview(headerButton)
+        
+        headerView.addSubview(BackImageView)
+        //headerView.addSubview(headerLabel)
         //headerView.addSubview(headerImage)
         headerView.addSubview(whiteLine)
         //if((Auth.auth().currentUser) != nil){
-            headerView.addSubview(headerButton)
+        //headerView.addSubview(headerButton)
         //}
         
         // Creating a Menu Footer with an UIView
