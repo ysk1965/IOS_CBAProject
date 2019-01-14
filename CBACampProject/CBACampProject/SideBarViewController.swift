@@ -285,18 +285,22 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         BackImageView.image = UIImage(named: "19겨울_로그인상자.png")
         BackImageView.frame = CGRect(x : self.view.frame.origin.x, y : self.view.frame.origin.y + 40, width : self.view.frame.width * 0.65, height : self.view.frame.height * 0.16)
         
-        let headerButton = UIButton()
-        headerButton.setTitle("LOG OUT", for: .normal)
-        headerButton.setTitleColor(UIColor.blue, for: .normal)
-        headerButton.backgroundColor = UIColor.white
-        headerButton.frame = CGRect(x: self.view.frame.origin.x + 15, y: self.view.frame.origin.y + 15 , width: self.view.frame.width * 0.3, height: self.view.frame.height * 0.05)
-        
         let headerLabel = UILabel()
         headerLabel.textColor = UIColor.white
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         headerLabel.numberOfLines = 3
+        
+        headerLabel.frame = CGRect(x : self.view.frame.origin.x+10, y : self.view.frame.origin.y+11, width : self.view.frame.width * 0.6, height : self.view.frame.height * 0.13)
+        
+        let headerButton = UIButton()
+        headerButton.setTitle(" ", for: .normal)
+        headerButton.setTitleColor(UIColor.blue, for: .normal)
+        headerButton.backgroundColor = UIColor.white
+        headerButton.frame = CGRect(x: BackImageView.frame.origin.x + 15, y: BackImageView.frame.origin.y + 18 , width: self.view.frame.width * 0.3, height: self.view.frame.height * 0.05)
+        
+        
         if((Auth.auth().currentUser) != nil){
-            headerButton.setTitle("LOGOUT", for: .normal)
+            headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
             headerLabel.text = "\n" + "  " + (Auth.auth().currentUser?.email)!
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
@@ -307,7 +311,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             headerLabel.text = "\n\n  로그인 해주세요."
             headerButton.addTarget(self, action: #selector(self.LogIn(_:)), for: .touchUpInside)
         }
-        headerLabel.frame = CGRect(x : self.view.frame.origin.x+10, y : self.view.frame.origin.y, width : self.view.frame.width * 0.6, height : self.view.frame.height * 0.13)
         
         //headerLabel.backgroundColor = UIColor.darkGray
         headerLabel.textAlignment = NSTextAlignment.left
@@ -331,12 +334,12 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         whiteLine.backgroundColor = UIColor.white
         
         BackImageView.addSubview(headerLabel)
-        BackImageView.addSubview(headerButton)
         
         headerView.addSubview(BackImageView)
         //headerView.addSubview(headerLabel)
         //headerView.addSubview(headerImage)
         headerView.addSubview(whiteLine)
+        headerView.addSubview(headerButton)
         //if((Auth.auth().currentUser) != nil){
         //headerView.addSubview(headerButton)
         //}
