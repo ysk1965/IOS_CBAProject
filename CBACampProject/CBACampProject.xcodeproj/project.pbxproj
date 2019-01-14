@@ -16,6 +16,8 @@
 		042761EB2106E41600928EB7 /* CBACampProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */; };
 		043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A7FF7219A721C00451CE0 /* AuthViewController.swift */; };
 		044EDF0421EC13E2009E641C /* 19겨울_Send.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EDF0321EC13E2009E641C /* 19겨울_Send.png */; };
+		044EDF0621EC2C74009E641C /* KakaoTalk_Photo_2019-01-14-11-33-03.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EDF0521EC2C74009E641C /* KakaoTalk_Photo_2019-01-14-11-33-03.png */; };
+		044EDF0821EC2D1A009E641C /* KakaoTalk_Photo_2019-01-14-11-35-56.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EDF0721EC2D1A009E641C /* KakaoTalk_Photo_2019-01-14-11-35-56.png */; };
 		0451210421A06FD800313490 /* ExampleHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451210321A06FD800313490 /* ExampleHomeController.swift */; };
 		0451210621A06FFD00313490 /* ExamplePersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451210521A06FFD00313490 /* ExamplePersonController.swift */; };
 		046C83A3210984AA00176FDE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C83A2210984AA00176FDE /* MapViewController.swift */; };
@@ -110,6 +112,8 @@
 		042761EC2106E41600928EB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		043A7FF7219A721C00451CE0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		044EDF0321EC13E2009E641C /* 19겨울_Send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19겨울_Send.png"; path = "../../../../Downloads/19겨울_Send.png"; sourceTree = "<group>"; };
+		044EDF0521EC2C74009E641C /* KakaoTalk_Photo_2019-01-14-11-33-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2019-01-14-11-33-03.png"; path = "../../../Downloads/KakaoTalk_Photo_2019-01-14-11-33-03.png"; sourceTree = "<group>"; };
+		044EDF0721EC2D1A009E641C /* KakaoTalk_Photo_2019-01-14-11-35-56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2019-01-14-11-35-56.png"; path = "../../../Downloads/KakaoTalk_Photo_2019-01-14-11-35-56.png"; sourceTree = "<group>"; };
 		0451210321A06FD800313490 /* ExampleHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHomeController.swift; sourceTree = "<group>"; };
 		0451210521A06FFD00313490 /* ExamplePersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePersonController.swift; sourceTree = "<group>"; };
 		046C83A2210984AA00176FDE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 				04FC00D4210AEC0000528D7A /* hamgerger2.png */,
 				04FC00D7210AEC0000528D7A /* Heart.png */,
 				04FC00D5210AEC0000528D7A /* Main.jpg */,
+				044EDF0521EC2C74009E641C /* KakaoTalk_Photo_2019-01-14-11-33-03.png */,
+				044EDF0721EC2D1A009E641C /* KakaoTalk_Photo_2019-01-14-11-35-56.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -497,6 +503,7 @@
 				DBF11FB2211B35F700EE9B98 /* 또래별강의.jpeg in Resources */,
 				04FC00E9210AEC0100528D7A /* Heart.png in Resources */,
 				DB764E4E210C87EA006E72EB /* NotoSans-Regular.ttf in Resources */,
+				044EDF0621EC2C74009E641C /* KakaoTalk_Photo_2019-01-14-11-33-03.png in Resources */,
 				04F9260721E886CF00C4F6CA /* 19겨울_조장조원확인.png in Resources */,
 				DB764E5F210E0A3D006E72EB /* applybutton.png in Resources */,
 				DBF11FCC211B478F00EE9B98 /* gbs장소1.png in Resources */,
@@ -522,6 +529,7 @@
 				04F9260521E885F300C4F6CA /* 19겨울_샌드위치메뉴.png in Resources */,
 				042761D02106E41400928EB7 /* Main.storyboard in Resources */,
 				DB764E5B210E0305006E72EB /* 환언_mini.jpeg in Resources */,
+				044EDF0821EC2D1A009E641C /* KakaoTalk_Photo_2019-01-14-11-35-56.png in Resources */,
 				04F9260121E885B200C4F6CA /* 19겨울_로고.png in Resources */,
 				DBF11FD0211B479900EE9B98 /* gbs장소3.png in Resources */,
 				04F925F521E871A400C4F6CA /* 19겨울_메세지배경.png in Resources */,

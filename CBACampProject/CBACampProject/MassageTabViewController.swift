@@ -18,7 +18,7 @@ class MassageTabViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var buttonView: UIView!
     
-    var url = URL(string:"http://cbapray.sungrak.or.kr/RetreatSite/RetreatAdd")
+    var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "SegueToSideMenu"{
@@ -143,8 +143,8 @@ class MassageTabViewController: UIViewController {
         SendButton.setTitle(" ", for: .normal)
         SendButton.setTitleColor(UIColor.blue, for: .normal)
         //SendButton.backgroundColor = UIColor.black
-        SendButton.frame = CGRect(x: scrollView.frame.width-65, y: scrollView.frame.height-5, width: 60, height: 60)
-        SendButton.setBackgroundImage(UIImage(named: "19겨울_Send.png"), for: .normal)
+        SendButton.frame = CGRect(x: scrollView.frame.width-85, y: scrollView.frame.height-25, width: 75, height: 75)
+        SendButton.setBackgroundImage(UIImage(named: "KakaoTalk_Photo_2019-01-14-11-35-56.png"), for: .normal)
         SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
         self.view.addSubview(SendButton)
         
