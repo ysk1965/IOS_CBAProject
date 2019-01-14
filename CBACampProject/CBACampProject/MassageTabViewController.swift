@@ -140,10 +140,11 @@ class MassageTabViewController: UIViewController {
         
         // add Button
         let SendButton = UIButton()
-        SendButton.setTitle("Send", for: .normal)
+        SendButton.setTitle(" ", for: .normal)
         SendButton.setTitleColor(UIColor.blue, for: .normal)
-        SendButton.backgroundColor = UIColor.black
-        SendButton.frame = CGRect(x: scrollView.frame.width-65, y: scrollView.frame.height-5, width: 50, height: 50)
+        //SendButton.backgroundColor = UIColor.black
+        SendButton.frame = CGRect(x: scrollView.frame.width-65, y: scrollView.frame.height-5, width: 60, height: 60)
+        SendButton.setBackgroundImage(UIImage(named: "19겨울_Send.png"), for: .normal)
         SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
         self.view.addSubview(SendButton)
         
@@ -163,7 +164,7 @@ class MassageTabViewController: UIViewController {
     @objc func Send(_ sender:UIButton){
         ////////////////////
         let sendLabel = UILabel()
-        sendLabel.text = "Send"
+        sendLabel.text = " "
         sendLabel.font = UIFont(name:"NotoSansUI", size: 14.0)!
         sendLabel.textColor = UIColor.lightGray
         sendLabel.sizeToFit()

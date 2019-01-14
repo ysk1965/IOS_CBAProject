@@ -292,15 +292,15 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         headerLabel.numberOfLines = 3
         if((Auth.auth().currentUser) != nil){
-            headerButton.setTitle("LOG OUT", for: .normal)
-            headerLabel.text = "\n\n  " + (Auth.auth().currentUser?.email)!
+            headerButton.setTitle("LOGOUT", for: .normal)
+            headerLabel.text = "\n" + "  " + (Auth.auth().currentUser?.email)!
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle("LOG IN", for: .normal)
             headerLabel.text = "\n\n  로그인 해주세요."
             headerButton.addTarget(self, action: #selector(self.LogIn(_:)), for: .touchUpInside)
         }
-        headerLabel.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 50, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.12)
+        headerLabel.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 50, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.14)
         
         headerLabel.backgroundColor = UIColor.darkGray
         headerLabel.textAlignment = NSTextAlignment.left

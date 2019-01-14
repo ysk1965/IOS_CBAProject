@@ -15,6 +15,7 @@
 		042761E02106E41600928EB7 /* CBACampProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761DF2106E41600928EB7 /* CBACampProjectTests.swift */; };
 		042761EB2106E41600928EB7 /* CBACampProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */; };
 		043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A7FF7219A721C00451CE0 /* AuthViewController.swift */; };
+		044EDF0421EC13E2009E641C /* 19겨울_Send.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EDF0321EC13E2009E641C /* 19겨울_Send.png */; };
 		0451210421A06FD800313490 /* ExampleHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451210321A06FD800313490 /* ExampleHomeController.swift */; };
 		0451210621A06FFD00313490 /* ExamplePersonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0451210521A06FFD00313490 /* ExamplePersonController.swift */; };
 		046C83A3210984AA00176FDE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C83A2210984AA00176FDE /* MapViewController.swift */; };
@@ -108,6 +109,7 @@
 		042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBACampProjectUITests.swift; sourceTree = "<group>"; };
 		042761EC2106E41600928EB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		043A7FF7219A721C00451CE0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		044EDF0321EC13E2009E641C /* 19겨울_Send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19겨울_Send.png"; path = "../../../../Downloads/19겨울_Send.png"; sourceTree = "<group>"; };
 		0451210321A06FD800313490 /* ExampleHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHomeController.swift; sourceTree = "<group>"; };
 		0451210521A06FFD00313490 /* ExamplePersonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePersonController.swift; sourceTree = "<group>"; };
 		046C83A2210984AA00176FDE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		04F925EF21E870A000C4F6CA /* 19_겨울 */ = {
 			isa = PBXGroup;
 			children = (
+				044EDF0321EC13E2009E641C /* 19겨울_Send.png */,
 				04F9260621E886CF00C4F6CA /* 19겨울_조장조원확인.png */,
 				04F9260421E885F300C4F6CA /* 19겨울_샌드위치메뉴.png */,
 				04F9260221E885C600C4F6CA /* 19겨울_앱로고.png */,
@@ -510,6 +513,7 @@
 				DBF11FD2211B524400EE9B98 /* 이미지준비중.png in Resources */,
 				DB764E54210C98FD006E72EB /* refresh.png in Resources */,
 				04F925FF21E8804700C4F6CA /* 19겨울_본부.png in Resources */,
+				044EDF0421EC13E2009E641C /* 19겨울_Send.png in Resources */,
 				04F9260321E885C700C4F6CA /* 19겨울_앱로고.png in Resources */,
 				DB764E61210E1EB9006E72EB /* 환언_long.jpeg in Resources */,
 				04F925F921E875C600C4F6CA /* 19겨울_배경(텍스트-적용).png in Resources */,
