@@ -15,12 +15,26 @@ class SendMessageViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textAuthor: UITextField!
     @IBOutlet weak var textMessage: UITextView!
     @IBOutlet weak var SendButton: UIButton!
+    var currentTime: String?
     @IBAction func CancleButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    let date = Date()
+    let calendar = Calendar.current
+    
     @objc func sendMessage(){
-        dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff"])
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        if(hour > 12){
+            currentTime = "\(month)월\(day)일 오후\(hour-12):\(minute)"
+        } else{
+            currentTime = "\(month)월\(day)일 오전\(hour):\(minute)"
+        }
+        
+        dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff", "time" : currentTime])
         
         dismiss(animated: true, completion: nil)
     }

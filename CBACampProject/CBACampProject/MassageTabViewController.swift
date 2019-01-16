@@ -74,8 +74,8 @@ class MassageTabViewController: UIViewController {
             profileimgview.frame = CGRect(x:20, y:20, width: 40, height: 40)
             profileimgview.contentMode = UIViewContentMode.scaleAspectFill
             profileimgview.clipsToBounds = true //image set 전에 해주어야 한다.
-            if (FirebaseModel.messages[count - i - 1].auth == "STAFF") {
-                profileimgview.image = UIImage(named: "Icon-60@3x.png") // 스탭 이미지
+            if (FirebaseModel.messages[count - i - 1].isStaff == "staff") {
+                profileimgview.image = UIImage(named: "19겨울_앱로고.png") // 스탭 이미지
             } else {
                 profileimgview.image = UIImage(named:"profile.png")
             }
@@ -87,10 +87,10 @@ class MassageTabViewController: UIViewController {
             let namelabel = UILabel()
             namelabel.text = FirebaseModel.messages[count - i - 1].auth
             namelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
-            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
-                namelabel.textColor = UIColor.black
-            } else{
+            if(FirebaseModel.messages[count - i - 1].isStaff == "staff"){
                 namelabel.textColor = UIColor.white
+            } else{
+                namelabel.textColor = UIColor.black
             }
             namelabel.sizeToFit()
             namelabel.frame.origin = CGPoint(x: 70, y: 20)
@@ -111,10 +111,10 @@ class MassageTabViewController: UIViewController {
             let textview = UITextView()
             textview.text = FirebaseModel.messages[count - i - 1].text
             textview.font = UIFont(name: "NotoSans", size: 18.0)!
-            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
-                textview.textColor = UIColor.black
-            } else{
+            if(FirebaseModel.messages[count - i - 1].isStaff == "staff"){
                 textview.textColor = UIColor.white
+            } else{
+                textview.textColor = UIColor.darkGray
             }
             textview.frame.origin = CGPoint(x:inxpos, y:nextypos)
             textview.frame.size = CGSize(width: Int(scrollView.frame.width) - inxpos * 2, height: 30)
