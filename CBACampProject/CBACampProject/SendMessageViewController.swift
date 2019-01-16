@@ -20,7 +20,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func sendMessage(){
-        dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!])
+        dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff"])
         
         dismiss(animated: true, completion: nil)
     }

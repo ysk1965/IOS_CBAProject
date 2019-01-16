@@ -59,7 +59,12 @@ class MassageTabViewController: UIViewController {
             let cellview = UIView()
             cellview.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
             cellview.layer.borderWidth = 1
-            cellview.backgroundColor = UIColor.white
+            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
+                cellview.backgroundColor = UIColor.white
+            } else{
+                cellview.backgroundColor = UIColor.black
+            }
+            print(FirebaseModel.messages[count - i - 1].isStaff)
             
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width), height: 80)
             scrollView.addSubview(cellview)
@@ -82,6 +87,11 @@ class MassageTabViewController: UIViewController {
             let namelabel = UILabel()
             namelabel.text = FirebaseModel.messages[count - i - 1].auth
             namelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
+            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
+                namelabel.textColor = UIColor.black
+            } else{
+                namelabel.textColor = UIColor.white
+            }
             namelabel.sizeToFit()
             namelabel.frame.origin = CGPoint(x: 70, y: 20)
             cellview.addSubview(namelabel)
@@ -101,6 +111,11 @@ class MassageTabViewController: UIViewController {
             let textview = UITextView()
             textview.text = FirebaseModel.messages[count - i - 1].text
             textview.font = UIFont(name: "NotoSans", size: 18.0)!
+            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
+                textview.textColor = UIColor.black
+            } else{
+                textview.textColor = UIColor.white
+            }
             textview.frame.origin = CGPoint(x:inxpos, y:nextypos)
             textview.frame.size = CGSize(width: Int(scrollView.frame.width) - inxpos * 2, height: 30)
             let contentSize = textview.sizeThatFits(textview.bounds.size)
@@ -113,6 +128,11 @@ class MassageTabViewController: UIViewController {
             textview.isEditable = false
             textview.isUserInteractionEnabled = true
             nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
+            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
+                textview.backgroundColor = UIColor.white
+            } else{
+                textview.backgroundColor = UIColor.black
+            }
             
             
             ///timelabel

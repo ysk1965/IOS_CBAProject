@@ -14,7 +14,7 @@ import FirebaseStorage
 
 class FirebaseModel {
     static var messages = [Message]()
-    static var sendMessageData = Message(text: "default", time: "default", auth: "default")
+    static var sendMessageData = Message(text: "default", time: "default", auth: "default", isStaff : "default")
     static var schedule = "" 
     
     var ref: DatabaseReference!
@@ -32,7 +32,9 @@ class FirebaseModel {
                     let time = snapshotValue["time"] as? String ?? ""
                     let auth = snapshotValue["author"] as? String ?? ""
                     print(message)
-                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth))
+                    let isStaff = snapshotValue["isStaff"] as? String ?? ""
+                    print(message)
+                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
                 }
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got messages"), object: self)
             }
