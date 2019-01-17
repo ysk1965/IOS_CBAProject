@@ -85,7 +85,12 @@ class CBAInfoTabViewController: UIViewController {
         
         let count = FirebaseModel.messages.count
         
-        NoticeLabel.text = FirebaseModel.messages[count-1].text
+        for i in (0..<count).reversed(){
+            if(FirebaseModel.messages[i].isStaff == "공지"){
+                NoticeLabel.text = FirebaseModel.messages[i].text
+                break
+            }
+        }
         //TestOutlet.slideIn(from: .left, x: 2, y: 2, duration: 2, delay: 2)
 
         // Do any additional setup after loading the view.
