@@ -281,34 +281,38 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
+        let whiteLine = UILabel()
+        whiteLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 40, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.001)
+        whiteLine.backgroundColor = UIColor.white
+        
         let BackImageView: UIImageView = UIImageView()
         BackImageView.image = UIImage(named: "19겨울_로그인상자.png")
-        BackImageView.frame = CGRect(x : self.view.frame.origin.x, y : self.view.frame.origin.y + 40, width : self.view.frame.width * 0.65, height : self.view.frame.height * 0.16)
+        BackImageView.frame = CGRect(x : self.view.frame.origin.x, y : self.view.frame.origin.y + 41, width : self.view.frame.width * 0.66, height : self.view.frame.height * 0.16)
         
         let headerLabel = UILabel()
         headerLabel.textColor = UIColor.white
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-        headerLabel.numberOfLines = 3
+        headerLabel.numberOfLines = 1
         
-        headerLabel.frame = CGRect(x : self.view.frame.origin.x+10, y : self.view.frame.origin.y+11, width : self.view.frame.width * 0.6, height : self.view.frame.height * 0.13)
+        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x+BackImageView.frame.width * 0.092, y : self.view.frame.origin.y+BackImageView.frame.height * 0.28, width : whiteLine.frame.width * 0.9, height : self.view.frame.height * 0.13)
         
         let headerButton = UIButton()
         headerButton.setTitle(" ", for: .normal)
         headerButton.setTitleColor(UIColor.blue, for: .normal)
         headerButton.backgroundColor = UIColor.white
-        headerButton.frame = CGRect(x: BackImageView.frame.origin.x + 15, y: BackImageView.frame.origin.y + 18 , width: self.view.frame.width * 0.3, height: self.view.frame.height * 0.05)
+        headerButton.frame = CGRect(x: BackImageView.frame.origin.x + BackImageView.frame.width * 0.09, y: BackImageView.frame.origin.y + BackImageView.frame.width * 0.1 , width: BackImageView.frame.width * 0.41, height: BackImageView.frame.height * 0.3)
         
         
         if((Auth.auth().currentUser) != nil){
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
-            headerLabel.text = "\n" + "  " + (Auth.auth().currentUser?.email)!
+            headerLabel.text = (Auth.auth().currentUser?.email)!
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그인텍스트.png"), for: .normal)
             
-            headerLabel.text = "\n\n  로그인 해주세요."
+            headerLabel.text = "로그인 해주세요."
             headerButton.addTarget(self, action: #selector(self.LogIn(_:)), for: .touchUpInside)
         }
         
@@ -318,26 +322,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         let headerView: UIView = UIView()
         headerView.backgroundColor = UIColor.black
         
-        /*
-        let headerImage = UIImageView()
-        headerImage.image = UIImage(named: "이미지준비중.png")!
-    
-        headerImage.frame.origin.x = self.view.frame.origin.x + 5
-        headerImage.frame.origin.y = self.view.frame.origin.y + 25
-        headerImage.frame.size.width = self.view.frame.size.width / 5
-        headerImage.frame.size.height = self.view.frame.size.height / 6
-        headerImage.frame.offsetBy(dx: 1, dy: 1)
-        */
-        
-        let whiteLine = UILabel()
-        whiteLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 43, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.001)
-        whiteLine.backgroundColor = UIColor.white
-        
         BackImageView.addSubview(headerLabel)
         
         headerView.addSubview(BackImageView)
-        //headerView.addSubview(headerLabel)
-        //headerView.addSubview(headerImage)
         headerView.addSubview(whiteLine)
         headerView.addSubview(headerButton)
         //if((Auth.auth().currentUser) != nil){
@@ -364,7 +351,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         //footerView.image = UIImage(named: "Main.jpg")
         
         let whiteBottomLine = UILabel()
-        whiteBottomLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y * -1 + 55, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.001)
+        whiteBottomLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y * -1 + 55, width : whiteLine.frame.width, height : self.view.frame.height * 0.001)
         whiteBottomLine.backgroundColor = UIColor.white
         
         footerView.addSubview(whiteBottomLine)
