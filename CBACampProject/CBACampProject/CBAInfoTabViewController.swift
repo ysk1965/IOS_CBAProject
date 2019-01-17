@@ -10,12 +10,14 @@ import UIKit
 import Foundation
 import MessageUI
 import MenuSlider
+import Firebase
 
 class CBAInfoTabViewController: UIViewController {
     @IBOutlet weak var Hamberger: UIButton!
     @IBAction func HambergerAction(_ sender: Any) {
         Hamberger.popIn(fromScale: 1.5, duration: 2, delay: 0)
     }
+    @IBOutlet weak var NoticeLabel: UILabel!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "SegueToSideMenu"{
@@ -81,6 +83,9 @@ class CBAInfoTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let count = FirebaseModel.messages.count
+        
+        NoticeLabel.text = FirebaseModel.messages[count-1].text
         //TestOutlet.slideIn(from: .left, x: 2, y: 2, duration: 2, delay: 2)
 
         // Do any additional setup after loading the view.

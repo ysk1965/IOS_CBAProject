@@ -64,7 +64,6 @@ class MassageTabViewController: UIViewController {
             } else{
                 cellview.backgroundColor = UIColor.black
             }
-            print(FirebaseModel.messages[count - i - 1].isStaff)
             
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width), height: 80)
             scrollView.addSubview(cellview)
