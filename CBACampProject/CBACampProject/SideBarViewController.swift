@@ -282,25 +282,25 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let whiteLine = UILabel()
-        whiteLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y + 40, width : self.view.frame.width * 0.61, height : self.view.frame.height * 0.001)
+        whiteLine.frame = CGRect(x : self.view.frame.origin.x + self.view.frame.width*0.035, y : self.view.frame.origin.y + self.view.frame.height*0.06, width : self.view.frame.width * 0.59, height : self.view.frame.height * 0.001)
         whiteLine.backgroundColor = UIColor.white
         
         let BackImageView: UIImageView = UIImageView()
         BackImageView.image = UIImage(named: "19겨울_로그인상자.png")
-        BackImageView.frame = CGRect(x : self.view.frame.origin.x, y : self.view.frame.origin.y + 41, width : self.view.frame.width * 0.66, height : self.view.frame.height * 0.16)
+        BackImageView.frame = CGRect(x : whiteLine.frame.origin.x - whiteLine.frame.width * 0.041, y : whiteLine.frame.origin.y + whiteLine.frame.origin.y/8, width : whiteLine.frame.width * 1.09, height : self.view.frame.height * 0.16)
         
         let headerLabel = UILabel()
         headerLabel.textColor = UIColor.white
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         headerLabel.numberOfLines = 1
         
-        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x+BackImageView.frame.width * 0.092, y : self.view.frame.origin.y+BackImageView.frame.height * 0.28, width : whiteLine.frame.width * 0.9, height : self.view.frame.height * 0.13)
+        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x+BackImageView.frame.width * 0.075, y : self.view.frame.origin.y+BackImageView.frame.height * 0.28, width : BackImageView.frame.width * 0.8, height : self.view.frame.height * 0.13)
         
         let headerButton = UIButton()
         headerButton.setTitle(" ", for: .normal)
         headerButton.setTitleColor(UIColor.blue, for: .normal)
         headerButton.backgroundColor = UIColor.white
-        headerButton.frame = CGRect(x: BackImageView.frame.origin.x + BackImageView.frame.width * 0.09, y: BackImageView.frame.origin.y + BackImageView.frame.width * 0.1 , width: BackImageView.frame.width * 0.41, height: BackImageView.frame.height * 0.3)
+        headerButton.frame = CGRect(x: BackImageView.frame.origin.x + BackImageView.frame.width * 0.092, y: BackImageView.frame.origin.y + BackImageView.frame.width * 0.1 , width: BackImageView.frame.width * 0.44, height: BackImageView.frame.height * 0.29)
         
         
         if((Auth.auth().currentUser) != nil){
