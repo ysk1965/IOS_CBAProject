@@ -80,17 +80,25 @@ class CBAInfoTabViewController: UIViewController {
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @objc func viewload(_ notification: Notification){
         
         let count = FirebaseModel.messages.count
         
         for i in (0..<count).reversed(){
             if(FirebaseModel.messages[i].isStaff == "공지"){
                 NoticeLabel.text = FirebaseModel.messages[i].text
+                print("message : " + FirebaseModel.messages[i].text)
                 break
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
+        FirebaseModel().getMessages()
+        
         //TestOutlet.slideIn(from: .left, x: 2, y: 2, duration: 2, delay: 2)
 
         // Do any additional setup after loading the view.
