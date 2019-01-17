@@ -188,9 +188,11 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
                 view?.removeFromSuperview()
             }
             self.pageViews = []
-            self.pageImages = [UIImage(named: "숙소1.jpg")!,
-                               UIImage(named: "숙소2.jpg")!,
-                               UIImage(named: "숙소3.jpg")!]
+            self.pageImages = [UIImage(named: "19겨울_숙소1.jpg")!,
+                               UIImage(named: "19겨울_숙소2.jpg")!,
+                               UIImage(named: "19겨울_숙소3.jpg")!,
+                               UIImage(named: "19겨울_숙소4.jpg")!,
+                               UIImage(named: "19겨울_숙소5.jpg")!]
             let pageCount = self.pageImages.count
             
             self.pageControl.currentPage = 0
