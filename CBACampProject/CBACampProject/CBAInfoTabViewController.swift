@@ -13,6 +13,7 @@ import MenuSlider
 import Firebase
 
 class CBAInfoTabViewController: UIViewController {
+    
     @IBOutlet weak var Hamberger: UIButton!
     @IBAction func HambergerAction(_ sender: Any) {
         Hamberger.popIn(fromScale: 1.5, duration: 2, delay: 0)
@@ -32,8 +33,6 @@ class CBAInfoTabViewController: UIViewController {
             }
         }
     }
-    
-    
     
     @IBOutlet weak var CallOutlet: UIButton!
     @IBAction func CallAction(_ sender: Any) {
@@ -81,6 +80,7 @@ class CBAInfoTabViewController: UIViewController {
     }
     
     @objc func viewload(_ notification: Notification){
+        print("viewDidload_INFO")
         
         let count = FirebaseModel.messages.count
         

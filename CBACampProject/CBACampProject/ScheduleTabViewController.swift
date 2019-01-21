@@ -14,8 +14,6 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         Hamberger.popIn(fromScale: 1.5, duration: 2, delay: 0)
     }
     
-    
-    
     @IBOutlet weak var ScrollView: UIScrollView!
     
     var imageView: UIImageView!

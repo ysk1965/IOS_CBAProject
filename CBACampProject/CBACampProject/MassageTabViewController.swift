@@ -42,6 +42,7 @@ class MassageTabViewController: UIViewController {
     
     
     @objc func viewload(_ notification: Notification) {
+        print("viewDidload_MASSAGE")
         ApplicationOutlet.frame.origin.x = self.view.frame.size.width - 42
         ApplicationOutlet.frame.origin.y = 20
         ApplicationLabel.frame.origin.x = self.view.frame.size.width - 52
@@ -59,10 +60,10 @@ class MassageTabViewController: UIViewController {
             let cellview = UIView()
             cellview.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
             cellview.layer.borderWidth = 1
-            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
-                cellview.backgroundColor = UIColor.white
-            } else{
+            if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
                 cellview.backgroundColor = UIColor.black
+            } else{
+                cellview.backgroundColor = UIColor.white
             }
             
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width), height: 80)
@@ -73,7 +74,7 @@ class MassageTabViewController: UIViewController {
             profileimgview.frame = CGRect(x:20, y:20, width: 40, height: 40)
             profileimgview.contentMode = UIViewContentMode.scaleAspectFill
             profileimgview.clipsToBounds = true //image set 전에 해주어야 한다.
-            if (FirebaseModel.messages[count - i - 1].isStaff == "staff") {
+            if (FirebaseModel.messages[count - i - 1].isStaff == "공지") {
                 profileimgview.image = UIImage(named: "19겨울_앱로고.png") // 스탭 이미지
             } else {
                 profileimgview.image = UIImage(named:"profile.png")
@@ -86,7 +87,7 @@ class MassageTabViewController: UIViewController {
             let namelabel = UILabel()
             namelabel.text = FirebaseModel.messages[count - i - 1].auth
             namelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
-            if(FirebaseModel.messages[count - i - 1].isStaff == "staff"){
+            if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
                 namelabel.textColor = UIColor.white
             } else{
                 namelabel.textColor = UIColor.black
@@ -110,8 +111,8 @@ class MassageTabViewController: UIViewController {
             let textview = UITextView()
             textview.text = FirebaseModel.messages[count - i - 1].text
             textview.font = UIFont(name: "NotoSans", size: 18.0)!
-            if(FirebaseModel.messages[count - i - 1].isStaff == "staff"){
-                textview.textColor = UIColor.white
+            if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
+                textview.textColor = UIColor.lightGray
             } else{
                 textview.textColor = UIColor.darkGray
             }
@@ -127,10 +128,10 @@ class MassageTabViewController: UIViewController {
             textview.isEditable = false
             textview.isUserInteractionEnabled = true
             nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
-            if(FirebaseModel.messages[count - i - 1].isStaff == "non-staff"){
-                textview.backgroundColor = UIColor.white
-            } else{
+            if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
                 textview.backgroundColor = UIColor.black
+            } else{
+                textview.backgroundColor = UIColor.white
             }
             
             
@@ -155,6 +156,7 @@ class MassageTabViewController: UIViewController {
         }
         scrollView.contentSize = CGSize(width: scrollView.frame.width-1, height: max(CGFloat(inypos),scrollView.frame.height+1))
         scrollView.isScrollEnabled = true
+        
         self.view.addSubview(scrollView)
         
         // add Button
@@ -170,9 +172,12 @@ class MassageTabViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewDidLoad() {
-        print("viewDidload")
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
         FirebaseModel().getMessages()
+        
+        Messaging.messaging().subscribe(toTopic: "weather") { error in
+            print("Subscribed to weather topic")
+        }
     }
 
     override func didReceiveMemoryWarning() {

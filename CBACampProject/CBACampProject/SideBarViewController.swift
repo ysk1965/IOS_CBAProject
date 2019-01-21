@@ -181,18 +181,19 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             self.loadVisiblePages()
         }
         
-        let menuItem4 = SideMenuItemFactory.make(title: "  숙소 안내") {
+        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {
             self.SelectMenu = true;
             
             for view in self.pageViews {
                 view?.removeFromSuperview()
             }
             self.pageViews = []
-            self.pageImages = [UIImage(named: "19겨울_숙소1.jpg")!,
-                               UIImage(named: "19겨울_숙소2.jpg")!,
-                               UIImage(named: "19겨울_숙소3.jpg")!,
-                               UIImage(named: "19겨울_숙소4.jpg")!,
-                               UIImage(named: "19겨울_숙소5.jpg")!]
+            self.pageImages = [UIImage(named: "19겨울_1층배치도.png")!,
+                               UIImage(named: "19겨울_2층배치도.png")!,
+                               UIImage(named: "19겨울_3층배치도.png")!,
+                               UIImage(named: "19겨울_4층배치도.png")!,
+                               UIImage(named: "19겨울_5층배치도.png")!,
+                               UIImage(named: "19겨울_별관배치도.png")!]
             let pageCount = self.pageImages.count
             
             self.pageControl.currentPage = 0
