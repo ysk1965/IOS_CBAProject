@@ -162,7 +162,7 @@
         <scene sceneID="hLD-d7-pus">
             <objects>
                 <viewController id="Y2R-uA-Iuf" customClass="SendMessageViewController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bxI-EC-ce0">
+                    <view key="view" contentMode="scaleToFill" id="bxI-EC-ce0" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -249,6 +249,7 @@
                     </view>
                     <connections>
                         <outlet property="SendButton" destination="xMq-nP-dLM" id="xI9-nk-X7C"/>
+                        <outlet property="mainView" destination="bxI-EC-ce0" id="ftt-nS-6u3"/>
                         <outlet property="textAuthor" destination="sCl-Sr-z7D" id="pNV-5L-IXZ"/>
                         <outlet property="textMessage" destination="4MJ-ef-22v" id="piZ-Mc-CNh"/>
                     </connections>

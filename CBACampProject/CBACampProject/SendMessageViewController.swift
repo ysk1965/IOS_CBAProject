@@ -12,6 +12,7 @@ import Firebase
 class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     var dbRef : DatabaseReference!
     
+    @IBOutlet var mainView: UIScrollView!
     @IBOutlet weak var textAuthor: UITextField!
     @IBOutlet weak var textMessage: UITextView!
     @IBOutlet weak var SendButton: UIButton!
@@ -83,7 +84,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        //self.view.setContentOffset(CGPoint(x: 0, y: 50), animated: true)
+        mainView.setContentOffset(CGPoint(x: 0, y: 50), animated: true)
     }
 
     /*
