@@ -447,10 +447,15 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let pinchRecogniezer = UIPinchGestureRecognizer(target: self, action : #selector(pinchAction(_ :)))
+        //let pinchRecogniezer = UIPinchGestureRecognizer(target: self, action : #selector(pinchAction(_ :)))
         
-        scrollView.addGestureRecognizer(pinchRecogniezer)
+        //scrollView.addGestureRecognizer(pinchRecogniezer)
         
+        //var pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
+        //self.scrollView.addGestureRecognizer(pinch)
+        
+        self.scrollView.minimumZoomScale = 1.0
+        self.scrollView.maximumZoomScale = 5.0
         
         /*
         scrollView.alwaysBounceVertical = false
@@ -486,10 +491,19 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         }
     }
     
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?{
+        return self.imageView
+    }
+    
+    
     @objc func pinchAction(_ sender : UIPinchGestureRecognizer){
         scrollView.transform = scrollView.transform.scaledBy(x: sender.scale, y: sender.scale)
         
         sender.scale = 1.0
+    }
+    
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imageView
     }
     
     @objc func Logout(_ sender:UIButton){

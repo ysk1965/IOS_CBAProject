@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SendMessageViewController: UIViewController, UITextViewDelegate {
+class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     var dbRef : DatabaseReference!
     
     @IBOutlet weak var textAuthor: UITextField!
@@ -80,6 +80,10 @@ class SendMessageViewController: UIViewController, UITextViewDelegate {
             textView.textColor = UIColor.lightGray
             textView.font = UIFont(name: "verdana", size: 13.0)
         }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //self.view.setContentOffset(CGPoint(x: 0, y: 50), animated: true)
     }
 
     /*

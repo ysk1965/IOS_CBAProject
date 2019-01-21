@@ -11,8 +11,9 @@ import Firebase
 import GoogleSignIn
 import FirebaseAuth
 
-class AuthViewController: UIViewController, GIDSignInUIDelegate {
+class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var mainView: UIScrollView!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -95,6 +96,19 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate {
                 self.dismiss(animated: true)
             }
         })
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        mainView.setContentOffset(CGPoint(x: 0, y: 40), animated: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        mainView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     override func didReceiveMemoryWarning() {

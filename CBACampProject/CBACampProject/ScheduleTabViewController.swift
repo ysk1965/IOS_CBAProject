@@ -46,10 +46,17 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         
         ScrollView.contentSize = (imageView.frame.size)
         
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.tapToZoom))
+        doubleTap.numberOfTapsRequired = 2
+        doubleTap.numberOfTouchesRequired = 1
+        ScrollView.addGestureRecognizer(doubleTap)
+        
+        /*
         let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ScheduleTabViewController.scrollViewDoubleTapped(_:)))
         doubleTapRecognizer.numberOfTapsRequired = 2
         doubleTapRecognizer.numberOfTouchesRequired = 1
         ScrollView.addGestureRecognizer(doubleTapRecognizer)
+        
         
         let scrollViewFrame = ScrollView.frame
         let scaleWidth = scrollViewFrame.size.width / ScrollView.contentSize.width
@@ -60,6 +67,9 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         ScrollView.maximumZoomScale = 1.0
         ScrollView.zoomScale = minScale
         
+        centerScrollViewContents()
+        */
+        
         //let pinchRecogniezer = UIPinchGestureRecognizer(target: self, action : #selector(pinchAction(_ :)))
         
         //ScrollView.addGestureRecognizer(pinchRecogniezer)
@@ -67,6 +77,19 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         centerScrollViewContents()
         // Do any additional setup after loading the view.
         
+    }
+    
+    @objc func tapToZoom(_ gestureRecognizer: UIGestureRecognizer) {
+        // 더블탭이 인식되면 호출된다.
+        // 현재 줌 비율에 따라서
+        switch ScrollView.zoomScale {
+        case (ScrollView.minimumZoomScale..<1.0): // 축소된 상태인 경우
+            ScrollView.setZoomScale(1.0, animated: true)
+        case (1.0..<ScrollView.maximumZoomScale): // 확대된 상태인 경우
+            ScrollView.setZoomScale(1.0, animated: true)
+        default: // 최대 크기인 경우
+            ScrollView.setZoomScale(ScrollView.maximumZoomScale, animated: true)
+        }
     }
     
     func centerScrollViewContents(){
