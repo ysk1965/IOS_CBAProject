@@ -162,15 +162,15 @@
         <scene sceneID="hLD-d7-pus">
             <objects>
                 <viewController id="Y2R-uA-Iuf" customClass="SendMessageViewController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bxI-EC-ce0" customClass="UIScrollView">
+                    <view key="view" contentMode="scaleToFill" id="bxI-EC-ce0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_메세지배경.png" translatesAutoresizingMaskIntoConstraints="NO" id="6th-n2-MXT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <textField opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="이름을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-Sr-z7D">
-                                <rect key="frame" x="30" y="144" width="260" height="30"/>
+                            <textField opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="  이름을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-Sr-z7D">
+                                <rect key="frame" x="30" y="134" width="260" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="SoO-B8-G92"/>
@@ -181,7 +181,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMq-nP-dLM">
-                                <rect key="frame" x="225" y="499" width="65" height="30"/>
+                                <rect key="frame" x="225" y="469" width="65" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AOt-7f-ncY"/>
@@ -193,7 +193,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqL-Ly-wbY">
-                                <rect key="frame" x="30" y="499" width="65" height="30"/>
+                                <rect key="frame" x="30" y="469" width="65" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="2oC-jr-wcc"/>
@@ -207,18 +207,18 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_메세지상단.png" translatesAutoresizingMaskIntoConstraints="NO" id="620-DG-2aC">
-                                <rect key="frame" x="50" y="67" width="220" height="47"/>
+                                <rect key="frame" x="50" y="57" width="220" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="8JR-tS-hIz"/>
                                     <constraint firstAttribute="height" constant="47" id="UOS-MT-nXm"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4MJ-ef-22v">
-                                <rect key="frame" x="30" y="184" width="260" height="300"/>
+                                <rect key="frame" x="30" y="174" width="260" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="Nbj-OI-cFz"/>
+                                    <constraint firstAttribute="height" constant="280" id="Nbj-OI-cFz"/>
                                     <constraint firstAttribute="width" constant="260" id="znk-D2-uhb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -240,7 +240,7 @@
                             <constraint firstItem="sCl-Sr-z7D" firstAttribute="leading" secondItem="Mkw-Wa-nwV" secondAttribute="leading" constant="30" id="cmc-Je-T1g"/>
                             <constraint firstItem="6th-n2-MXT" firstAttribute="bottom" secondItem="Mkw-Wa-nwV" secondAttribute="bottom" id="e6L-NP-qRa"/>
                             <constraint firstItem="xMq-nP-dLM" firstAttribute="top" secondItem="4MJ-ef-22v" secondAttribute="bottom" constant="15" id="n1D-cA-vov"/>
-                            <constraint firstItem="4MJ-ef-22v" firstAttribute="centerY" secondItem="bxI-EC-ce0" secondAttribute="centerY" constant="50" id="w45-Px-GiR"/>
+                            <constraint firstItem="4MJ-ef-22v" firstAttribute="centerY" secondItem="bxI-EC-ce0" secondAttribute="centerY" constant="30" id="w45-Px-GiR"/>
                             <constraint firstItem="6th-n2-MXT" firstAttribute="top" secondItem="bxI-EC-ce0" secondAttribute="top" id="xWn-bR-VQu"/>
                             <constraint firstItem="4MJ-ef-22v" firstAttribute="centerX" secondItem="bxI-EC-ce0" secondAttribute="centerX" id="xZs-9M-XAY"/>
                             <constraint firstItem="620-DG-2aC" firstAttribute="centerX" secondItem="bxI-EC-ce0" secondAttribute="centerX" id="y57-3w-1qg"/>
@@ -315,7 +315,7 @@
                     <navigationItem key="navigationItem" id="f48-dW-bmW">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nIW-Up-zJ1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
                                 <rect key="frame" x="16" y="0.0" width="118" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -787,15 +787,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.70644430051813467" green="0.70644430051813467" blue="0.70644430051813467" alpha="0.53708186619718312" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="96H-XR-Tiu" firstAttribute="centerX" secondItem="0vC-sR-v6i" secondAttribute="centerX" id="52v-cf-GhP"/>
-                            <constraint firstItem="96H-XR-Tiu" firstAttribute="centerY" secondItem="0vC-sR-v6i" secondAttribute="centerY" id="aMj-vd-Yq9"/>
+                            <constraint firstItem="96H-XR-Tiu" firstAttribute="centerY" secondItem="0vC-sR-v6i" secondAttribute="centerY" id="V9X-Zh-9V4"/>
+                            <constraint firstItem="96H-XR-Tiu" firstAttribute="centerX" secondItem="0vC-sR-v6i" secondAttribute="centerX" id="cN3-FA-R2E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nLt-k7-wje"/>
                     </view>
                     <connections>
+                        <outlet property="ScrollView" destination="96H-XR-Tiu" id="R8I-6p-1Kc"/>
                         <outlet property="email" destination="3Rv-u2-7yy" id="9ds-jC-J7T"/>
                         <outlet property="password" destination="OXM-Jn-bvF" id="BgE-td-E4y"/>
-                        <outlet property="view" destination="96H-XR-Tiu" id="Mau-ht-cdc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KU-sg-lC4" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -127,6 +127,7 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        print("zooming")
         return imageView
     }
     

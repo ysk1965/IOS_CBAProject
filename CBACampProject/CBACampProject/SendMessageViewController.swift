@@ -43,25 +43,46 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textMessage.text = "하고 싶은 말을 남겨주세요"
+        textMessage.text = "  하고 싶은 말을 남겨주세요"
         textMessage.textColor = UIColor.lightGray
         textMessage.font = UIFont(name: "verdana", size: 13.0)
         textMessage.returnKeyType = .done
+        
         textMessage.delegate = self
         
         dbRef = Database.database().reference()
 
         SendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        
+        //textAuthor.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        
         // Do any additional setup after loading the view.
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "하고 싶은 말을 남겨주세요" {
+        if textView.text == "  하고 싶은 말을 남겨주세요" {
             textView.text = ""
             textView.textColor = UIColor.black
             textView.font = UIFont(name: "verdana", size: 18.0)
@@ -77,7 +98,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
-            textView.text = "하고 싶은 말을 남겨주세요"
+            textView.text = "  하고 싶은 말을 남겨주세요"
             textView.textColor = UIColor.lightGray
             textView.font = UIFont(name: "verdana", size: 13.0)
         }

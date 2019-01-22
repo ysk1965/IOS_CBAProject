@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SearchGBSViewController: UIViewController {
 
@@ -18,7 +19,11 @@ class SearchGBSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        parseURL(theURL : "aaa")
+        //parseURL(theURL : "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!)
+        
+        jsonParser(theURL : "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!)
+        
+        print("http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!)
 
         // Do any additional setup after loading the view.
     }
@@ -26,6 +31,27 @@ class SearchGBSViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func jsonParser(theURL:String){
+        let strJSonString = theURL
+        let oJsonDataT:Data? = strJSonString.data(using: .utf8)
+        
+        if let oJsonData = oJsonDataT
+        {
+            var oJsonDictionaryT:[String:Any]?
+            oJsonDictionaryT = try! JSONSerialization.jsonObject(with: oJsonData, options: []) as! [String:Any]
+            
+            if let oJsonDictionary = oJsonDictionaryT
+            {
+                if let name = oJsonDictionary["name"],
+                    let campus = oJsonDictionary["campus"]
+                {
+                    print("name = \(name)")
+                    print("name = \(campus)")
+                }
+            }
+        }
     }
     
     func parseURL(theURL:String){

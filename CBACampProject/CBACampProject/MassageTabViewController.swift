@@ -175,7 +175,7 @@ class MassageTabViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
         FirebaseModel().getMessages()
         
-        Messaging.messaging().subscribe(toTopic: "weather") { error in
+        Messaging.messaging().subscribe(toTopic: "2019winter") { error in
             print("Subscribed to weather topic")
         }
     }

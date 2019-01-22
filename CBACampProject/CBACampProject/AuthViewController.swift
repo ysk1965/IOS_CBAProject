@@ -13,7 +13,7 @@ import FirebaseAuth
 
 class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDelegate {
 
-    @IBOutlet weak var mainView: UIScrollView!
+    @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -71,7 +71,6 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
                             "확인", style:UIAlertActionStyle.default, handler: nil))
                         
                         self.present(alert, animated: true, completion: nil)
-                        
                     } else{
                         let alert = UIAlertController(title: "로그인 성공", message:"["+(user?.user.email)! + "] \n 로그인에 성공하셨습니다.", preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title:
@@ -90,6 +89,10 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
         // User가 존재한다.
         // addStateDidChangeListener
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        
         Auth.auth().addStateDidChangeListener({(user, err) in
             if user.currentUser != nil{
                 // Login상태라면 뒤로 돌아가
@@ -98,17 +101,17 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
         })
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        mainView.setContentOffset(CGPoint(x: 0, y: 40), animated: true)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        mainView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        self.view.frame.origin.y = 0 // Move view to original position
     }
 
     override func didReceiveMemoryWarning() {

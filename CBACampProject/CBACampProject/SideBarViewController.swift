@@ -10,6 +10,21 @@ import UIKit
 import MenuSlider
 import FirebaseAuth
 
+struct MyInfo: Decodable {
+    let id : Int
+    let memId : String
+    let retreat_id : Int
+    let name : String
+    let campus : String
+    let gbsLevel : Int
+    let position : Int
+    let age : Int
+    let dt_birth : String
+    let sex : Int
+    let mobile : Int
+    let uid : String
+}
+
 class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
@@ -446,16 +461,38 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        //let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
+        //let urlObj = URL(string: url)
         
-        //let pinchRecogniezer = UIPinchGestureRecognizer(target: self, action : #selector(pinchAction(_ :)))
+        URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
+            guard let data = data else {return}
+            
+            do {
+                let decoder = JSONDecoder()
+                var myinfos = try decoder.decode([MyInfo].self, from: data)
+                
+                for myinfo in myinfos{
+                    print(myinfo.id)
+                }
+            } catch{
+                print(url)
+                print("We got an error", error.localizedDescription)
+            }
+            
+        }.resume()
+        */
+        /*
+        let pinchRecogniezer = UIPinchGestureRecognizer(target: self, action : #selector(pinchAction(_ :)))
         
-        //scrollView.addGestureRecognizer(pinchRecogniezer)
+        scrollView.addGestureRecognizer(pinchRecogniezer)
         
-        //var pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
-        //self.scrollView.addGestureRecognizer(pinch)
+        var pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
+        self.scrollView.addGestureRecognizer(pinch)
+        */
         
-        self.scrollView.minimumZoomScale = 1.0
-        self.scrollView.maximumZoomScale = 5.0
+        //self.scrollView.minimumZoomScale = 1.0
+        //self.scrollView.maximumZoomScale = 5.0
         
         /*
         scrollView.alwaysBounceVertical = false

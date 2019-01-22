@@ -14,7 +14,7 @@ import GoogleSignIn
 import FirebaseAuth
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, GIDSignInUIDelegate, UITextViewDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
