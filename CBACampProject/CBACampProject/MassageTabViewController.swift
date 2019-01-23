@@ -24,6 +24,34 @@ struct MyInfo: Codable {
     }
 }
 
+struct MyGBS: Codable {
+    let gbsLevel : Int?
+    let leader: UserInfo?
+    let members : [UserInfo]?
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        gbsLevel = try values.decodeIfPresent(Int.self, forKey: .gbsLevel)
+        leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)!
+        members = try values.decodeIfPresent([UserInfo].self, forKey: .members)!
+    }
+}
+
+struct UserInfo: Codable{
+    let name : String?
+    let age : Int?
+    let campus : String?
+    let mobile : String?
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        age = try values.decodeIfPresent(Int.self, forKey: .age)
+        campus = try values.decodeIfPresent(String.self, forKey: .campus)
+        mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
+    }
+}
+
 class MassageTabViewController: UIViewController {
     @IBOutlet weak var Hamberger: UIButton!
     @IBAction func HambergerAction(_ sender: Any) {

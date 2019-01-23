@@ -9,34 +9,6 @@
 import UIKit
 import FirebaseAuth
 
-struct MyGBS: Codable {
-    let gbsLevel : Int?
-    let leader: UserInfo?
-    let members : [UserInfo]?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        gbsLevel = try values.decodeIfPresent(Int.self, forKey: .gbsLevel)
-        leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)!
-        members = try values.decodeIfPresent([UserInfo].self, forKey: .members)!
-    }
-}
-
-struct UserInfo: Codable{
-    let name : String?
-    let age : Int?
-    let campus : String?
-    let mobile : String?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        name = try values.decodeIfPresent(String.self, forKey: .name)
-        age = try values.decodeIfPresent(Int.self, forKey: .age)
-        campus = try values.decodeIfPresent(String.self, forKey: .campus)
-        mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
-    }
-}
-
 struct User {
     var name : String?
     var age : Int?
@@ -54,38 +26,6 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getGBSInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    var myGBSs = try decoder.decode(MyGBS.self, from: data)
-                    /*
-                    self.leader?.age = myGBSs.leader?.age
-                    self.leader?.campus = myGBSs.leader?.campus
-                    self.leader?.mobile = myGBSs.leader?.mobile
-                    self.leader?.name = myGBSs.leader?.name
-                    self.memberCnt = myGBSs.members.count
-                    
-                    for i in 0..<myGBSs.members.count{
-                        self.member?[i].age = myGBSs.members[i].age
-                        self.member?[i].campus = myGBSs.members[i].campus
-                        self.member?[i].mobile = myGBSs.members[i].mobile
-                        self.member?[i].name = myGBSs.members[i].name
-                    }
-                    */
-                    
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
         // Do any additional setup after loading the view.
     }
 
