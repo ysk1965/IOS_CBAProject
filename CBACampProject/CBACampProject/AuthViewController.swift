@@ -83,6 +83,9 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +110,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
-        self.view.frame.origin.y = -150 // Move view 150 points upward
+        self.view.frame.origin.y = -130 // Move view 150 points upward
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {

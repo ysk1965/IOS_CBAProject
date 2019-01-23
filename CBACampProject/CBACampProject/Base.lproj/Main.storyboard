@@ -178,7 +178,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMq-nP-dLM">
                                 <rect key="frame" x="225" y="469" width="65" height="30"/>
@@ -222,7 +222,7 @@
                                     <constraint firstAttribute="width" constant="260" id="znk-D2-uhb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -599,16 +599,16 @@
                                             <constraint firstAttribute="height" constant="25" id="K34-GN-KhP"/>
                                         </constraints>
                                         <attributedString key="attributedText"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" placeholder="Password" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="OXM-Jn-bvF">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="line" placeholder="Password" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="OXM-Jn-bvF" customClass="지난">
                                         <rect key="frame" x="100" y="192.5" width="150" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="09u-W5-pRe"/>
                                             <constraint firstAttribute="height" constant="25" id="9aY-u0-N3E"/>
                                         </constraints>
                                         <attributedString key="attributedText"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BV-Xs-XBx">
                                         <rect key="frame" x="52" y="268.5" width="95" height="30"/>

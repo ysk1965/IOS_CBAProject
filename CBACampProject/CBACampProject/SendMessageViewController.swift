@@ -43,6 +43,8 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textMessage.returnKeyType = .done
+        
         textMessage.text = "  하고 싶은 말을 남겨주세요"
         textMessage.textColor = UIColor.lightGray
         textMessage.font = UIFont(name: "verdana", size: 13.0)
@@ -61,6 +63,10 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

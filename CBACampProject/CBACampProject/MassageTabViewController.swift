@@ -176,7 +176,7 @@ class MassageTabViewController: UIViewController {
         FirebaseModel().getMessages()
         
         Messaging.messaging().subscribe(toTopic: "2019winter") { error in
-            print("Subscribed to weather topic")
+            print("Subscribed to 2019winter topic")
         }
     }
 
