@@ -32,8 +32,8 @@ struct MyGBS: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         gbsLevel = try values.decodeIfPresent(Int.self, forKey: .gbsLevel)
-        leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)!
-        members = try values.decodeIfPresent([UserInfo].self, forKey: .members)!
+        leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)
+        members = try values.decodeIfPresent([UserInfo].self, forKey: .members)
     }
 }
 
@@ -237,7 +237,9 @@ class MassageTabViewController: UIViewController {
                     let decoder = JSONDecoder()
                     var myinfos = try decoder.decode(MyInfo.self, from: data)
                     
-                    MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!)
+                    if(myinfos.age != nil){
+                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!)
+                    }
                     
                 } catch{
                     print(url)
@@ -258,8 +260,10 @@ class MassageTabViewController: UIViewController {
                     let decoder = JSONDecoder()
                     let myinfos = try decoder.decode(MyGBS.self, from: data)
                     
-                    MassageTabViewController.mainGBS.setGBS(gbsLevel: myinfos.gbsLevel!, leader: myinfos.leader!, members: myinfos.members!)
-                    MassageTabViewController.memberCount = myinfos.members!.count
+                    if(myinfos.gbsLevel != nil){
+                        MassageTabViewController.mainGBS.setGBS(gbsLevel: myinfos.gbsLevel!, leader: myinfos.leader!, members: myinfos.members!)
+                        MassageTabViewController.memberCount = myinfos.members!.count
+                    }
                 } catch{
                     print(url)
                     print("We got an error", error.localizedDescription)

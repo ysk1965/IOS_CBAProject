@@ -15,7 +15,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var MainView: UIView!
     @IBOutlet weak var BackOutlet: UIButton!
-    
     @IBOutlet weak var imageView: UIImageView!
     
     var pageImages: [UIImage] = []

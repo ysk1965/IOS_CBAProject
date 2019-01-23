@@ -28,18 +28,22 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBAction func Back(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     @objc func viewload(_ notification: Notification) {
         scrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: scrollView.frame)
         scrollView.addSubview(scrollcontainerView)
         //scrollView.addSubview(buttonView)
         
-        var inypos = 2
+        var inypos = 1
         let inxpos = 20
         let count = MassageTabViewController.memberCount
         
         leaderName.text = MassageTabViewController.mainGBS.leader?.name
-        leaderAge.text = "\(MassageTabViewController.mainGBS.leader!.age ?? 0)"
+        leaderAge.text = "\(MassageTabViewController.mainGBS.leader?.age ?? 0)"
         leaderCampus.text = MassageTabViewController.mainGBS.leader?.campus
         leaderMobile.text = MassageTabViewController.mainGBS.leader?.mobile
         
@@ -57,47 +61,47 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///namelabel
             let namelabel = UILabel()
-            namelabel.text = "->이름 :" + MassageTabViewController.mainGBS.members![i].name!
+            namelabel.text = "▶ 이름 :" + MassageTabViewController.mainGBS.members![i].name!
             namelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
             namelabel.textColor = UIColor.white
             namelabel.sizeToFit()
-            namelabel.frame.origin = CGPoint(x: 20, y: 20)
+            namelabel.frame.origin = CGPoint(x: 20, y: 18)
             cellview.addSubview(namelabel)
             
             ///agelabel
             let agelabel = UILabel()
-            agelabel.text = "->나이 :\(MassageTabViewController.mainGBS.members![i].age!)"
+            agelabel.text = "▶ 나이 :\(MassageTabViewController.mainGBS.members![i].age!)"
             agelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
             agelabel.textColor = UIColor.white
             agelabel.sizeToFit()
-            agelabel.frame.origin = CGPoint(x: 20, y: 40)
+            agelabel.frame.origin = CGPoint(x: 20, y: 41)
             cellview.addSubview(agelabel)
             
             ///campuslabel
             let campuslabel = UILabel()
-            campuslabel.text = "->캠퍼스 :\(MassageTabViewController.mainGBS.members![i].campus!)"
+            campuslabel.text = "▶ 캠퍼스 :\(MassageTabViewController.mainGBS.members![i].campus!)"
             campuslabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
             campuslabel.textColor = UIColor.white
             campuslabel.sizeToFit()
-            campuslabel.frame.origin = CGPoint(x: 20, y: 60)
+            campuslabel.frame.origin = CGPoint(x: 20, y: 64)
             cellview.addSubview(campuslabel)
             
             ///mobilelabel
             let mobilelabel = UILabel()
-            mobilelabel.text = "->연락처 :\(MassageTabViewController.mainGBS.members![i].mobile!)"
+            mobilelabel.text = "▶ 연락처 :\(MassageTabViewController.mainGBS.members![i].mobile!)"
             mobilelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
             mobilelabel.textColor = UIColor.white
             mobilelabel.sizeToFit()
-            mobilelabel.frame.origin = CGPoint(x: 20, y: 80)
+            mobilelabel.frame.origin = CGPoint(x: 20, y: 87)
             cellview.addSubview(mobilelabel)
             
             //textview///////////////////////////////////////
             let textview = UITextView()
             textview.frame.origin = CGPoint(x:inxpos, y:nextypos)
-            textview.frame.size = CGSize(width: Int(scrollView.frame.width) - inxpos * 2, height: 115)
+            textview.frame.size = CGSize(width: Int(scrollView.frame.width) - inxpos * 2, height: 120)
             let contentSize = textview.sizeThatFits(textview.bounds.size)
             var frame = textview.frame
-            frame.size.height = max(contentSize.height, 115)
+            frame.size.height = max(contentSize.height, 120)
             textview.frame = frame
             textview.isScrollEnabled = false
             textview.isEditable = false

@@ -793,6 +793,8 @@
                         <viewLayoutGuide key="safeArea" id="nLt-k7-wje"/>
                     </view>
                     <connections>
+                        <outlet property="CancleLabel" destination="WqV-AN-hYg" id="QMR-5F-3bb"/>
+                        <outlet property="LoginLabel" destination="9BV-Xs-XBx" id="Pe4-Zz-oSk"/>
                         <outlet property="ScrollView" destination="96H-XR-Tiu" id="R8I-6p-1Kc"/>
                         <outlet property="email" destination="3Rv-u2-7yy" id="9ds-jC-J7T"/>
                         <outlet property="password" destination="OXM-Jn-bvF" id="BgE-td-E4y"/>
@@ -884,9 +886,9 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_조장조원확인.png" translatesAutoresizingMaskIntoConstraints="NO" id="l4i-Kq-Q8f">
-                                <rect key="frame" x="0.0" y="64" width="320" height="62"/>
+                                <rect key="frame" x="-5" y="64" width="330" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="dZQ-mq-6XO"/>
+                                    <constraint firstAttribute="width" constant="330" id="dZQ-mq-6XO"/>
                                     <constraint firstAttribute="height" constant="62" id="eNf-ce-l02"/>
                                 </constraints>
                             </imageView>
@@ -901,7 +903,7 @@
                         <constraints>
                             <constraint firstItem="54v-CD-ekb" firstAttribute="centerX" secondItem="2Kw-1i-Ft2" secondAttribute="centerX" id="FWX-Hc-ufK"/>
                             <constraint firstItem="gyc-gh-GXU" firstAttribute="trailing" secondItem="yaA-ky-6Zf" secondAttribute="trailing" id="J5J-9r-94W"/>
-                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="top" secondItem="54v-CD-ekb" secondAttribute="bottom" constant="10" id="K69-ln-9Qd"/>
+                            <constraint firstItem="cdJ-Wf-hg0" firstAttribute="top" secondItem="54v-CD-ekb" secondAttribute="bottom" constant="15" id="K69-ln-9Qd"/>
                             <constraint firstItem="l4i-Kq-Q8f" firstAttribute="centerX" secondItem="2Kw-1i-Ft2" secondAttribute="centerX" id="TPY-ow-DRJ"/>
                             <constraint firstItem="gyc-gh-GXU" firstAttribute="top" secondItem="yaA-ky-6Zf" secondAttribute="top" id="cVi-Lr-mVS"/>
                             <constraint firstItem="gyc-gh-GXU" firstAttribute="bottom" secondItem="yaA-ky-6Zf" secondAttribute="bottom" id="fY6-ec-C1z"/>

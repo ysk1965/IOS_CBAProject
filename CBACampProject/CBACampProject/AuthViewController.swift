@@ -17,11 +17,13 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var CancleLabel: UIButton!
+    @IBOutlet weak var LoginLabel: UIButton!
     @IBAction func UnwindAction(segue: UIStoryboard){
         
     }
     @IBAction func CancleAction(_ sender: Any) {
-        print("put down cancle!")
+        CancleLabel.popIn()
         dismiss(animated: true)
     }
     
@@ -55,6 +57,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
     */
     
     @IBAction func LoginAction(_ sender: Any) {
+        LoginLabel.popIn()
         // Email을 쓰는 곳
         Auth.auth().createUser(withEmail: email.text!, password: password.text!)
         {
