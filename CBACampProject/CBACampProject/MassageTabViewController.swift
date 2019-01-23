@@ -88,7 +88,6 @@ class MassageTabViewController: UIViewController {
     
     
     @objc func viewload(_ notification: Notification) {
-        print("viewDidload_MASSAGE")
         ApplicationOutlet.frame.origin.x = self.view.frame.size.width - 42
         ApplicationOutlet.frame.origin.y = 20
         ApplicationLabel.frame.origin.x = self.view.frame.size.width - 52
@@ -224,6 +223,8 @@ class MassageTabViewController: UIViewController {
         Messaging.messaging().subscribe(toTopic: "2019winter") { error in
             print("Subscribed to 2019winter topic")
         }
+        
+        // DataPassing
         
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
