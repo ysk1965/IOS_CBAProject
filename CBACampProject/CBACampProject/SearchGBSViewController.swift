@@ -21,6 +21,10 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     var leader : User?
     var member : [User]?
     var memberCnt : Int?
+    @IBOutlet weak var leaderName: UILabel!
+    @IBOutlet weak var leaderAge: UILabel!
+    @IBOutlet weak var leaderCampus: UILabel!
+    @IBOutlet weak var leaderMobile: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -34,6 +38,10 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         let inxpos = 20
         let count = MassageTabViewController.memberCount
         
+        leaderName.text = MassageTabViewController.mainGBS.leader?.name
+        leaderAge.text = "\(MassageTabViewController.mainGBS.leader!.age ?? 0)"
+        leaderCampus.text = MassageTabViewController.mainGBS.leader?.campus
+        leaderMobile.text = MassageTabViewController.mainGBS.leader?.mobile
         
         for i in 0..<count {
             var nextypos = 0
