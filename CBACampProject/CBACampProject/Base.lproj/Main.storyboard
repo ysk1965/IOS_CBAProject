@@ -315,7 +315,7 @@
                     <navigationItem key="navigationItem" id="f48-dW-bmW">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nIW-Up-zJ1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
                                 <rect key="frame" x="16" y="0.0" width="118" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -839,6 +839,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yaA-ky-6Zf"/>
                     </view>
+                    <connections>
+                        <outlet property="MainScrollView" destination="cdJ-Wf-hg0" id="9Uv-BW-WIC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0C-Hl-U1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

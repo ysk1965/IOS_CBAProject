@@ -322,7 +322,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         if((Auth.auth().currentUser) != nil){
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
-            headerLabel.text = (self.userName)! + "(" + (self.userCampus)! + ") 님 환영합니다!"
+            headerLabel.text = ") 님 환영합니다!"
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle(" ", for: .normal)
@@ -478,7 +478,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
                     print("We got an error", error.localizedDescription)
                 }
                 
-                }.resume()
+            }.resume()
         }
         
         MenuSetting()
