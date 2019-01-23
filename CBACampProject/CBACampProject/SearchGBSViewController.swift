@@ -12,7 +12,7 @@ import FirebaseAuth
 struct MyGBS: Codable {
     let gbsLevel : Int?
     let leader: UserInfo?
-    let members : [UserInfo]
+    let members : [UserInfo]?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -37,8 +37,19 @@ struct UserInfo: Codable{
     }
 }
 
+struct User {
+    var name : String?
+    var age : Int?
+    var campus : String?
+    var mobile : String?
+}
+
 class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     var gbsLevel : Int?
+    var leader : User?
+    var member : [User]?
+    var memberCnt : Int?
+    
     @IBOutlet weak var MainScrollView: UIScrollView!
     
     override func viewDidLoad() {
@@ -53,7 +64,20 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
                 do {
                     let decoder = JSONDecoder()
                     var myGBSs = try decoder.decode(MyGBS.self, from: data)
+                    /*
+                    self.leader?.age = myGBSs.leader?.age
+                    self.leader?.campus = myGBSs.leader?.campus
+                    self.leader?.mobile = myGBSs.leader?.mobile
+                    self.leader?.name = myGBSs.leader?.name
+                    self.memberCnt = myGBSs.members.count
                     
+                    for i in 0..<myGBSs.members.count{
+                        self.member?[i].age = myGBSs.members[i].age
+                        self.member?[i].campus = myGBSs.members[i].campus
+                        self.member?[i].mobile = myGBSs.members[i].mobile
+                        self.member?[i].name = myGBSs.members[i].name
+                    }
+                    */
                     
                 } catch{
                     print(url)

@@ -9,6 +9,21 @@
 import UIKit
 import Firebase
 
+struct MyInfo: Codable {
+    let campus : String?
+    let name : String?
+    let mobile : String?
+    let age : Int?
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        campus = try values.decodeIfPresent(String.self, forKey: .campus)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
+        age = try values.decodeIfPresent(Int.self, forKey: .age)
+    }
+}
+
 class MassageTabViewController: UIViewController {
     @IBOutlet weak var Hamberger: UIButton!
     @IBAction func HambergerAction(_ sender: Any) {
@@ -19,6 +34,9 @@ class MassageTabViewController: UIViewController {
     @IBOutlet weak var buttonView: UIView!
     
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
+    static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "")
+    static var mainGBS = MainGBS(gbsLevel: 0, leader: nil, members: nil)
+    static var memberCount = Int(0)
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "SegueToSideMenu"{
@@ -177,6 +195,48 @@ class MassageTabViewController: UIViewController {
         
         Messaging.messaging().subscribe(toTopic: "2019winter") { error in
             print("Subscribed to 2019winter topic")
+        }
+        
+        if(Auth.auth().currentUser != nil){
+            let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
+            let urlObj = URL(string: url)
+            
+            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
+                guard let data = data else {return}
+                
+                do {
+                    let decoder = JSONDecoder()
+                    var myinfos = try decoder.decode(MyInfo.self, from: data)
+                    
+                    MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!)
+                    
+                } catch{
+                    print(url)
+                    print("We got an error", error.localizedDescription)
+                }
+                
+                }.resume()
+        }
+        
+        if(Auth.auth().currentUser != nil){
+            let url = "http://cba.sungrak.or.kr:8888/getGBSInfo/" + (Auth.auth().currentUser?.uid)!
+            let urlObj = URL(string: url)
+            
+            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
+                guard let data = data else {return}
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let myinfos = try decoder.decode(MyGBS.self, from: data)
+                    
+                    MassageTabViewController.mainGBS.setGBS(gbsLevel: myinfos.gbsLevel!, leader: myinfos.leader!, members: myinfos.members!)
+                    MassageTabViewController.memberCount = myinfos.members!.count
+                } catch{
+                    print(url)
+                    print("We got an error", error.localizedDescription)
+                }
+                
+                }.resume()
         }
     }
 

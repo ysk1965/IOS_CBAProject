@@ -37,7 +37,6 @@ class CBAInfoTabViewController: UIViewController {
     @IBOutlet weak var CallOutlet: UIButton!
     @IBAction func CallAction(_ sender: Any) {
         CallOutlet.popIn(fromScale: 2, duration: 2, delay: 0)
-        
         let urlString = "tel://" + "010-3397-4842"
         let numberURL = NSURL(string: urlString)
         UIApplication.shared.openURL(numberURL! as URL)

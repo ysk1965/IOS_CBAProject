@@ -10,17 +10,6 @@ import UIKit
 import MenuSlider
 import FirebaseAuth
 
-struct MyInfo: Codable {
-    let campus : String?
-    let name : String?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        campus = try values.decodeIfPresent(String.self, forKey: .campus)
-        name = try values.decodeIfPresent(String.self, forKey: .name)
-    }
-}
-
 class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
@@ -37,8 +26,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     var image : UIImage?
     var Check : Bool?
     var userID : String?
-    var userName : String?
-    var userCampus : String?
     
     var SelectMenu : Bool?
     
@@ -322,7 +309,8 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         if((Auth.auth().currentUser) != nil){
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
-            headerLabel.text = ") 님 환영합니다!"
+            //print(MassageTabViewController.mainUser?.name)
+            headerLabel.text = MassageTabViewController.mainUser.name + "(" + MassageTabViewController.mainUser.campus + ") 님 환영합니다!"
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle(" ", for: .normal)
@@ -459,27 +447,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    var myinfos = try decoder.decode(MyInfo.self, from: data)
-                    
-                    self.userName = myinfos.name!
-                    self.userCampus = myinfos.campus!
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-            }.resume()
-        }
         
         MenuSetting()
         

@@ -36,7 +36,7 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView = UIImageView(image: UIImage(named: ""))
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        //imageView.contentMode = UIViewContentMode.scaleAspectFit
 
         FirebaseModel().downloadImage(name: "timetable.png", imageView: imageView)
         
@@ -78,7 +78,6 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         
     }
-    
     @objc func tapToZoom(_ gestureRecognizer: UIGestureRecognizer) {
         // 더블탭이 인식되면 호출된다.
         // 현재 줌 비율에 따라서
