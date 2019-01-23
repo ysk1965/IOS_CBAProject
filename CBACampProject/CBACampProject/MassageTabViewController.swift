@@ -94,6 +94,11 @@ class MassageTabViewController: UIViewController {
         ApplicationLabel.frame.origin.y = 50
         scrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: scrollView.frame)
+        
+        let backImage = UIImageView()
+        backImage.image = UIImage(named : "CampBackground.jpeg")
+        backImage.frame = scrollView.frame
+        scrollView.addSubview(backImage)
         scrollView.addSubview(scrollcontainerView)
         //scrollView.addSubview(buttonView)
         
@@ -103,10 +108,14 @@ class MassageTabViewController: UIViewController {
         for i in 0..<count {
             var nextypos = 0
             let cellview = UIView()
-            cellview.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
-            cellview.layer.borderWidth = 1
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
-                cellview.backgroundColor = UIColor.black
+                cellview.layer.borderColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1.0).cgColor
+            } else{
+                cellview.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
+            }
+            cellview.layer.borderWidth = 6
+            if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
+                cellview.backgroundColor = UIColor.white
             } else{
                 cellview.backgroundColor = UIColor.white
             }
@@ -133,7 +142,7 @@ class MassageTabViewController: UIViewController {
             namelabel.text = FirebaseModel.messages[count - i - 1].auth
             namelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
-                namelabel.textColor = UIColor.white
+                namelabel.textColor = UIColor.black
             } else{
                 namelabel.textColor = UIColor.black
             }
@@ -157,7 +166,7 @@ class MassageTabViewController: UIViewController {
             textview.text = FirebaseModel.messages[count - i - 1].text
             textview.font = UIFont(name: "NotoSans", size: 18.0)!
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
-                textview.textColor = UIColor.lightGray
+                textview.textColor = UIColor.darkGray
             } else{
                 textview.textColor = UIColor.darkGray
             }
@@ -174,7 +183,7 @@ class MassageTabViewController: UIViewController {
             textview.isUserInteractionEnabled = true
             nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
-                textview.backgroundColor = UIColor.black
+                textview.backgroundColor = UIColor.white
             } else{
                 textview.backgroundColor = UIColor.white
             }

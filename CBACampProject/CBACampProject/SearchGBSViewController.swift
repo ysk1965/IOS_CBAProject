@@ -56,7 +56,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             var nextypos = 0
             let cellview = UIView()
             cellview.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
-            cellview.layer.borderWidth = 1
+            cellview.layer.borderWidth = 3
             
             cellview.backgroundColor = UIColor.darkGray
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width), height: 80)
