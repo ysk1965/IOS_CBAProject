@@ -25,13 +25,13 @@ struct MyInfo: Codable {
 }
 
 struct MyGBS: Codable {
-    let gbsLevel : Int?
+    let gbsLevel : String?
     let leader: UserInfo?
     let members : [UserInfo]?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        gbsLevel = try values.decodeIfPresent(Int.self, forKey: .gbsLevel)
+        gbsLevel = try values.decodeIfPresent(String.self, forKey: .gbsLevel)
         leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)
         members = try values.decodeIfPresent([UserInfo].self, forKey: .members)
     }
@@ -63,10 +63,11 @@ class MassageTabViewController: UIViewController {
     
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
     static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "")
-    static var mainGBS = MainGBS(gbsLevel: 0, leader: nil, members: nil)
+    static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
     static var memberCount = Int(0)
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        parsing()
         if segue.identifier == "SegueToSideMenu"{
             if let navController = segue.destination as? UINavigationController{
                 if let SideMenuController = navController.topViewController as?
@@ -222,6 +223,7 @@ class MassageTabViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
         FirebaseModel().getMessages()
@@ -229,8 +231,11 @@ class MassageTabViewController: UIViewController {
         Messaging.messaging().subscribe(toTopic: "2019winter") { error in
             print("Subscribed to 2019winter topic")
         }
-        
+    }
+
+    func parsing(){
         // DataPassing
+        print("parsing start")
         
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
@@ -278,7 +283,7 @@ class MassageTabViewController: UIViewController {
                 }.resume()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

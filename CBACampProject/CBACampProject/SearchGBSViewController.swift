@@ -48,7 +48,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         leaderCampus.text = MassageTabViewController.mainGBS.leader?.campus
         leaderMobile.text = MassageTabViewController.mainGBS.leader?.mobile
         
-        GBSLevelLabel.text = "\(MassageTabViewController.mainGBS.gbsLevel ?? 0)"
+        GBSLevelLabel.text = MassageTabViewController.mainGBS.gbsLevel!
         
         
         
@@ -67,7 +67,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///namelabel
             let namelabel = UILabel()
-            namelabel.text = "* 이름 :" + MassageTabViewController.mainGBS.members![i].name!
+            namelabel.text = "• 이름 :" + MassageTabViewController.mainGBS.members![i].name!
             namelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             namelabel.textColor = UIColor.black
             namelabel.sizeToFit()
@@ -76,7 +76,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///agelabel
             let agelabel = UILabel()
-            agelabel.text = "* 나이 :\(MassageTabViewController.mainGBS.members![i].age!)"
+            agelabel.text = "• 나이 :\(MassageTabViewController.mainGBS.members![i].age!)"
             agelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             agelabel.textColor = UIColor.black
             agelabel.sizeToFit()
@@ -85,7 +85,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///campuslabel
             let campuslabel = UILabel()
-            campuslabel.text = "* 캠퍼스 :\(MassageTabViewController.mainGBS.members![i].campus!)"
+            campuslabel.text = "• 캠퍼스 :\(MassageTabViewController.mainGBS.members![i].campus!)"
             campuslabel.font = UIFont(name: "NotoSans", size: 17.0)!
             campuslabel.textColor = UIColor.black
             campuslabel.sizeToFit()
@@ -94,7 +94,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///mobilelabel
             let mobilelabel = UILabel()
-            mobilelabel.text = "* 연락처 :\(MassageTabViewController.mainGBS.members![i].mobile!)"
+            mobilelabel.text = "• 연락처 :\(MassageTabViewController.mainGBS.members![i].mobile!)"
             mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             mobilelabel.textColor = UIColor.black
             mobilelabel.sizeToFit()
