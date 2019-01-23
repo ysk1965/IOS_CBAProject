@@ -17,7 +17,7 @@ struct User {
 }
 
 class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
-    var gbsLevel : Int?
+    var gbsLevel : String?
     var leader : User?
     var member : [User]?
     var memberCnt : Int?
@@ -25,6 +25,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var leaderAge: UILabel!
     @IBOutlet weak var leaderCampus: UILabel!
     @IBOutlet weak var leaderMobile: UILabel!
+    @IBOutlet weak var GBSLevelLabel: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -46,6 +47,10 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         leaderAge.text = "\(MassageTabViewController.mainGBS.leader?.age ?? 0)"
         leaderCampus.text = MassageTabViewController.mainGBS.leader?.campus
         leaderMobile.text = MassageTabViewController.mainGBS.leader?.mobile
+        
+        GBSLevelLabel.text = MassageTabViewController.mainGBS.gbsLevel
+        
+        
         
         for i in 0..<count {
             var nextypos = 0

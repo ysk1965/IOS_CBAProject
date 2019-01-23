@@ -25,13 +25,13 @@ struct MyInfo: Codable {
 }
 
 struct MyGBS: Codable {
-    let gbsLevel : Int?
+    let gbsLevel : String?
     let leader: UserInfo?
     let members : [UserInfo]?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        gbsLevel = try values.decodeIfPresent(Int.self, forKey: .gbsLevel)
+        gbsLevel = try values.decodeIfPresent(String.self, forKey: .gbsLevel)
         leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)
         members = try values.decodeIfPresent([UserInfo].self, forKey: .members)
     }
@@ -63,7 +63,7 @@ class MassageTabViewController: UIViewController {
     
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
     static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "")
-    static var mainGBS = MainGBS(gbsLevel: 0, leader: nil, members: nil)
+    static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
     static var memberCount = Int(0)
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
