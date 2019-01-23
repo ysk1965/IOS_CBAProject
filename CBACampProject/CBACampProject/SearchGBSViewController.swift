@@ -48,17 +48,18 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         leaderCampus.text = MassageTabViewController.mainGBS.leader?.campus
         leaderMobile.text = MassageTabViewController.mainGBS.leader?.mobile
         
-        GBSLevelLabel.text = MassageTabViewController.mainGBS.gbsLevel
+        GBSLevelLabel.text = "\(MassageTabViewController.mainGBS.gbsLevel ?? 0)"
         
         
         
         for i in 0..<count {
             var nextypos = 0
             let cellview = UIView()
-            cellview.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0).cgColor
-            cellview.layer.borderWidth = 3
+            cellview.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.5).cgColor
+            cellview.layer.borderWidth = 0
+                
             
-            cellview.backgroundColor = UIColor.darkGray
+            cellview.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width), height: 80)
             scrollView.addSubview(cellview)
             
@@ -66,36 +67,36 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///namelabel
             let namelabel = UILabel()
-            namelabel.text = "▶ 이름 :" + MassageTabViewController.mainGBS.members![i].name!
-            namelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
-            namelabel.textColor = UIColor.white
+            namelabel.text = "* 이름 :" + MassageTabViewController.mainGBS.members![i].name!
+            namelabel.font = UIFont(name: "NotoSans", size: 17.0)!
+            namelabel.textColor = UIColor.black
             namelabel.sizeToFit()
             namelabel.frame.origin = CGPoint(x: 20, y: 18)
             cellview.addSubview(namelabel)
             
             ///agelabel
             let agelabel = UILabel()
-            agelabel.text = "▶ 나이 :\(MassageTabViewController.mainGBS.members![i].age!)"
-            agelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
-            agelabel.textColor = UIColor.white
+            agelabel.text = "* 나이 :\(MassageTabViewController.mainGBS.members![i].age!)"
+            agelabel.font = UIFont(name: "NotoSans", size: 17.0)!
+            agelabel.textColor = UIColor.black
             agelabel.sizeToFit()
             agelabel.frame.origin = CGPoint(x: 20, y: 41)
             cellview.addSubview(agelabel)
             
             ///campuslabel
             let campuslabel = UILabel()
-            campuslabel.text = "▶ 캠퍼스 :\(MassageTabViewController.mainGBS.members![i].campus!)"
-            campuslabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
-            campuslabel.textColor = UIColor.white
+            campuslabel.text = "* 캠퍼스 :\(MassageTabViewController.mainGBS.members![i].campus!)"
+            campuslabel.font = UIFont(name: "NotoSans", size: 17.0)!
+            campuslabel.textColor = UIColor.black
             campuslabel.sizeToFit()
             campuslabel.frame.origin = CGPoint(x: 20, y: 64)
             cellview.addSubview(campuslabel)
             
             ///mobilelabel
             let mobilelabel = UILabel()
-            mobilelabel.text = "▶ 연락처 :\(MassageTabViewController.mainGBS.members![i].mobile!)"
-            mobilelabel.font = UIFont(name: "NotoSans-Bold", size: 17.0)!
-            mobilelabel.textColor = UIColor.white
+            mobilelabel.text = "* 연락처 :\(MassageTabViewController.mainGBS.members![i].mobile!)"
+            mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
+            mobilelabel.textColor = UIColor.black
             mobilelabel.sizeToFit()
             mobilelabel.frame.origin = CGPoint(x: 20, y: 87)
             cellview.addSubview(mobilelabel)

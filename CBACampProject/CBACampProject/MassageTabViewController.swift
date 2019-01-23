@@ -25,13 +25,13 @@ struct MyInfo: Codable {
 }
 
 struct MyGBS: Codable {
-    let gbsLevel : String?
+    let gbsLevel : Int?
     let leader: UserInfo?
     let members : [UserInfo]?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        gbsLevel = try values.decodeIfPresent(String.self, forKey: .gbsLevel)
+        gbsLevel = try values.decodeIfPresent(Int.self, forKey: .gbsLevel)
         leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)
         members = try values.decodeIfPresent([UserInfo].self, forKey: .members)
     }
@@ -63,7 +63,7 @@ class MassageTabViewController: UIViewController {
     
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
     static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "")
-    static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
+    static var mainGBS = MainGBS(gbsLevel: 0, leader: nil, members: nil)
     static var memberCount = Int(0)
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -88,15 +88,12 @@ class MassageTabViewController: UIViewController {
     
     
     @objc func viewload(_ notification: Notification) {
-        ApplicationOutlet.frame.origin.x = self.view.frame.size.width - 42
-        ApplicationOutlet.frame.origin.y = 20
-        ApplicationLabel.frame.origin.x = self.view.frame.size.width - 52
-        ApplicationLabel.frame.origin.y = 50
         scrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: scrollView.frame)
         
         let backImage = UIImageView()
         backImage.image = UIImage(named : "CampBackground.jpeg")
+        backImage.alpha = 0.3
         backImage.frame = scrollView.frame
         scrollView.addSubview(backImage)
         scrollView.addSubview(scrollcontainerView)
@@ -113,11 +110,11 @@ class MassageTabViewController: UIViewController {
             } else{
                 cellview.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
             }
-            cellview.layer.borderWidth = 6
+            cellview.layer.borderWidth = 0
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
-                cellview.backgroundColor = UIColor.white
+                cellview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
             } else{
-                cellview.backgroundColor = UIColor.white
+                cellview.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             }
             
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width), height: 80)
@@ -155,7 +152,7 @@ class MassageTabViewController: UIViewController {
             let ranknamelabel = UILabel()
             ranknamelabel.text = "진리수호 교회수호"
             ranknamelabel.font = UIFont(name:"NotoSans-Bold", size: 14.0)
-            ranknamelabel.textColor = UIColor.lightGray
+            ranknamelabel.textColor = UIColor.darkGray
             ranknamelabel.sizeToFit()
             ranknamelabel.frame.origin = CGPoint(x:70, y: 43)
             cellview.addSubview(ranknamelabel)
@@ -183,9 +180,9 @@ class MassageTabViewController: UIViewController {
             textview.isUserInteractionEnabled = true
             nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
-                textview.backgroundColor = UIColor.white
+                textview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
             } else{
-                textview.backgroundColor = UIColor.white
+                textview.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             }
             
             
