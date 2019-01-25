@@ -265,7 +265,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
                 view?.removeFromSuperview()
             }
             self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.jpeg")!]
+            self.pageImages = [UIImage(named: "이미지준비중.png")!]
             let pageCount = self.pageImages.count
             
             self.pageControl.currentPage = 0
@@ -296,6 +296,8 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         headerLabel.textColor = UIColor.white
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         headerLabel.numberOfLines = 1
+        //headerLabel.font = UIFont(name: "NotoSansUI-Regular.ttf", size: 5.0)
+        headerLabel.adjustsFontSizeToFitWidth = true
         
         headerLabel.frame = CGRect(x : BackImageView.frame.origin.x, y : self.view.frame.origin.y+BackImageView.frame.height * 0.3, width : BackImageView.frame.width * 0.88, height : self.view.frame.height * 0.13)
         
@@ -310,8 +312,12 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
             //print(MassageTabViewController.mainUser?.name)
+            if(MassageTabViewController.mainUser.name == ""){
+                headerLabel.text = "은혜 많이 받으세요 :)"
+            }else{
             headerLabel.text = MassageTabViewController.mainUser.name + "(" + MassageTabViewController.mainUser.campus + ")님 환영합니다!"
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
+            }
         } else{
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그인텍스트.png"), for: .normal)

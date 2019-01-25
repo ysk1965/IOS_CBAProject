@@ -68,6 +68,7 @@ class MassageTabViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         parsing()
+        
         if segue.identifier == "SegueToSideMenu"{
             if let navController = segue.destination as? UINavigationController{
                 if let SideMenuController = navController.topViewController as?
@@ -93,8 +94,8 @@ class MassageTabViewController: UIViewController {
         let scrollcontainerView = UIView(frame: scrollView.frame)
         
         let backImage = UIImageView()
-        backImage.image = UIImage(named : "CampBackground.jpeg")
-        backImage.alpha = 0.3
+        backImage.image = UIImage(named : "19겨울_메세지배경.png")
+        backImage.alpha = 0.4
         backImage.frame = scrollView.frame
         scrollView.addSubview(backImage)
         scrollView.addSubview(scrollcontainerView)
@@ -112,9 +113,13 @@ class MassageTabViewController: UIViewController {
                 cellview.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
             }
             cellview.layer.borderWidth = 0
+            
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
                 cellview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
-            } else{
+            } else if (FirebaseModel.messages[count - i - 1].isStaff == "봉사자"){
+                cellview.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+            }
+            else{
                 cellview.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             }
             
@@ -182,6 +187,8 @@ class MassageTabViewController: UIViewController {
             nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
                 textview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
+            } else if (FirebaseModel.messages[count - i - 1].isStaff == "봉사자"){
+                textview.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
             } else{
                 textview.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             }
