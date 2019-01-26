@@ -26,23 +26,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     var locations : [CampLocation] = []
     
-    func loadInitData(){
-        /*
-        var location = CLLocationCoordinate2DMake(37.322550, 126.793821)
-        var span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-        var region = MKCoordinateRegion(center: location, span: span)
-        
-        var annotation = MKPointAnnotation()
-        
-        annotation.coordinate = location
-        annotation.title = "안산 수양관"
-        annotation.subtitle = "Check for Alert"
-        
-        mapView?.setRegion(region, animated: true)
-        mapView?.addAnnotation(annotation)
-        */
-    }
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl){
         let location = view.annotation as! CampLocation
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]

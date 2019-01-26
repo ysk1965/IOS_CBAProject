@@ -27,34 +27,6 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
         dismiss(animated: true)
     }
     
-    /*
-    @IBAction func CreateID(_ sender: Any) {
-        Auth.auth().createUser(withEmail: email.text!, password: password.text!)
-        {
-            (user, error) in
-            
-            // error : ID가 있거나 비밀번호가 6자리 이하이거나
-            if (error != nil){
-                Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!){
-                    (user, error) in
-                    
-                    if(error != nil){
-                        let alert = UIAlertController(title: "회원가입 실패", message: "회원가입에 실패하셨습니다.", preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title:
-                            "확인", style:UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    } else{
-                        let alert = UIAlertController(title: "회원가입 성공", message: "회원가입에 성공하셨습니다." + "\n UserID : " + (user?.user.email)!, preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title:
-                            "확인", style:UIAlertActionStyle.default, handler: nil))
-                        
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-            }
-        }
-    }
-    */
     
     @IBAction func LoginAction(_ sender: Any) {
         LoginLabel.popIn()

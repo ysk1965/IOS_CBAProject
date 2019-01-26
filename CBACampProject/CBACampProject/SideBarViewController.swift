@@ -63,9 +63,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         }
         SelectMenu = false
         print("Action on Close Menu")
-        //MainView.fadeIn(duration: 0.5, delay: 0.0)
-        //MainView.popIn()
-        //MainView.(fromScale: 1, duration: 1, delay: 0.5)
     }
     
     // Optionally function onMenuClose(), fired when user open menu
@@ -76,8 +73,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     func MenuSetting(){
         userID = Auth.auth().currentUser?.email
-        //menu.expand(onController: self)
-        //self.scrollView.frame.origin.y = 10
         
         self.scrollView.frame.size.width = self.view.frame.size.width
         self.scrollView.frame.size.height = self.view.frame.size.height - 90
@@ -342,9 +337,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         headerView.addSubview(BackImageView)
         headerView.addSubview(whiteLine)
         headerView.addSubview(headerButton)
-        //if((Auth.auth().currentUser) != nil){
-        //headerView.addSubview(headerButton)
-        //}
         
         // Creating a Menu Footer with an UIView
         let menuheader = SideMenuHeaderFactory.make(view: headerView)
@@ -359,11 +351,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         //footerLabel.textAlignment = NSTextAlignment.center
         //footerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let footerView: UIImageView = UIImageView()
-        //footerLabel.frame = footerView.frame
-        //footerLabel.frame.size.height /= 5
-        //footerView.addSubview(footerLabel)
         footerView.backgroundColor = UIColor.black
-        //footerView.image = UIImage(named: "Main.jpg")
         
         let whiteBottomLine = UILabel()
         whiteBottomLine.frame = CGRect(x : viewX! + 10, y : viewY! * -1 + 55, width : whiteLine.frame.width, height : viewH! * 0.001)
