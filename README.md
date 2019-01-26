@@ -12,6 +12,7 @@
   * Appstore등록 : CBARetreat 검색
   
 - **19_겨울수련회**
+  * AppStore : 성락교회CBA
   * Firebase Auth를 활용한 회원가입 및 로그인 구현
   * 자체Server와 연동하여 DB를 받을 수 있도록 구현 (Restful API)
   * 자체DB와 파싱해서 자신의 조장 조원 확인 가능
