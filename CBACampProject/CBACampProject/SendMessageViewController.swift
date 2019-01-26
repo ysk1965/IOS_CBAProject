@@ -34,8 +34,11 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         } else{
             currentTime = "\(month)월\(day)일 오전\(hour):\(minute)"
         }
-        
-        dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff", "time" : currentTime])
+        if((Auth.auth().currentUser) != nil){
+            dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : MassageTabViewController.mainUser.gbsLevel, "time" : currentTime])
+        } else{
+            dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff", "time" : currentTime])
+        }
         
         dismiss(animated: true, completion: nil)
     }

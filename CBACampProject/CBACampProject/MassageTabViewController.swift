@@ -14,6 +14,7 @@ struct MyInfo: Codable {
     let name : String?
     let mobile : String?
     let age : Int?
+    let gbsLevel : String?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -21,6 +22,7 @@ struct MyInfo: Codable {
         name = try values.decodeIfPresent(String.self, forKey: .name)
         mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
         age = try values.decodeIfPresent(Int.self, forKey: .age)
+        gbsLevel = try values.decodeIfPresent(String.self, forKey: .gbsLevel)
     }
 }
 
@@ -62,7 +64,7 @@ class MassageTabViewController: UIViewController {
     @IBOutlet weak var buttonView: UIView!
     
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
-    static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "")
+    static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "", gbsLevel : "")
     static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
     static var memberCount = Int(0)
     
@@ -256,7 +258,7 @@ class MassageTabViewController: UIViewController {
                     var myinfos = try decoder.decode(MyInfo.self, from: data)
                     
                     if(myinfos.age != nil){
-                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!)
+                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, gbsLevel: myinfos.gbsLevel!)
                     }
                     
                 } catch{

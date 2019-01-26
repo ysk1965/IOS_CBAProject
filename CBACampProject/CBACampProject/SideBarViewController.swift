@@ -25,6 +25,10 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     var image : UIImage?
     var Check : Bool?
     var userID : String?
+    var viewX : CGFloat?
+    var viewY : CGFloat?
+    var viewH : CGFloat?
+    var viewW : CGFloat?
     
     var SelectMenu : Bool?
     
@@ -285,12 +289,12 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let whiteLine = UILabel()
-        whiteLine.frame = CGRect(x : self.view.frame.origin.x + self.view.frame.width*0.035, y : self.view.frame.origin.y + self.view.frame.height*0.04, width : self.view.frame.width * 0.59, height : self.view.frame.height * 0.001)
+        whiteLine.frame = CGRect(x : viewX! + viewW!*0.035, y : viewY! + viewH!*0.04, width : viewW! * 0.59, height : viewH! * 0.001)
         whiteLine.backgroundColor = UIColor.white
         
         let BackImageView: UIImageView = UIImageView()
         BackImageView.image = UIImage(named: "19겨울_로그인상자.png")
-        BackImageView.frame = CGRect(x : whiteLine.frame.origin.x, y : whiteLine.frame.origin.y + whiteLine.frame.origin.y/5, width : whiteLine.frame.width, height : self.view.frame.height * 0.16)
+        BackImageView.frame = CGRect(x : whiteLine.frame.origin.x, y : whiteLine.frame.origin.y + whiteLine.frame.origin.y/5, width : whiteLine.frame.width, height : viewH! * 0.16)
         
         let headerLabel = UILabel()
         headerLabel.textColor = UIColor.white
@@ -299,7 +303,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         //headerLabel.font = UIFont(name: "NotoSansUI-Regular.ttf", size: 5.0)
         headerLabel.adjustsFontSizeToFitWidth = true
         
-        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x, y : self.view.frame.origin.y+BackImageView.frame.height * 0.3, width : BackImageView.frame.width * 0.88, height : self.view.frame.height * 0.13)
+        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x, y : viewY!+BackImageView.frame.height * 0.3, width : BackImageView.frame.width * 0.88, height : viewH! * 0.13)
         
         let headerButton = UIButton()
         headerButton.setTitle(" ", for: .normal)
@@ -361,7 +365,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         //footerView.image = UIImage(named: "Main.jpg")
         
         let whiteBottomLine = UILabel()
-        whiteBottomLine.frame = CGRect(x : self.view.frame.origin.x + 10, y : self.view.frame.origin.y * -1 + 55, width : whiteLine.frame.width, height : self.view.frame.height * 0.001)
+        whiteBottomLine.frame = CGRect(x : viewX! + 10, y : viewY! * -1 + 55, width : whiteLine.frame.width, height : viewH! * 0.001)
         whiteBottomLine.backgroundColor = UIColor.white
         
         footerView.addSubview(whiteBottomLine)
@@ -453,6 +457,11 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewX = self.view.frame.origin.x
+        viewY = self.view.frame.origin.y
+        viewW = self.view.frame.size.width
+        viewH = self.view.frame.size.height
         
         MenuSetting()
         

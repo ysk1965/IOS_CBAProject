@@ -126,7 +126,7 @@ class CBAInfoTabViewController: UIViewController {
                     var myinfos = try decoder.decode(MyInfo.self, from: data)
                     
                     if(myinfos.age != nil){
-                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!)
+                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, gbsLevel: myinfos.gbsLevel!)
                     }
                     
                 } catch{

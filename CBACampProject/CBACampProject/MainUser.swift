@@ -13,18 +13,21 @@ class MainUser {
     var campus : String
     var mobile : String
     var name : String
+    var gbsLevel : String
     
-    init(age: Int, campus:String, mobile:String, name : String) {
+    init(age: Int, campus:String, mobile:String, name : String, gbsLevel : String) {
         self.age = age
         self.campus = campus
         self.mobile = mobile
         self.name = name
+        self.gbsLevel = gbsLevel
     }
     
-    func setUser(age: Int, campus:String, mobile:String, name : String){
+    func setUser(age: Int, campus:String, mobile:String, name : String, gbsLevel : String){
         self.age = age
         self.campus = campus
         self.mobile = mobile
         self.name = name
+        self.gbsLevel = gbsLevel
     }
 }
