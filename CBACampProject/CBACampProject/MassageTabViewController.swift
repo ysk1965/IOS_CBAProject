@@ -95,17 +95,13 @@ class MassageTabViewController: UIViewController {
         scrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: scrollView.frame)
         
-        let backImage = UIImageView()
-        backImage.image = UIImage(named : "19겨울_메세지배경.png")
-        backImage.alpha = 0.4
-        backImage.frame = scrollView.frame
-        scrollView.addSubview(backImage)
         scrollView.addSubview(scrollcontainerView)
         //scrollView.addSubview(buttonView)
         
         var inypos = 2
         let inxpos = 20
         let count = FirebaseModel.messages.count
+        
         for i in 0..<count {
             var nextypos = 0
             let cellview = UIView()
@@ -134,6 +130,8 @@ class MassageTabViewController: UIViewController {
             profileimgview.contentMode = UIViewContentMode.scaleAspectFill
             profileimgview.clipsToBounds = true //image set 전에 해주어야 한다.
             if (FirebaseModel.messages[count - i - 1].isStaff == "공지") {
+                profileimgview.image = UIImage(named: "19겨울_앱로고.png") // 스탭 이미지
+            } else if (FirebaseModel.messages[count - i - 1].isStaff == "봉사자"){
                 profileimgview.image = UIImage(named: "19겨울_앱로고.png") // 스탭 이미지
             } else {
                 profileimgview.image = UIImage(named:"profile.png")
@@ -171,9 +169,9 @@ class MassageTabViewController: UIViewController {
             textview.text = FirebaseModel.messages[count - i - 1].text
             textview.font = UIFont(name: "NotoSans", size: 18.0)!
             if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
-                textview.textColor = UIColor.darkGray
+                textview.textColor = UIColor.black
             } else{
-                textview.textColor = UIColor.darkGray
+                textview.textColor = UIColor.black
             }
             textview.frame.origin = CGPoint(x:inxpos, y:nextypos)
             textview.frame.size = CGSize(width: Int(scrollView.frame.width) - inxpos * 2, height: 30)
@@ -215,7 +213,17 @@ class MassageTabViewController: UIViewController {
             inypos += 7 + Int(cellview.frame.size.height) //다음 CellView의 위치
             cellview.addSubview(textview)
         }
+        
         scrollView.contentSize = CGSize(width: scrollView.frame.width-1, height: max(CGFloat(inypos),scrollView.frame.height+1))
+        
+        
+        let backImage = UIImageView()
+        backImage.image = UIImage(named : "19겨울_메세지배경.png")
+        backImage.alpha = 0.2
+        backImage.frame.size = scrollView.frame.size
+        backImage.frame.size.height = scrollView.contentSize.height
+        scrollView.addSubview(backImage)
+        
         scrollView.isScrollEnabled = true
         
         self.view.addSubview(scrollView)

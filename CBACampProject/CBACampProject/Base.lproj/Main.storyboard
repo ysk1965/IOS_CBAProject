@@ -9,11 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="NotoSans-Bold.ttf">
-            <string>NotoSans-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--ScheduleTab-->
         <scene sceneID="GjS-Dk-ZPr">
@@ -39,12 +34,13 @@
                                     <segue destination="HIb-Oz-YIy" kind="show" identifier="SegueToSideMenu" id="miU-wD-BVm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CBA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hx1-mb-NpF">
-                                <rect key="frame" x="136" y="25" width="48" height="33"/>
-                                <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_로고.png" translatesAutoresizingMaskIntoConstraints="NO" id="QJk-Yu-ZhH">
+                                <rect key="frame" x="204" y="32" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="NDr-jU-pYk"/>
+                                    <constraint firstAttribute="height" constant="20" id="qNH-Wy-oaI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -52,10 +48,10 @@
                             <constraint firstItem="kLR-tg-2Ey" firstAttribute="leading" secondItem="w0D-gp-h3P" secondAttribute="leading" constant="10" id="AGg-uM-vhe"/>
                             <constraint firstItem="wdq-kG-DJy" firstAttribute="leading" secondItem="w0D-gp-h3P" secondAttribute="leading" id="FTe-sh-Mpi"/>
                             <constraint firstItem="kLR-tg-2Ey" firstAttribute="top" secondItem="w0D-gp-h3P" secondAttribute="top" constant="5" id="JPU-Jp-cN2"/>
+                            <constraint firstItem="QJk-Yu-ZhH" firstAttribute="top" secondItem="w0D-gp-h3P" secondAttribute="top" constant="12" id="Mn2-BQ-kvX"/>
                             <constraint firstItem="w0D-gp-h3P" firstAttribute="trailing" secondItem="wdq-kG-DJy" secondAttribute="trailing" id="Pk5-bU-cFo"/>
                             <constraint firstItem="kLR-tg-2Ey" firstAttribute="leading" secondItem="w0D-gp-h3P" secondAttribute="leading" constant="10" id="RzC-4S-I4T"/>
-                            <constraint firstItem="wdq-kG-DJy" firstAttribute="top" secondItem="Hx1-mb-NpF" secondAttribute="bottom" constant="8" id="eOH-oG-hjG"/>
-                            <constraint firstItem="Hx1-mb-NpF" firstAttribute="centerX" secondItem="kaT-zf-geO" secondAttribute="centerX" id="qaG-70-I5Q"/>
+                            <constraint firstItem="w0D-gp-h3P" firstAttribute="trailing" secondItem="QJk-Yu-ZhH" secondAttribute="trailing" constant="16" id="V9T-3B-BxS"/>
                             <constraint firstItem="wdq-kG-DJy" firstAttribute="top" secondItem="kLR-tg-2Ey" secondAttribute="bottom" constant="6" id="urx-WZ-6ya"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w0D-gp-h3P"/>
@@ -99,21 +95,22 @@
                                     <segue destination="HIb-Oz-YIy" kind="show" identifier="SegueToSideMenu" id="QTj-Pz-pqL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CBA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cT-OY-5Ia">
-                                <rect key="frame" x="136" y="25" width="48" height="33"/>
-                                <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_로고.png" translatesAutoresizingMaskIntoConstraints="NO" id="dFD-QK-IZQ">
+                                <rect key="frame" x="204" y="32" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="FDl-pk-sxi"/>
+                                    <constraint firstAttribute="width" constant="100" id="HA2-Ta-XYy"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2X5-97-sxg" firstAttribute="top" secondItem="0cT-OY-5Ia" secondAttribute="bottom" constant="8" id="Bd5-wi-yK8"/>
                             <constraint firstItem="jWX-l4-h7q" firstAttribute="trailing" secondItem="2X5-97-sxg" secondAttribute="trailing" id="Esh-G7-agh"/>
                             <constraint firstItem="2X5-97-sxg" firstAttribute="top" secondItem="RmI-rI-byP" secondAttribute="bottom" constant="6" id="KD3-Ld-jFm"/>
-                            <constraint firstItem="0cT-OY-5Ia" firstAttribute="centerX" secondItem="pzG-Hr-1sW" secondAttribute="centerX" id="OiN-Af-DvE"/>
+                            <constraint firstItem="jWX-l4-h7q" firstAttribute="trailing" secondItem="dFD-QK-IZQ" secondAttribute="trailing" constant="16" id="LgG-KV-Res"/>
                             <constraint firstItem="RmI-rI-byP" firstAttribute="leading" secondItem="jWX-l4-h7q" secondAttribute="leading" constant="10" id="RBo-Wd-eg1"/>
                             <constraint firstItem="2X5-97-sxg" firstAttribute="bottom" secondItem="jWX-l4-h7q" secondAttribute="bottom" id="WUJ-HM-Dis"/>
+                            <constraint firstItem="dFD-QK-IZQ" firstAttribute="top" secondItem="jWX-l4-h7q" secondAttribute="top" constant="12" id="ZwB-di-LFj"/>
                             <constraint firstItem="2X5-97-sxg" firstAttribute="leading" secondItem="jWX-l4-h7q" secondAttribute="leading" id="fid-wv-iaj"/>
                             <constraint firstItem="RmI-rI-byP" firstAttribute="top" secondItem="jWX-l4-h7q" secondAttribute="top" constant="5" id="fjl-Jc-4Vq"/>
                         </constraints>
@@ -196,6 +193,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_로고.png" translatesAutoresizingMaskIntoConstraints="NO" id="xAW-L4-Bir">
+                                <rect key="frame" x="204" y="32" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="B4Z-ml-MwD"/>
+                                    <constraint firstAttribute="height" constant="20" id="vn2-F8-wkm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -212,7 +216,9 @@
                             <constraint firstItem="sCl-Sr-z7D" firstAttribute="leading" secondItem="Mkw-Wa-nwV" secondAttribute="leading" constant="30" id="cmc-Je-T1g"/>
                             <constraint firstItem="6th-n2-MXT" firstAttribute="bottom" secondItem="Mkw-Wa-nwV" secondAttribute="bottom" id="e6L-NP-qRa"/>
                             <constraint firstItem="xMq-nP-dLM" firstAttribute="top" secondItem="4MJ-ef-22v" secondAttribute="bottom" constant="15" id="n1D-cA-vov"/>
+                            <constraint firstItem="xAW-L4-Bir" firstAttribute="top" secondItem="Mkw-Wa-nwV" secondAttribute="top" constant="12" id="ojl-VJ-cmE"/>
                             <constraint firstItem="4MJ-ef-22v" firstAttribute="centerY" secondItem="bxI-EC-ce0" secondAttribute="centerY" constant="30" id="w45-Px-GiR"/>
+                            <constraint firstItem="Mkw-Wa-nwV" firstAttribute="trailing" secondItem="xAW-L4-Bir" secondAttribute="trailing" constant="16" id="xP6-aY-7rt"/>
                             <constraint firstItem="6th-n2-MXT" firstAttribute="top" secondItem="bxI-EC-ce0" secondAttribute="top" id="xWn-bR-VQu"/>
                             <constraint firstItem="4MJ-ef-22v" firstAttribute="centerX" secondItem="bxI-EC-ce0" secondAttribute="centerX" id="xZs-9M-XAY"/>
                             <constraint firstItem="620-DG-2aC" firstAttribute="centerX" secondItem="bxI-EC-ce0" secondAttribute="centerX" id="y57-3w-1qg"/>
@@ -463,10 +469,18 @@
                                     <constraint firstAttribute="width" constant="255" id="VOR-os-UAs"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="19겨울_로고.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q2W-xn-Xeb">
+                                <rect key="frame" x="204" y="32" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="1JL-2K-6OD"/>
+                                    <constraint firstAttribute="height" constant="20" id="9BZ-N0-hJG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1SO-OW-UWE" firstAttribute="top" secondItem="Qeg-Hv-FJR" secondAttribute="bottom" constant="3" id="1Ju-4d-1lx"/>
+                            <constraint firstItem="VLH-cv-ybK" firstAttribute="trailing" secondItem="Q2W-xn-Xeb" secondAttribute="trailing" constant="16" id="2Yj-pp-EdG"/>
                             <constraint firstItem="Rad-7o-5nI" firstAttribute="leading" secondItem="VLH-cv-ybK" secondAttribute="leading" id="3Lv-dU-yPH"/>
                             <constraint firstItem="cBq-J1-cdl" firstAttribute="top" secondItem="1SO-OW-UWE" secondAttribute="bottom" constant="10" id="8RE-5O-A1y"/>
                             <constraint firstItem="R2w-3a-hkh" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" constant="-45" id="BK9-Tk-Lp2"/>
@@ -489,6 +503,7 @@
                             <constraint firstItem="yaL-E2-pNw" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" constant="45" id="g51-sv-D9r"/>
                             <constraint firstItem="tma-Ua-wV8" firstAttribute="top" secondItem="VLH-cv-ybK" secondAttribute="top" constant="5" id="g8W-oD-TYc"/>
                             <constraint firstItem="6gi-wk-o90" firstAttribute="leading" secondItem="cBq-J1-cdl" secondAttribute="trailing" constant="20" id="lGT-Pj-aR3"/>
+                            <constraint firstItem="Q2W-xn-Xeb" firstAttribute="top" secondItem="VLH-cv-ybK" secondAttribute="top" constant="12" id="mXc-qP-2rc"/>
                             <constraint firstItem="Qeg-Hv-FJR" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" id="oC4-Rq-PFo"/>
                             <constraint firstItem="cBq-J1-cdl" firstAttribute="leading" secondItem="Tmq-qR-dTm" secondAttribute="trailing" constant="20" id="oVe-B5-z0E"/>
                             <constraint firstItem="NX6-Pv-sNa" firstAttribute="bottom" secondItem="VLH-cv-ybK" secondAttribute="bottom" id="oz9-4I-9N0"/>
@@ -952,6 +967,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="19겨울_로고.png" width="200" height="42"/>
+        <image name="19겨울_로고.png" width="16" height="16"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
         <image name="19겨울_메세지상단.png" width="431" height="87"/>
         <image name="19겨울_본부.png" width="183" height="51"/>
@@ -967,6 +984,6 @@
         <image name="ic_schedule" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X0h-v3-Nf3"/>
+        <segue reference="miU-wD-BVm"/>
     </inferredMetricsTieBreakers>
 </document>

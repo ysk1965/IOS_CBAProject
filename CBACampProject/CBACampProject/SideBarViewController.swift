@@ -107,6 +107,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         
         let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
+            
             self.SelectMenu = true;
             
             for view in self.pageViews {
@@ -400,10 +401,18 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             let newPageView = UIImageView(image: pageImages[page])
             newPageView.contentMode = .scaleAspectFit
             newPageView.frame = frame
+            
+            let backImage = UIImageView()
+            backImage.image = UIImage(named : "19겨울_메세지배경.png")
+            backImage.alpha = 0.4
+            backImage.frame.size = newPageView.frame.size
+            newPageView.addSubview(backImage)
+            
             if (downloadImageNames.count > page) {
                 print("downloading!", downloadImageNames.count, "/", page)
                 firebaseModel.downloadImage(name: downloadImageNames[page], imageView: newPageView)
             }
+            
             scrollView.addSubview(newPageView)
             
             pageViews[page] = newPageView

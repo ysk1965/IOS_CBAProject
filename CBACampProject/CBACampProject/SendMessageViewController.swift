@@ -17,6 +17,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     @IBOutlet weak var textMessage: UITextView!
     @IBOutlet weak var SendButton: UIButton!
     var currentTime: String?
+    
     @IBAction func CancleButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
