@@ -124,6 +124,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             let pagesScrollViewSize = self.scrollView.frame.size
             self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
             
+            
             //self.downloadImageNames = ["campus_place1.png","campus_place2.png","campus_place3.png"]
             self.downloadImageNames = ["campus_place1.png","campus_place2.png","campus_place3.png"]
             self.loadVisiblePages()
@@ -386,15 +387,15 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             frame.origin.x = frame.size.width * CGFloat(page)
             frame.origin.y = 0.0
             
-            let newPageView = UIImageView(image: pageImages[page])
-            newPageView.contentMode = .scaleAspectFit
-            newPageView.frame = frame
             
             let backImage = UIImageView()
             backImage.image = UIImage(named : "19겨울_메세지배경.png")
-            backImage.alpha = 0.4
-            backImage.frame.size = newPageView.frame.size
-            newPageView.addSubview(backImage)
+            backImage.frame = frame
+           scrollView.addSubview(backImage)
+            
+            let newPageView = UIImageView(image: pageImages[page])
+            newPageView.contentMode = .scaleAspectFit
+            newPageView.frame = frame
             
             if (downloadImageNames.count > page) {
                 print("downloading!", downloadImageNames.count, "/", page)
@@ -481,6 +482,15 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
             sender.scale = 1.0
         }
+    }
+    
+    @IBAction func didPinch(sender: UIPinchGestureRecognizer) {
+        let scale = sender.scale
+        imageView.transform =
+            CGAffineTransform.init(scaleX: scale, y: scale)
+        
+        sender.scale = 1
+        
     }
     
     @objc func Logout(_ sender:UIButton){
