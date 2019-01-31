@@ -1,5 +1,6 @@
 # CBACampProject
 
+![TitleImg](./AppInformationImage.png)
 - Flatform : IOS Application
 - CBA수련회 때 사용할 IOS앱을 개발하는 브랜치입니다.
 - 18년 여름수련회까지의 개발했던 버전을 그대로 옮겨 새로 작업합니다.
