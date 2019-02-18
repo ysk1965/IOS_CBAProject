@@ -23,3 +23,4 @@
 - 개발docx : docs.google.com/spreadsheets/d/1bKv5PoJOsUbqKWwOhkd3rpRBAymicw8oerMh8_-gzyg/edit#gid=0
 - 앱 소개 : https://blog.naver.com/enter_maintanance/221451792626
 - 개인정보 처리방침 : https://blog.naver.com/enter_maintanance/221443188683
+- 다운로드url : https://itunes.apple.com/kr/app/cba-retreat/id1419674452?mt=8
