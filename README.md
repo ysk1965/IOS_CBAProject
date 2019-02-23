@@ -19,6 +19,8 @@
   * 자체DB와 파싱해서 자신의 조장 조원 확인 가능
   * Firebase와 연동한 뉴스피드 기능 구현 및 글쓰기 기능 추가
   * 19_겨울 수련회에 맞는 디자인 업데이트
+  
+- **19_겨울to여름**
 
 - 개발docx : docs.google.com/spreadsheets/d/1bKv5PoJOsUbqKWwOhkd3rpRBAymicw8oerMh8_-gzyg/edit#gid=0
 - 앱 소개 : https://blog.naver.com/enter_maintanance/221451792626
