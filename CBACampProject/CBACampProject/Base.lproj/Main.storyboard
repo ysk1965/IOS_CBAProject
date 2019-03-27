@@ -337,6 +337,7 @@
                         <outlet property="scrollView" destination="30Y-Uw-bsY" id="4kR-hj-DkS"/>
                         <segue destination="Jle-r2-8ZY" kind="show" identifier="LoginSegue" id="BA4-o0-rNT"/>
                         <segue destination="gaf-He-Zwe" kind="show" identifier="SearchGBSSegue" id="8vP-Lh-MKB"/>
+                        <segue destination="rgt-Jy-0Z5" kind="show" identifier="CheckGBSSegue" id="a48-fM-XFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGO-Ya-83f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,7 +788,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KU-sg-lC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3570" y="861"/>
+            <point key="canvasLocation" x="3634" y="468"/>
         </scene>
         <!--SearchGBS View Controller-->
         <scene sceneID="wOh-eJ-cvq">
@@ -926,7 +927,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0C-Hl-U1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568.125" y="1554.9295774647887"/>
+            <point key="canvasLocation" x="3632" y="1162"/>
+        </scene>
+        <!--Check View Controller-->
+        <scene sceneID="Fm6-lw-TL2">
+            <objects>
+                <viewController id="rgt-Jy-0Z5" customClass="CheckViewController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8nR-3A-7zN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="저는 어디캠퍼스 담당하나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7t0-s3-Rrn">
+                                <rect key="frame" x="63" y="196" width="194" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yON-gz-2XZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0yI-C0-7A8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3634" y="1967"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="YPl-aZ-t89">
@@ -967,10 +992,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_로고.png" width="16" height="16"/>
+        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
-        <image name="19겨울_메세지상단.png" width="431" height="87"/>
+        <image name="19겨울_메세지상단.png" width="462" height="87"/>
         <image name="19겨울_본부.png" width="183" height="51"/>
         <image name="19겨울_샌드위치메뉴.png" width="50" height="50"/>
         <image name="19겨울_수양관위치.png" width="183" height="51"/>

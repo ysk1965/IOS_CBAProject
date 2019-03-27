@@ -42,6 +42,7 @@
 		0459532521FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png in Resources */ = {isa = PBXBuildFile; fileRef = 0459532321FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png */; };
 		046C83A3210984AA00176FDE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C83A2210984AA00176FDE /* MapViewController.swift */; };
 		047CC6672108E8950054C395 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CC6662108E8950054C395 /* SideBarViewController.swift */; };
+		048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF660224B853E00A8D7AD /* CheckViewController.swift */; };
 		04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04950AA921E508CD00213D42 /* SendMessageViewController.swift */; };
 		04955EFB210A24320057FD68 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04955EFA210A24320057FD68 /* Location.swift */; };
 		04A595AB21F7061D008C5E02 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CC6662108E8950054C395 /* SideBarViewController.swift */; };
@@ -147,6 +148,7 @@
 		0459532321FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2019-01-14-11-35-56.png"; path = "../../../Desktop/유상건/KakaoTalk_Photo_2019-01-14-11-35-56.png"; sourceTree = "<group>"; };
 		046C83A2210984AA00176FDE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		047CC6662108E8950054C395 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		048AF660224B853E00A8D7AD /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		04950AA921E508CD00213D42 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		04955EFA210A24320057FD68 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				04F925EB21E84DF400C4F6CA /* SearchGBSViewController.swift */,
 				04FD79EF21F87C8100936F87 /* MainUser.swift */,
 				04FD79F221F8857400936F87 /* MainGBS.swift */,
+				048AF660224B853E00A8D7AD /* CheckViewController.swift */,
 			);
 			path = CBACampProject;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F0F54D2109FBD6001B953B /* UIView+SimpleAnimation.swift in Sources */,
+				048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */,
 				04955EFB210A24320057FD68 /* Location.swift in Sources */,
 				DB764E52210C8A2E006E72EB /* FirebaseModel.swift in Sources */,
 				04FD79F321F8857400936F87 /* MainGBS.swift in Sources */,

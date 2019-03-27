@@ -283,6 +283,21 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             self.loadVisiblePages()
         }
         
+        let menuItem8 = SideMenuItemFactory.make(title: "  출석체크") {
+            self.SelectMenu = true;
+            
+            for view in self.pageViews {
+                view?.removeFromSuperview()
+            }
+            
+            if(!((Auth.auth().currentUser?.email) != nil)){
+                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+            }
+            else{
+                self.performSegue(withIdentifier: "CheckGBSSegue", sender: nil)
+            }
+        }
+        
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let whiteLine = UILabel()
@@ -364,8 +379,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         let menufooter = SideMenuFooterFactory.make(view: footerView)
         
         // Setting itens to the SideMenuViewController
-        let menuBuild = SideMenu(menuItems: [menuItem0 ,menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader,
-                             footer: menufooter)
+        let menuBuild = SideMenu(menuItems: [menuItem8, menuItem0 ,menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader, footer: menufooter)
         
         // Building the Menu SideMenuViewController
         self.menu = menuBuild.build()
@@ -490,8 +504,9 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
             CGAffineTransform.init(scaleX: scale, y: scale)
         
         sender.scale = 1
-        
     }
+    
+    //@objc func handleTap
     
     @objc func Logout(_ sender:UIButton){
         
