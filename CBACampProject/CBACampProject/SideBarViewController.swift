@@ -294,7 +294,13 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
                 self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }
             else{
-                self.performSegue(withIdentifier: "CheckGBSSegue", sender: nil)
+                if (MassageTabViewController.mainUser.grade == LEADER &&
+                    MassageTabViewController.mainUser.grade == MISSION){
+                    self.performSegue(withIdentifier: "CheckGBSSegue", sender: nil)
+                }
+                else {
+                    debugPrint("grade : " + MassageTabViewController.mainUser.grade)
+                }
             }
         }
         

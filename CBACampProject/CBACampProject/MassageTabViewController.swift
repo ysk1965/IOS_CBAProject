@@ -15,6 +15,7 @@ struct MyInfo: Codable {
     let mobile : String?
     let age : Int?
     let gbsLevel : String?
+    let grade : String?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -23,6 +24,7 @@ struct MyInfo: Codable {
         mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
         age = try values.decodeIfPresent(Int.self, forKey: .age)
         gbsLevel = try values.decodeIfPresent(String.self, forKey: .gbsLevel)
+        grade = try values.decodeIfPresent(String.self, forKey: .grade)
     }
 }
 

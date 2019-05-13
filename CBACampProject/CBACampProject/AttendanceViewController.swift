@@ -32,6 +32,13 @@ class AttendanceViewController: UIViewController {
     var currentAttendanceInfo : Array<AttendanceInfo>
     @IBOutlet weak var statsText: UILabel!
     @IBOutlet weak var campusName: UILabel!
+    @IBOutlet weak var attendanceScrollView: UIScrollView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBAction func prevButton(_ sender: Any) {
+    }
+    @IBAction func nextButton(_ sender: Any) {
+    }
     
     struct requestAPI{
         var date : String

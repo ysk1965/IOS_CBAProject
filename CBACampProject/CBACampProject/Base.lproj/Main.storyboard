@@ -987,11 +987,17 @@
                                 <rect key="frame" x="24" y="81" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Prev"/>
+                                <connections>
+                                    <action selector="prevButton:" destination="I6V-OP-OAt" eventType="touchUpInside" id="cV9-VM-sxN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qh-ZZ-6GM">
                                 <rect key="frame" x="265" y="81" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="I6V-OP-OAt" eventType="touchUpInside" id="NGs-mm-ECk"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5cS-Vb-zWF">
                                 <rect key="frame" x="53" y="63" width="215" height="66"/>
@@ -1021,12 +1027,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jk3-m3-ZMS">
+                                <rect key="frame" x="24" y="174" width="273" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ja0-Qt-TN0"/>
                     </view>
                     <connections>
+                        <outlet property="attendanceScrollView" destination="jk3-m3-ZMS" id="9jH-Om-Pyn"/>
                         <outlet property="campusName" destination="eej-Mn-sHZ" id="h69-Qm-ZZn"/>
+                        <outlet property="datePicker" destination="5cS-Vb-zWF" id="ZTf-2e-1RU"/>
                         <outlet property="statsText" destination="xQa-oo-hmH" id="ASi-qa-eaC"/>
                         <outlet property="testLabel" destination="Aim-5v-wwA" id="hPr-eL-0K3"/>
                     </connections>
@@ -1074,8 +1086,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_로고.png" width="16" height="16"/>
+        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
         <image name="19겨울_메세지상단.png" width="462" height="87"/>
         <image name="19겨울_본부.png" width="183" height="51"/>
