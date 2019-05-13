@@ -24,7 +24,6 @@ class CBAInfoTabViewController: UIViewController {
         parsing()
         
         if segue.identifier == "SegueToSideMenu"{
-            print("1.여기는?")
             if let navController = segue.destination as? UINavigationController{
                 if let SideMenuController = navController.topViewController as?
                     SideBarViewController {

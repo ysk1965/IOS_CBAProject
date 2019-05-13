@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0404F7D12289A06C00B527F0 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */; };
+		0404F7D32289ADA100B527F0 /* MainAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404F7D22289ADA100B527F0 /* MainAttendance.swift */; };
 		042761CB2106E41400928EB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761CA2106E41400928EB7 /* AppDelegate.swift */; };
 		042761D02106E41400928EB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042761CE2106E41400928EB7 /* Main.storyboard */; };
 		042761D22106E41600928EB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042761D12106E41600928EB7 /* Assets.xcassets */; };
@@ -107,6 +109,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
+		0404F7D22289ADA100B527F0 /* MainAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendance.swift; sourceTree = "<group>"; };
 		042761C72106E41400928EB7 /* CBACampProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBACampProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		042761CA2106E41400928EB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		042761CF2106E41400928EB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -278,7 +282,9 @@
 				04F925EB21E84DF400C4F6CA /* SearchGBSViewController.swift */,
 				04FD79EF21F87C8100936F87 /* MainUser.swift */,
 				04FD79F221F8857400936F87 /* MainGBS.swift */,
+				0404F7D22289ADA100B527F0 /* MainAttendance.swift */,
 				048AF660224B853E00A8D7AD /* CheckViewController.swift */,
+				0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */,
 			);
 			path = CBACampProject;
 			sourceTree = "<group>";
@@ -726,11 +732,13 @@
 				04955EFB210A24320057FD68 /* Location.swift in Sources */,
 				DB764E52210C8A2E006E72EB /* FirebaseModel.swift in Sources */,
 				04FD79F321F8857400936F87 /* MainGBS.swift in Sources */,
+				0404F7D32289ADA100B527F0 /* MainAttendance.swift in Sources */,
 				04FD79F021F87C8100936F87 /* MainUser.swift in Sources */,
 				042761CB2106E41400928EB7 /* AppDelegate.swift in Sources */,
 				047CC6672108E8950054C395 /* SideBarViewController.swift in Sources */,
 				04E372812107146F00FB7304 /* MassageTabViewController.swift in Sources */,
 				04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */,
+				0404F7D12289A06C00B527F0 /* AttendanceViewController.swift in Sources */,
 				04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */,
 				043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */,
 				04F925EC21E84DF400C4F6CA /* SearchGBSViewController.swift in Sources */,
