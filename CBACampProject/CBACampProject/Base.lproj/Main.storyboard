@@ -958,8 +958,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="출석체크 이동"/>
                                 <connections>
-                                    <action selector="moveAction:" destination="rgt-Jy-0Z5" eventType="touchUpInside" id="WVh-a6-Ie5"/>
-                                    <segue destination="I6V-OP-OAt" kind="show" identifier="checkIdentifier" id="nRc-ub-pNp"/>
+                                    <segue destination="I6V-OP-OAt" kind="show" identifier="checkIdentifier" id="7Rl-wd-DKk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -983,16 +982,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1D-vG-XYs">
-                                <rect key="frame" x="24" y="81" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Prev"/>
-                                <connections>
-                                    <action selector="prevButton:" destination="I6V-OP-OAt" eventType="touchUpInside" id="cV9-VM-sxN"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qh-ZZ-6GM">
-                                <rect key="frame" x="265" y="81" width="32" height="30"/>
+                                <rect key="frame" x="276" y="81" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
@@ -1000,14 +991,14 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5cS-Vb-zWF">
-                                <rect key="frame" x="53" y="63" width="215" height="66"/>
+                                <rect key="frame" x="53" y="63" width="215" height="57"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="579447264.42066896">
                                     <!--2019-05-13 13:34:24 +0000-->
                                 </date>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="내용넣기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQa-oo-hmH">
-                                <rect key="frame" x="80" y="128" width="188" height="21"/>
+                                <rect key="frame" x="80" y="128" width="158" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1031,6 +1022,22 @@
                                 <rect key="frame" x="24" y="174" width="273" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-gm-8Vg">
+                                <rect key="frame" x="270" y="119" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="편집"/>
+                                <connections>
+                                    <action selector="editButton:" destination="I6V-OP-OAt" eventType="touchUpInside" id="ndK-AP-Pjm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1D-vG-XYs">
+                                <rect key="frame" x="14" y="81" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Prev"/>
+                                <connections>
+                                    <action selector="prevButton:" destination="I6V-OP-OAt" eventType="touchUpInside" id="cV9-VM-sxN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ja0-Qt-TN0"/>
@@ -1040,7 +1047,6 @@
                         <outlet property="campusName" destination="eej-Mn-sHZ" id="h69-Qm-ZZn"/>
                         <outlet property="datePicker" destination="5cS-Vb-zWF" id="ZTf-2e-1RU"/>
                         <outlet property="statsText" destination="xQa-oo-hmH" id="ASi-qa-eaC"/>
-                        <outlet property="testLabel" destination="Aim-5v-wwA" id="hPr-eL-0K3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iC-sT-NUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1086,8 +1092,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="19겨울_로고.png" width="16" height="16"/>
         <image name="19겨울_로고.png" width="200" height="42"/>
+        <image name="19겨울_로고.png" width="16" height="16"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
         <image name="19겨울_메세지상단.png" width="462" height="87"/>
         <image name="19겨울_본부.png" width="183" height="51"/>

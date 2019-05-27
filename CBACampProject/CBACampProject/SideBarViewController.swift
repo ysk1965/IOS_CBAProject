@@ -54,7 +54,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         menu.expand(onController: self)
         SelectMenu = false
     }
-
+    
     // Optionally function onMenuClose(), fired when user closes menu
     func onMenuClose() {
         MenuSetting()
@@ -73,6 +73,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
     
     func MenuSetting(){
         userID = Auth.auth().currentUser?.email
+        //userID = "enter_maintanance@naver.com"
         
         self.scrollView.frame.size.width = self.view.frame.size.width
         self.scrollView.frame.size.height = self.view.frame.size.height - 90
@@ -285,6 +286,7 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         let menuItem8 = SideMenuItemFactory.make(title: "  출석체크") {
             self.SelectMenu = true;
+            MassageTabViewController.mainUser.grade = "MISSION" // 임시
             
             for view in self.pageViews {
                 view?.removeFromSuperview()
@@ -294,13 +296,15 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
                 self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }
             else{
-                if (MassageTabViewController.mainUser.grade == LEADER &&
-                    MassageTabViewController.mainUser.grade == MISSION){
+                
+                if (MassageTabViewController.mainUser.grade == "LEADER" ||
+                    MassageTabViewController.mainUser.grade == "MISSION"){
                     self.performSegue(withIdentifier: "CheckGBSSegue", sender: nil)
                 }
                 else {
                     debugPrint("grade : " + MassageTabViewController.mainUser.grade)
                 }
+                
             }
         }
         
@@ -325,8 +329,8 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         let headerButton = UIButton()
         headerButton.setTitle(" ", for: .normal)
-        headerButton.setTitleColor(UIColor.blue, for: .normal)
-        headerButton.backgroundColor = UIColor.white
+        headerButton.setTitleColor(UIColor.black, for: .normal)
+        headerButton.backgroundColor = UIColor.black
         headerButton.frame = CGRect(x: BackImageView.frame.origin.x + BackImageView.frame.width * 0.075, y: BackImageView.frame.origin.y + BackImageView.frame.width * 0.075 , width: BackImageView.frame.width * 0.46, height: BackImageView.frame.height * 0.3)
         
         

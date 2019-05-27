@@ -66,7 +66,7 @@ class MassageTabViewController: UIViewController {
     @IBOutlet weak var buttonView: UIView!
     
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
-    static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "", gbsLevel : "")
+    static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "", gbsLevel : "", grade: "")
     static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
     static var memberCount = Int(0)
     
@@ -268,7 +268,7 @@ class MassageTabViewController: UIViewController {
                     var myinfos = try decoder.decode(MyInfo.self, from: data)
                     
                     if(myinfos.age != nil){
-                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, gbsLevel: myinfos.gbsLevel!)
+                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, gbsLevel: myinfos.gbsLevel!, grade: myinfos.grade!)
                     }
                     
                 } catch{
