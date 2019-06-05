@@ -37,11 +37,43 @@ struct AttendanceInfo: Codable {
     }
 }
 
+struct checkAPI {
+    var id : String?
+    var status : String?
+    var note : String?
+}
+
+/*
+struct ConfirmInfo: Codable {
+    var checklist : Array<checkAPI> = []
+    var leaderUid : String?
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        checklist = try values.decodeIfPresent(Array<checkAPI>.self, forKey: .id)
+        leaderUid = try values.decodeIfPresent(String.self, forKey: .date)
+    }
+    
+    init() {
+        var tempAPI : checkAPI
+        tempAPI.id = "test"
+        tempAPI.note = "testNote"
+        tempAPI.status = "testStatus"
+        
+        checklist.append(tempAPI)
+        
+        leaderUid = "tempUid"
+    }
+}
+*/
+
 class AttendanceViewController: UIViewController {
     @IBOutlet weak var statsText: UILabel!
     @IBOutlet weak var campusName: UILabel!
     @IBOutlet weak var attendanceScrollView: UIScrollView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBAction func ConfirmButton(_ sender: Any) {
+    }
     
     var selectedCampus : String?
     var currentAttendanceInfo : Array<AttendanceInfo> = []
@@ -211,6 +243,12 @@ class AttendanceViewController: UIViewController {
     
     @objc func Attend(_ sender:UIButton){
         // 출석에 대한 정의가 필요합니다.
+        if(sender.backgroundColor == UIColor.black){
+            sender.backgroundColor = UIColor.blue
+            sender.currentTitle
+        } else{
+            sender.backgroundColor = UIColor.black
+        }
         print(sender.currentTitle)
         print()
     }
