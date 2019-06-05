@@ -72,12 +72,25 @@ class AttendanceViewController: UIViewController {
     @IBOutlet weak var campusName: UILabel!
     @IBOutlet weak var attendanceScrollView: UIScrollView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBAction func ConfirmButton(_ sender: Any) {
-    }
     
     var selectedCampus : String?
     var currentAttendanceInfo : Array<AttendanceInfo> = []
     var buttonArray : Array<UIButton> = []
+    var textArray : Array<UITextView> = []
+    
+    var errorCode = 999 // attend value error
+    
+    
+    @IBAction func ConfirmButton(_ sender: Any) {
+        for n in 0...currentAttendanceInfo.count - 1{
+            currentAttendanceInfo[n].note = textArray[n].text
+        }
+        // 변경완료
+        // text는 여기서 다 불러서 저장해
+        for n in 0...currentAttendanceInfo.count - 1{
+            print(currentAttendanceInfo[n].note!)
+        }
+    }
     
     @IBAction func editButton(_ sender: Any) {
         // 편집기능이 들어갈 버튼
@@ -94,9 +107,9 @@ class AttendanceViewController: UIViewController {
         var campus : String
     }
     
-    var attendCnt : Int = 0
-    var allCnt : Int = 0
-    var attendPercent : Int = 0
+    var attendCnt : Int = 5
+    var allCnt : Int = 5
+    var attendPercent : Int = 5
     func setStats(){
         attendPercent = attendCnt / allCnt * 100
         statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
@@ -159,9 +172,10 @@ class AttendanceViewController: UIViewController {
     func testFunc(){
         var test = AttendanceInfo.init()
 
-        for n in 1...5{
+        for n in 1...20{
             test.name = "유상건이"
             test.mobile = "010-0000-0000"
+            test.status = ""
             currentAttendanceInfo.append(test)
         }
     }
@@ -183,7 +197,7 @@ class AttendanceViewController: UIViewController {
             cellview.layer.borderWidth = 0
             
             
-            cellview.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
+            cellview.backgroundColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.4)
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(attendanceScrollView.frame.width), height: 80)
             attendanceScrollView.addSubview(cellview)
             
@@ -199,20 +213,33 @@ class AttendanceViewController: UIViewController {
             cellview.addSubview(namelabel)
             
             ///agelabel
-            let agelabel = UILabel()
-            agelabel.text = currentAttendanceInfo[i].mobile!
-            agelabel.font = UIFont(name: "NotoSans", size: 17.0)!
-            agelabel.textColor = UIColor.black
-            agelabel.sizeToFit()
-            agelabel.frame.origin = CGPoint(x: 90, y: 18)
-            cellview.addSubview(agelabel)
+            let mobilelabel = UILabel()
+            mobilelabel.text = currentAttendanceInfo[i].mobile!
+            mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
+            mobilelabel.textColor = UIColor.black
+            mobilelabel.sizeToFit()
+            mobilelabel.frame.origin = CGPoint(x: 90, y: 18)
+            cellview.addSubview(mobilelabel)
             
             buttonArray.append(UIButton.init())
             buttonArray[i].setTitle(String(i), for: .normal)
-            buttonArray[i].setTitleColor(UIColor.black, for: .normal)
-            buttonArray[i].backgroundColor = UIColor.black
-            buttonArray[i].frame = CGRect(x: 240, y: 18 , width: 25, height: 25)
+            if(currentAttendanceInfo[i].status == "ATTENDED"){
+                buttonArray[i].setTitleColor(UIColor.black, for: .normal)
+                buttonArray[i].backgroundColor = UIColor.black
+            } else{
+                buttonArray[i].setTitleColor(UIColor.blue, for: .normal)
+                buttonArray[i].backgroundColor = UIColor.blue
+            }
+            buttonArray[i].frame = CGRect(x: 220, y: 18 , width: 25, height: 25)
             buttonArray[i].addTarget(self, action: #selector(self.Attend(_:)), for: .touchUpInside)
+            
+            //textview///////////////////////////////////////
+            textArray.append(UITextView.init())
+            textArray[i].frame.origin = CGPoint(x:250, y:18)
+            textArray[i].frame.size = CGSize(width: 100, height: 25)
+            textArray[i].backgroundColor = UIColor.white
+            textArray[i].text = currentAttendanceInfo[i].note
+            cellview.addSubview(textArray[i])
             
             //textview///////////////////////////////////////
             let textview = UITextView()
@@ -245,12 +272,19 @@ class AttendanceViewController: UIViewController {
         // 출석에 대한 정의가 필요합니다.
         if(sender.backgroundColor == UIColor.black){
             sender.backgroundColor = UIColor.blue
-            sender.currentTitle
+            renewAttend(idx: Int(sender.currentTitle!) ?? errorCode, check: "ABSENT")
         } else{
             sender.backgroundColor = UIColor.black
+            renewAttend(idx: Int(sender.currentTitle!) ?? errorCode, check: "ATTENDED")
         }
-        print(sender.currentTitle)
-        print()
+    }
+    
+    func renewAttend(idx : Int, check : String){
+        currentAttendanceInfo[idx].status = String(check)
+    }
+    
+    func renewNote(idx : Int, value : String){
+        currentAttendanceInfo[idx].note = String(value)
     }
     
     override func viewDidLoad() {
@@ -274,5 +308,4 @@ class AttendanceViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
