@@ -99,7 +99,7 @@ class AttendanceViewController: UIViewController {
     var attendPercent : Int = 0
     func setStats(){
         attendPercent = attendCnt / allCnt * 100
-        //statsText.text = "출석" + attendCnt + "/전체" + allCnt + "/" + attendPercent + "%"
+        statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
     }
     
     func loadDateList(){
