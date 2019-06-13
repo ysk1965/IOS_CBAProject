@@ -46,7 +46,9 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func loadcampusData(){
         //Parsing
         if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)! + "/campus/list"
+            var url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)! + "/campus/list"
+            // test
+            url = "http://admin:dhwlrrleh!!!@localhost:8080/members/search?name=다인"
             let urlObj = URL(string: url)
             
             URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in

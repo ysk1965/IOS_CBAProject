@@ -90,10 +90,16 @@ class AttendanceViewController: UIViewController {
         for n in 0...currentAttendanceInfo.count - 1{
             print(currentAttendanceInfo[n].note!)
         }
+        
+        for n in 0...currentAttendanceInfo.count - 1{
+            print(currentAttendanceInfo[n].status!)
+        }
+        // 값이 멀쩡히 잘 들어가네 currentAttendanceInfo를 서버로 보내주면 돼
     }
     
     @IBAction func editButton(_ sender: Any) {
         // 편집기능이 들어갈 버튼
+        
     }
     
     @IBAction func prevButton(_ sender: Any) {
