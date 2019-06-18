@@ -12,6 +12,7 @@ import Firebase
 import FirebaseMessaging
 import GoogleSignIn
 import FirebaseAuth
+import SwiftHTTP
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, GIDSignInUIDelegate, UITextViewDelegate {

@@ -16,7 +16,6 @@
 		042761E02106E41600928EB7 /* CBACampProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761DF2106E41600928EB7 /* CBACampProjectTests.swift */; };
 		042761EB2106E41600928EB7 /* CBACampProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */; };
 		043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A7FF7219A721C00451CE0 /* AuthViewController.swift */; };
-		0445EFB622B20D2800D1BC7A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0445EFB322B20CD500D1BC7A /* SwiftHTTP.framework */; };
 		045952F721FC7300006FE016 /* 19겨울_1층배치도.png in Resources */ = {isa = PBXBuildFile; fileRef = 045952F221FC72FF006FE016 /* 19겨울_1층배치도.png */; };
 		045952F821FC7300006FE016 /* 19겨울_4층배치도.png in Resources */ = {isa = PBXBuildFile; fileRef = 045952F321FC72FF006FE016 /* 19겨울_4층배치도.png */; };
 		045952F921FC7300006FE016 /* 19겨울_5층배치도.png in Resources */ = {isa = PBXBuildFile; fileRef = 045952F421FC72FF006FE016 /* 19겨울_5층배치도.png */; };
@@ -107,20 +106,6 @@
 			remoteGlobalIDString = 042761C62106E41400928EB7;
 			remoteInfo = CBACampProject;
 		};
-		0445EFB222B20CD500D1BC7A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0445EFAD22B20CD500D1BC7A /* SwiftHTTP.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6BFD901619C8D8B500DD99B6;
-			remoteInfo = SwiftHTTP;
-		};
-		0445EFB422B20CD500D1BC7A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0445EFAD22B20CD500D1BC7A /* SwiftHTTP.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6BFD902119C8D8B500DD99B6;
-			remoteInfo = SwiftHTTPTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -139,7 +124,6 @@
 		042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBACampProjectUITests.swift; sourceTree = "<group>"; };
 		042761EC2106E41600928EB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		043A7FF7219A721C00451CE0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		0445EFAD22B20CD500D1BC7A /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../Downloads/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
 		045952F221FC72FF006FE016 /* 19겨울_1층배치도.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19겨울_1층배치도.png"; path = "../../../../Desktop/유상건/19겨울_1층배치도.png"; sourceTree = "<group>"; };
 		045952F321FC72FF006FE016 /* 19겨울_4층배치도.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19겨울_4층배치도.png"; path = "../../../../Desktop/유상건/19겨울_4층배치도.png"; sourceTree = "<group>"; };
 		045952F421FC72FF006FE016 /* 19겨울_5층배치도.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "19겨울_5층배치도.png"; path = "../../../../Desktop/유상건/19겨울_5층배치도.png"; sourceTree = "<group>"; };
@@ -226,7 +210,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0445EFB622B20D2800D1BC7A /* SwiftHTTP.framework in Frameworks */,
 				CD336A15F030D36C9BF372D9 /* Pods_CBACampProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,7 +236,6 @@
 		042761BE2106E41400928EB7 = {
 			isa = PBXGroup;
 			children = (
-				0445EFAD22B20CD500D1BC7A /* SwiftHTTP.xcodeproj */,
 				DBF11FAE211B358500EE9B98 /* InformationPosters */,
 				DB764E48210C8722006E72EB /* font */,
 				04E3728421071B0300FB7304 /* Resource */,
@@ -323,15 +305,6 @@
 				042761EC2106E41600928EB7 /* Info.plist */,
 			);
 			path = CBACampProjectUITests;
-			sourceTree = "<group>";
-		};
-		0445EFAE22B20CD500D1BC7A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0445EFB322B20CD500D1BC7A /* SwiftHTTP.framework */,
-				0445EFB522B20CD500D1BC7A /* SwiftHTTPTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		04E3728421071B0300FB7304 /* Resource */ = {
@@ -547,12 +520,6 @@
 			mainGroup = 042761BE2106E41400928EB7;
 			productRefGroup = 042761C82106E41400928EB7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0445EFAE22B20CD500D1BC7A /* Products */;
-					ProjectRef = 0445EFAD22B20CD500D1BC7A /* SwiftHTTP.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				042761C62106E41400928EB7 /* CBACampProject */,
@@ -561,23 +528,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0445EFB322B20CD500D1BC7A /* SwiftHTTP.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftHTTP.framework;
-			remoteRef = 0445EFB222B20CD500D1BC7A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0445EFB522B20CD500D1BC7A /* SwiftHTTPTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftHTTPTests.xctest;
-			remoteRef = 0445EFB422B20CD500D1BC7A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		042761C52106E41400928EB7 /* Resources */ = {

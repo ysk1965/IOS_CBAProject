@@ -5,9 +5,6 @@
       location = "group:CBACampProject.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../Downloads/SwiftHTTP-master/SwiftHTTP.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

@@ -46,10 +46,12 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func loadcampusData(){
         //Parsing
         if(Auth.auth().currentUser != nil){
-            var url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)! + "/campus/list"
+            //var url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)! + "/campus/list"
             // test
-            url = "http://admin:dhwlrrleh!!!@localhost:8080/members/search?name=다인"
-            let urlObj = URL(string: url)
+            let url = "http://admin:dhwlrrleh!!!@cba.sungrak.or.kr:9000/members/search?name=다인"
+            let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let urlObj = URL(string: encoded)
+    
             
             URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
                 guard let data = data else {return}
@@ -66,10 +68,13 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 
                 }.resume()
         }
+        
         // 임시 테스트용
+        /*
         campusArray.append("TESTDATA1")
         campusArray.append("TESTDATA2")
         campusArray.append("TESTDATA3")
+        */
     }
     
     override func viewDidLoad() {
