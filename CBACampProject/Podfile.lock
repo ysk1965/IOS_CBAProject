@@ -1,4 +1,6 @@
 PODS:
+  - Firebase/Analytics (5.4.0):
+    - Firebase/Core
   - Firebase/Auth (5.4.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.0.2)
@@ -76,6 +78,7 @@ PODS:
   - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
+  - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -130,6 +133,6 @@ SPEC CHECKSUMS:
   SimpleAnimation: a3473da5421c65100d68f98a44fc853b81091249
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 4fbe0e5f610cf8dbee7f0fc0c6c772bda98d3021
+PODFILE CHECKSUM: d6cf8457587c88cbf9d97eea0418fe65996a1ec2
 
 COCOAPODS: 1.5.3

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
 class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var campusArray : [String] = []

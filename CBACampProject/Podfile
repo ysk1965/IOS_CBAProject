@@ -6,6 +6,7 @@ target 'CBACampProject' do
   use_frameworks!
 pod 'MenuSlider', '~> 0.1.5'
 pod "SimpleAnimation"
+pod 'Firebase/Analytics'
 pod 'Firebase/Core'
 pod 'Firebase/Storage'
 pod 'Firebase/Database'
@@ -15,7 +16,6 @@ pod 'GoogleSignIn'
 pod 'Firebase/Auth'
 pod "TextFieldEffects"
   # Pods for CBACampProject
-pod 'Alamofire', '~> 5.0.0-beta.5'
 
   target 'CBACampProjectTests' do
     inherit! :search_paths
