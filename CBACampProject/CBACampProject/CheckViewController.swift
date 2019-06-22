@@ -15,6 +15,11 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBOutlet weak var moveButton: UIButton!
     @IBOutlet weak var CampusPicker: UIPickerView!
+    
+    @IBAction func Back(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     @IBAction func moveAction(_ sender: Any) {
         self.performSegue(withIdentifier: "checkIdentifier", sender: self)
     }
