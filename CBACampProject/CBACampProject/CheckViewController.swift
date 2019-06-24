@@ -80,9 +80,10 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         //Alamofire 버젼
         //Parsing
         if(Auth.auth().currentUser != nil){
-            let url = "http://admin:dhwlrrleh!!!@cba.sungrak.or.kr:9000/members/search"
+            let url = "http://cba.sungrak.or.kr:9000/members/search"
             let param: Parameters = ["name" : "다인"]
-            let alamo = Alamofire.request(url, method: .post, parameters : param, encoding: URLEncoding.httpBody)
+            let header: Parameters = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
+            let alamo = Alamofire.request(url, method: .post, parameters : param, headers: header, encoding: URLEncoding.httpBody)
             
             alamo.responseJSON(){ response in
                 if let status = response.response?.statusCode{
