@@ -45,12 +45,14 @@
 		047CC6672108E8950054C395 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CC6662108E8950054C395 /* SideBarViewController.swift */; };
 		048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF660224B853E00A8D7AD /* CheckViewController.swift */; };
 		04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04950AA921E508CD00213D42 /* SendMessageViewController.swift */; };
-		04955EFB210A24320057FD68 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04955EFA210A24320057FD68 /* Location.swift */; };
+		04955EFB210A24320057FD68 /* MainLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04955EFA210A24320057FD68 /* MainLocation.swift */; };
 		04A595AB21F7061D008C5E02 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CC6662108E8950054C395 /* SideBarViewController.swift */; };
 		04E3727F2107106A00FB7304 /* ScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */; };
 		04E372812107146F00FB7304 /* MassageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372802107146F00FB7304 /* MassageTabViewController.swift */; };
 		04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */; };
 		04F0F54D2109FBD6001B953B /* UIView+SimpleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */; };
+		04F29E5422C0892900799F6F /* Pods_CBACampProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */; };
+		04F29E5622C0893300799F6F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F29E5522C0893300799F6F /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		04F925EC21E84DF400C4F6CA /* SearchGBSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F925EB21E84DF400C4F6CA /* SearchGBSViewController.swift */; };
 		04FC00DC210AEC0100528D7A /* CampPoster.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00CA210AEBFF00528D7A /* CampPoster.jpeg */; };
 		04FC00E2210AEC0100528D7A /* hamberger.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D0210AEC0000528D7A /* hamberger.png */; };
@@ -64,8 +66,7 @@
 		04FD79F321F8857400936F87 /* MainGBS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD79F221F8857400936F87 /* MainGBS.swift */; };
 		1AD9D5F1822C40ABE5FF98FB /* Pods_CBACampProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3040CAA0E4FAE4C600640207 /* Pods_CBACampProjectTests.framework */; };
 		32C4B11CCBC1A9A487B45DA0 /* Pods_CBACampProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914A824F90EADCF5792B13A /* Pods_CBACampProjectUITests.framework */; };
-		C64FA8D77E5946F27AD2D784 /* Pods_CBACampProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B278BDEFF6AF7EB5FBEBB9 /* Pods_CBACampProject.framework */; };
-		DB3A8868210E3A7000E6DA14 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3A8867210E3A7000E6DA14 /* Message.swift */; };
+		DB3A8868210E3A7000E6DA14 /* MainMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3A8867210E3A7000E6DA14 /* MainMessage.swift */; };
 		DB3A886C210E54FD00E6DA14 /* 이미지준비중.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB3A886B210E54FD00E6DA14 /* 이미지준비중.jpg */; };
 		DB764E43210C7207006E72EB /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E42210C7206006E72EB /* profile.png */; };
 		DB764E45210C74BC006E72EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB764E44210C74BC006E72EB /* GoogleService-Info.plist */; };
@@ -153,11 +154,14 @@
 		047CC6662108E8950054C395 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		048AF660224B853E00A8D7AD /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		04950AA921E508CD00213D42 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
-		04955EFA210A24320057FD68 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		04955EFA210A24320057FD68 /* MainLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocation.swift; sourceTree = "<group>"; };
 		04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
 		04E372802107146F00FB7304 /* MassageTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageTabViewController.swift; sourceTree = "<group>"; };
 		04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAInfoTabViewController.swift; sourceTree = "<group>"; };
 		04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SimpleAnimation.swift"; sourceTree = "<group>"; };
+		04F29E5122C0889D00799F6F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CBACampProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F29E5522C0893300799F6F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F925EB21E84DF400C4F6CA /* SearchGBSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGBSViewController.swift; sourceTree = "<group>"; };
 		04FC00CA210AEBFF00528D7A /* CampPoster.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CampPoster.jpeg; sourceTree = "<group>"; };
 		04FC00D0210AEC0000528D7A /* hamberger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamberger.png; sourceTree = "<group>"; };
@@ -176,7 +180,7 @@
 		681A44B45D21FD7ADF543EFB /* Pods-CBACampProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProjectUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5A9910A5EB74008CEDE0AD6 /* Pods-CBACampProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProject/Pods-CBACampProject.release.xcconfig"; sourceTree = "<group>"; };
 		A8AA70A5C2F43BEBFFC6F7D6 /* Pods-CBACampProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProject/Pods-CBACampProject.debug.xcconfig"; sourceTree = "<group>"; };
-		DB3A8867210E3A7000E6DA14 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		DB3A8867210E3A7000E6DA14 /* MainMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessage.swift; sourceTree = "<group>"; };
 		DB3A886B210E54FD00E6DA14 /* 이미지준비중.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "이미지준비중.jpg"; sourceTree = "<group>"; };
 		DB764E42210C7206006E72EB /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		DB764E44210C74BC006E72EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -209,7 +213,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C64FA8D77E5946F27AD2D784 /* Pods_CBACampProject.framework in Frameworks */,
+				04F29E5622C0893300799F6F /* Alamofire.framework in Frameworks */,
+				04F29E5422C0892900799F6F /* Pods_CBACampProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +265,7 @@
 		042761C92106E41400928EB7 /* CBACampProject */ = {
 			isa = PBXGroup;
 			children = (
+				04F29E5722C08A1A00799F6F /* Model */,
 				DB764E55210CA1CD006E72EB /* CBACampProject.entitlements */,
 				DB764E51210C8A2E006E72EB /* FirebaseModel.swift */,
 				DB764E44210C74BC006E72EB /* GoogleService-Info.plist */,
@@ -274,14 +280,9 @@
 				04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */,
 				047CC6662108E8950054C395 /* SideBarViewController.swift */,
 				046C83A2210984AA00176FDE /* MapViewController.swift */,
-				04955EFA210A24320057FD68 /* Location.swift */,
-				DB3A8867210E3A7000E6DA14 /* Message.swift */,
 				043A7FF7219A721C00451CE0 /* AuthViewController.swift */,
 				04950AA921E508CD00213D42 /* SendMessageViewController.swift */,
 				04F925EB21E84DF400C4F6CA /* SearchGBSViewController.swift */,
-				04FD79EF21F87C8100936F87 /* MainUser.swift */,
-				04FD79F221F8857400936F87 /* MainGBS.swift */,
-				0404F7D22289ADA100B527F0 /* MainAttendance.swift */,
 				048AF660224B853E00A8D7AD /* CheckViewController.swift */,
 				0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */,
 			);
@@ -309,7 +310,7 @@
 		04E3728421071B0300FB7304 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				04F925EF21E870A000C4F6CA /* 19_겨울 */,
+				04F925EF21E870A000C4F6CA /* 19_겨울 */,
 				DBF11FD1211B524400EE9B98 /* 이미지준비중.png */,
 				DB3A886B210E54FD00E6DA14 /* 이미지준비중.jpg */,
 				DB764E5E210E0A3D006E72EB /* applybutton.png */,
@@ -332,7 +333,19 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		04F925EF21E870A000C4F6CA /* 19_겨울 */ = {
+		04F29E5722C08A1A00799F6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04FD79EF21F87C8100936F87 /* MainUser.swift */,
+				04955EFA210A24320057FD68 /* MainLocation.swift */,
+				DB3A8867210E3A7000E6DA14 /* MainMessage.swift */,
+				04FD79F221F8857400936F87 /* MainGBS.swift */,
+				0404F7D22289ADA100B527F0 /* MainAttendance.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04F925EF21E870A000C4F6CA /* 19_겨울 */ = {
 			isa = PBXGroup;
 			children = (
 				045952F221FC72FF006FE016 /* 19겨울_1층배치도.png */,
@@ -367,6 +380,9 @@
 		3996BEB8FA1837B4108E54E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04F29E5522C0893300799F6F /* Alamofire.framework */,
+				04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */,
+				04F29E5122C0889D00799F6F /* Alamofire.framework */,
 				66B278BDEFF6AF7EB5FBEBB9 /* Pods_CBACampProject.framework */,
 				3040CAA0E4FAE4C600640207 /* Pods_CBACampProjectTests.framework */,
 				4914A824F90EADCF5792B13A /* Pods_CBACampProjectUITests.framework */,
@@ -653,6 +669,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CBACampProject/Pods-CBACampProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -666,6 +683,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -727,7 +745,7 @@
 			files = (
 				04F0F54D2109FBD6001B953B /* UIView+SimpleAnimation.swift in Sources */,
 				048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */,
-				04955EFB210A24320057FD68 /* Location.swift in Sources */,
+				04955EFB210A24320057FD68 /* MainLocation.swift in Sources */,
 				DB764E52210C8A2E006E72EB /* FirebaseModel.swift in Sources */,
 				04FD79F321F8857400936F87 /* MainGBS.swift in Sources */,
 				0404F7D32289ADA100B527F0 /* MainAttendance.swift in Sources */,
@@ -740,7 +758,7 @@
 				04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */,
 				043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */,
 				04F925EC21E84DF400C4F6CA /* SearchGBSViewController.swift in Sources */,
-				DB3A8868210E3A7000E6DA14 /* Message.swift in Sources */,
+				DB3A8868210E3A7000E6DA14 /* MainMessage.swift in Sources */,
 				04E3727F2107106A00FB7304 /* ScheduleTabViewController.swift in Sources */,
 				046C83A3210984AA00176FDE /* MapViewController.swift in Sources */,
 			);
