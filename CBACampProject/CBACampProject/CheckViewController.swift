@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Alamofire
 
 class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var campusArray : [String] = []
@@ -49,6 +50,7 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func loadcampusData(){
+        /*
         //Parsing
         if(Auth.auth().currentUser != nil){
             //var url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)! + "/campus/list"
@@ -72,6 +74,32 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 }
                 
                 }.resume()
+        }
+        */
+        
+        //Alamofire 버젼
+        //Parsing
+        if(Auth.auth().currentUser != nil){
+            let url = "http://admin:dhwlrrleh!!!@cba.sungrak.or.kr:9000/members/search"
+            let param: Parameters = ["name" : "다인"]
+            let alamo = Alamofire.request(url, method: .post, parameters : param, encoding: URLEncoding.httpBody)
+            
+            alamo.responseJSON(){ response in
+                if let status = response.response?.statusCode{
+                    switch(status){
+                    case 201:
+                        print("success")
+                        
+                        print("JSON: \(response.result.value!)")
+                        if let jsonObject = response.result.value as? [String: Any] {
+                            print("name: \(jsonObject["name"]!)")
+                        }
+                    default:
+                        print("error with response status: \(status)")
+                    }
+                }
+
+            }
         }
         
         // 임시 테스트용
