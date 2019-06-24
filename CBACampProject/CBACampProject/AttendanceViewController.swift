@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import Alamofire
+import SwiftyJSON
 
 struct AttendanceInfo: Codable {
     var id : String?
@@ -121,29 +123,59 @@ class AttendanceViewController: UIViewController {
         statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
     }
     
-    func loadDateList(){
+    func loadCurrentList(){
         // 서버에 지금 캠퍼스와 날짜를 보내줘야 함
         // 그러면 날짜 목록을 서버가 보내 줌
-        
-        //Parsing
+        //Alamofire
         if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/attendance/list"
-            let urlObj = URL(string: url)
-            // Get으로 requestAPI 쏴서 받는거 알아야 함
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    let getAttendanceArray = try decoder.decode(AttendanceInfo.self, from: data)
-                    
-                    //self.currentAttendanceInfo = getAttendanceArray
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
+            let url = "http://cba.sungrak.or.kr:9000/attendance/list"
+            let date : String = "2019-05-05"
+            let campusName : String = "천안"
+            let navpoint : String = "CURRENT"
+            let params : Parameters = [
+                "date" : date,
+                "campus" : campusName,
+                "nav" : navpoint
+            ]
+            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
+            let alamo = Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header)
+            
+            alamo.responseJSON { response in
+                let json = JSON(response.result.value!)
+                let results = json["data"].arrayValue
+                if let status = response.response?.statusCode{
+                    switch(status){
+                    case 200..<300:
+                        print("success")
+                        print("JSON: \(json)")
+                        
+                        
+                        
+                        for result in results {
+                            var test = AttendanceInfo.init()
+                            
+                            let id = result["id"].stringValue
+                            let date = result["date"].stringValue
+                            let name = result["name"].stringValue
+                            let mobile = result["mobile"].stringValue
+                            let status = result["status"].stringValue
+                            let note = result["note"].stringValue
+                            
+                            test.name = result["name"].stringValue
+                            test.mobile = result["mobile"].stringValue
+                            test.status = result["status"].stringValue
+                            
+                            self.currentAttendanceInfo.append(test)
+                        }
+                        
+                        NotificationCenter.default.addObserver(self, selector: #selector(self.viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
+               
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
+                    default:
+                        print("error with response status: \(status)")
+                    }
                 }
-                
-            }.resume()
+            }
         }
     }
     
@@ -178,12 +210,14 @@ class AttendanceViewController: UIViewController {
     func testFunc(){
         var test = AttendanceInfo.init()
 
+        /*
         for n in 1...20{
             test.name = "유상건이"
             test.mobile = "010-0000-0000"
             test.status = ""
             currentAttendanceInfo.append(test)
         }
+        */
     }
     
     @objc func viewload(_ notification: Notification) {
@@ -295,7 +329,7 @@ class AttendanceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDateList()
+        loadCurrentList()
         campusName.text = selectedCampus
         testFunc()
         

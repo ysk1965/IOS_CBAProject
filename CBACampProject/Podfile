@@ -16,6 +16,7 @@ pod 'GoogleSignIn'
 pod 'Firebase/Auth'
 pod "TextFieldEffects"
 pod 'Alamofire'
+pod 'SwiftyJSON'
   # Pods for CBACampProject
 
   target 'CBACampProjectTests' do

@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Alamofire
+import SwiftyJSON
 
 class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var campusArray : [String] = []
@@ -50,65 +51,37 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func loadcampusData(){
-        /*
-        //Parsing
+        //Alamofire
         if(Auth.auth().currentUser != nil){
-            //var url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)! + "/campus/list"
-            // test
-            let url = "http://admin:dhwlrrleh!!!@cba.sungrak.or.kr:9000/members/search?name=다인"
-            let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            let urlObj = URL(string: encoded)
-    
+            let testuid : String = "0005"
+            let url = "http://cba.sungrak.or.kr:9000/leaders/\(testuid)/campus/list"
+            //let param: Parameters = ["name" : "test"]
+            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
+            let alamo = Alamofire.request(url, method: .get, encoding: URLEncoding.default, headers: header)
             
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    let getCampusArray = try decoder.decode(Array<String>.self, from: data)
-                    
-                    self.campusArray = getCampusArray
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
-        */
-        
-        //Alamofire 버젼
-        //Parsing
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:9000/members/search"
-            let param: Parameters = ["name" : "다인"]
-            let header: Parameters = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
-            let alamo = Alamofire.request(url, method: .post, parameters : param, headers: header, encoding: URLEncoding.httpBody)
-            
-            alamo.responseJSON(){ response in
+            alamo.responseJSON { response in
+                let json = JSON(response.result.value!)
+                let results = json["names"].arrayValue
                 if let status = response.response?.statusCode{
                     switch(status){
-                    case 201:
+                    case 200..<300:
                         print("success")
+                        print("JSON: \(json)")
                         
-                        print("JSON: \(response.result.value!)")
-                        if let jsonObject = response.result.value as? [String: Any] {
-                            print("name: \(jsonObject["name"]!)")
+                        for result in results {
+                            let test = result.stringValue
+                            self.campusArray.append(test)
                         }
                     default:
                         print("error with response status: \(status)")
                     }
                 }
-
+                
+                DispatchQueue.main.async {
+                    self.CampusPicker.reloadAllComponents()
+                }
             }
         }
-        
-        // 임시 테스트용
-        /*
-        campusArray.append("TESTDATA1")
-        campusArray.append("TESTDATA2")
-        campusArray.append("TESTDATA3")
-        */
     }
     
     override func viewDidLoad() {

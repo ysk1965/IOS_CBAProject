@@ -50,6 +50,7 @@
 		04E3727F2107106A00FB7304 /* ScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */; };
 		04E372812107146F00FB7304 /* MassageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372802107146F00FB7304 /* MassageTabViewController.swift */; };
 		04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */; };
+		04E47F9022C0F7F000974F5C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E47F8F22C0F7F000974F5C /* SwiftyJSON.framework */; };
 		04F0F54D2109FBD6001B953B /* UIView+SimpleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */; };
 		04F29E5422C0892900799F6F /* Pods_CBACampProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */; };
 		04F29E5622C0893300799F6F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F29E5522C0893300799F6F /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -158,6 +159,7 @@
 		04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
 		04E372802107146F00FB7304 /* MassageTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageTabViewController.swift; sourceTree = "<group>"; };
 		04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAInfoTabViewController.swift; sourceTree = "<group>"; };
+		04E47F8F22C0F7F000974F5C /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SimpleAnimation.swift"; sourceTree = "<group>"; };
 		04F29E5122C0889D00799F6F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CBACampProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E47F9022C0F7F000974F5C /* SwiftyJSON.framework in Frameworks */,
 				04F29E5622C0893300799F6F /* Alamofire.framework in Frameworks */,
 				04F29E5422C0892900799F6F /* Pods_CBACampProject.framework in Frameworks */,
 			);
@@ -380,6 +383,7 @@
 		3996BEB8FA1837B4108E54E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04E47F8F22C0F7F000974F5C /* SwiftyJSON.framework */,
 				04F29E5522C0893300799F6F /* Alamofire.framework */,
 				04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */,
 				04F29E5122C0889D00799F6F /* Alamofire.framework */,
@@ -677,6 +681,7 @@
 				"${BUILT_PRODUCTS_DIR}/MenuSlider/MenuSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleAnimation/SimpleAnimation.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -691,6 +696,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleAnimation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
