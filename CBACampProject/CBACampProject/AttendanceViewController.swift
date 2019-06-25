@@ -100,14 +100,13 @@ class AttendanceViewController: UIViewController {
             print(currentAttendanceInfo[n].status!)
         }
         // 값이 멀쩡히 잘 들어가네 currentAttendanceInfo를 서버로 보내주면 돼
-    }
-    
-    @IBAction func editButton(_ sender: Any) {
-        // 출석부 생성해서 받아와야 해
+        
+        
+        
             if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
+            let url = "http://cba.sungrak.or.kr:9000/attendance/list/report"
             let date : String = "2019-05-05" // 현재 날짜
-            let campusName : String = "천안"
+            let campusName : String = selectedCampus
                 
             let params : Parameters = [
                 "date" : date,
@@ -115,7 +114,58 @@ class AttendanceViewController: UIViewController {
             ]
             
             let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
-            let alamo = Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header)
+            let alamo = Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: header)
+            
+            alamo.responseJSON { response in
+                let json = JSON(response.result.value!)
+                let results = json["data"].arrayValue
+                if let status = response.response?.statusCode{
+                    switch(status){
+                    case 200..<300:
+                        print("success")
+                        print("JSON: \(json)")
+                        
+                        for result in results {
+                            var test = AttendanceInfo.init()
+                            
+                            test id = result["id"].stringValue
+                            test date = result["date"].stringValue
+                            test.name = result["name"].stringValue
+                            test.mobile = result["mobile"].stringValue
+                            test.status = result["status"].stringValue
+                            test note = result["note"].stringValue
+                            
+                            self.currentAttendanceInfo.append(test)
+                        }
+                        
+                        NotificationCenter.default.addObserver(self, selector: #selector(self.viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
+               
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
+                    case 403: // 출석부가 있는 경우 발생하는 error
+                        // data : 이미 출석부가 생성되어 있습니다. text가 넘어 옴
+                        // edit Button 이 생성되고 누를 수 있도록 만들어줘야 함
+                    default:
+                        print("error with response status: \(status)")
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func editButton(_ sender: Any) {
+        // 출석부 생성해서 받아와야 해
+            if(Auth.auth().currentUser != nil){
+            let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
+            let date : String = "2019-05-05" // 현재 날짜
+            let campusName : String = selectedCampus
+                
+            let params : Parameters = [
+                "date" : date,
+                "campus" : campusName
+            ]
+            
+            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
+            let alamo = Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: header)
             
             alamo.responseJSON { response in
                 let json = JSON(response.result.value!)
@@ -193,7 +243,7 @@ class AttendanceViewController: UIViewController {
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list"
             let date : String = "2019-05-05"
-            let campusName : String = "천안"
+            let campusName : String = selectedCampus
             let navpoint : String = nav
             
             let params : Parameters = [
