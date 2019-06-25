@@ -41,6 +41,9 @@ struct AttendanceInfo: Codable {
 
 struct checkAPI {
     var id : String?
+    var date : String?
+    var name : String?
+    var mobile : String?
     var status : String?
     var note : String?
 }
@@ -100,43 +103,17 @@ class AttendanceViewController: UIViewController {
     }
     
     @IBAction func editButton(_ sender: Any) {
-        // 편집기능이 들어갈 버튼
-        
-    }
-    
-    @IBAction func prevButton(_ sender: Any) {
-        // 오늘 날짜를 보내고 이전 가장 최근 날짜를 받아와
-    }
-    @IBAction func nextButton(_ sender: Any) {
-    }
-    
-    struct requestAPI{
-        var date : String
-        var campus : String
-    }
-    
-    var attendCnt : Int = 5
-    var allCnt : Int = 5
-    var attendPercent : Int = 5
-    func setStats(){
-        attendPercent = attendCnt / allCnt * 100
-        statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
-    }
-    
-    func loadCurrentList(){
-        // 서버에 지금 캠퍼스와 날짜를 보내줘야 함
-        // 그러면 날짜 목록을 서버가 보내 줌
-        //Alamofire
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:9000/attendance/list"
-            let date : String = "2019-05-05"
+        // 출석부 생성해서 받아와야 해
+            if(Auth.auth().currentUser != nil){
+            let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
+            let date : String = "2019-05-05" // 현재 날짜
             let campusName : String = "천안"
-            let navpoint : String = "CURRENT"
+                
             let params : Parameters = [
                 "date" : date,
-                "campus" : campusName,
-                "nav" : navpoint
+                "campus" : campusName
             ]
+            
             let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
             let alamo = Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header)
             
@@ -154,16 +131,21 @@ class AttendanceViewController: UIViewController {
                         for result in results {
                             var test = AttendanceInfo.init()
                             
+                            /*
                             let id = result["id"].stringValue
                             let date = result["date"].stringValue
                             let name = result["name"].stringValue
                             let mobile = result["mobile"].stringValue
                             let status = result["status"].stringValue
                             let note = result["note"].stringValue
+                            */
                             
+                            test id = result["id"].stringValue
+                            test date = result["date"].stringValue
                             test.name = result["name"].stringValue
                             test.mobile = result["mobile"].stringValue
                             test.status = result["status"].stringValue
+                            test note = result["note"].stringValue
                             
                             self.currentAttendanceInfo.append(test)
                         }
@@ -171,6 +153,9 @@ class AttendanceViewController: UIViewController {
                         NotificationCenter.default.addObserver(self, selector: #selector(self.viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
                
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
+                    case 403: // 출석부가 있는 경우 발생하는 error
+                        // data : 이미 출석부가 생성되어 있습니다. text가 넘어 옴
+                        // edit Button 이 생성되고 누를 수 있도록 만들어줘야 함
                     default:
                         print("error with response status: \(status)")
                     }
@@ -179,45 +164,81 @@ class AttendanceViewController: UIViewController {
         }
     }
     
-    func loadAttendanceData(){
-        // 받아온 데이터 중 가장 최근 날짜를 우선 뿌려줘야 해
-        // 이번엔 서버에 해당 날짜 + 캠퍼스를 보내줘
-        // 서버는 출석부를 건내줄거야
-        
-        //Parsing
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/attendance/list"
-            let urlObj = URL(string: url)
-            // Get으로 requestAPI 쏴서 받는거 알아야 함
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    let getAttendanceArray = try decoder.decode(
-                        Array<AttendanceInfo>.self, from: data)
-                    
-                    self.currentAttendanceInfo = getAttendanceArray
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
+    @IBAction func prevButton(_ sender: Any) {
+        // 오늘 날짜를 보내고 이전 가장 최근 날짜를 받아와
+        LoadAttendanceList("PREV")
+    }
+    @IBAction func nextButton(_ sender: Any) {
+        LoadAttendanceList("NEXT")
     }
     
-    func testFunc(){
-        var test = AttendanceInfo.init()
+    struct requestAPI{
+        var date : String
+        var campus : String
+    }
+    
+    var attendCnt : Int = 5
+    var allCnt : Int = 5
+    var attendPercent : Int = 5
+    func setStats(){
+        attendPercent = attendCnt / allCnt * 100
+        statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
+    }
+    
+    // nav : PREV, CURRENT, NEXT
+    func LoadAttendanceList(nav : String){
+        // 서버에 지금 캠퍼스와 날짜를 보내줘야 함
+        // 그러면 날짜 목록을 서버가 보내 줌
+        //Alamofire
+        if(Auth.auth().currentUser != nil){
+            let url = "http://cba.sungrak.or.kr:9000/attendance/list"
+            let date : String = "2019-05-05"
+            let campusName : String = "천안"
+            let navpoint : String = nav
+            
+            let params : Parameters = [
+                "date" : date,
+                "campus" : campusName,
+                "nav" : navpoint
+            ]
+            
+            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
+            let alamo = Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header)
+            
+            alamo.responseJSON { response in
+                let json = JSON(response.result.value!)
+                let results = json["data"].arrayValue
+                if let status = response.response?.statusCode{
+                    switch(status){
+                    case 200..<300:
+                        print("success")
+                        print("JSON: \(json)")
 
-        /*
-        for n in 1...20{
-            test.name = "유상건이"
-            test.mobile = "010-0000-0000"
-            test.status = ""
-            currentAttendanceInfo.append(test)
+                        for result in results {
+                            var test = AttendanceInfo.init()
+                            
+                            test id = result["id"].stringValue
+                            test date = result["date"].stringValue
+                            test.name = result["name"].stringValue
+                            test.mobile = result["mobile"].stringValue
+                            test.status = result["status"].stringValue
+                            test note = result["note"].stringValue
+                            
+                            self.currentAttendanceInfo.append(test)
+                        }
+                        
+                        NotificationCenter.default.addObserver(self, selector: #selector(self.viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
+               
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
+                    case 403: // 출석부가 있는 경우 발생하는 error
+                        // data : 이미 출석부가 생성되어 있습니다. text가 넘어 옴
+                        // edit Button 이 생성되고 누를 수 있도록 만들어줘야 함
+                    default:
+                        print("error with response status: \(status)")
+                    }
+                }
+            }
         }
-        */
     }
     
     @objc func viewload(_ notification: Notification) {
@@ -329,9 +350,8 @@ class AttendanceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadCurrentList()
         campusName.text = selectedCampus
-        testFunc()
+        LoadAttendanceList("CURRENT")
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
         
