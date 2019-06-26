@@ -65,6 +65,10 @@ class MassageTabViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var buttonView: UIView!
     
+    @IBAction func Back(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
     static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "", gbsLevel : "", grade: "")
     static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
@@ -86,8 +90,8 @@ class MassageTabViewController: UIViewController {
     
     @IBOutlet weak var ApplicationOutlet: UIButton!
     @IBAction func ApplicationAction(_ sender: Any) {
-        ApplicationOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        //ApplicationOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
+        //UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     
     @IBOutlet weak var ApplicationLabel: UILabel!
@@ -235,7 +239,7 @@ class MassageTabViewController: UIViewController {
         SendButton.setTitle(" ", for: .normal)
         SendButton.setTitleColor(UIColor.blue, for: .normal)
         //SendButton.backgroundColor = UIColor.black
-        SendButton.frame = CGRect(x: scrollView.frame.width-85, y: scrollView.frame.height-25, width: 75, height: 75)
+        SendButton.frame = CGRect(x: scrollView.frame.width-85, y: scrollView.frame.height-85, width: 75, height: 75)
         SendButton.setBackgroundImage(UIImage(named: "KakaoTalk_Photo_2019-01-14-11-35-56.png"), for: .normal)
         SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
         self.view.addSubview(SendButton)

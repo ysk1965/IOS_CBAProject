@@ -97,31 +97,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     var url = URL(string:"http://cba.sungrak.or.kr/HomePage/Index")
     
-    @IBOutlet weak var WebOutlet: UIButton!
-    @IBAction func SendWebAction(_ sender: Any) {
-        /*
-        WebOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
-        url = URL(string:"http://cba.sungrak.or.kr/HomePage/Index")
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        */
-    }
-    @IBOutlet weak var BlogOutlet: UIButton!
-    @IBAction func LinkToBlogAction(_ sender: Any) {
-        BlogOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
-        url = URL(string:"https://thebondofpeace.blog.me/221107817302")
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-    }
-    @IBOutlet weak var YoutubeOutlet: UIButton!
-    @IBAction func LinkToYoutubeAction(_ sender: Any) {
-        YoutubeOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
-        url = URL(string:"https://www.youtube.com/channel/UCW6bF9L0ZK__Tlwl19B0FYQ")
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-    }
     @IBOutlet weak var InstaOutlet: UIButton!
     @IBAction func InstagramAction(_ sender: Any) {
+        
         InstaOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
         url = URL(string:"https://www.instagram.com/cba.sungrak/")
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+ 
     }
     
     @objc func viewload(_ notification: Notification){

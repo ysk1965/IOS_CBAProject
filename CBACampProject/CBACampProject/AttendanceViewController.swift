@@ -243,6 +243,7 @@ class AttendanceViewController: UIViewController {
                     case 200..<300:
                         print("success")
                         print("JSON: \(json)")
+                        self.currentAttendanceInfo.removeAll()
 
                         for result in results {
                             var test = AttendanceInfo.init()
