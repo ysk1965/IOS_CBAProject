@@ -273,7 +273,7 @@
                     <navigationItem key="navigationItem" id="f48-dW-bmW">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nIW-Up-zJ1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
                                 <rect key="frame" x="16" y="0.0" width="118" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -1008,6 +1008,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="579447264.42066896">
                                     <!--2019-05-13 13:34:24 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="ChangeDate:" destination="I6V-OP-OAt" eventType="valueChanged" id="cP1-Ey-nLl"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용넣기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQa-oo-hmH">
                                 <rect key="frame" x="60" y="129" width="200" height="30"/>

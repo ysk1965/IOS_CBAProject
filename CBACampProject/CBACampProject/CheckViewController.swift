@@ -13,7 +13,6 @@ import SwiftyJSON
 
 class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var campusArray : [String] = []
-    var selectRow : Int = 0
     
     @IBOutlet weak var moveButton: UIButton!
     @IBOutlet weak var CampusPicker: UIPickerView!
@@ -29,7 +28,7 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "checkIdentifier"{
             if let destinationVC = segue.destination as? AttendanceViewController {
-                destinationVC.selectedCampus = campusArray[selectRow]
+                destinationVC.selectedCampus = campusArray[CampusPicker.selectedRow(inComponent: 0)]
             }
         }
     }
@@ -44,10 +43,6 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return campusArray[row]
-    }
-    
-    private func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectRow = row
     }
     
     func loadcampusData(){

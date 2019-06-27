@@ -131,6 +131,13 @@ class AttendanceViewController: UIViewController {
         }
     }
     
+    @IBAction func ChangeDate(_ sender: Any) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        dateTimeTextfield.text = formatter.string(from: sender.date)
+    }
+    
     @IBAction func editButton(_ sender: Any) {
         // 출석부 생성해서 받아와야 해
             if(Auth.auth().currentUser != nil){
