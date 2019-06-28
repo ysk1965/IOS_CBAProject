@@ -60,7 +60,7 @@ class AttendanceViewController: UIViewController {
     var textArray : Array<UITextView> = []
     
     var errorCode = 999 // attend value error
-    var isEmptyFlag = False
+    var isEmptyFlag : Bool = false
     
     var currentDate : String?
     
@@ -92,18 +92,11 @@ class AttendanceViewController: UIViewController {
         }
     }
     
-    @IBAction func ChangeDate(_ sender: Any) {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .medium
-        dateTimeTextfield.text = formatter.string(from: sender.date)
-    }
-    
     @IBAction func editButton(_ sender: Any) {
         // 출석부 생성해서 받아와야 해
             if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
-            let date : String = currentDate // 현재 날짜
+            let date : String = "2019-05-05" // 현재 날짜
                 let campusName : String = selectedCampus!
                 
             let params : Parameters = [
@@ -163,14 +156,20 @@ class AttendanceViewController: UIViewController {
     }
     
     func setStats(){
-        var attendCnt : Int = 0
-        var allCnt : Int = 0
-        var attendPercent : Int = 0
+        var attendCnt = 0
+        var allCnt = -1
+        var attendPercent = 0
         
-        attendCnt = currentAttendanceInfo.count
+        allCnt = currentAttendanceInfo.count
+        
+        if(allCnt == 0){
+            statsText.text = "데이터가 없습니다."
+            return
+        }
+        
         for n in 0...currentAttendanceInfo.count - 1{
             if(currentAttendanceInfo[n].status == "ATTENDED"){
-                attendCnt++
+                attendCnt += 1
             }
         }
         
@@ -185,7 +184,7 @@ class AttendanceViewController: UIViewController {
         //Alamofire
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list"
-            let date : String = currentDate // [NEEDED] DatePicker의 날자로 변경되어야 함
+            let date : String = "2019-05-05" // [NEEDED] DatePicker의 날자로 변경되어야 함
             let campusName : String = selectedCampus!
             let navpoint : String = nav
             
