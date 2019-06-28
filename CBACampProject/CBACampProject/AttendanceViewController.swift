@@ -150,9 +150,7 @@ class AttendanceViewController: UIViewController {
                             self.currentAttendanceInfo.append(test)
                         }
                         
-                        NotificationCenter.default.addObserver(self, selector: #selector(self.viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
-               
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
                     case 403:
                         break // 출석부가 있는 경우 발생하는 error
                         // data : 이미 출석부가 생성되어 있습니다. text가 넘어 옴
@@ -362,7 +360,7 @@ class AttendanceViewController: UIViewController {
         campusName.text = selectedCampus
         LoadAttendanceList(nav: "CURRENT")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "update AttendanceBook"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
     }
 }
