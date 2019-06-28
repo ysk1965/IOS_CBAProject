@@ -30,12 +30,12 @@ struct AttendanceInfo: Codable {
     }
     
     init() {
-        id = "a"
-        date = "a"
-        name = "a"
-        mobile = "a"
-        status = "a"
-        note = "a"
+        id = " "
+        date = " "
+        name = " "
+        mobile = " "
+        status = " "
+        note = " "
     }
 }
 
@@ -60,32 +60,25 @@ class AttendanceViewController: UIViewController {
     var textArray : Array<UITextView> = []
     
     var errorCode = 999 // attend value error
+    var isEmptyFlag = False
     
     var currentDate : String?
     
     @IBAction func ConfirmButton(_ sender: Any) {
+        //confirm을 누를 때 세부사항 text저장 후 아래서 보내 줌
+        //status는 누를 때마다 상태가 변경되기에 여기서 저장 안해도 됨 (renewAttend)
         for n in 0...currentAttendanceInfo.count - 1{
             currentAttendanceInfo[n].note = textArray[n].text
         }
-        // 변경완료
-        // text는 여기서 다 불러서 저장해
-        for n in 0...currentAttendanceInfo.count - 1{
-            print(currentAttendanceInfo[n].note!)
-        }
-        
-        for n in 0...currentAttendanceInfo.count - 1{
-            print(currentAttendanceInfo[n].status!)
-        }
-        // 값이 멀쩡히 잘 들어가네 currentAttendanceInfo를 서버로 보내주면 돼
         
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list/report"
-            let date : String = "2019-05-05" // 현재 날짜
+            let date : String = "2019-05-05" // [NEEDED] DatePicker의 날자로 적용되어야 함
             let campusName : String = selectedCampus!
                 
             let params : Parameters = [
-                "checkList" : currentAttendanceInfo,
-                "leaderUid" : "9999" // 출석 체크 작성 leader의 uid
+                "checkList" : currentAttendanceInfo, // [NEEDED] 요게 제대로 작동하는지 확인해야 함
+                "leaderUid" : "9999" // [NEEDED] leader의 uid로 차후에 수정해야 함
             ]
             
             let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
@@ -94,6 +87,8 @@ class AttendanceViewController: UIViewController {
             alamo.responseJSON { response in
                 print(response)
             }
+            
+            // [NEEDED]변경이 완료되었습니다! 같은 Alert가 필요할듯
         }
     }
     
@@ -151,10 +146,6 @@ class AttendanceViewController: UIViewController {
                         }
                         
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
-                    case 403:
-                        break // 출석부가 있는 경우 발생하는 error
-                        // data : 이미 출석부가 생성되어 있습니다. text가 넘어 옴
-                        // edit Button 이 생성되고 누를 수 있도록 만들어줘야 함
                     default:
                         print("error with response status: \(status)")
                     }
@@ -164,18 +155,25 @@ class AttendanceViewController: UIViewController {
     }
     
     @IBAction func prevButton(_ sender: Any) {
-        // 오늘 날짜를 보내고 이전 가장 최근 날짜를 받아와
         LoadAttendanceList(nav: "PREV")
     }
+    
     @IBAction func nextButton(_ sender: Any) {
         LoadAttendanceList(nav: "NEXT")
     }
     
-    var attendCnt : Int = 5
-    var allCnt : Int = 5
-    var attendPercent : Int = 5
-    
     func setStats(){
+        var attendCnt : Int = 0
+        var allCnt : Int = 0
+        var attendPercent : Int = 0
+        
+        attendCnt = currentAttendanceInfo.count
+        for n in 0...currentAttendanceInfo.count - 1{
+            if(currentAttendanceInfo[n].status == "ATTENDED"){
+                attendCnt++
+            }
+        }
+        
         attendPercent = attendCnt / allCnt * 100
         statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
     }
@@ -187,7 +185,7 @@ class AttendanceViewController: UIViewController {
         //Alamofire
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list"
-            let date : String = currentDate
+            let date : String = currentDate // [NEEDED] DatePicker의 날자로 변경되어야 함
             let campusName : String = selectedCampus!
             let navpoint : String = nav
             
@@ -223,14 +221,14 @@ class AttendanceViewController: UIViewController {
                             self.currentAttendanceInfo.append(test)
                         }
                         
-                        NotificationCenter.default.addObserver(self, selector: #selector(self.viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
-               
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
-                    case 403:
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
                         break
-                        // 출석부가 있는 경우 발생하는 error
-                        // data : 이미 출석부가 생성되어 있습니다. text가 넘어 옴
-                        // edit Button 이 생성되고 누를 수 있도록 만들어줘야 함
+                    case 403:
+                        // Empty
+                        self.isEmptyFlag = true
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+                        break
                     default:
                         print("error with response status: \(status)")
                     }
@@ -244,6 +242,14 @@ class AttendanceViewController: UIViewController {
         let scrollcontainerView = UIView(frame: attendanceScrollView.frame)
         attendanceScrollView.addSubview(scrollcontainerView)
         //scrollView.addSubview(buttonView)
+        
+        if (self.isEmptyFlag == true){
+            // [NEEDED] editButton 코드로 생성해 주세요..!
+            
+            self.isEmptyFlag = false
+            return
+        }
+        
         
         var inypos = 1
         let inxpos = 20
@@ -322,16 +328,20 @@ class AttendanceViewController: UIViewController {
         attendanceScrollView.contentSize = CGSize(width: attendanceScrollView.frame.width-1, height: max(CGFloat(inypos),attendanceScrollView.frame.height+1))
         attendanceScrollView.isScrollEnabled = true
         
+        setStats() // Title 표시
         self.view.addSubview(attendanceScrollView)
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
+    // gray : NOT CHECKED
+    // blue : ATTENDED
+    // black : ABSENT
     @objc func Attend(_ sender:UIButton){
-        // 출석에 대한 정의가 필요합니다.
         if(sender.backgroundColor == UIColor.black){
             sender.backgroundColor = UIColor.blue
             renewAttend(idx: Int(sender.currentTitle!) ?? errorCode, check: "ABSENT")
+        } else if (sender.backgroundColor == UIColor.gray){
+            sender.backgroundColor = UIColor.blue
+            renewAttend(idx: Int(sender.currentTitle!) ?? errorCode, check: "NOT_CHECKED")
         } else{
             sender.backgroundColor = UIColor.black
             renewAttend(idx: Int(sender.currentTitle!) ?? errorCode, check: "ATTENDED")
@@ -340,10 +350,6 @@ class AttendanceViewController: UIViewController {
     
     func renewAttend(idx : Int, check : String){
         currentAttendanceInfo[idx].status = String(check)
-    }
-    
-    func renewNote(idx : Int, value : String){
-        currentAttendanceInfo[idx].note = String(value)
     }
     
     func saveCurrentDate(){
@@ -356,11 +362,11 @@ class AttendanceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveCurrentDate() // 현재 날짜 포매팅 해서 저장 (currentDate)
+        saveCurrentDate() // [NEEDED] DatePicker로 계속 변경되어야 하고 처음에는 오늘날자로 적용 되도록
         campusName.text = selectedCampus
-        LoadAttendanceList(nav: "CURRENT")
         
+        LoadAttendanceList(nav: "CURRENT")
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "update AttendanceBook"), object: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self) // 초기화면 로드 (당일이 나와야 함)
     }
 }
