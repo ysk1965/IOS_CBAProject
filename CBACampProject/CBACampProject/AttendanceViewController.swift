@@ -48,30 +48,6 @@ struct checkAPI {
     var note : String?
 }
 
-/*
-struct ConfirmInfo: Codable {
-    var checklist : Array<checkAPI> = []
-    var leaderUid : String?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        checklist = try values.decodeIfPresent(Array<checkAPI>.self, forKey: .id)
-        leaderUid = try values.decodeIfPresent(String.self, forKey: .date)
-    }
-    
-    init() {
-        var tempAPI : checkAPI
-        tempAPI.id = "test"
-        tempAPI.note = "testNote"
-        tempAPI.status = "testStatus"
-        
-        checklist.append(tempAPI)
-        
-        leaderUid = "tempUid"
-    }
-}
-*/
-
 class AttendanceViewController: UIViewController {
     @IBOutlet weak var statsText: UILabel!
     @IBOutlet weak var campusName: UILabel!
@@ -85,6 +61,7 @@ class AttendanceViewController: UIViewController {
     
     var errorCode = 999 // attend value error
     
+    var currentDate : String?
     
     @IBAction func ConfirmButton(_ sender: Any) {
         for n in 0...currentAttendanceInfo.count - 1{
@@ -107,19 +84,8 @@ class AttendanceViewController: UIViewController {
             let campusName : String = selectedCampus!
                 
             let params : Parameters = [
-                "checkList" : [
-                    [
-                        "id" : 1,
-                        "status" : 1,
-                        "note" : 1
-                    ],
-                    [
-                        "id" : 1,
-                        "status" : 1,
-                        "note" : 1
-                    ]
-                ],
-                "leaderUid" : "9999"
+                "checkList" : currentAttendanceInfo,
+                "leaderUid" : "9999" // 출석 체크 작성 leader의 uid
             ]
             
             let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
@@ -142,7 +108,7 @@ class AttendanceViewController: UIViewController {
         // 출석부 생성해서 받아와야 해
             if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
-            let date : String = "2019-05-05" // 현재 날짜
+            let date : String = currentDate // 현재 날짜
                 let campusName : String = selectedCampus!
                 
             let params : Parameters = [
@@ -161,8 +127,6 @@ class AttendanceViewController: UIViewController {
                     case 200..<300:
                         print("success")
                         print("JSON: \(json)")
-                        
-                        
                         
                         for result in results {
                             var test = AttendanceInfo.init()
@@ -209,14 +173,10 @@ class AttendanceViewController: UIViewController {
         LoadAttendanceList(nav: "NEXT")
     }
     
-    struct requestAPI{
-        var date : String
-        var campus : String
-    }
-    
     var attendCnt : Int = 5
     var allCnt : Int = 5
     var attendPercent : Int = 5
+    
     func setStats(){
         attendPercent = attendCnt / allCnt * 100
         statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
@@ -229,7 +189,7 @@ class AttendanceViewController: UIViewController {
         //Alamofire
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list"
-            let date : String = "2019-05-05"
+            let date : String = currentDate
             let campusName : String = selectedCampus!
             let navpoint : String = nav
             
@@ -388,24 +348,21 @@ class AttendanceViewController: UIViewController {
         currentAttendanceInfo[idx].note = String(value)
     }
     
+    func saveCurrentDate(){
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        currentDate = dateFormatter.string(from: date) // --- 3
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        saveCurrentDate() // 현재 날짜 포매팅 해서 저장 (currentDate)
         campusName.text = selectedCampus
         LoadAttendanceList(nav: "CURRENT")
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
