@@ -14,6 +14,7 @@ import FirebaseStorage
 
 class FirebaseModel {
     static var messages = [Message]()
+    static var imageNames : Array<String> = []
     static var sendMessageData = Message(text: "default", time: "default", auth: "default", isStaff : "default")
     static var schedule = "" 
     
@@ -41,6 +42,21 @@ class FirebaseModel {
         })
     }
     
+    func UpdateImageNames(title : String){
+        FirebaseModel.imageNames.removeAll()
+        
+        ref = Database.database().reference().child("images").child(title)
+        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot]{
+                for i in result {
+                    FirebaseModel.imageNames.append(i.value as! String)
+                }
+            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "change image"), object: self)
+        })
+
+    }
+    
     func sendMessage(name: String, message: String) {
         let values = ["author":name, "message":message]
         
@@ -62,6 +78,7 @@ class FirebaseModel {
     func getSchedule() {
         var ref: DatabaseReference!
         print("trying to get schedule...")
+        Database.database().reference().child("images")
         
         ref = Database.database().reference().child("images").child("schedule")
         ref.observeSingleEvent(of: .value, with: {(snapshot) in

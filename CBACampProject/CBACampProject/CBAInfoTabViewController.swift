@@ -11,13 +11,14 @@ import Foundation
 import MessageUI
 import MenuSlider
 import Firebase
+import ImageSlideshow
 
 class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     // move TabBar
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var pageImages: [UIImage] = []
+    var pageImages: Array<UIImage> = []
     var downloadImageNames: [String] = []
     var pageViews: [UIImageView?] = []
     var firebaseModel: FirebaseModel = FirebaseModel()
@@ -45,10 +46,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         MenuSetting()
         print("Action on Open Menu")
     }
-    
-    
-    
-    
     
     @IBOutlet weak var Hamberger: UIButton!
     @IBAction func HambergerAction(_ sender: Any) {
@@ -212,190 +209,34 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 self.performSegue(withIdentifier: "SearchGBSSegue", sender: nil)
             }
         }
-        
-        
         let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
-            
-            self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!]
-            let pageCount = self.pageImages.count
-            
-            self.pageControl.currentPage = 0
-            self.pageControl.numberOfPages = pageCount
-            
-            for _ in 0..<pageCount{
-                self.pageViews.append(nil)
-            }
-            
-            let pagesScrollViewSize = self.scrollView.frame.size
-            self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-            
-            
-            //self.downloadImageNames = ["campus_place1.png","campus_place2.png","campus_place3.png"]
-            self.downloadImageNames = ["campus_place1.png","campus_place2.png","campus_place3.png"]
-            self.loadVisiblePages()
+            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
-        
-        // Creating a Menu Item with title string, without an action
         let menuItem2 = SideMenuItemFactory.make(title: "  GBS장소") {
             self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!]
-            let pageCount = self.pageImages.count
-            
-            self.pageControl.currentPage = 0
-            self.pageControl.numberOfPages = pageCount
-            
-            for _ in 0..<pageCount{
-                self.pageViews.append(nil)
-            }
-            
-            let pagesScrollViewSize = self.scrollView.frame.size
-            self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-            
-            self.downloadImageNames = ["gbs_place1.png", "gbs_place2.png", "gbs_place3.png", "gbs_place4.png"]
-            self.loadVisiblePages()
+            // Firebase에 모델 변경 요청
+            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
         
-        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {
-            self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.png")!]
-            let pageCount = self.pageImages.count
-            
-            self.pageControl.currentPage = 0
-            self.pageControl.numberOfPages = pageCount
-            
-            for _ in 0..<pageCount{
-                self.pageViews.append(nil)
-            }
-            
-            let pagesScrollViewSize = self.scrollView.frame.size
-            self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-            
-            self.downloadImageNames = ["lecture.png"]
-            self.loadVisiblePages()
+        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
         
-        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {
-            self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "이미지준비중.png")!,
-                               UIImage(named: "19겨울_5층배치도.png")!,
-                               UIImage(named: "19겨울_별관배치도.png")!]
-            let pageCount = self.pageImages.count
-            
-            self.pageControl.currentPage = 0
-            self.pageControl.numberOfPages = pageCount
-            
-            for _ in 0..<pageCount{
-                self.pageViews.append(nil)
-            }
-            
-            let pagesScrollViewSize = self.scrollView.frame.size
-            self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-            
-            self.downloadImageNames = ["room1.png", "room2.png", "room3.png", "room4.png"]
-            self.loadVisiblePages()
+        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
         
         let menuItem5 = SideMenuItemFactory.make(title: "  식단 안내") {
-            self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.png")!]
-            let pageCount = self.pageImages.count
-            
-            self.pageControl.currentPage = 0
-            self.pageControl.numberOfPages = pageCount
-            
-            for _ in 0..<pageCount{
-                self.pageViews.append(nil)
-            }
-            
-            let pagesScrollViewSize = self.scrollView.frame.size
-            self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-            
-            self.downloadImageNames = ["menu.png"]
-            self.loadVisiblePages()
+            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
         
         let menuItem6 = SideMenuItemFactory.make(title: "  식당/간식 봉사") {
-            self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.png")!]
-            let pageCount = self.pageImages.count
-            
-            self.pageControl.currentPage = 0
-            self.pageControl.numberOfPages = pageCount
-            
-            for _ in 0..<pageCount{
-                self.pageViews.append(nil)
-            }
-            
-            let pagesScrollViewSize = self.scrollView.frame.size
-            self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-            
-            self.downloadImageNames = ["mealwork.png"]
-            self.loadVisiblePages()
+            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
         
         let menuItem7 = SideMenuItemFactory.make(title: "  청소구역") {
-            self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            self.pageViews = []
-            self.pageImages = [UIImage(named: "이미지준비중.png")!]
-            let pageCount = self.pageImages.count
-            
-            self.pageControl.currentPage = 0
-            self.pageControl.numberOfPages = pageCount
-            
-            for _ in 0..<pageCount{
-                self.pageViews.append(nil)
-            }
-            
-            let pagesScrollViewSize = self.scrollView.frame.size
-            self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-            
-            self.downloadImageNames = ["cleaning.png"]
-            self.loadVisiblePages()
+            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
         
+        /*
         let menuItem8 = SideMenuItemFactory.make(title: "  출석체크") {
             self.SelectMenu = true;
             MassageTabViewController.mainUser.grade = "MISSION" // 임시
@@ -416,9 +257,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 else {
                     debugPrint("grade : " + MassageTabViewController.mainUser.grade)
                 }
-                
             }
         }
+        */
         
         // Creating a Menu Header with title string
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
@@ -501,7 +342,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let menufooter = SideMenuFooterFactory.make(view: footerView)
         
         // Setting itens to the SideMenuViewController
-        let menuBuild = SideMenu(menuItems: [menuItem8, menuItem0 ,menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader, footer: menufooter)
+        let menuBuild = SideMenu(menuItems: [menuItem0 ,menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader, footer: menufooter)
         
         // Building the Menu SideMenuViewController
         self.menu = menuBuild.build()
@@ -512,6 +353,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func loadPage(_ page: Int){
+        
         if page < 0 || page >= pageImages.count{
             return
         }
@@ -554,7 +396,41 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
-    func loadVisiblePages(){
+    @objc func loadVisiblePages(_ notification: Notification){
+        downloadImageNames = FirebaseModel.imageNames
+        
+        if(FirebaseModel.imageNames.count == 0){
+            print("비어있어!!")
+            return
+        }
+        
+        // 페이지 정리
+        for view in self.pageViews {
+            view?.removeFromSuperview()
+        }
+        
+        self.pageViews = []
+        
+        for imageName in downloadImageNames{
+            if let value = UIImage(named: "이미지준비중.png"){
+                self.pageImages.append(value)
+            }
+        }
+        
+        let pageCount = self.pageImages.count
+        
+        self.pageControl.currentPage = 0
+        self.pageControl.numberOfPages = pageCount
+        
+        for _ in 0..<pageCount{
+            self.pageViews.append(nil)
+        }
+        
+        let pagesScrollViewSize = self.scrollView.frame.size
+        self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
+        /////////
+        
+
         /*
         self.imageView.isHidden = true
         */
@@ -586,7 +462,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        loadVisiblePages()
     }
     
     @objc func handlePinch(sender: UIPinchGestureRecognizer) {
@@ -657,11 +532,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         view.addGestureRecognizer(pinch)
         
+        NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "change image"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
         FirebaseModel().getMessages()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {

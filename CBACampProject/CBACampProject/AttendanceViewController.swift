@@ -64,6 +64,10 @@ class AttendanceViewController: UIViewController {
     
     var currentDate : String?
     
+    @IBAction func DateValueChange(_ sender: Any) {
+        
+    }
+    
     @IBAction func ConfirmButton(_ sender: Any) {
         //confirm을 누를 때 세부사항 text저장 후 아래서 보내 줌
         //status는 누를 때마다 상태가 변경되기에 여기서 저장 안해도 됨 (renewAttend)
@@ -75,7 +79,8 @@ class AttendanceViewController: UIViewController {
             let url = "http://cba.sungrak.or.kr:9000/attendance/list/report"
             let date : String = "2019-05-05" // [NEEDED] DatePicker의 날자로 적용되어야 함
             let campusName : String = selectedCampus!
-                
+            
+            //
             let params : Parameters = [
                 "checkList" : currentAttendanceInfo, // [NEEDED] 요게 제대로 작동하는지 확인해야 함
                 "leaderUid" : "9999" // [NEEDED] leader의 uid로 차후에 수정해야 함
@@ -175,6 +180,10 @@ class AttendanceViewController: UIViewController {
         
         attendPercent = attendCnt / allCnt * 100
         statsText.text = "출석 \(attendCnt) / 전체 \(allCnt) / \(attendPercent) %"
+    }
+    
+    func DateFormatting(){
+        
     }
     
     // nav : PREV, CURRENT, NEXT

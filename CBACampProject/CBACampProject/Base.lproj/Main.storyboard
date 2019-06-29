@@ -225,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAK-gb-NDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2141.25" y="2640.8450704225352"/>
+            <point key="canvasLocation" x="2018" y="2641"/>
         </scene>
         <!--SideBar-->
         <scene sceneID="orf-at-9TA">
@@ -273,7 +273,7 @@
                     <navigationItem key="navigationItem" id="f48-dW-bmW">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nIW-Up-zJ1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86n-Ww-05m">
                                 <rect key="frame" x="16" y="0.0" width="118" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -449,7 +449,7 @@
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFu-GU-sEw">
-                                <rect key="frame" x="128" y="244" width="65" height="80"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="445"/>
                                 <subviews>
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SnG-GM-XSs">
                                         <rect key="frame" x="141" y="423" width="39" height="37"/>
@@ -458,14 +458,11 @@
                                         <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </pageControl>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="AzY-bp-ZRA"/>
-                                    <constraint firstAttribute="width" constant="65" id="U5H-iC-j4x"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gFu-GU-sEw" firstAttribute="trailing" secondItem="VLH-cv-ybK" secondAttribute="trailing" id="0hj-2T-nH1"/>
                             <constraint firstItem="1SO-OW-UWE" firstAttribute="top" secondItem="Qeg-Hv-FJR" secondAttribute="bottom" constant="3" id="1Ju-4d-1lx"/>
                             <constraint firstItem="VLH-cv-ybK" firstAttribute="trailing" secondItem="Q2W-xn-Xeb" secondAttribute="trailing" constant="16" id="2Yj-pp-EdG"/>
                             <constraint firstItem="Rad-7o-5nI" firstAttribute="leading" secondItem="VLH-cv-ybK" secondAttribute="leading" id="3Lv-dU-yPH"/>
@@ -480,12 +477,14 @@
                             <constraint firstItem="Rad-7o-5nI" firstAttribute="top" secondItem="cBq-J1-cdl" secondAttribute="bottom" constant="10" id="P31-ww-ab6"/>
                             <constraint firstItem="Rad-7o-5nI" firstAttribute="top" secondItem="6gi-wk-o90" secondAttribute="bottom" constant="10" id="SF9-Xw-2OD"/>
                             <constraint firstItem="Rad-7o-5nI" firstAttribute="trailing" secondItem="VLH-cv-ybK" secondAttribute="trailing" id="UU9-F1-e5U"/>
+                            <constraint firstItem="gFu-GU-sEw" firstAttribute="leading" secondItem="VLH-cv-ybK" secondAttribute="leading" id="Wcp-pi-zDc"/>
                             <constraint firstItem="cug-dT-hhu" firstAttribute="top" secondItem="RfI-Et-Kil" secondAttribute="top" id="XcX-g5-ymI"/>
                             <constraint firstItem="VLH-cv-ybK" firstAttribute="bottom" secondItem="cug-dT-hhu" secondAttribute="bottom" id="YCe-Gc-Kmw"/>
                             <constraint firstItem="1SO-OW-UWE" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" id="Ztg-ak-RNO"/>
                             <constraint firstItem="cBq-J1-cdl" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" id="ad5-wK-Zyj"/>
                             <constraint firstItem="cug-dT-hhu" firstAttribute="leading" secondItem="VLH-cv-ybK" secondAttribute="leading" id="cw7-rV-aJc"/>
                             <constraint firstItem="cug-dT-hhu" firstAttribute="trailing" secondItem="VLH-cv-ybK" secondAttribute="trailing" id="d7t-7i-ayF"/>
+                            <constraint firstItem="Rad-7o-5nI" firstAttribute="top" secondItem="gFu-GU-sEw" secondAttribute="bottom" id="dKW-kv-7GH"/>
                             <constraint firstItem="COV-oH-y9j" firstAttribute="bottom" secondItem="VLH-cv-ybK" secondAttribute="bottom" id="e1Z-nS-NKx"/>
                             <constraint firstItem="KwH-uK-XFa" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" id="fem-HE-jSa"/>
                             <constraint firstItem="yaL-E2-pNw" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" constant="45" id="g51-sv-D9r"/>
@@ -500,6 +499,7 @@
                             <constraint firstItem="tma-Ua-wV8" firstAttribute="leading" secondItem="VLH-cv-ybK" secondAttribute="leading" constant="10" id="pxV-JQ-qY2"/>
                             <constraint firstItem="cug-dT-hhu" firstAttribute="bottom" secondItem="VLH-cv-ybK" secondAttribute="bottom" id="uSB-mB-t9O"/>
                             <constraint firstItem="gFu-GU-sEw" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" id="yF0-3g-rD9"/>
+                            <constraint firstItem="gFu-GU-sEw" firstAttribute="top" secondItem="tma-Ua-wV8" secondAttribute="bottom" id="znh-sU-euc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VLH-cv-ybK"/>
                     </view>
@@ -1009,7 +1009,7 @@
                                     <!--2019-05-13 13:34:24 +0000-->
                                 </date>
                                 <connections>
-                                    <action selector="ChangeDate:" destination="I6V-OP-OAt" eventType="valueChanged" id="cP1-Ey-nLl"/>
+                                    <action selector="DateValueChange:" destination="I6V-OP-OAt" eventType="valueChanged" id="dUa-pK-N71"/>
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용넣기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQa-oo-hmH">
@@ -1133,7 +1133,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0a-e7-iMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143.75" y="1928.8732394366198"/>
+            <point key="canvasLocation" x="1198" y="1929"/>
         </scene>
         <!--소식-->
         <scene sceneID="cAc-ME-pog">

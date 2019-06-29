@@ -63,6 +63,7 @@
 		04FC00E7210AEC0100528D7A /* Main.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D5210AEC0000528D7A /* Main.jpg */; };
 		04FC00E9210AEC0100528D7A /* Heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00D7210AEC0000528D7A /* Heart.png */; };
 		04FC00ED210AEC0100528D7A /* CBA.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04FC00DB210AEC0100528D7A /* CBA.jpeg */; };
+		04FCBCB022C7766900FAC5F6 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FCBCAF22C7766900FAC5F6 /* ImageSlideshow.framework */; };
 		04FD79F021F87C8100936F87 /* MainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD79EF21F87C8100936F87 /* MainUser.swift */; };
 		04FD79F321F8857400936F87 /* MainGBS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD79F221F8857400936F87 /* MainGBS.swift */; };
 		1AD9D5F1822C40ABE5FF98FB /* Pods_CBACampProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3040CAA0E4FAE4C600640207 /* Pods_CBACampProjectTests.framework */; };
@@ -173,6 +174,7 @@
 		04FC00D5210AEC0000528D7A /* Main.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Main.jpg; sourceTree = "<group>"; };
 		04FC00D7210AEC0000528D7A /* Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart.png; sourceTree = "<group>"; };
 		04FC00DB210AEC0100528D7A /* CBA.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CBA.jpeg; sourceTree = "<group>"; };
+		04FCBCAF22C7766900FAC5F6 /* ImageSlideshow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImageSlideshow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD79EF21F87C8100936F87 /* MainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUser.swift; sourceTree = "<group>"; };
 		04FD79F221F8857400936F87 /* MainGBS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGBS.swift; sourceTree = "<group>"; };
 		124EBD3FEB940942CFFD7D83 /* Pods-CBACampProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FCBCB022C7766900FAC5F6 /* ImageSlideshow.framework in Frameworks */,
 				04E47F9022C0F7F000974F5C /* SwiftyJSON.framework in Frameworks */,
 				04F29E5622C0893300799F6F /* Alamofire.framework in Frameworks */,
 				04F29E5422C0892900799F6F /* Pods_CBACampProject.framework in Frameworks */,
@@ -383,6 +386,7 @@
 		3996BEB8FA1837B4108E54E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04FCBCAF22C7766900FAC5F6 /* ImageSlideshow.framework */,
 				04E47F8F22C0F7F000974F5C /* SwiftyJSON.framework */,
 				04F29E5522C0893300799F6F /* Alamofire.framework */,
 				04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */,
@@ -677,6 +681,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MenuSlider/MenuSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -692,6 +697,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
