@@ -12,25 +12,22 @@ import MessageUI
 import MenuSlider
 import Firebase
 import ImageSlideshow
+import Kingfisher
 
 class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     // move TabBar
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var slideshow: ImageSlideshow!
     
-    var pageImages: Array<UIImage> = []
-    var downloadImageNames: [String] = []
-    var pageViews: [UIImageView?] = []
     var firebaseModel: FirebaseModel = FirebaseModel()
     
-    var image : UIImage?
     var Check : Bool?
     var userID : String?
     var viewX : CGFloat?
     var viewY : CGFloat?
     var viewH : CGFloat?
     var viewW : CGFloat?
-    var SelectMenu : Bool?
     
     var menu: SideMenuViewController!
     
@@ -43,16 +40,15 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     // Optionally function onMenuClose(), fired when user open menu
     func onMenuOpen() {
-        MenuSetting()
+        SettingSidebar()
         print("Action on Open Menu")
     }
     
     @IBOutlet weak var Hamberger: UIButton!
     @IBAction func HambergerAction(_ sender: Any) {
-        print("여기 눌리지?")
         Hamberger.popIn(fromScale: 1.5, duration: 2, delay: 0)
         
-        MenuSetting()
+        SettingSidebar()
         // call the menu method expand(*controller*) to open
         menu.expand(onController: self)
     }
@@ -117,7 +113,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
-    func parsing(){
+    func CallGetMyInfo(){
         // DataPassing
         print("parsing start")
         
@@ -178,30 +174,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     */
     
-    func MenuSetting(){
+    func SettingSidebar(){
         userID = Auth.auth().currentUser?.email
         //userID = "enter_maintanance@naver.com"
         
-        self.scrollView.frame.size.width = self.view.frame.size.width
-        self.scrollView.frame.size.height = self.view.frame.size.height - 90
-        
-        /*
-        self.imageView.frame.origin = self.view.frame.origin
-        self.imageView.frame.size.width = self.view.frame.size.width
-        self.imageView.frame.size.height = self.view.frame.size.height - 90
-        */
-        
-        self.pageControl.frame.origin.y = self.view.frame.size.height - 40
-        self.pageControl.frame.origin.x = self.view.frame.size.width / 2 - self.pageControl.frame.size.width / 2
-        
         // Creating a Menu Item with title string, with an action
         let menuItem0: SideMenuItem = SideMenuItemFactory.make(title: "  GBS 확인"){
-            self.SelectMenu = true;
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            
             if(!((Auth.auth().currentUser?.email) != nil)){
                 self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }
@@ -210,30 +188,23 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             }
         }
         let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
-            FirebaseModel().UpdateImageNames(title: "cleaning")
         }
         let menuItem2 = SideMenuItemFactory.make(title: "  GBS장소") {
-            self.SelectMenu = true;
             // Firebase에 모델 변경 요청
-            FirebaseModel().UpdateImageNames(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "cleaning")
         }
-        
-        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {            FirebaseModel().UpdateImageNames(title: "cleaning")
+        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {            FirebaseModel().ChangeImage(title: "cleaning")
         }
-        
-        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {            FirebaseModel().UpdateImageNames(title: "cleaning")
+        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {            FirebaseModel().ChangeImage(title: "cleaning")
         }
-        
         let menuItem5 = SideMenuItemFactory.make(title: "  식단 안내") {
-            FirebaseModel().UpdateImageNames(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "cleaning")
         }
-        
         let menuItem6 = SideMenuItemFactory.make(title: "  식당/간식 봉사") {
-            FirebaseModel().UpdateImageNames(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "cleaning")
         }
-        
         let menuItem7 = SideMenuItemFactory.make(title: "  청소구역") {
-            FirebaseModel().UpdateImageNames(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "cleaning")
         }
         
         /*
@@ -261,7 +232,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
         */
         
-        // Creating a Menu Header with title string
+        // SIDE BAR SETTING
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let whiteLine = UILabel()
         whiteLine.frame = CGRect(x : viewX! + viewW!*0.035, y : viewY! + viewH!*0.04, width : viewW! * 0.59, height : viewH! * 0.001)
@@ -317,18 +288,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         headerView.addSubview(whiteLine)
         headerView.addSubview(headerButton)
         
-        // Creating a Menu Footer with an UIView
         let menuheader = SideMenuHeaderFactory.make(view: headerView)
         
-        
-        // Creating a Menu Header with title string
-        //let footerLabel = UILabel()
-        //footerLabel.backgroundColor = UIColor.white
-        //footerLabel.text = "환언, 우리의 사명"
-        //footerLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        //footerLabel.textColor = UIColor.white
-        //footerLabel.textAlignment = NSTextAlignment.center
-        //footerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let footerView: UIImageView = UIImageView()
         footerView.backgroundColor = UIColor.black
         
@@ -338,152 +299,27 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         footerView.addSubview(whiteBottomLine)
         
-        // Creating a Menu Footer with an UIView
         let menufooter = SideMenuFooterFactory.make(view: footerView)
         
-        // Setting itens to the SideMenuViewController
         let menuBuild = SideMenu(menuItems: [menuItem0 ,menuItem1, menuItem2, menuItem3, menuItem4, menuItem5,menuItem6, menuItem7], header: menuheader, footer: menufooter)
         
-        // Building the Menu SideMenuViewController
         self.menu = menuBuild.build()
         
-        // Finally, setting self class for MenuController Delegate
         menu.delegate = self
-        // Do any additional setup after loading the view.
-    }
-    
-    func loadPage(_ page: Int){
-        
-        if page < 0 || page >= pageImages.count{
-            return
-        }
-        
-        if pageViews[page] != nil {
-            // x
-        } else{
-            var frame = scrollView.bounds
-            frame.origin.x = frame.size.width * CGFloat(page)
-            frame.origin.y = 0.0
-            
-            
-            let backImage = UIImageView()
-            backImage.image = UIImage(named : "19겨울_메세지배경.png")
-            backImage.frame = frame
-            scrollView.addSubview(backImage)
-            
-            let newPageView = UIImageView(image: pageImages[page])
-            newPageView.contentMode = .scaleAspectFit
-            newPageView.frame = frame
-            
-            if (downloadImageNames.count > page) {
-                print("downloading!", downloadImageNames.count, "/", page)
-                firebaseModel.downloadImage(name: downloadImageNames[page], imageView: newPageView)
-            }
-            
-            scrollView.addSubview(newPageView)
-            
-            pageViews[page] = newPageView
-        }
-    }
-    
-    func purgePage(_ page: Int){
-        if page < 0 || page >= pageImages.count{
-            return
-        }
-        if let pageView = pageViews[page]{
-            pageView.removeFromSuperview()
-            pageViews[page] = nil
-        }
     }
     
     @objc func loadVisiblePages(_ notification: Notification){
-        downloadImageNames = FirebaseModel.imageNames
+        slideshow.setImageInputs(FirebaseModel.imageKingfisher)
         
-        if(FirebaseModel.imageNames.count == 0){
-            print("비어있어!!")
-            return
-        }
+        let pageIndicator = UIPageControl()
+        pageIndicator.currentPageIndicatorTintColor = UIColor.lightGray
+        pageIndicator.pageIndicatorTintColor = UIColor.black
+        slideshow.pageIndicator = pageIndicator
         
-        // 페이지 정리
-        for view in self.pageViews {
-            view?.removeFromSuperview()
-        }
+        slideshow.pageIndicator = LabelPageIndicator()
         
-        self.pageViews = []
-        
-        for imageName in downloadImageNames{
-            if let value = UIImage(named: "이미지준비중.png"){
-                self.pageImages.append(value)
-            }
-        }
-        
-        let pageCount = self.pageImages.count
-        
-        self.pageControl.currentPage = 0
-        self.pageControl.numberOfPages = pageCount
-        
-        for _ in 0..<pageCount{
-            self.pageViews.append(nil)
-        }
-        
-        let pagesScrollViewSize = self.scrollView.frame.size
-        self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(self.pageImages.count), height: pagesScrollViewSize.height)
-        /////////
-        
-
-        /*
-        self.imageView.isHidden = true
-        */
-        let pageWidth = scrollView.frame.width
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
-        pageControl.currentPage = page
-        
-        let firstPage = 0
-        let lastPage = pageImages.count - 1
-        
-        
-        for i in 0 ..< firstPage+1{
-            purgePage(i)
-            print("purging...", i)
-        }
-        for i in firstPage ... lastPage{
-            loadPage(i)
-            print("loading...",i)
-        }
-        /*
-         for i in lastPage+1 ..< pageImages.count+1{
-         purgePage(i)
-         }
-         */
-        for i in stride(from: lastPage+1  , to: pageImages.count+1, by: 1)
-        {
-            purgePage(i)
-        }
+        slideshow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .left(padding: 20), vertical: .bottom)
     }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    }
-    
-    @objc func handlePinch(sender: UIPinchGestureRecognizer) {
-        guard sender.view != nil else { return }
-        
-        if sender.state == .began || sender.state == .changed {
-            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
-            sender.scale = 1.0
-        }
-    }
-    
-    @IBAction func didPinch(sender: UIPinchGestureRecognizer) {
-        let scale = sender.scale
-        /*
-        imageView.transform =
-            CGAffineTransform.init(scaleX: scale, y: scale)
-        */
-        
-        sender.scale = 1
-    }
-    
-    //@objc func handleTap
     
     @objc func Logout(_ sender:UIButton){
         
@@ -493,14 +329,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             
         }
         
-        MenuSetting()
+        SettingSidebar()
         
         dismiss(animated: true, completion: nil)
     }
     
     @objc func LogIn(_ sender:UIButton){
-        
-        self.SelectMenu = true;
         //self.menu.reduce(onController: self)
         
         print("In Login tab")
@@ -514,6 +348,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
+    @objc func didTap() {
+        slideshow.presentFullScreenController(from: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -522,15 +360,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         viewW = self.view.frame.size.width
         viewH = self.view.frame.size.height
         
-        MenuSetting()
+        SettingSidebar()
         
-        if Check == true{
-            print("GET IN")
-            Check = false
-        }
-        
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
-        view.addGestureRecognizer(pinch)
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
+        slideshow.addGestureRecognizer(gestureRecognizer)
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "change image"), object: nil)
         

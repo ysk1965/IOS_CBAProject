@@ -103,7 +103,6 @@ class SideBarViewController: UIViewController, UIScrollViewDelegate, SideMenuDel
         
         
         let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
-            
             self.SelectMenu = true;
             
             for view in self.pageViews {

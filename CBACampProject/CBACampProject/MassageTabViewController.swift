@@ -80,9 +80,8 @@ class MassageTabViewController: UIViewController {
         if segue.identifier == "SegueToSideMenu"{
             if let navController = segue.destination as? UINavigationController{
                 if let SideMenuController = navController.topViewController as?
-                    SideBarViewController {
+                    CBAInfoTabViewController {
                     SideMenuController.Check = true
-                    SideMenuController.SelectMenu = false
                 }
             }
         }

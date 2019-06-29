@@ -11,12 +11,15 @@ import Firebase
 import FirebaseDatabase
 import Kingfisher
 import FirebaseStorage
+import ImageSlideshow
 
 class FirebaseModel {
     static var messages = [Message]()
-    static var imageNames : Array<String> = []
     static var sendMessageData = Message(text: "default", time: "default", auth: "default", isStaff : "default")
-    static var schedule = "" 
+    static var schedule = ""
+    
+    var imageNames : Array<String> = []
+    static var imageKingfisher : Array<KingfisherSource> = []
     
     var ref: DatabaseReference!
     
@@ -42,19 +45,30 @@ class FirebaseModel {
         })
     }
     
-    func UpdateImageNames(title : String){
-        FirebaseModel.imageNames.removeAll()
+    func ChangeImage(title : String){
+        self.imageNames.removeAll()
         
         ref = Database.database().reference().child("images").child(title)
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for i in result {
-                    FirebaseModel.imageNames.append(i.value as! String)
+                    self.imageNames.append(i.value as! String)
                 }
             }
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "change image"), object: self)
+            var downloadcnt : Int = 1
+            
+            for n in self.imageNames {
+                Storage.storage().reference(withPath: n).downloadURL { (url, error) in
+                    FirebaseModel.imageKingfisher.append(KingfisherSource(url: url!))
+                    
+                    if(downloadcnt == self.imageNames.count){
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "change image"), object: self)
+                    }
+                    
+                    downloadcnt += 1
+                }
+            }
         })
-
     }
     
     func sendMessage(name: String, message: String) {
@@ -64,9 +78,6 @@ class FirebaseModel {
             if(err == nil){
             }
         })
-        
-        //self.ref.child("2019messages").child("author").setValue(name)
-        //self.ref.child("2019messages").child("message").setValue(message)
     }
     
     func downloadImage(name: String, imageView:UIImageView){
