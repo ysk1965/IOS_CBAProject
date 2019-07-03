@@ -20,6 +20,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var slideshow: ImageSlideshow!
     
+    // Arrange View Image
+    @IBOutlet weak var ResizeNoti: UILabel!
+    @IBOutlet weak var ResizeBanner: UIImageView!
+    @IBOutlet weak var ResizeBottomView: UIView!
+    
     var firebaseModel: FirebaseModel = FirebaseModel()
     
     var Check : Bool?
@@ -259,6 +264,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         
         if((Auth.auth().currentUser) != nil){
+            //print(Auth.auth().currentUser?.email!)
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
             //print(MassageTabViewController.mainUser?.name)
@@ -266,8 +272,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 headerLabel.text = "은혜 많이 받으세요 :)"
             }else{
                 headerLabel.text = MassageTabViewController.mainUser.name + "(" + MassageTabViewController.mainUser.campus + ")님 환영합니다!"
-                headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
             }
+            headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "19겨울_로그인텍스트.png"), for: .normal)
@@ -322,7 +328,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func Logout(_ sender:UIButton){
-        
         do {
             try Auth.auth().signOut()
         } catch{
@@ -343,13 +348,71 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
         }
         else{
-            // 있을때는 어떻게
-            
+            // 이럴 일 없음??
         }
+    }
+    
+    @objc func GetTimeTable(_ sender:UIButton){
+        self.performSegue(withIdentifier: "SearchGBS", sender: nil)
     }
     
     @objc func didTap() {
         slideshow.presentFullScreenController(from: self)
+    }
+    
+    func ResizeView(){
+        /*
+        ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeBanner.centerYAnchor.constraint(equalTo: view.topAnchor, constant : viewH! * 0.4).isActive = true
+        ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        //ResizeNoti.sizeToFit()
+        ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
+        ResizeNoti.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeNoti.centerYAnchor.constraint(equalTo: ResizeBanner.bottomAnchor).isActive = true
+        ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45).isActive = true
+        ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        
+        ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeBottomView.centerYAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
+        ResizeBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        var testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton.setImage(UIImage(named: "TIMETABLE.png"), for: .normal)
+        
+        ResizeBottomView.addSubview(testButton)
+        */
+        
+        ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeBottomView.centerYAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
+        ResizeBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        let testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton.setImage(UIImage(named: "TIMETABLE.png"), for: .normal)
+        testButton.addTarget(self, action: #selector(self.GetTimeTable(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton)
+        
+        
+        //ResizeNoti.sizeToFit()
+        ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
+        ResizeNoti.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeNoti.bottomAnchor.constraint(equalTo: ResizeBottomView.topAnchor).isActive = true
+        ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
+        ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        
+        ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor).isActive = true
+        ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+        ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
     }
     
     override func viewDidLoad() {
@@ -360,6 +423,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         viewW = self.view.frame.size.width
         viewH = self.view.frame.size.height
         
+        ResizeView()
         SettingSidebar()
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))

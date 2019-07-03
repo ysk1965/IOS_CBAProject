@@ -19,6 +19,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
     
     @IBOutlet weak var CancleLabel: UIButton!
     @IBOutlet weak var LoginLabel: UIButton!
+    
     @IBAction func UnwindAction(segue: UIStoryboard){
         
     }
@@ -40,7 +41,7 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
                 alert.addAction(UIAlertAction(title: "확인", style:UIAlertActionStyle.default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
-                    } else{
+            } else{
                 let alert = UIAlertController(title: "로그인 성공", message:"["+(user?.user.email)! + "] \n 로그인에 성공하셨습니다.", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "확인", style:UIAlertActionStyle.default, handler: nil))
                 
