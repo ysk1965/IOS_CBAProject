@@ -195,12 +195,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
         }
         let menuItem2 = SideMenuItemFactory.make(title: "  GBS장소") {
-            // Firebase에 모델 변경 요청
             FirebaseModel().ChangeImage(title: "cleaning")
         }
-        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {            FirebaseModel().ChangeImage(title: "cleaning")
+        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {
+            FirebaseModel().ChangeImage(title: "cleaning")
         }
-        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {            FirebaseModel().ChangeImage(title: "cleaning")
+        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {
+            FirebaseModel().ChangeImage(title: "cleaning")
         }
         let menuItem5 = SideMenuItemFactory.make(title: "  식단 안내") {
             FirebaseModel().ChangeImage(title: "cleaning")
@@ -361,38 +362,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func ResizeView(){
-        /*
-        ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
-        ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ResizeBanner.centerYAnchor.constraint(equalTo: view.topAnchor, constant : viewH! * 0.4).isActive = true
-        ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        //ResizeNoti.sizeToFit()
-        ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
-        ResizeNoti.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ResizeNoti.centerYAnchor.constraint(equalTo: ResizeBanner.bottomAnchor).isActive = true
-        ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45).isActive = true
-        ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
         
         ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
         ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ResizeBottomView.centerYAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
         ResizeBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        var testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-        testButton.setImage(UIImage(named: "TIMETABLE.png"), for: .normal)
-        
-        ResizeBottomView.addSubview(testButton)
-        */
-        
-        ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
-        ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ResizeBottomView.centerYAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
-        ResizeBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        ResizeBottomView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         let testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
         testButton.setImage(UIImage(named: "TIMETABLE.png"), for: .normal)
@@ -407,6 +382,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
         ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
+        
+        let BackImageView: UIImageView = UIImageView()
+        BackImageView.image = UIImage(named: "19겨울_로그인상자.png")
+        BackImageView.frame = CGRect(x : whiteLine.frame.origin.x, y : whiteLine.frame.origin.y + whiteLine.frame.origin.y/5, width : whiteLine.frame.width, height : viewH! * 0.16)
         
         ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
         ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
