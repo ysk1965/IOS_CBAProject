@@ -26,6 +26,7 @@
   
 - **19_여름수련회**
   * 탭 바 제거 및 UI, UX개선
+  * 데이터 기반으로 이미지 받아오도록 개선
   * 몽산포 수련회 관련 추가 업데이트
   
 - 개발docx : docs.google.com/spreadsheets/d/1bKv5PoJOsUbqKWwOhkd3rpRBAymicw8oerMh8_-gzyg/edit#gid=0
