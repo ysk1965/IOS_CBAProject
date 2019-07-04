@@ -48,7 +48,7 @@ class FirebaseModel {
     func ChangeImage(title : String){
         self.imageNames.removeAll()
         
-        ref = Database.database().reference().child("images").child(title)
+        ref = Database.database().reference().child("2019_CBA_SUMMER").child(title)
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for i in result {
