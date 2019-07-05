@@ -227,7 +227,7 @@
                                             <constraint firstAttribute="width" constant="80" id="lm7-s5-1nZ"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="vRR-Pu-kcW" kind="show" id="IeE-pH-DSJ"/>
+                                            <segue destination="vRR-Pu-kcW" kind="show" identifier="QnaSegue" id="IeE-pH-DSJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaL-E2-pNw">
@@ -260,16 +260,16 @@
                                     <constraint firstAttribute="height" constant="16" id="wlM-SP-Ett"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-rB-pbP" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                                <rect key="frame" x="-1" y="164" width="42" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <viewLayoutGuide key="safeArea" id="gtb-9f-hIM"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="배너.png" translatesAutoresizingMaskIntoConstraints="NO" id="GSu-0K-OuO">
                                 <rect key="frame" x="0.0" y="240" width="41" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-rB-pbP" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                <rect key="frame" x="60" y="184" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="gtb-9f-hIM"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

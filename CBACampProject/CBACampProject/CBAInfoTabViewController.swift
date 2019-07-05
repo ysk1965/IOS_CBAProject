@@ -195,22 +195,22 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
         }
         let menuItem2 = SideMenuItemFactory.make(title: "  GBS장소") {
-            FirebaseModel().ChangeImage(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "room")
         }
         let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {
-            FirebaseModel().ChangeImage(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "room")
         }
         let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {
-            FirebaseModel().ChangeImage(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "room")
         }
         let menuItem5 = SideMenuItemFactory.make(title: "  식단 안내") {
-            FirebaseModel().ChangeImage(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "room")
         }
         let menuItem6 = SideMenuItemFactory.make(title: "  식당/간식 봉사") {
-            FirebaseModel().ChangeImage(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "room")
         }
         let menuItem7 = SideMenuItemFactory.make(title: "  청소구역") {
-            FirebaseModel().ChangeImage(title: "cleaning")
+            FirebaseModel().ChangeImage(title: "room")
         }
         
         /*
@@ -326,6 +326,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         slideshow.pageIndicator = LabelPageIndicator()
         
         slideshow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .left(padding: 20), vertical: .bottom)
+        
+        OpenImageView()
     }
     
     @objc func Logout(_ sender:UIButton){
@@ -353,15 +355,56 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
+    @objc func GetYoutube(_ sender:UIButton){
+        CloseImageView()
+        url = URL(string:"https://www.youtube.com/channel/UCW6bF9L0ZK__Tlwl19B0FYQ/videos?view_as=subscriber")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    }
+    
     @objc func GetTimeTable(_ sender:UIButton){
+        FirebaseModel().ChangeImage(title: "room")
+    }
+    
+    @objc func GetGBS(_ sender:UIButton){
+        CloseImageView()
         self.performSegue(withIdentifier: "SearchGBS", sender: nil)
+    }
+    
+    @objc func GetQnA(_ sender:UIButton){
+        CloseImageView()
+        self.performSegue(withIdentifier: "QnaSegue", sender: nil)
+    }
+    
+    @objc func GetCall(_ sender: Any) {
+        let urlString = "tel://" + "010-3397-4842"
+        let numberURL = NSURL(string: urlString)
+        UIApplication.shared.open(numberURL! as URL)
+        CloseImageView()
     }
     
     @objc func didTap() {
         slideshow.presentFullScreenController(from: self)
     }
     
+    func OpenImageView(){
+        slideshow.frame = CGRect(x: 0, y: viewW! * 0.2, width: viewW!, height: viewH! - viewW! * 0.4)
+    }
+    
+    func CloseImageView(){
+        slideshow.frame.size = CGSize(width: 0, height: 0)
+    }
+    
     func ResizeView(){
+        //slideshow
+        slideshow.translatesAutoresizingMaskIntoConstraints = false
+        slideshow.frame.size = CGSize(width: 0, height: 0)
+        
+        /*
+        slideshow.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        slideshow.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        slideshow.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0).isActive = true
+        slideshow.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        */
         
         ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
         ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -370,10 +413,29 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeBottomView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         let testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-        testButton.setImage(UIImage(named: "TIMETABLE.png"), for: .normal)
-        testButton.addTarget(self, action: #selector(self.GetTimeTable(_:)), for: .touchUpInside)
+        testButton.setImage(UIImage(named: "제목-없음-1.png"), for: .normal)
+        testButton.addTarget(self, action: #selector(self.GetQnA(_:)), for: .touchUpInside)
         ResizeBottomView.addSubview(testButton)
         
+        let testButton2 = UIButton(frame: CGRect(x:viewW! * 0.2, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton2.setImage(UIImage(named: "CALL.png"), for: .normal)
+        testButton2.addTarget(self, action: #selector(self.GetCall(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton2)
+        
+        let testButton3 = UIButton(frame: CGRect(x:viewW! * 0.4, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton3.setImage(UIImage(named: "TIMETABLE.png"), for: .normal)
+        testButton3.addTarget(self, action: #selector(self.GetTimeTable(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton3)
+        
+        let testButton4 = UIButton(frame: CGRect(x:viewW! * 0.6, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton4.setImage(UIImage(named: "ONAIR.png"), for: .normal)
+        testButton4.addTarget(self, action: #selector(self.GetYoutube(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton4)
+        
+        let testButton5 = UIButton(frame: CGRect(x:viewW! * 0.8, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton5.setImage(UIImage(named: "GBS.png"), for: .normal)
+        testButton5.addTarget(self, action: #selector(self.GetGBS(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton5)
         
         //ResizeNoti.sizeToFit()
         ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
@@ -382,14 +444,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
         ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-        
-        let BackImageView: UIImageView = UIImageView()
-        BackImageView.image = UIImage(named: "19겨울_로그인상자.png")
-        BackImageView.frame = CGRect(x : whiteLine.frame.origin.x, y : whiteLine.frame.origin.y + whiteLine.frame.origin.y/5, width : whiteLine.frame.width, height : viewH! * 0.16)
-        
         ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
         ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor).isActive = true
+        ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor, constant: viewH! * -0.02).isActive = true
         ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
         ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
     }
