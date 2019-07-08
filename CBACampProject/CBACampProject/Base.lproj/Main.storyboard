@@ -180,6 +180,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="배너.png" translatesAutoresizingMaskIntoConstraints="NO" id="GSu-0K-OuO">
+                                <rect key="frame" x="0.0" y="240" width="41" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tma-Ua-wV8">
                                 <rect key="frame" x="10" y="25" width="35" height="35"/>
                                 <constraints>
@@ -253,15 +257,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CBA.png" translatesAutoresizingMaskIntoConstraints="NO" id="fNo-JR-hDZ">
-                                <rect key="frame" x="140" y="36" width="40" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="ecX-vP-jil"/>
-                                    <constraint firstAttribute="height" constant="16" id="wlM-SP-Ett"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="배너.png" translatesAutoresizingMaskIntoConstraints="NO" id="GSu-0K-OuO">
-                                <rect key="frame" x="0.0" y="240" width="41" height="45"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CBA.png" translatesAutoresizingMaskIntoConstraints="NO" id="fNo-JR-hDZ">
+                                <rect key="frame" x="50" y="36" width="220" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-rB-pbP" customClass="ImageSlideshow" customModule="ImageSlideshow">
@@ -274,8 +271,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VLH-cv-ybK" firstAttribute="trailing" secondItem="Q2W-xn-Xeb" secondAttribute="trailing" constant="16" id="2Yj-pp-EdG"/>
-                            <constraint firstItem="fNo-JR-hDZ" firstAttribute="top" secondItem="VLH-cv-ybK" secondAttribute="top" constant="16" id="NEY-fh-6GC"/>
-                            <constraint firstItem="fNo-JR-hDZ" firstAttribute="centerX" secondItem="RfI-Et-Kil" secondAttribute="centerX" id="SZ8-Ly-qq5"/>
                             <constraint firstItem="tma-Ua-wV8" firstAttribute="top" secondItem="VLH-cv-ybK" secondAttribute="top" constant="5" id="g8W-oD-TYc"/>
                             <constraint firstItem="Q2W-xn-Xeb" firstAttribute="top" secondItem="VLH-cv-ybK" secondAttribute="top" constant="12" id="mXc-qP-2rc"/>
                             <constraint firstItem="tma-Ua-wV8" firstAttribute="leading" secondItem="VLH-cv-ybK" secondAttribute="leading" constant="10" id="pxV-JQ-qY2"/>
@@ -291,6 +286,7 @@
                         <outlet property="ResizeBottomView" destination="qZU-Oi-94G" id="O0L-N1-g9h"/>
                         <outlet property="ResizeNoti" destination="1SO-OW-UWE" id="8qO-vg-tTH"/>
                         <outlet property="slideshow" destination="Z7j-rB-pbP" id="Tyf-0p-YdV"/>
+                        <outlet property="titleNameImage" destination="fNo-JR-hDZ" id="ETU-Uu-Yj5"/>
                         <segue destination="Jle-r2-8ZY" kind="show" identifier="LoginSegue" id="hWv-Hd-aR1"/>
                     </connections>
                 </viewController>
@@ -953,8 +949,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="19겨울_로고.png" width="16" height="16"/>
         <image name="19겨울_로고.png" width="200" height="42"/>
+        <image name="19겨울_로고.png" width="16" height="16"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
         <image name="19겨울_메세지상단.png" width="462" height="87"/>
         <image name="19겨울_샌드위치메뉴.png" width="50" height="50"/>
