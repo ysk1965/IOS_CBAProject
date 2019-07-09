@@ -13,6 +13,7 @@ import MenuSlider
 import Firebase
 import ImageSlideshow
 import Kingfisher
+import SnapKit
 
 class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     // move TabBar
@@ -100,11 +101,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     @IBOutlet weak var InstaOutlet: UIButton!
     @IBAction func InstagramAction(_ sender: Any) {
-        
         InstaOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
         url = URL(string:"https://www.instagram.com/cba.sungrak/")
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
- 
     }
     
     @objc func viewload(_ notification: Notification){
@@ -183,11 +182,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     */
     
     func SettingSidebar(){
+        if(CBAInfoTabViewController.currentAgency == "몽산포"){
+            
+        }
         userID = Auth.auth().currentUser?.email
         //userID = "enter_maintanance@naver.com"
         
         // Creating a Menu Item with title string, with an action
-        let menuItem0: SideMenuItem = SideMenuItemFactory.make(title: "  GBS 확인"){
+        let menuItem0: SideMenuItem = SideMenuItemFactory.make(title: "GBS 확인"){
             if(!((Auth.auth().currentUser?.email) != nil)){
                 self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             }
@@ -195,24 +197,24 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 self.performSegue(withIdentifier: "SearchGBSSegue", sender: nil)
             }
         }
-        let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "  캠퍼스 모임장소") {
+        let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "캠퍼스 모임장소") {
         }
-        let menuItem2 = SideMenuItemFactory.make(title: "  GBS장소") {
+        let menuItem2 = SideMenuItemFactory.make(title: "GBS장소") {
+            FirebaseModel().ChangeImage(title: "campus_place")
+        }
+        let menuItem3 = SideMenuItemFactory.make(title: "또래별 강의") {
             FirebaseModel().ChangeImage(title: "room")
         }
-        let menuItem3 = SideMenuItemFactory.make(title: "  또래별 강의") {
+        let menuItem4 = SideMenuItemFactory.make(title: "수련회장 배치도") {
             FirebaseModel().ChangeImage(title: "room")
         }
-        let menuItem4 = SideMenuItemFactory.make(title: "  수련회장 배치도") {
+        let menuItem5 = SideMenuItemFactory.make(title: "식단 안내") {
             FirebaseModel().ChangeImage(title: "room")
         }
-        let menuItem5 = SideMenuItemFactory.make(title: "  식단 안내") {
+        let menuItem6 = SideMenuItemFactory.make(title: "식당/간식 봉사") {
             FirebaseModel().ChangeImage(title: "room")
         }
-        let menuItem6 = SideMenuItemFactory.make(title: "  식당/간식 봉사") {
-            FirebaseModel().ChangeImage(title: "room")
-        }
-        let menuItem7 = SideMenuItemFactory.make(title: "  청소구역") {
+        let menuItem7 = SideMenuItemFactory.make(title: "청소구역") {
             FirebaseModel().ChangeImage(title: "room")
         }
         
@@ -240,11 +242,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             }
         }
         */
-        
         // SIDE BAR SETTING
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let whiteLine = UILabel()
-        whiteLine.frame = CGRect(x : viewX! + viewW!*0.035, y : viewY! + viewH!*0.04, width : viewW! * 0.59, height : viewH! * 0.001)
+        whiteLine.frame = CGRect(x : viewX! + viewW!*0.035, y : viewY! + viewH!*0.03, width : viewW! * 0.58, height : viewH! * 0.001)
         whiteLine.backgroundColor = UIColor.black
         
         let BackImageView: UIImageView = UIImageView()
@@ -253,7 +254,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         } else {
             BackImageView.image = UIImage(named: "CBA가로배너.png")
         }
-        BackImageView.frame = CGRect(x : 0, y : whiteLine.frame.origin.y + whiteLine.frame.origin.y/5, width : whiteLine.frame.width * 1.1, height : viewH! * 0.16)
         
         let headerLabel = UILabel()
         headerLabel.textColor = UIColor.black
@@ -262,7 +262,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         //headerLabel.font = UIFont(name: "NotoSansUI-Regular.ttf", size: 5.0)
         headerLabel.adjustsFontSizeToFitWidth = true
         
-        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x, y : viewY!+BackImageView.frame.height * 0.3, width : BackImageView.frame.width * 0.88, height : viewH! * 0.13)
+        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x, y : viewY!+BackImageView.frame.height * 0.2, width : BackImageView.frame.width * 0.88, height : viewH! * 0.13)
         
         let headerButton = UIButton()
         headerButton.setTitle(" ", for: .normal)
@@ -295,8 +295,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         headerLabel.textAlignment = NSTextAlignment.left
         //headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let headerView: UIView = UIView()
+        BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        //BackImageView.frame = CGRect(x : 0, y : 0, width : viewW! * viewH! / 10000 + viewH!/4, height : viewW! * 0.6 * 0.4)
         headerView.backgroundColor = UIColor.white
-        
         
         //BackImageView.addSubview(headerLabel)
         headerView.addSubview(BackImageView)
@@ -383,6 +384,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         self.performSegue(withIdentifier: "QnaSegue", sender: nil)
     }
     
+    @objc func GetNoti(_ sender:UIButton){
+        CloseImageView()
+        self.performSegue(withIdentifier: "QnaSegue", sender: nil)
+    }
+    
     @objc func GetCall(_ sender: Any) {
         let urlString = "tel://" + "010-3397-4842"
         let numberURL = NSURL(string: urlString)
@@ -421,195 +427,79 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         slideshow.translatesAutoresizingMaskIntoConstraints = false
         slideshow.frame.size = CGSize(width: 0, height: 0)
         
-            /*
-             slideshow.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-             slideshow.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-             slideshow.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0).isActive = true
-             slideshow.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-             */
+        /*
+        slideshow.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        slideshow.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        slideshow.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0).isActive = true
+        slideshow.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        */
         
-            ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
-            ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            ResizeBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-            ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
-            ResizeBottomView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
+        ResizeBottomView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-            let testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-            testButton.setImage(UIImage(named: Button1), for: .normal)
-            testButton.addTarget(self, action: #selector(self.GetQnA(_:)), for: .touchUpInside)
-            ResizeBottomView.addSubview(testButton)
+        let testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton.setImage(UIImage(named: Button1), for: .normal)
+        testButton.addTarget(self, action: #selector(self.GetQnA(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton)
         
-            let testButton2 = UIButton(frame: CGRect(x:viewW! * 0.2, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-            testButton2.setImage(UIImage(named: Button2), for: .normal)
-            testButton2.addTarget(self, action: #selector(self.GetCall(_:)), for: .touchUpInside)
-            ResizeBottomView.addSubview(testButton2)
+        let testButton2 = UIButton(frame: CGRect(x:viewW! * 0.2, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton2.setImage(UIImage(named: Button2), for: .normal)
+        testButton2.addTarget(self, action: #selector(self.GetCall(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton2)
         
-            let testButton3 = UIButton(frame: CGRect(x:viewW! * 0.4, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-            testButton3.setImage(UIImage(named: Button3), for: .normal)
-            testButton3.addTarget(self, action: #selector(self.GetTimeTable(_:)), for: .touchUpInside)
-            ResizeBottomView.addSubview(testButton3)
+        let testButton3 = UIButton(frame: CGRect(x:viewW! * 0.4, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton3.setImage(UIImage(named: Button3), for: .normal)
+        testButton3.addTarget(self, action: #selector(self.GetTimeTable(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton3)
         
-            let testButton4 = UIButton(frame: CGRect(x:viewW! * 0.6, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-            testButton4.setImage(UIImage(named: Button4), for: .normal)
-            testButton4.addTarget(self, action: #selector(self.GetYoutube(_:)), for: .touchUpInside)
-            ResizeBottomView.addSubview(testButton4)
+        let testButton4 = UIButton(frame: CGRect(x:viewW! * 0.6, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton4.setImage(UIImage(named: Button4), for: .normal)
+        testButton4.addTarget(self, action: #selector(self.GetYoutube(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton4)
         
-            let testButton5 = UIButton(frame: CGRect(x:viewW! * 0.8, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-            testButton5.setImage(UIImage(named: Button5), for: .normal)
-            testButton5.addTarget(self, action: #selector(self.GetGBS(_:)), for: .touchUpInside)
-            ResizeBottomView.addSubview(testButton5)
+        let testButton5 = UIButton(frame: CGRect(x:viewW! * 0.8, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
+        testButton5.setImage(UIImage(named: Button5), for: .normal)
+        testButton5.addTarget(self, action: #selector(self.GetGBS(_:)), for: .touchUpInside)
+        ResizeBottomView.addSubview(testButton5)
         
-            //ResizeNoti.sizeToFit()
-            ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
-            ResizeNoti.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            ResizeNoti.bottomAnchor.constraint(equalTo: ResizeBottomView.topAnchor).isActive = true
-            ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
-            ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        //ResizeNoti.sizeToFit()
+        ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
+        ResizeNoti.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ResizeNoti.bottomAnchor.constraint(equalTo: ResizeBottomView.topAnchor).isActive = true
+        ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
+        ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-            ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
-            ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            //ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor, constant: viewH! * -0.02).isActive = true
-            ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor).isActive = true
-            ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
-            ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
-    }
-    
-    /////// Test SnapKit
-    
-    lazy var view1 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.black
-        return view
-    }()
-    lazy var view2 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.cyan
-        return view
-    }()
-    lazy var view3 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.blue
-        return view
-    }()
-    lazy var view4 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.brown
-        return view
-    }()
-    lazy var view5 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.darkGray
-        return view
-    }()
-    lazy var view6 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.magenta
-        return view
-    }()
-    lazy var view7 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.red
-        return view
-    }()
-    lazy var view8 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.gray
-        return view
-    }()
-    lazy var view9 :UIView = {
-        var view = UIView()
-        view.backgroundColor = UIColor.orange
-        return view
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.addSubview(view1)
-        view1.snp.makeConstraints { (m) in
-            m.width.equalTo(view)
-            m.height.equalTo(64)
-            m.top.equalTo(view).offset(44)
-        }
-        view1.addSubview(view2)
-        view2.snp.makeConstraints { (m) in
-            m.width.equalTo(view1.snp.height)
-            m.height.equalTo(view1.snp.height)
-            m.left.equalTo(view1)
-            m.top.equalTo(view1)
-        }
-        view1.addSubview(view3)
-        view3.snp.makeConstraints { (m) in
-            m.width.equalTo(view1.snp.height)
-            m.height.equalTo(view1.snp.height)
-            m.right.equalTo(view1)
-            m.top.equalTo(view1)
-        }
+        // Noti Button
+        let notiButton = UIButton(frame: CGRect(x: 0, y: viewH! * 0.75 - viewW!/5, width: viewW!, height: viewH! * 0.25))
+        //notiButton.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        notiButton.tintColor = UIColor.black
+        notiButton.addTarget(self, action: #selector(self.GetNoti(_:)), for: .touchUpInside)
+        view.addSubview(notiButton)
         
-        view.addSubview(view4)
-        view4.snp.makeConstraints { (m) in
-            m.width.equalTo(view.snp.width).dividedBy(4)
-            m.height.equalTo(view.snp.width).dividedBy(4)
-            m.left.equalTo(view.snp.left)
-            m.bottom.equalTo(view).offset(-34)
-        }
-        
-        view.addSubview(view5)
-        view5.snp.makeConstraints { (m) in
-            m.width.equalTo(view.snp.width).dividedBy(4)
-            m.height.equalTo(view.snp.width).dividedBy(4)
-            m.left.equalTo(view4.snp.right)
-            m.bottom.equalTo(view).offset(-34)
-        }
-        
-        view.addSubview(view6)
-        view6.snp.makeConstraints { (m) in
-            m.width.equalTo(view.snp.width).dividedBy(4)
-            m.height.equalTo(view.snp.width).dividedBy(4)
-            m.left.equalTo(view5.snp.right)
-            m.bottom.equalTo(view).offset(-34)
-        }
-        
-        view.addSubview(view7)
-        view7.snp.makeConstraints { (m) in
-            m.width.equalTo(view.snp.width).dividedBy(4)
-            m.height.equalTo(view.snp.width).dividedBy(4)
-            m.left.equalTo(view6.snp.right)
-            m.bottom.equalTo(view).offset(-34)
-        }
-        
-        view.addSubview(view8)
-        view7.snp.makeConstraints { (m) in
-            m.width.equalTo(view.snp.width).dividedBy(4)
-            m.height.equalTo(view.snp.width).dividedBy(4)
-            m.left.equalTo(view7.snp.right)
-            m.bottom.equalTo(view).offset(-34)
-        }
-        
-        view.addSubview(view9)
-        view8.snp.makeConstraints { (m) in
-            m.left.equalTo(view)
-            m.right.equalTo(view)
-            m.top.equalTo(view1.snp.bottom)
-            m.bottom.equalTo(view7.snp.top)
-        }
-        view.addSubview(view10)
-        view9.snp.makeConstraints { (m) in
-            m.edges.equalTo(view8).inset(5)
-        }
+        ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor, constant: viewH! * -0.02).isActive = true
+        ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor).isActive = true
+        ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CBAInfoTabViewController.currentAgency = "몽산포"
+        CBAInfoTabViewController.currentAgency = "2019_SR_SUMMER"
         
         viewX = self.view.frame.origin.x
         viewY = self.view.frame.origin.y
         viewW = self.view.frame.size.width
         viewH = self.view.frame.size.height
         
-        // 몽산포 version
-        if(CBAInfoTabViewController.currentAgency == "몽산포"){
+        // 2019_CBA_SUMMER
+        // 2019_SR_SUMMER
+        if(CBAInfoTabViewController.currentAgency == "2019_SR_SUMMER"){
             ResizeView(Button1: "bottom_1.png", Button2: "bottom_2.png", Button3: "bottom_3.png", Button4: "bottom_4.png", Button5: "bottom_5.png", Banner: "몽산포_배너.png", TitleName: "몽산포.png")
         } else{
             ResizeView(Button1: "제목-없음-1.png", Button2: "CALL.png", Button3: "TIMETABLE.png", Button4: "ONAIR.png", Button5: "GBS.png", Banner: "배너.png", TitleName: "CBA.jpeg")
@@ -623,7 +513,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "change image"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
-        FirebaseModel().getMessages()
+        FirebaseModel().getMessages(messageTitle: "message")
     }
     
     override func didReceiveMemoryWarning() {

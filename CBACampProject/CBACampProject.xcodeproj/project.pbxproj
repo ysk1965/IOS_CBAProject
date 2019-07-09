@@ -73,6 +73,12 @@
 		04E7FFE822D3927700E87AE9 /* 알림판.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFDE22D3927700E87AE9 /* 알림판.png */; };
 		04E7FFE922D3927700E87AE9 /* 몽산포_배너.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFDF22D3927700E87AE9 /* 몽산포_배너.png */; };
 		04E7FFEB22D3928500E87AE9 /* 몽산포_산호.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFEA22D3928500E87AE9 /* 몽산포_산호.jpeg */; };
+		04E7FFF422D4ADD600E87AE9 /* 사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFED22D4ADD600E87AE9 /* 사이드바.png */; };
+		04E7FFF522D4ADD600E87AE9 /* 로그아웃.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFEF22D4ADD600E87AE9 /* 로그아웃.png */; };
+		04E7FFF622D4ADD600E87AE9 /* 제목-없음-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF022D4ADD600E87AE9 /* 제목-없음-2.png */; };
+		04E7FFF722D4ADD600E87AE9 /* 막대.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF122D4ADD600E87AE9 /* 막대.png */; };
+		04E7FFF822D4ADD600E87AE9 /* 로그인.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF222D4ADD600E87AE9 /* 로그인.png */; };
+		04E7FFF922D4ADD600E87AE9 /* 화살표.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF322D4ADD600E87AE9 /* 화살표.png */; };
 		04F0F54D2109FBD6001B953B /* UIView+SimpleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */; };
 		04F29E5422C0892900799F6F /* Pods_CBACampProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */; };
 		04F29E5622C0893300799F6F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F29E5522C0893300799F6F /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -206,6 +212,12 @@
 		04E7FFDE22D3927700E87AE9 /* 알림판.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "알림판.png"; sourceTree = "<group>"; };
 		04E7FFDF22D3927700E87AE9 /* 몽산포_배너.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_배너.png"; sourceTree = "<group>"; };
 		04E7FFEA22D3928500E87AE9 /* 몽산포_산호.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "몽산포_산호.jpeg"; sourceTree = "<group>"; };
+		04E7FFED22D4ADD600E87AE9 /* 사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "사이드바.png"; sourceTree = "<group>"; };
+		04E7FFEF22D4ADD600E87AE9 /* 로그아웃.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "로그아웃.png"; sourceTree = "<group>"; };
+		04E7FFF022D4ADD600E87AE9 /* 제목-없음-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "제목-없음-2.png"; sourceTree = "<group>"; };
+		04E7FFF122D4ADD600E87AE9 /* 막대.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "막대.png"; sourceTree = "<group>"; };
+		04E7FFF222D4ADD600E87AE9 /* 로그인.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "로그인.png"; sourceTree = "<group>"; };
+		04E7FFF322D4ADD600E87AE9 /* 화살표.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "화살표.png"; sourceTree = "<group>"; };
 		04F0F54C2109FBD6001B953B /* UIView+SimpleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SimpleAnimation.swift"; sourceTree = "<group>"; };
 		04F29E5122C0889D00799F6F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F29E5322C0892900799F6F /* Pods_CBACampProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CBACampProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,6 +416,7 @@
 		04E3728421071B0300FB7304 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				04E7FFEC22D4ADD600E87AE9 /* 사이드바 */,
 				04E7FFCE22D3924C00E87AE9 /* 19_몽산포 */,
 				0426D78422CCB6D1006C111A /* 19_여름_메인 */,
 				04F925EF21E870A000C4F6CA /* 19_겨울 */,
@@ -472,6 +485,27 @@
 				04E7FFDF22D3927700E87AE9 /* 몽산포_배너.png */,
 			);
 			path = "중앙";
+			sourceTree = "<group>";
+		};
+		04E7FFEC22D4ADD600E87AE9 /* 사이드바 */ = {
+			isa = PBXGroup;
+			children = (
+				04E7FFED22D4ADD600E87AE9 /* 사이드바.png */,
+				04E7FFEE22D4ADD600E87AE9 /* 박스 */,
+				04E7FFF322D4ADD600E87AE9 /* 화살표.png */,
+			);
+			path = "사이드바";
+			sourceTree = "<group>";
+		};
+		04E7FFEE22D4ADD600E87AE9 /* 박스 */ = {
+			isa = PBXGroup;
+			children = (
+				04E7FFEF22D4ADD600E87AE9 /* 로그아웃.png */,
+				04E7FFF022D4ADD600E87AE9 /* 제목-없음-2.png */,
+				04E7FFF122D4ADD600E87AE9 /* 막대.png */,
+				04E7FFF222D4ADD600E87AE9 /* 로그인.png */,
+			);
+			path = "박스";
 			sourceTree = "<group>";
 		};
 		04F29E5722C08A1A00799F6F /* Model */ = {
@@ -606,6 +640,7 @@
 				042761D72106E41600928EB7 /* Sources */,
 				042761D82106E41600928EB7 /* Frameworks */,
 				042761D92106E41600928EB7 /* Resources */,
+				4EA56CA94ED75874E0B86F30 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -625,6 +660,7 @@
 				042761E22106E41600928EB7 /* Sources */,
 				042761E32106E41600928EB7 /* Frameworks */,
 				042761E42106E41600928EB7 /* Resources */,
+				832942D4530F5989E68129F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -695,11 +731,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E7FFF822D4ADD600E87AE9 /* 로그인.png in Resources */,
 				0426D79A22CCB6D3006C111A /* 알림판.png in Resources */,
 				0426D79922CCB6D3006C111A /* 로고.png in Resources */,
 				0459530721FC7347006FE016 /* 19겨울_메세지배경.png in Resources */,
 				04E7FFE722D3927700E87AE9 /* 몽산포.png in Resources */,
 				0426D79822CCB6D3006C111A /* 메뉴.png in Resources */,
+				04E7FFF722D4ADD600E87AE9 /* 막대.png in Resources */,
 				DBF11FB2211B35F700EE9B98 /* 또래별강의.jpeg in Resources */,
 				045952FB21FC7300006FE016 /* 19겨울_3층배치도.png in Resources */,
 				04FC00E9210AEC0100528D7A /* Heart.png in Resources */,
@@ -718,6 +756,7 @@
 				0459532521FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png in Resources */,
 				042761D52106E41600928EB7 /* LaunchScreen.storyboard in Resources */,
 				04FC00E7210AEC0100528D7A /* Main.jpg in Resources */,
+				04E7FFF522D4ADD600E87AE9 /* 로그아웃.png in Resources */,
 				04E7FFEB22D3928500E87AE9 /* 몽산포_산호.jpeg in Resources */,
 				04E7FFE122D3927700E87AE9 /* bottom_3.png in Resources */,
 				DBF11FCA211B470C00EE9B98 /* 숙소3.jpg in Resources */,
@@ -731,11 +770,13 @@
 				0426D79522CCB6D3006C111A /* TIMETABLE.png in Resources */,
 				04E7FFE322D3927700E87AE9 /* bottom_5.png in Resources */,
 				0459531721FC73A1006FE016 /* 19겨울_로그아웃글씨.png in Resources */,
+				04E7FFF622D4ADD600E87AE9 /* 제목-없음-2.png in Resources */,
 				DB764E54210C98FD006E72EB /* refresh.png in Resources */,
 				04E7FFD022D3925900E87AE9 /* 몽산포_가로배너.png in Resources */,
 				0459531F21FC742F006FE016 /* 19겨울_조장조원확인.png in Resources */,
 				04FC00E2210AEC0100528D7A /* hamberger.png in Resources */,
 				04FC00ED210AEC0100528D7A /* CBA.jpeg in Resources */,
+				04E7FFF422D4ADD600E87AE9 /* 사이드바.png in Resources */,
 				042761D02106E41400928EB7 /* Main.storyboard in Resources */,
 				DB764E5B210E0305006E72EB /* 환언_mini.jpeg in Resources */,
 				DBF11FD0211B479900EE9B98 /* gbs장소3.png in Resources */,
@@ -774,6 +815,7 @@
 				045952FF21FC7314006FE016 /* 19겨울_텍스트뷰.png in Resources */,
 				04FC00E6210AEC0100528D7A /* hamgerger2.png in Resources */,
 				04E7FFE522D3927700E87AE9 /* 메뉴.png in Resources */,
+				04E7FFF922D4ADD600E87AE9 /* 화살표.png in Resources */,
 				DBF11FC8211B470600EE9B98 /* 숙소2.jpg in Resources */,
 				0459532421FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-33-03.png in Resources */,
 			);
@@ -832,6 +874,42 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBACampProject/Pods-CBACampProject-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4EA56CA94ED75874E0B86F30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CBACampProjectTests/Pods-CBACampProjectTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBACampProjectTests/Pods-CBACampProjectTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		832942D4530F5989E68129F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8816E67B765AC7923057277C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -848,6 +926,7 @@
 				"${BUILT_PRODUCTS_DIR}/MenuSlider/MenuSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleAnimation/SimpleAnimation.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -864,6 +943,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleAnimation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",

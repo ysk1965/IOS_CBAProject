@@ -74,19 +74,6 @@ class MassageTabViewController: UIViewController {
     static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
     static var memberCount = Int(0)
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        parsing()
-        
-        if segue.identifier == "SegueToSideMenu"{
-            if let navController = segue.destination as? UINavigationController{
-                if let SideMenuController = navController.topViewController as?
-                    CBAInfoTabViewController {
-                    SideMenuController.Check = true
-                }
-            }
-        }
-    }
-    
     @IBOutlet weak var ApplicationOutlet: UIButton!
     @IBAction func ApplicationAction(_ sender: Any) {
         //ApplicationOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
@@ -248,7 +235,7 @@ class MassageTabViewController: UIViewController {
     
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
-        FirebaseModel().getMessages()
+        FirebaseModel().getMessages(messageTitle: "message")
         
         Messaging.messaging().subscribe(toTopic: "2019winter") { error in
             print("Subscribed to 2019winter topic")

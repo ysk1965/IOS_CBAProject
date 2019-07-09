@@ -23,10 +23,10 @@ class FirebaseModel {
     
     var ref: DatabaseReference!
     
-    func getMessages() {
+    func getMessages(messageTitle : String) {
         print("trying to get messages....")
         
-        ref = Database.database().reference().child("2019_CBA_SUMMER").child("message")
+        ref = Database.database().reference().child(CBAInfoTabViewController.currentAgency).child(messageTitle)
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 FirebaseModel.messages = []
@@ -48,7 +48,7 @@ class FirebaseModel {
     func ChangeImage(title : String){
         self.imageNames.removeAll()
         
-        ref = Database.database().reference().child("2019_CBA_SUMMER").child("images").child(title)
+        ref = Database.database().reference().child(CBAInfoTabViewController.currentAgency).child("images").child(title)
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for i in result {
@@ -73,8 +73,7 @@ class FirebaseModel {
     
     func sendMessage(name: String, message: String) {
         let values = ["author":name, "message":message]
-        
-        self.ref.child("2019messages").setValue(values, withCompletionBlock: {(err, ref) in
+    self.ref.child(CBAInfoTabViewController.currentAgency).child("message").setValue(values, withCompletionBlock: {(err, ref) in
             if(err == nil){
             }
         })

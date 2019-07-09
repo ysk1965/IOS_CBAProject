@@ -19,15 +19,20 @@ pod 'Firebase/Auth'
 pod "TextFieldEffects"
 pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'SnapKit', '~> 5.0.0'
 
   # Pods for CBACampProject
 
   target 'CBACampProjectTests' do
     inherit! :search_paths
+
+    pod 'SnapKit', '~> 5.0.0'
     # Pods for testing
   end
 
   target 'CBACampProjectUITests' do
+
+    pod 'SnapKit', '~> 5.0.0'
     inherit! :search_paths
     # Pods for testing
   end
