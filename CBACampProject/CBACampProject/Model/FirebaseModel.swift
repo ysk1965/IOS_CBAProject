@@ -1,11 +1,3 @@
-//
-//  FirebaseModel.swift
-//  practice2
-//
-//  Created by 우아테크캠프_4 on 2018. 7. 28..
-//  Copyright © 2018년 CBA. All rights reserved.
-//
-
 import Foundation
 import Firebase
 import FirebaseDatabase
@@ -26,7 +18,7 @@ class FirebaseModel {
     func getMessages(messageTitle : String) {
         print("trying to get messages....")
         
-        ref = Database.database().reference().child(CBAInfoTabViewController.currentAgency).child(messageTitle)
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child(messageTitle)
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 FirebaseModel.messages = []
@@ -48,7 +40,7 @@ class FirebaseModel {
     func ChangeImage(title : String){
         self.imageNames.removeAll()
         
-        ref = Database.database().reference().child(CBAInfoTabViewController.currentAgency).child("images").child(title)
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for i in result {
@@ -73,7 +65,7 @@ class FirebaseModel {
     
     func sendMessage(name: String, message: String) {
         let values = ["author":name, "message":message]
-    self.ref.child(CBAInfoTabViewController.currentAgency).child("message").setValue(values, withCompletionBlock: {(err, ref) in
+        self.ref.child(AgencySingleton.shared.AgencyTitle!).child("message").setValue(values, withCompletionBlock: {(err, ref) in
             if(err == nil){
             }
         })

@@ -193,15 +193,15 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         for n in AgencySingleton.shared.sidebar_setting{
             var tempMenu : SideMenuItem?
             if n.type == "image"{
-                tempMenu = SideMenuItemFactory.make(title: n.imageName){
-                    FirebaseModel().ChangeImage(title: n.controlValue)
+                tempMenu = SideMenuItemFactory.make(title: n.iconName!){
+                    FirebaseModel().ChangeImage(title: n.controlValue!)
                 }
-            } else if customButton.type == "segue"{
-                tempMenu = SideMenuItemFactory.make(title: n.imageName){
-                    self.performSegue(withIdentifier: n.controlValue, sender: nil)
+            } else if n.type == "segue"{
+                tempMenu = SideMenuItemFactory.make(title: n.iconName!){
+                    self.performSegue(withIdentifier: n.controlValue!, sender: nil)
                 }
             }
-            menuItemArray.add(tempMenu)
+            menuItemArray.append(tempMenu!)
         }
         
         /*
@@ -261,6 +261,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
         */
         // SIDE BAR SETTING
+        
+        let BackImageView: UIImageView = UIImageView()
+        BackImageView.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
+        
         //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let whiteLine = UILabel()
         whiteLine.frame = CGRect(x : viewX! + viewW!*0.035, y : viewY! + viewH!*0.03, width : viewW! * 0.58, height : viewH! * 0.001)
@@ -306,8 +310,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         headerLabel.textAlignment = NSTextAlignment.left
         //headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let headerView: UIView = UIView()
-        let BackImageView: UIImageView = UIImageView()
-        BackImageView.image = UIImage(named: AgencySingleton.shared.sidebarBannerName)
         BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         //BackImageView.frame = CGRect(x : 0, y : 0, width : viewW! * viewH! / 10000 + viewH!/4, height : viewW! * 0.6 * 0.4)
         headerView.backgroundColor = UIColor.white
@@ -429,22 +431,21 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     /// Test용도입니다ㅏ...
     @objc func MoveSegue(_ sender:UIButton){
         CloseImageView()
-        self.performSegue(withIdentifier: sender.name, sender: nil)
+        self.performSegue(withIdentifier: sender.currentTitle!, sender: nil)
     }
     
     @objc func ChangeImage(_ sender:UIButton){
-        CloseImageView()
-        FirebaseModel().ChangeImage(title: sender.name)
+        FirebaseModel().ChangeImage(title: sender.currentTitle!)
     }
     @objc func DoCall(_ sender:UIButton){
-        let urlString = "tel://" + sender.name
+        let urlString = "tel://" + sender.currentTitle!
         let numberURL = NSURL(string: urlString)
         UIApplication.shared.open(numberURL! as URL)
         CloseImageView()
     }
     @objc func MoveURL(_ sender:UIButton){
         CloseImageView()
-        url = URL(string:sender.name)
+        url = URL(string:sender.currentTitle!)
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     
@@ -476,22 +477,23 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeBottomView.addSubview(testButton5)
         */
         
-        var arrayCnt = button.count
-        var loopcnt = 0
+        let arrayCnt : CGFloat = CGFloat(button.count)
+        var loopcnt : CGFloat = 0
         for n in button {
-            loopcnt += 1
             let customButton = UIButton(frame: CGRect(x:viewW! / arrayCnt * loopcnt,y:0,width:viewW! / arrayCnt, height:viewW! / arrayCnt))
-            customButton.setImage(UIImage(named: n.imageName), for: .normal)
-            customButton.setName(n.controlValue)
-            if customButton.type == "image"{
+            customButton.setImage(UIImage(named: n.iconName!),for: .normal)
+            customButton.setTitle(n.controlValue, for: .normal)
+            if n.type == "image"{
                 customButton.addTarget(self, action: #selector(self.ChangeImage(_:)), for: .touchUpInside)
-            } else if customButton.type == "segue"{
+            } else if n.type == "segue"{
                 customButton.addTarget(self, action: #selector(self.MoveSegue(_:)), for: .touchUpInside)
-            } else if customButton.type == "call"{
+            } else if n.type == "call"{
                 customButton.addTarget(self, action: #selector(self.DoCall(_:)), for: .touchUpInside)
-            } else if customButton.type == "URL"{
+            } else if n.type == "URL"{
                 customButton.addTarget(self, action: #selector(self.MoveURL(_:)), for: .touchUpInside)
             }
+            
+            loopcnt += 1
             ResizeBottomView.addSubview(customButton)
         }
     }
@@ -524,7 +526,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
         ResizeBottomView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-        MakeBottomButton(buttonArray)
+        MakeBottomButton(button: buttonArray)
         
         //ResizeNoti.sizeToFit()
         ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
@@ -557,32 +559,31 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         //ResizeView(Button1: "bottom_1.png", Button2: "bottom_2.png", Button3: "bottom_3.png", Button4: "bottom_4.png", Button5: "bottom_5.png", Banner: "몽산포_배너.png", TitleName: "몽산포.png")
         //ResizeView(Button1: "제목-없음-1.png", Button2: "CALL.png", Button3: "TIMETABLE.png", Button4: "ONAIR.png", Button5: "GBS.png", Banner: "배너.png", TitleName: "CBA.jpeg")
         
+        //CBA Data
         var sidebarArray : Array<ButtonType> = []
-        sidebarArray.clear()
-        sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "campus_place"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "GBS 장소", controlValue: "campus_place"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "campus_place"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "campus_place"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "campus_place"))
+        sidebarArray.removeAll()
+        sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "GBS 장소", controlValue: "gbs_place"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "cleaning"))
         
         var bottomArray : Array<ButtonType> = []
-        bottomArray.clear()
+        bottomArray.removeAll()
         bottomArray.append(ButtonType(type: "image",iconName: "bottom_1.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "image",iconName: "bottom_2.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "segue",iconName: "bottom_3.png", controlValue: "QnaSegue"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "bottom_2.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "image",iconName: "bottom_3.png", controlValue: "timetable"))
         bottomArray.append(ButtonType(type: "image",iconName: "bottom_4.png", controlValue: "campus_place"))
         bottomArray.append(ButtonType(type: "image",iconName: "bottom_5.png", controlValue: "campus_place"))
         
         let currentAgency = AgencySingleton(
-            AgencyTitle : "2019_SR_SUMMER", // 2019_SR_SUMMER
+            AgencyTitle : "2019_CBA_SUMMER", // 2019_SR_SUMMER
             viewBannerName : "배너.png", // "몽산포_배너.png"
             sidebarBannerName : "CBA가로배너.png", // "몽산포_가로배너.png"
             topTagImageName : "CBA.jpeg", // "몽산포.png"
             sidebar_setting: sidebarArray, 
             bottombar_setting : bottomArray
         )
-        
-        CBAInfoTabViewController.currentAgency = "2019_SR_SUMMER"
         
         viewX = self.view.frame.origin.x
         viewY = self.view.frame.origin.y
@@ -591,9 +592,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         // 2019_CBA_SUMMER
         // 2019_SR_SUMMER
-        ResizeView(buttonArray : AgencySingleton.shared.bottombar_setting, 
-                   ButtonBanner: AgencySingleton.shared.viewBannerName, 
-                   TitleName: AgencySingleton.topTagImageName
+        ResizeView(buttonArray : AgencySingleton.shared.bottombar_setting,
+                   Banner: AgencySingleton.shared.viewBannerName!,
+                   TitleName: AgencySingleton.shared.topTagImageName!
                   )
         SettingSidebar()
         

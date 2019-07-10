@@ -288,8 +288,7 @@ class MassageTabViewController: UIViewController {
                     print(url)
                     print("We got an error", error.localizedDescription)
                 }
-                
-                }.resume()
+            }.resume()
         }
     }
     
