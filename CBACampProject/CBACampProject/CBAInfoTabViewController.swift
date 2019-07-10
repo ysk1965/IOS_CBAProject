@@ -285,8 +285,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         headerButton.backgroundColor = UIColor.white
         headerButton.frame = CGRect(x: BackImageView.frame.origin.x + BackImageView.frame.width * 0.075, y: BackImageView.frame.origin.y + BackImageView.frame.width * 0.075 , width: BackImageView.frame.width * 0.46, height: BackImageView.frame.height * 0.3)
         
-        
-        
         if((Auth.auth().currentUser) != nil){
             //print(Auth.auth().currentUser?.email!)
             headerButton.setTitle(" ", for: .normal)
@@ -311,6 +309,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         //headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let headerView: UIView = UIView()
         BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        let ImageButton = UIButton()
+        //ImageButton.setTitle("QnaSegue", for: .normal)
+        ImageButton.setTitleColor(UIColor.black, for: .normal)
+        ImageButton.backgroundColor = UIColor.white
+        ImageButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        ImageButton.addTarget(self, action: #selector(self.SetPopup(_:)), for: .touchUpInside)
+        headerView.addSubview(ImageButton)
         //BackImageView.frame = CGRect(x : 0, y : 0, width : viewW! * viewH! / 10000 + viewH!/4, height : viewW! * 0.6 * 0.4)
         headerView.backgroundColor = UIColor.white
         
@@ -399,6 +405,21 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         self.performSegue(withIdentifier: "QnaSegue", sender: nil)
     }
     
+    @objc func SetCBA(_ sender:UIButton){
+        CloseImageView()
+        AgencySingleton.shared.SetCBAAgency()
+        main_popupView.removeFromSuperview()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+        self.menu.reduceMenu()
+    }
+    
+    @objc func SetMonsanpo(_ sender:UIButton){
+        CloseImageView()
+        AgencySingleton.shared.SetMongsanpoAgency()
+        main_popupView.removeFromSuperview()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+    }
+    
     @objc func GetNoti(_ sender:UIButton){
         CloseImageView()
         self.performSegue(withIdentifier: "QnaSegue", sender: nil)
@@ -423,9 +444,92 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         slideshow.frame.size = CGSize(width: 0, height: 0)
     }
     
+    lazy var main_popupView = UIView()
+    lazy var inner_popupView = UIView()
+    lazy var popupView_toptext = UILabel()
+    lazy var popupView_blackline = UILabel()
+    lazy var popupView_cbaButton = UIButton()
+    lazy var popupView_mongsanpoButton = UIButton()
+    lazy var popupView_bottomtext = UILabel()
     
+    func SetPopupView(){
+        self.view.addSubview(main_popupView)
+        main_popupView.backgroundColor = UIColor.black
+        main_popupView.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(380)
+            make.width.width.equalTo(270)
+            make.center.equalTo(self.view)
+        }
+        
+        main_popupView.addSubview(inner_popupView)
+        inner_popupView.backgroundColor = UIColor.white
+        inner_popupView.snp.makeConstraints { (make) -> Void in
+            make.height.height.equalTo(370)
+            make.width.width.equalTo(260)
+            make.center.equalTo(self.view)
+        }
+        
+        main_popupView.addSubview(popupView_toptext)
+        popupView_toptext.text = "수련회를 선택해주세요"
+        popupView_toptext.backgroundColor = UIColor.white
+        popupView_toptext.snp.makeConstraints { (make) -> Void in
+            make.height.height.equalTo(50)
+            make.width.width.equalTo(260)
+            make.centerX.equalTo(main_popupView)
+            make.top.equalTo(main_popupView).offset(30)
+        }
+        popupView_toptext.font = UIFont(name: "System"
+            , size: 20)
+        popupView_toptext.textAlignment = NSTextAlignment.center
+        popupView_toptext.adjustsFontSizeToFitWidth = true
+        
+        main_popupView.addSubview(popupView_blackline)
+        popupView_blackline.backgroundColor = UIColor.black
+        popupView_blackline.snp.makeConstraints { (make) -> Void in
+            make.height.height.equalTo(1)
+            make.width.width.equalTo(50)
+            make.centerX.equalTo(main_popupView)
+            make.bottom.equalTo(popupView_toptext).offset(0)
+        }
+        
+        main_popupView.addSubview(popupView_cbaButton)
+        popupView_cbaButton.backgroundColor = UIColor.blue
+        popupView_cbaButton.addTarget(self, action: #selector(self.SetCBA(_:)), for: .touchUpInside)
+        popupView_cbaButton.snp.makeConstraints { (make) -> Void in
+            make.height.height.equalTo(80)
+            make.width.width.equalTo(220)
+            make.centerX.equalTo(main_popupView)
+            make.bottom.equalTo(popupView_blackline).offset(100)
+        }
+        
+        main_popupView.addSubview(popupView_mongsanpoButton)
+        popupView_mongsanpoButton.backgroundColor = UIColor.red
+        popupView_mongsanpoButton.addTarget(self, action: #selector(self.SetMonsanpo(_:)), for: .touchUpInside)
+        
+        popupView_mongsanpoButton.snp.makeConstraints { (make) -> Void in
+            make.height.height.equalTo(80)
+            make.width.width.equalTo(220)
+            make.centerX.equalTo(main_popupView)
+            make.bottom.equalTo(popupView_cbaButton).offset(80)
+        }
+        main_popupView.addSubview(popupView_bottomtext)
+        popupView_bottomtext.backgroundColor = UIColor.white
+        popupView_bottomtext.snp.makeConstraints { (make) -> Void in
+            make.height.height.equalTo(12)
+            make.width.width.equalTo(200)
+            make.centerX.equalTo(main_popupView)
+            make.bottom.equalTo(main_popupView).offset(-30)
+        }
+        popupView_bottomtext.text = "클릭하면 해당 페이지로 넘어갑니다"
+        popupView_bottomtext.textAlignment = NSTextAlignment.center
+        popupView_bottomtext.adjustsFontSizeToFitWidth = true
+        onMenuClose()
+    }
     
-    
+    @objc func SetPopup(_ sender:UIButton){
+        SetPopupView()
+        
+    }
     
     
     /// Test용도입니다ㅏ...
@@ -450,6 +554,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func MakeBottomButton(button : Array<ButtonType>){
+        for view in self.ResizeBottomView.subviews {
+            view.removeFromSuperview()
+        }
         /*
         let testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
         testButton.setImage(UIImage(named: Button1), for: .normal)
@@ -498,15 +605,15 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
-    func ResizeView(buttonArray : Array<ButtonType>, Banner: String, TitleName: String){
+    @objc func ResizeView(_ notification: Notification){
         titleNameImage.translatesAutoresizingMaskIntoConstraints = false
-        titleNameImage.image = UIImage(named: TitleName)
+        titleNameImage.image = UIImage(named: AgencySingleton.shared.AgencyTitle!)
         titleNameImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleNameImage.topAnchor.constraint(equalTo: view.topAnchor, constant: viewH!*0.055).isActive = true
         titleNameImage.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.09).isActive = true
         titleNameImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         
-        ResizeBanner.image = UIImage(named: Banner)
+        ResizeBanner.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         
         
         //slideshow
@@ -526,7 +633,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
         ResizeBottomView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-        MakeBottomButton(button: buttonArray)
+        MakeBottomButton(button: AgencySingleton.shared.bottombar_setting)
         
         //ResizeNoti.sizeToFit()
         ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
@@ -570,11 +677,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         var bottomArray : Array<ButtonType> = []
         bottomArray.removeAll()
-        bottomArray.append(ButtonType(type: "image",iconName: "bottom_1.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "segue",iconName: "bottom_2.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "image",iconName: "bottom_3.png", controlValue: "timetable"))
-        bottomArray.append(ButtonType(type: "image",iconName: "bottom_4.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "image",iconName: "bottom_5.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "image",iconName: "제목-없음-1.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "CALL.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
+        bottomArray.append(ButtonType(type: "image",iconName: "ONAIR.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "image",iconName: "GBS.png", controlValue: "campus_place"))
         
         let currentAgency = AgencySingleton(
             AgencyTitle : "2019_CBA_SUMMER", // 2019_SR_SUMMER
@@ -592,10 +699,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         // 2019_CBA_SUMMER
         // 2019_SR_SUMMER
-        ResizeView(buttonArray : AgencySingleton.shared.bottombar_setting,
-                   Banner: AgencySingleton.shared.viewBannerName!,
-                   TitleName: AgencySingleton.shared.topTagImageName!
-                  )
         SettingSidebar()
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
@@ -603,8 +706,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "change image"), object: nil)
         
+        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "load main view"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
         FirebaseModel().getMessages(messageTitle: "message")
+        
+        // load main view
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
     }
     
     override func didReceiveMemoryWarning() {
