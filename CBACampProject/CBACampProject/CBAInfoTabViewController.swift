@@ -63,48 +63,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     @IBOutlet weak var NoticeLabel: UILabel!
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        //parsing()
-        /*
-        
-        if segue.identifier == "SegueToSideMenu"{
-            if let navController = segue.destination as? UINavigationController{
-                if let SideMenuController = navController.topViewController as?
-                    SideBarViewController {
-                    //SideMenuController.menu?.expand(onController: self)
-                    SideMenuController.Check = true
-                    SideMenuController.SelectMenu = false
-                }
-            }
-        }
-        */
-    }
-    
-    @IBOutlet weak var CallOutlet: UIButton!
-    @IBAction func CallAction(_ sender: Any) {
-        CallOutlet.popIn(fromScale: 2, duration: 2, delay: 0)
-        let urlString = "tel://" + "010-3397-4842"
-        let numberURL = NSURL(string: urlString)
-        UIApplication.shared.openURL(numberURL! as URL)
-    }
-    
-    @IBOutlet weak var CenterCallOutlet: UIButton!
-    @IBAction func CenterCallAction(_ sender: Any) {
-        CenterCallOutlet.popIn(fromScale: 2, duration: 2, delay: 0)
-        
-        let urlString = "tel://" + "010-5025-4375"
-        let numberURL = NSURL(string: urlString)
-        UIApplication.shared.openURL(numberURL! as URL)
-    }
-    
     var url = URL(string:"http://cba.sungrak.or.kr/HomePage/Index")
-    
-    @IBOutlet weak var InstaOutlet: UIButton!
-    @IBAction func InstagramAction(_ sender: Any) {
-        InstaOutlet.popIn(fromScale: 20, duration: 4, delay: 0)
-        url = URL(string:"https://www.instagram.com/cba.sungrak/")
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-    }
     
     @objc func viewload(_ notification: Notification){
         print("viewDidload_INFO")
@@ -171,20 +130,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func SettingSidebar(){
-        if(CBAInfoTabViewController.currentAgency == "몽산포"){
-            
-        }
         userID = Auth.auth().currentUser?.email
         //userID = "enter_maintanance@naver.com"
         
@@ -203,38 +149,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             }
             menuItemArray.append(tempMenu!)
         }
-        
-        /*
-        // Creating a Menu Item with title string, with an action
-        let menuItem0: SideMenuItem = SideMenuItemFactory.make(title: "GBS 확인"){
-            if(!((Auth.auth().currentUser?.email) != nil)){
-                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
-            }
-            else{
-                self.performSegue(withIdentifier: "SearchGBSSegue", sender: nil)
-            }
-        }
-        let menuItem1: SideMenuItem = SideMenuItemFactory.make(title: "캠퍼스 모임장소") {
-        }
-        let menuItem2 = SideMenuItemFactory.make(title: "GBS장소") {
-            FirebaseModel().ChangeImage(title: "campus_place")
-        }
-        let menuItem3 = SideMenuItemFactory.make(title: "또래별 강의") {
-            FirebaseModel().ChangeImage(title: "room")
-        }
-        let menuItem4 = SideMenuItemFactory.make(title: "수련회장 배치도") {
-            FirebaseModel().ChangeImage(title: "room")
-        }
-        let menuItem5 = SideMenuItemFactory.make(title: "식단 안내") {
-            FirebaseModel().ChangeImage(title: "room")
-        }
-        let menuItem6 = SideMenuItemFactory.make(title: "식당/간식 봉사") {
-            FirebaseModel().ChangeImage(title: "room")
-        }
-        let menuItem7 = SideMenuItemFactory.make(title: "청소구역") {
-            FirebaseModel().ChangeImage(title: "room")
-        }
-        */
         
         /*
         let menuItem8 = SideMenuItemFactory.make(title: "  출석체크") {
@@ -533,6 +447,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     
     /// Test용도입니다ㅏ...
+=======
+>>>>>>> dd999d424e7797f7a78f489a09e70fbbfc27d475
     @objc func MoveSegue(_ sender:UIButton){
         CloseImageView()
         self.performSegue(withIdentifier: sender.currentTitle!, sender: nil)
@@ -557,33 +473,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         for view in self.ResizeBottomView.subviews {
             view.removeFromSuperview()
         }
-        /*
-        let testButton = UIButton(frame: CGRect(x:0,y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-        testButton.setImage(UIImage(named: Button1), for: .normal)
-        testButton.addTarget(self, action: #selector(self.GetQnA(_:)), for: .touchUpInside)
-        ResizeBottomView.addSubview(testButton)
-        
-        let testButton2 = UIButton(frame: CGRect(x:viewW! * 0.2, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-        testButton2.setImage(UIImage(named: Button2), for: .normal)
-        testButton2.addTarget(self, action: #selector(self.GetCall(_:)), for: .touchUpInside)
-        ResizeBottomView.addSubview(testButton2)
-        
-        let testButton3 = UIButton(frame: CGRect(x:viewW! * 0.4, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-        testButton3.setImage(UIImage(named: Button3), for: .normal)
-        testButton3.addTarget(self, action: #selector(self.GetTimeTable(_:)), for: .touchUpInside)
-        ResizeBottomView.addSubview(testButton3)
-        
-        let testButton4 = UIButton(frame: CGRect(x:viewW! * 0.6, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-        testButton4.setImage(UIImage(named: Button4), for: .normal)
-        testButton4.addTarget(self, action: #selector(self.GetYoutube(_:)), for: .touchUpInside)
-        ResizeBottomView.addSubview(testButton4)
-        
-        let testButton5 = UIButton(frame: CGRect(x:viewW! * 0.8, y:0,width:viewW! * 0.2, height:viewW! * 0.2))
-        testButton5.setImage(UIImage(named: Button5), for: .normal)
-        testButton5.addTarget(self, action: #selector(self.GetGBS(_:)), for: .touchUpInside)
-        ResizeBottomView.addSubview(testButton5)
-        */
-        
         let arrayCnt : CGFloat = CGFloat(button.count)
         var loopcnt : CGFloat = 0
         for n in button {
@@ -659,38 +548,16 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentAgency = AgencySingleton() // instance생성(초기값 : 몽산포)
         
-        // AgencySingleton.shared.~~~~
-        // SingleTon선언
-        // 이거 값 나중에는 데이터로 받아올 수 있도록 수정
-        //ResizeView(Button1: "bottom_1.png", Button2: "bottom_2.png", Button3: "bottom_3.png", Button4: "bottom_4.png", Button5: "bottom_5.png", Banner: "몽산포_배너.png", TitleName: "몽산포.png")
-        //ResizeView(Button1: "제목-없음-1.png", Button2: "CALL.png", Button3: "TIMETABLE.png", Button4: "ONAIR.png", Button5: "GBS.png", Banner: "배너.png", TitleName: "CBA.jpeg")
-        
-        //CBA Data
-        var sidebarArray : Array<ButtonType> = []
-        sidebarArray.removeAll()
-        sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "GBS 장소", controlValue: "gbs_place"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "cleaning"))
-        
-        var bottomArray : Array<ButtonType> = []
-        bottomArray.removeAll()
-        bottomArray.append(ButtonType(type: "image",iconName: "제목-없음-1.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "segue",iconName: "CALL.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
-        bottomArray.append(ButtonType(type: "image",iconName: "ONAIR.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "image",iconName: "GBS.png", controlValue: "campus_place"))
-        
-        let currentAgency = AgencySingleton(
-            AgencyTitle : "2019_CBA_SUMMER", // 2019_SR_SUMMER
-            viewBannerName : "배너.png", // "몽산포_배너.png"
-            sidebarBannerName : "CBA가로배너.png", // "몽산포_가로배너.png"
-            topTagImageName : "CBA.jpeg", // "몽산포.png"
-            sidebar_setting: sidebarArray, 
-            bottombar_setting : bottomArray
-        )
+        // CBAInfoTabViewController.currentAgency 요거 Realm에 넣어놔야 함. 그걸로 nil체크!
+        if(CBAInfoTabViewController.currentAgency != nil){
+            if(CBAInfoTabViewController.currentAgency == "CBA"){
+                AgencySingleton.shared.setCBAAgency()
+            } else if (CBAInfoTabViewController.currentAgency == "MONGSANPO"){
+                AgencySingleton.shared.setMongsanpoAgency()
+            }
+        }
         
         viewX = self.view.frame.origin.x
         viewY = self.view.frame.origin.y
