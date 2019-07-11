@@ -38,6 +38,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     var viewH : CGFloat?
     var viewW : CGFloat?
     
+    static var ScreenWidth : CGFloat?
+    static var ScreenHeight : CGFloat?
+    
     var menu: SideMenuViewController!
     
     // Optionally function onMenuClose(), fired when user closes menu
@@ -324,7 +327,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         AgencySingleton.shared.SetCBAAgency()
         main_popupView.removeFromSuperview()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
-        self.menu.reduceMenu()
     }
     
     @objc func SetMonsanpo(_ sender:UIButton){
@@ -441,14 +443,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func SetPopup(_ sender:UIButton){
+        self.menu.reduceMenu()
         SetPopupView()
         
     }
     
-    
-    /// Test용도입니다ㅏ...
-=======
->>>>>>> dd999d424e7797f7a78f489a09e70fbbfc27d475
     @objc func MoveSegue(_ sender:UIButton){
         CloseImageView()
         self.performSegue(withIdentifier: sender.currentTitle!, sender: nil)
@@ -548,14 +547,41 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let currentAgency = AgencySingleton() // instance생성(초기값 : 몽산포)
+        
+        CBAInfoTabViewController.currentAgency = "MONGSANPO"
+        //CBA Data
+        var sidebarArray : Array<ButtonType> = []
+        sidebarArray.removeAll()
+        sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "GBS 장소", controlValue: "gbs_place"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
+        sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "cleaning"))
+        
+        var bottomArray : Array<ButtonType> = []
+        bottomArray.removeAll()
+        bottomArray.append(ButtonType(type: "image",iconName: "제목-없음-1.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "CALL.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
+        bottomArray.append(ButtonType(type: "image",iconName: "ONAIR.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "image",iconName: "GBS.png", controlValue: "campus_place"))
+        
+        
+        let currentAgency = AgencySingleton(
+            AgencyTitle : "2019_CBA_SUMMER", // 2019_SR_SUMMER
+            viewBannerName : "배너.png", // "몽산포_배너.png"
+            sidebarBannerName : "CBA가로배너.png", // "몽산포_가로배너.png"
+            topTagImageName : "CBA.jpeg", // "몽산포.png"
+            sidebar_setting: sidebarArray,
+            bottombar_setting : bottomArray
+        )
         
         // CBAInfoTabViewController.currentAgency 요거 Realm에 넣어놔야 함. 그걸로 nil체크!
         if(CBAInfoTabViewController.currentAgency != nil){
             if(CBAInfoTabViewController.currentAgency == "CBA"){
-                AgencySingleton.shared.setCBAAgency()
+                AgencySingleton.shared.SetCBAAgency()
             } else if (CBAInfoTabViewController.currentAgency == "MONGSANPO"){
-                AgencySingleton.shared.setMongsanpoAgency()
+                AgencySingleton.shared.SetMongsanpoAgency()
             }
         }
         
@@ -563,6 +589,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         viewY = self.view.frame.origin.y
         viewW = self.view.frame.size.width
         viewH = self.view.frame.size.height
+        
+        CBAInfoTabViewController.ScreenWidth = self.view.frame.size.width
+        CBAInfoTabViewController.ScreenHeight = self.view.frame.size.height
         
         // 2019_CBA_SUMMER
         // 2019_SR_SUMMER

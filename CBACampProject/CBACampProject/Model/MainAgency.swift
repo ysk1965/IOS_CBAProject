@@ -36,8 +36,8 @@ class AgencySingleton {
     // MainView에 들어갈 내용들 추가
     var bottombar_setting : Array<ButtonType> = []
     
+    
     private init() {
-        SetMonsanpoAgency()
     }
     
     init(AgencyTitle : String, viewBannerName : String, sidebarBannerName : String, topTagImageName : String, sidebar_setting: Array<ButtonType>, bottombar_setting : Array<ButtonType>){
@@ -68,12 +68,12 @@ class AgencySingleton {
         bottomArray.append(ButtonType(type: "image",iconName: "ONAIR.png", controlValue: "campus_place"))
         bottomArray.append(ButtonType(type: "image",iconName: "GBS.png", controlValue: "campus_place"))
         
-        AgencySingleton.shared.AgencyTitle : "2019_CBA_SUMMER", // 2019_SR_SUMMER
-        AgencySingleton.shared.viewBannerName : "배너.png", // "몽산포_배너.png"
-        AgencySingleton.shared.sidebarBannerName : "CBA가로배너.png", // "몽산포_가로배너.png"
-        AgencySingleton.shared.topTagImageName : "CBA.jpeg", // "몽산포.png"
-        AgencySingleton.shared.sidebar_setting: sidebarArray, 
-        AgencySingleton.shared.bottombar_setting : bottomArray
+        AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
+        AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"
+        AgencySingleton.shared.sidebarBannerName = "CBA가로배너.png" // "몽산포_가로배너.png"
+        AgencySingleton.shared.topTagImageName = "CBA.jpeg" // "몽산포.png"
+        AgencySingleton.shared.sidebar_setting = sidebarArray
+        AgencySingleton.shared.bottombar_setting = bottomArray
     }
     
     func SetMongsanpoAgency(){
@@ -81,11 +81,11 @@ class AgencySingleton {
         //MONGSANPO Data
         var M_sidebarArray : Array<ButtonType> = []
         M_sidebarArray.removeAll()
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "GBS 장소", controlValue: "gbs_place"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "cleaning"))
+        M_sidebarArray.append(ButtonType(type: "segue",iconName: "공지사항", controlValue: "infoSegue"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "1", controlValue: "gbs_place"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "2", controlValue: "menu"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "3", controlValue: "mealwork"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "4", controlValue: "cleaning"))
         
         var M_bottomArray : Array<ButtonType> = []
         M_bottomArray.removeAll()
@@ -95,10 +95,10 @@ class AgencySingleton {
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_4.png", controlValue: "campus_place"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_5.png", controlValue: "campus_place"))
         
-        AgencySingleton.shared.AgencyTitle : "2019_SR_SUMMER"
-        AgencySingleton.shared.viewBannerName : "몽산포_배너.png"
-        AgencySingleton.shared.sidebarBannerName : "몽산포_가로배너.png"
-        AgencySingleton.shared.sidebar_setting: M_sidebarArray, 
-        AgencySingleton.shared.bottombar_setting : M_bottomArray
+        AgencySingleton.shared.AgencyTitle = "2019_SR_SUMMER"
+        AgencySingleton.shared.viewBannerName = "몽산포_배너.png"
+        AgencySingleton.shared.sidebarBannerName = "몽산포_가로배너.png"
+        AgencySingleton.shared.sidebar_setting = M_sidebarArray
+        AgencySingleton.shared.bottombar_setting = M_bottomArray
     }
 }
