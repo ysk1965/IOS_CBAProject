@@ -90,10 +90,10 @@ class AgencySingleton {
         var M_bottomArray : Array<ButtonType> = []
         M_bottomArray.removeAll()
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_1.png", controlValue: "campus_place"))
-        M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_2.png", controlValue: "campus_place"))
+        M_bottomArray.append(ButtonType(type: "call",iconName: "bottom_2.png", controlValue: "010-6623-2545"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_3.png", controlValue: "timetable"))
-        M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_4.png", controlValue: "campus_place"))
-        M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_5.png", controlValue: "campus_place"))
+        M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_4.png", controlValue: "infoSegue"))
+        M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_5.png", controlValue: "MapSegue"))
         
         AgencySingleton.shared.AgencyTitle = "2019_SR_SUMMER"
         AgencySingleton.shared.viewBannerName = "몽산포_배너.png"

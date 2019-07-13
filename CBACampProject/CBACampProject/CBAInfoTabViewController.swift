@@ -302,26 +302,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
-    @objc func GetYoutube(_ sender:UIButton){
-        CloseImageView()
-        url = URL(string:"https://www.youtube.com/channel/UCW6bF9L0ZK__Tlwl19B0FYQ/videos?view_as=subscriber")
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-    }
-    
-    @objc func GetTimeTable(_ sender:UIButton){
-        FirebaseModel().ChangeImage(title: "room")
-    }
-    
-    @objc func GetGBS(_ sender:UIButton){
-        CloseImageView()
-        self.performSegue(withIdentifier: "SearchGBS", sender: nil)
-    }
-    
-    @objc func GetQnA(_ sender:UIButton){
-        CloseImageView()
-        self.performSegue(withIdentifier: "QnaSegue", sender: nil)
-    }
-    
     @objc func SetCBA(_ sender:UIButton){
         CloseImageView()
         AgencySingleton.shared.SetCBAAgency()
@@ -409,22 +389,25 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
         
         main_popupView.addSubview(popupView_cbaButton)
-        popupView_cbaButton.backgroundColor = UIColor.blue
+        popupView_cbaButton.slideOut()
+        popupView_cbaButton.backgroundColor = UIColor.white
         popupView_cbaButton.addTarget(self, action: #selector(self.SetCBA(_:)), for: .touchUpInside)
+        popupView_cbaButton.setImage(UIImage(named: "CBA선택.png"), for: UIControlState.normal)
         popupView_cbaButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
-            make.width.width.equalTo(220)
+            make.width.width.equalTo(230)
             make.centerX.equalTo(main_popupView)
             make.bottom.equalTo(popupView_blackline).offset(100)
         }
         
         main_popupView.addSubview(popupView_mongsanpoButton)
-        popupView_mongsanpoButton.backgroundColor = UIColor.red
+        popupView_mongsanpoButton.slideOut()
+        popupView_mongsanpoButton.backgroundColor = UIColor.white
         popupView_mongsanpoButton.addTarget(self, action: #selector(self.SetMonsanpo(_:)), for: .touchUpInside)
-        
+        popupView_mongsanpoButton.setImage(UIImage(named: "몽산포선택.png"), for: UIControlState.normal)
         popupView_mongsanpoButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
-            make.width.width.equalTo(220)
+            make.width.width.equalTo(230)
             make.centerX.equalTo(main_popupView)
             make.bottom.equalTo(popupView_cbaButton).offset(80)
         }
@@ -543,6 +526,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor).isActive = true
         ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
+        FirebaseModel().getMessages(messageTitle: "message")
     }
     
     override func viewDidLoad() {
@@ -603,9 +589,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "change image"), object: nil)
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "load main view"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
-        FirebaseModel().getMessages(messageTitle: "message")
         
         // load main view
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)

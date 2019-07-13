@@ -5,13 +5,20 @@ import Kingfisher
 import FirebaseStorage
 import ImageSlideshow
 
+struct ImageInfo {
+    var imageKey : String
+    var imageName : String
+}
+
 class FirebaseModel {
     static var messages = [Message]()
+    static var noticeDictionary = Dictionary<String, String>()
     static var sendMessageData = Message(text: "default", time: "default", auth: "default", isStaff : "default")
     static var schedule = ""
     
     var imageNames : Array<String> = []
     static var imageKingfisher : Array<KingfisherSource> = []
+    static var noticeImage : Array<KingfisherSource> = []
     
     var ref: DatabaseReference!
     
@@ -60,6 +67,31 @@ class FirebaseModel {
                     downloadcnt += 1
                 }
             }
+        })
+    }
+    
+    func GetNoticeImageInfo(title : String) {
+        FirebaseModel.noticeImage.removeAll()
+        let path = "2019_SR_SUMMER/" + title
+        Storage.storage().reference(withPath: path).downloadURL { (url, error) in
+            FirebaseModel.noticeImage.append(KingfisherSource(url: url!))
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "set image"), object: self)
+        }
+    }
+    
+    func GetNoticeInfo(){
+        self.imageNames.removeAll()
+        
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child("c2")
+        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot]{
+                for n in result{
+                    FirebaseModel.noticeDictionary[n.key] = n.value as! String
+                }
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GetNoticeInfo"), object: self)
         })
     }
     
