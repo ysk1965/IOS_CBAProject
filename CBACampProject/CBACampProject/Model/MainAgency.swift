@@ -81,11 +81,13 @@ class AgencySingleton {
         //MONGSANPO Data
         var M_sidebarArray : Array<ButtonType> = []
         M_sidebarArray.removeAll()
+        M_sidebarArray.append(ButtonType(type: "segue",iconName: "초청과 환영의 글", controlValue: "c1")) 
+        // 환영 글은 youtube 예외처리 필요
         M_sidebarArray.append(ButtonType(type: "segue",iconName: "공지사항", controlValue: "infoSegue"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "1", controlValue: "gbs_place"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "2", controlValue: "menu"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "3", controlValue: "mealwork"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "4", controlValue: "cleaning"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "프로그램", controlValue: "m3"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "장소안내", controlValue: "c4"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "안전사고 및 여행자 보험", controlValue: "c5"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "협력(후원)기관", controlValue: "c5"))
         
         var M_bottomArray : Array<ButtonType> = []
         M_bottomArray.removeAll()
