@@ -14,20 +14,34 @@ import Firebase
 import ImageSlideshow
 import Kingfisher
 import SnapKit
+import RealmSwift
+import Realm
+
+class MyData: Object{
+    @objc dynamic var userUid : String = ""
+    @objc dynamic var currentAgent : String = ""
+}
 
 class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     // move TabBar
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var slideshow: ImageSlideshow!
+    @IBOutlet weak var hambergerButton: UIButton!
     
     // Arrange View Image
     @IBOutlet weak var ResizeNoti: UILabel!
     @IBOutlet weak var ResizeBanner: UIImageView!
     @IBOutlet weak var ResizeBottomView: UIView!
-    @IBOutlet weak var titleNameImage: UIImageView!
+    @IBOutlet weak var TopImageButtonOutlet: UIButton!
+    @IBAction func TopImageButton(_ sender: Any) {
+        CloseImageView()
+    }
     
-    static var currentAgency : String!
+    static var isNotiMessage = false
+    var isMenuClosePoint = false
+    
+    let realm = try! Realm()
     
     var firebaseModel: FirebaseModel = FirebaseModel()
     
@@ -41,11 +55,25 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     static var ScreenWidth : CGFloat?
     static var ScreenHeight : CGFloat?
     
+    func addMyData(uid: String, agent : String) {
+        let myData = MyData()
+        
+        myData.userUid = uid
+        myData.currentAgent = agent
+        
+        try! realm.write {
+            realm.add(myData)
+        }
+        print("success")
+    }
+    
     var menu: SideMenuViewController!
     
     // Optionally function onMenuClose(), fired when user closes menu
     func onMenuClose() {
-        //MenuSetting()
+        if(isMenuClosePoint == true){
+            
+        }
         
         print("Action on Close Menu")
     }
@@ -147,7 +175,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 }
             } else if n.type == "segue"{
                 tempMenu = SideMenuItemFactory.make(title: n.iconName!){
-                    self.performSegue(withIdentifier: n.controlValue!, sender: nil)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
+                        self.performSegue(withIdentifier: n.controlValue!, sender: nil)
+                    }
                 }
             }
             menuItemArray.append(tempMenu!)
@@ -302,8 +332,17 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
+    func RenewRealmData(title : String){
+        try! realm.write {
+            realm.deleteAll()
+        }
+        addMyData(uid: AgencySingleton.shared.realmUid!, agent: title)
+        AgencySingleton.shared.realmAgent = title
+    }
+    
     @objc func SetCBA(_ sender:UIButton){
         CloseImageView()
+        RenewRealmData(title: "CBA")
         AgencySingleton.shared.SetCBAAgency()
         main_popupView.removeFromSuperview()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
@@ -311,6 +350,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     @objc func SetMonsanpo(_ sender:UIButton){
         CloseImageView()
+        RenewRealmData(title: "MONGSANPO")
         AgencySingleton.shared.SetMongsanpoAgency()
         main_popupView.removeFromSuperview()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
@@ -318,6 +358,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     @objc func GetNoti(_ sender:UIButton){
         CloseImageView()
+        CBAInfoTabViewController.isNotiMessage = true
         self.performSegue(withIdentifier: "QnaSegue", sender: nil)
     }
     
@@ -433,6 +474,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     @objc func MoveSegue(_ sender:UIButton){
         CloseImageView()
+        
         self.performSegue(withIdentifier: sender.currentTitle!, sender: nil)
     }
     
@@ -476,13 +518,20 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         }
     }
     
+    lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
-        titleNameImage.translatesAutoresizingMaskIntoConstraints = false
-        titleNameImage.image = UIImage(named: AgencySingleton.shared.AgencyTitle!)
-        titleNameImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        titleNameImage.topAnchor.constraint(equalTo: view.topAnchor, constant: viewH!*0.055).isActive = true
-        titleNameImage.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.09).isActive = true
-        titleNameImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        hambergerButton.translatesAutoresizingMaskIntoConstraints = false
+        hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        hambergerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
+        hambergerButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        hambergerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        
+        TopImageButtonOutlet.translatesAutoresizingMaskIntoConstraints = false
+        TopImageButtonOutlet.setImage(UIImage(named: AgencySingleton.shared.topTagImageName!), for: .normal)
+        TopImageButtonOutlet.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        TopImageButtonOutlet.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        TopImageButtonOutlet.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        TopImageButtonOutlet.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
         
         ResizeBanner.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         
@@ -528,13 +577,23 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
+        
         FirebaseModel().getMessages(messageTitle: "message")
+    }
+    
+    func SetRealmData(defaultAgent : String){
+        let myData = realm.objects(MyData.self)
+        let uuid = "IOS_" + UUID().uuidString
+        
+        if(myData.count == 0){
+            addMyData(uid : uuid, agent : defaultAgent)
+        }
+        AgencySingleton.shared.realmUid = myData.first?.userUid
+        AgencySingleton.shared.realmAgent = myData.first?.currentAgent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        CBAInfoTabViewController.currentAgency = "MONGSANPO"
         //CBA Data
         var sidebarArray : Array<ButtonType> = []
         sidebarArray.removeAll()
@@ -562,14 +621,24 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             bottombar_setting : bottomArray
         )
         
+        // uuid, agent 생성
+        SetRealmData(defaultAgent: "MONGSANPO");
+        
+        
         // CBAInfoTabViewController.currentAgency 요거 Realm에 넣어놔야 함. 그걸로 nil체크!
-        if(CBAInfoTabViewController.currentAgency != nil){
-            if(CBAInfoTabViewController.currentAgency == "CBA"){
+        if(AgencySingleton.shared.realmAgent != nil){
+            if(AgencySingleton.shared.realmAgent == "CBA"){
                 AgencySingleton.shared.SetCBAAgency()
-            } else if (CBAInfoTabViewController.currentAgency == "MONGSANPO"){
+            } else if (AgencySingleton.shared.realmAgent == "MONGSANPO"){
                 AgencySingleton.shared.SetMongsanpoAgency()
             }
         }
+        
+        /*
+         try! realm.write {
+         realm.deleteAll()
+         }
+         */
         
         viewX = self.view.frame.origin.x
         viewY = self.view.frame.origin.y

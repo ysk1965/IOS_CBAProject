@@ -81,6 +81,11 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.0)
+  - Realm (3.17.0):
+    - Realm/Headers (= 3.17.0)
+  - Realm/Headers (3.17.0)
+  - RealmSwift (3.17.0):
+    - Realm (= 3.17.0)
   - SimpleAnimation (0.4.0)
   - SnapKit (5.0.0)
   - SwiftyJSON (4.1.0)
@@ -99,6 +104,7 @@ DEPENDENCIES:
   - ImageSlideshow/Kingfisher
   - Kingfisher (~> 4.0)
   - MenuSlider (~> 0.1.5)
+  - RealmSwift
   - SimpleAnimation
   - SnapKit (~> 5.0.0)
   - SwiftyJSON
@@ -125,6 +131,8 @@ SPEC REPOS:
     - MenuSlider
     - nanopb
     - Protobuf
+    - Realm
+    - RealmSwift
     - SimpleAnimation
     - SnapKit
     - SwiftyJSON
@@ -150,11 +158,13 @@ SPEC CHECKSUMS:
   MenuSlider: 8f2cb5df91196fa77f3c28c67d1350bd35099bcf
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
+  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
   SimpleAnimation: a3473da5421c65100d68f98a44fc853b81091249
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: bba0901ba6b71a178c27a42bc831ecfd99e8633e
+PODFILE CHECKSUM: 9dcacea76b5d3d07df5242fe88af2b8e50ac4d55
 
 COCOAPODS: 1.5.3

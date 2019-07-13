@@ -20,6 +20,8 @@ pod "TextFieldEffects"
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'SnapKit', '~> 5.0.0'
+pod 'RealmSwift'
+
 
   # Pods for CBACampProject
 

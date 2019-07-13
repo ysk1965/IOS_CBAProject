@@ -26,6 +26,9 @@ struct ButtonType {
 class AgencySingleton {
     static let shared = AgencySingleton()
     
+    var realmAgent : String?
+    var realmUid : String?
+    
     var AgencyTitle : String?
     var viewBannerName : String? // View 배너 이미지 이름
     var sidebarBannerName : String? // 사이드 바 배너 이미지 이름
@@ -71,7 +74,7 @@ class AgencySingleton {
         AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"
         AgencySingleton.shared.sidebarBannerName = "CBA가로배너.png" // "몽산포_가로배너.png"
-        AgencySingleton.shared.topTagImageName = "CBA.jpeg" // "몽산포.png"
+        AgencySingleton.shared.topTagImageName = "CBA.png" // "몽산포.png"
         AgencySingleton.shared.sidebar_setting = sidebarArray
         AgencySingleton.shared.bottombar_setting = bottomArray
     }
@@ -94,12 +97,13 @@ class AgencySingleton {
         M_bottomArray.append(ButtonType(type: "url",iconName: "bottom_1.png", controlValue: "campus_place"))
         M_bottomArray.append(ButtonType(type: "call",iconName: "bottom_2.png", controlValue: "010-6623-2545"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_3.png", controlValue: "m3"))
-        M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_4.png", controlValue: "infoSegue"))
-        M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_5.png", controlValue: "m5"))
+        M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_4.png", controlValue: "QnaSegue"))
+        M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_5.png", controlValue: "m5"))
         
         AgencySingleton.shared.AgencyTitle = "2019_SR_SUMMER"
         AgencySingleton.shared.viewBannerName = "몽산포_배너.png"
         AgencySingleton.shared.sidebarBannerName = "몽산포_가로배너.png"
+        AgencySingleton.shared.topTagImageName = "몽산포.png"
         AgencySingleton.shared.sidebar_setting = M_sidebarArray
         AgencySingleton.shared.bottombar_setting = M_bottomArray
     }

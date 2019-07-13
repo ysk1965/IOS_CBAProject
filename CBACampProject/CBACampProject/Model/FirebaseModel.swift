@@ -24,6 +24,7 @@ class FirebaseModel {
     
     func getMessages(messageTitle : String) {
         print("trying to get messages....")
+        FirebaseModel.messages.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child(messageTitle)
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
@@ -31,11 +32,19 @@ class FirebaseModel {
                 FirebaseModel.messages = []
                 for child in result {
                     let snapshotValue = child.value as! [String: AnyObject]
+                    
+                    let uid = snapshotValue["uid"] as? String ?? ""
+                    let isStaff = snapshotValue["isStaff"] as? String ?? ""
+                    print(uid)
+                    if(messageTitle == "noti"){
+                        if(uid != AgencySingleton.shared.realmUid){
+                            continue
+                        }
+                    }
+                    
                     let message = snapshotValue["message"] as? String ?? ""
                     let time = snapshotValue["time"] as? String ?? ""
                     let auth = snapshotValue["author"] as? String ?? ""
-                    print(message)
-                    let isStaff = snapshotValue["isStaff"] as? String ?? ""
                     print(message)
                     FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
                 }
@@ -48,7 +57,7 @@ class FirebaseModel {
         self.imageNames.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
-        ref.orderByValue().observe(DataEventType.value, with: { (snapshot) in
+        ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for i in result {
                     self.imageNames.append(i.value as! String)
@@ -57,7 +66,13 @@ class FirebaseModel {
             var downloadcnt : Int = 1
             
             for n in self.imageNames {
-                Storage.storage().reference(withPath: n).downloadURL { (url, error) in
+                Storage.storage().reference(withPath: AgencySingleton.shared.AgencyTitle! + "/" + n).downloadURL { (url, error) in
+                    print(n + " : url is nil")
+                    if(url == nil){
+                        //print(n + " : url is nil")
+                        return
+                    }
+                
                     FirebaseModel.imageKingfisher.append(KingfisherSource(url: url!))
                     
                     if(downloadcnt == self.imageNames.count){
@@ -84,7 +99,7 @@ class FirebaseModel {
         self.imageNames.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child("c2")
-        ref.orderByValue().observe(DataEventType.value, with: { (snapshot) in
+        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for n in result{
                     FirebaseModel.noticeDictionary[n.key] = n.value as! String
@@ -96,7 +111,7 @@ class FirebaseModel {
     }
     
     func sendMessage(name: String, message: String) {
-        let values = ["author":name, "message":message]
+        let values = ["author":name, "message":message, "uid": AgencySingleton.shared.realmUid]
         self.ref.child(AgencySingleton.shared.AgencyTitle!).child("message").setValue(values, withCompletionBlock: {(err, ref) in
             if(err == nil){
             }
@@ -107,19 +122,5 @@ class FirebaseModel {
         Storage.storage().reference(withPath: name).downloadURL { (url, error) in
             imageView.kf.setImage(with: url)
         }
-    }
-    
-    func getSchedule() {
-        var ref: DatabaseReference!
-        print("trying to get schedule...")
-        Database.database().reference().child("images")
-        
-        ref = Database.database().reference().child("images").child("schedule")
-        ref.observeSingleEvent(of: .value, with: {(snapshot) in
-            let value = snapshot.value as? String ?? ""
-            print(value)
-            FirebaseModel.schedule = value
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got schedule"), object: self)
-        })
     }
 }

@@ -24,7 +24,7 @@
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2X5-97-sxg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="19겨울_로고.png" translatesAutoresizingMaskIntoConstraints="NO" id="ybd-78-SrS">
                                 <rect key="frame" x="204" y="76" width="100" height="20"/>
@@ -247,16 +247,23 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CBA.png" translatesAutoresizingMaskIntoConstraints="NO" id="fNo-JR-hDZ">
-                                <rect key="frame" x="50" y="36" width="220" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-rB-pbP" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                 <rect key="frame" x="60" y="184" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="safeArea" id="gtb-9f-hIM"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heA-Zl-l2C">
+                                <rect key="frame" x="145" y="62" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="TopImageButton:" destination="Gy5-cZ-uVY" eventType="touchUpInside" id="nlb-V9-q5B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -272,8 +279,9 @@
                         <outlet property="ResizeBanner" destination="GSu-0K-OuO" id="b5i-b4-W8n"/>
                         <outlet property="ResizeBottomView" destination="qZU-Oi-94G" id="O0L-N1-g9h"/>
                         <outlet property="ResizeNoti" destination="1SO-OW-UWE" id="8qO-vg-tTH"/>
+                        <outlet property="TopImageButtonOutlet" destination="heA-Zl-l2C" id="5qt-h3-7u1"/>
+                        <outlet property="hambergerButton" destination="tma-Ua-wV8" id="fT4-ar-rqe"/>
                         <outlet property="slideshow" destination="Z7j-rB-pbP" id="Tyf-0p-YdV"/>
-                        <outlet property="titleNameImage" destination="fNo-JR-hDZ" id="ETU-Uu-Yj5"/>
                         <segue destination="Jle-r2-8ZY" kind="show" identifier="LoginSegue" id="hWv-Hd-aR1"/>
                         <segue destination="daQ-gM-Afm" kind="show" identifier="infoSegue" id="KXY-r2-NXe"/>
                         <segue destination="zs9-sG-fOe" kind="show" identifier="MapSegue" id="S4R-1h-0IZ"/>
@@ -1044,7 +1052,6 @@
         <image name="19겨울_메세지상단.png" width="462" height="87"/>
         <image name="19겨울_샌드위치메뉴.png" width="50" height="50"/>
         <image name="19겨울_조장조원확인.png" width="624" height="122"/>
-        <image name="CBA.png" width="220" height="90"/>
         <image name="ic_home_outline" width="33" height="33"/>
         <image name="ic_info" width="25" height="25"/>
         <image name="ic_news" width="26" height="26"/>

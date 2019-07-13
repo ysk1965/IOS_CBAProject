@@ -35,10 +35,9 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         } else{
             currentTime = "\(month)월\(day)일 오전\(hour):\(minute)"
         }
-        if((Auth.auth().currentUser) != nil){
-            dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : MassageTabViewController.mainUser.gbsLevel, "time" : currentTime])
+        if((Auth.auth().currentUser) != nil){ dbRef.child(AgencySingleton.shared.AgencyTitle! + "/noti").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : MassageTabViewController.mainUser.gbsLevel, "time" : currentTime, "uid" : AgencySingleton.shared.realmUid!])
         } else{
-            dbRef.child("2019messages").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff", "time" : currentTime])
+            dbRef.child(AgencySingleton.shared.AgencyTitle! + "/noti").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff", "time" : currentTime, "uid" : AgencySingleton.shared.realmUid!])
         }
         
         dismiss(animated: true, completion: nil)
