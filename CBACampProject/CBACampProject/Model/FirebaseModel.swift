@@ -48,7 +48,7 @@ class FirebaseModel {
         self.imageNames.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
-        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+        ref.orderByValue().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for i in result {
                     self.imageNames.append(i.value as! String)
@@ -84,7 +84,7 @@ class FirebaseModel {
         self.imageNames.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child("c2")
-        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+        ref.orderByValue().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for n in result{
                     FirebaseModel.noticeDictionary[n.key] = n.value as! String
