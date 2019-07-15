@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gy5-cZ-uVY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S0a-ba-2gE">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -944,6 +944,31 @@
             </objects>
             <point key="canvasLocation" x="3138.75" y="404.57746478873241"/>
         </scene>
+        <!--Youtube View Controller-->
+        <scene sceneID="E5X-ND-qzW">
+            <objects>
+                <viewController id="S0a-ba-2gE" customClass="YoutubeViewController" customModule="CBACampProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ww9-FH-ERv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ix-PF-l38" customClass="WKYTPlayerView">
+                                <rect key="frame" x="0.0" y="20" width="320" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6fD-7T-1tX"/>
+                    </view>
+                    <connections>
+                        <outlet property="youtubeView" destination="3Ix-PF-l38" id="lhK-uC-6a2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Z3-bk-80x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-695.625" y="1188.3802816901409"/>
+        </scene>
         <!--Notice View Controller-->
         <scene sceneID="4iX-Az-gbx">
             <objects>
@@ -1046,8 +1071,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_로고.png" width="16" height="16"/>
+        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
         <image name="19겨울_메세지상단.png" width="462" height="87"/>
         <image name="19겨울_샌드위치메뉴.png" width="50" height="50"/>

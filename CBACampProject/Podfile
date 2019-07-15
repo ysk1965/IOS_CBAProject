@@ -21,7 +21,7 @@ pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'SnapKit', '~> 5.0.0'
 pod 'RealmSwift'
-
+pod "YoutubePlayer-in-WKWebView", "~> 0.2.0"
 
   # Pods for CBACampProject
 

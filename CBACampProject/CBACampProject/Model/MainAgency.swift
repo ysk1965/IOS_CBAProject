@@ -73,7 +73,7 @@ class AgencySingleton {
         
         AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"
-        AgencySingleton.shared.sidebarBannerName = "CBA가로배너.png" // "몽산포_가로배너.png"
+        AgencySingleton.shared.sidebarBannerName = "CBA_사이드바.png" // "몽산포_가로배너.png"
         AgencySingleton.shared.topTagImageName = "CBA.png" // "몽산포.png"
         AgencySingleton.shared.sidebar_setting = sidebarArray
         AgencySingleton.shared.bottombar_setting = bottomArray
@@ -102,7 +102,7 @@ class AgencySingleton {
         
         AgencySingleton.shared.AgencyTitle = "2019_SR_SUMMER"
         AgencySingleton.shared.viewBannerName = "몽산포_배너.png"
-        AgencySingleton.shared.sidebarBannerName = "몽산포_가로배너.png"
+        AgencySingleton.shared.sidebarBannerName = "몽산포_사이드바.png"
         AgencySingleton.shared.topTagImageName = "몽산포.png"
         AgencySingleton.shared.sidebar_setting = M_sidebarArray
         AgencySingleton.shared.bottombar_setting = M_bottomArray

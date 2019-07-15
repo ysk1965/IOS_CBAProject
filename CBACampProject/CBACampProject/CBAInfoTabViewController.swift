@@ -39,7 +39,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     static var isNotiMessage = false
-    var isMenuClosePoint = false
     
     let realm = try! Realm()
     
@@ -71,10 +70,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     // Optionally function onMenuClose(), fired when user closes menu
     func onMenuClose() {
-        if(isMenuClosePoint == true){
-            
-        }
-        
         print("Action on Close Menu")
     }
     
@@ -255,7 +250,24 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         headerLabel.textAlignment = NSTextAlignment.left
         //headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let headerView: UIView = UIView()
+        
+        
+        //BackImageView.frame = CGRect(x:0, y:30, width: 267, height: 30)
         BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        var testLabel = UITextView()
+        testLabel.textColor = UIColor.darkGray
+        //testLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        testLabel.frame = CGRect(x:5,y:70, width:300, height: 60)
+        testLabel.font = UIFont(name: "NotoSansUI"
+            , size: 13)
+        testLabel.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 0)
+        testLabel.text = """
+        예수 그리스도는
+        어제나 오늘이나 동일하시다    (히13:8)
+        """
+        //testLabel.sizeToFit()
+        BackImageView.addSubview(testLabel)
         
         let ImageButton = UIButton()
         //ImageButton.setTitle("QnaSegue", for: .normal)
@@ -289,6 +301,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         self.menu = menuBuild.build()
         
+        print(menu.getMenuWidth())
         menu.delegate = self
     }
     
@@ -467,9 +480,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func SetPopup(_ sender:UIButton){
-        self.menu.reduceMenu()
-        SetPopupView()
+        //SetPopupView()
+        //self.menu.expandMenu()
         
+        self.menu.reduceMenu()
     }
     
     @objc func MoveSegue(_ sender:UIButton){
