@@ -55,6 +55,7 @@ class FirebaseModel {
     
     func ChangeImage(title : String){
         self.imageNames.removeAll()
+        FirebaseModel.imageKingfisher.removeAll() // 요거면 3번 해결되려나??
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
         ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
