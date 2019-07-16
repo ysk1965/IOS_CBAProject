@@ -31,17 +31,17 @@ class ImageViewController: UIViewController {
         Slideshow.setImageInputs(FirebaseModel.noticeImage)
     }
     
-    /*
+    
     @objc func didTap() {
         Slideshow.presentFullScreenController(from: self)
     }
-    */
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
-        //Slideshow.addGestureRecognizer(gestureRecognizer)
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
+        Slideshow.addGestureRecognizer(gestureRecognizer)
         
         FirebaseModel().GetNoticeImageInfo(title : NoticeViewController.OpenStringKey)
         

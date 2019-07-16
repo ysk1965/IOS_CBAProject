@@ -84,7 +84,7 @@ class AgencySingleton {
         //MONGSANPO Data
         var M_sidebarArray : Array<ButtonType> = []
         M_sidebarArray.removeAll()
-        M_sidebarArray.append(ButtonType(type: "segue",iconName: "초청과 환영의 글", controlValue: "c1")) 
+        M_sidebarArray.append(ButtonType(type: "segue",iconName: "초청과 환영의 글", controlValue: "youtubeSegue")) 
         // 환영 글은 youtube 예외처리 필요
         M_sidebarArray.append(ButtonType(type: "segue",iconName: "공지사항", controlValue: "infoSegue"))
         M_sidebarArray.append(ButtonType(type: "image",iconName: "프로그램", controlValue: "m3"))

@@ -258,7 +258,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         var testLabel = UITextView()
         testLabel.textColor = UIColor.darkGray
         //testLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        testLabel.frame = CGRect(x:5,y:70, width:300, height: 60)
+        testLabel.frame = CGRect(x:5,y:viewH! * 0.12, width:300, height: 60)
         testLabel.font = UIFont(name: "NotoSansUI"
             , size: 13)
         testLabel.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 0)
@@ -266,7 +266,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         예수 그리스도는
         어제나 오늘이나 동일하시다    (히13:8)
         """
-        //testLabel.sizeToFit()
+        testLabel.sizeToFit()
         BackImageView.addSubview(testLabel)
         
         let ImageButton = UIButton()
@@ -301,7 +301,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         self.menu = menuBuild.build()
         
-        print(menu.getMenuWidth())
+        print(headerView.frame)
         menu.delegate = self
     }
     
@@ -480,7 +480,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func SetPopup(_ sender:UIButton){
-        //SetPopupView()
+        SetPopupView()
         //self.menu.expandMenu()
         
         self.menu.reduceMenu()
@@ -535,14 +535,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
         hambergerButton.translatesAutoresizingMaskIntoConstraints = false
-        hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
         hambergerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
         hambergerButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
         hambergerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
         
         TopImageButtonOutlet.translatesAutoresizingMaskIntoConstraints = false
         TopImageButtonOutlet.setImage(UIImage(named: AgencySingleton.shared.topTagImageName!), for: .normal)
-        TopImageButtonOutlet.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
+        TopImageButtonOutlet.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
         TopImageButtonOutlet.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         TopImageButtonOutlet.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
         TopImageButtonOutlet.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
