@@ -33,8 +33,6 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView = UIImageView(image: UIImage(named: ""))

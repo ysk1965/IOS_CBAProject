@@ -37,13 +37,13 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
             (user, error) in
             //...
             if(error != nil){
-               let alert = UIAlertController(title: "로그인 실패", message: "로그인에 실패하셨습니다. \n 다시 로그인해주세요", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "확인", style:UIAlertActionStyle.default, handler: nil))
+               let alert = UIAlertController(title: "로그인 실패", message: "로그인에 실패하셨습니다. \n 다시 로그인해주세요", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style:UIAlertAction.Style.default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
             } else{
-                let alert = UIAlertController(title: "로그인 성공", message:"["+(user?.user.email)! + "] \n 로그인에 성공하셨습니다.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "확인", style:UIAlertActionStyle.default, handler: nil))
+                let alert = UIAlertController(title: "로그인 성공", message:"["+(user?.user.email)! + "] \n 로그인에 성공하셨습니다.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style:UIAlertAction.Style.default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
             }
@@ -59,9 +59,9 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
         // User가 존재한다.
         // addStateDidChangeListener
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         Auth.auth().addStateDidChangeListener({(user, err) in
             if user.currentUser != nil{

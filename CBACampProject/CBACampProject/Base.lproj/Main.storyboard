@@ -264,6 +264,10 @@
                                     <action selector="TopImageButton:" destination="Gy5-cZ-uVY" eventType="touchUpInside" id="nlb-V9-q5B"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MIp-2h-aro">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -281,6 +285,7 @@
                         <outlet property="ResizeNoti" destination="1SO-OW-UWE" id="8qO-vg-tTH"/>
                         <outlet property="TopImageButtonOutlet" destination="heA-Zl-l2C" id="5qt-h3-7u1"/>
                         <outlet property="hambergerButton" destination="tma-Ua-wV8" id="fT4-ar-rqe"/>
+                        <outlet property="loadingPage" destination="MIp-2h-aro" id="IsG-V2-NmV"/>
                         <outlet property="slideshow" destination="Z7j-rB-pbP" id="Tyf-0p-YdV"/>
                         <segue destination="Jle-r2-8ZY" kind="show" identifier="LoginSegue" id="hWv-Hd-aR1"/>
                         <segue destination="daQ-gM-Afm" kind="show" identifier="infoSegue" id="KXY-r2-NXe"/>
@@ -954,8 +959,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ix-PF-l38" customClass="WKYTPlayerView">
-                                <rect key="frame" x="0.0" y="20" width="320" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRi-1q-tDG" customClass="ImageSlideshow" customModule="ImageSlideshow">
@@ -1041,10 +1046,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4cB-9k-D3Q" firstAttribute="top" secondItem="h6H-dY-PTQ" secondAttribute="top" id="GlW-mN-3Jr"/>
-                            <constraint firstItem="h6H-dY-PTQ" firstAttribute="bottom" secondItem="4cB-9k-D3Q" secondAttribute="bottom" id="Nf8-Ve-4jX"/>
-                            <constraint firstItem="4cB-9k-D3Q" firstAttribute="leading" secondItem="h6H-dY-PTQ" secondAttribute="leading" id="dt8-Dy-uwJ"/>
-                            <constraint firstItem="h6H-dY-PTQ" firstAttribute="trailing" secondItem="4cB-9k-D3Q" secondAttribute="trailing" id="rxU-0y-1f6"/>
+                            <constraint firstItem="4cB-9k-D3Q" firstAttribute="top" secondItem="h6H-dY-PTQ" secondAttribute="top" id="3ad-gq-Hcv"/>
+                            <constraint firstItem="4cB-9k-D3Q" firstAttribute="trailing" secondItem="h6H-dY-PTQ" secondAttribute="trailing" id="7j1-Iv-qGq"/>
+                            <constraint firstItem="4cB-9k-D3Q" firstAttribute="bottom" secondItem="h6H-dY-PTQ" secondAttribute="bottom" id="HOX-1W-gmV"/>
+                            <constraint firstItem="4cB-9k-D3Q" firstAttribute="leading" secondItem="h6H-dY-PTQ" secondAttribute="leading" id="P4V-7U-byL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h6H-dY-PTQ"/>
                     </view>
@@ -1103,8 +1108,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_로고.png" width="16" height="16"/>
+        <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
         <image name="19겨울_메세지상단.png" width="462" height="87"/>
         <image name="19겨울_샌드위치메뉴.png" width="50" height="50"/>

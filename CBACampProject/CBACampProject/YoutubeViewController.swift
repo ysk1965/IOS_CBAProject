@@ -11,6 +11,7 @@ import YoutubePlayer_in_WKWebView
 import ImageSlideshow
 
 class YoutubeViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var youtubeView: WKYTPlayerView!
     @IBAction func BackButton(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
@@ -19,11 +20,15 @@ class YoutubeViewController: UIViewController {
     
     @objc func ResizeView(_ notification: Notification){
         youtubeView.load(withVideoId: "PWYhzPSZSbE")
-        youtubeView.frame = CGRect(x:0, y:0, width: Int(self.view.frame.width), height : Int(self.view.frame.height * 0.4))
+        youtubeView.frame = CGRect(x:0, y:0, width: Int(self.view.frame.width), height : Int(self.view.frame.height * 0.33))
+        imageSlideShow.frame = CGRect(x:0, y: Int(self.view.frame.height * 0.33), width : Int(self.view.frame.width), height : Int(self.view.frame.height * 0.67))
+        //imageSlideShow.backgroundColor = UIColor.gray
+        imageSlideShow.autoresizesSubviews = false
+        imageSlideShow.setImageInputs(FirebaseModel.youtubeImage)
+        //imageSlideShow.frame = CGRect(x:0, y:0, width:, height: 1000)
         
-        imageSlideShow.frame = CGRect(x:0, y: Int(self.view.frame.height * 0.4), width : Int(self.view.frame.width), height : Int(self.view.frame.height * 0.6))
-        
-        imageSlideShow.setImageInputs(FirebaseModel.imageKingfisher)
+        imageSlideShow.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        imageSlideShow.circular = true
     }
     
     @objc func didTap() {
@@ -32,13 +37,13 @@ class YoutubeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //FirebaseModel().setImageInputs(ChangeImage(title : "c1"))
-        FirebaseModel().ChangeImage(title: "c1")
         
-        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "change image"), object: nil)
+        FirebaseModel().YoutubeImage(title: "c1")
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         imageSlideShow.addGestureRecognizer(gestureRecognizer)
+        
+        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "set image"), object: nil)
         
         //getVideo(vidioCode : "PWYhzPSZSbE")
         // Do any additional setup after loading the view.

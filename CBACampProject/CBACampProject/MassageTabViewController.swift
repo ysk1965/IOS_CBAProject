@@ -97,7 +97,6 @@ class MassageTabViewController: UIViewController {
         
 
         if(CBAInfoTabViewController.isNotiMessage == false){
-            
             for i in 0..<count {
                 var nextypos = 0
                 let cellview = UIView()
@@ -170,10 +169,10 @@ class MassageTabViewController: UIViewController {
                     cellview.layer.borderColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1.0).cgColor
                     cellview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
                 } else if (FirebaseModel.messages[count - i - 1].isStaff == "봉사자"){
-                    cellview.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+                    cellview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
                 } else{
                     cellview.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0).cgColor
-                    cellview.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 0.95)
+                    cellview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
                 }
                 cellview.layer.borderWidth = 0
                 
@@ -183,14 +182,14 @@ class MassageTabViewController: UIViewController {
                 //profile image, rank name label, name label //////////////////////////////
                 let profileimgview = UIImageView()
                 profileimgview.frame = CGRect(x:20, y:20, width: 40, height: 40)
-                profileimgview.contentMode = UIViewContentMode.scaleAspectFill
+                profileimgview.contentMode = UIView.ContentMode.scaleAspectFill
                 profileimgview.clipsToBounds = true //image set 전에 해주어야 한다.
                 if (FirebaseModel.messages[count - i - 1].isStaff == "공지") {
                     profileimgview.image = UIImage(named: "성락아이콘.png") // 스탭 이미지
                 } else if (FirebaseModel.messages[count - i - 1].isStaff == "봉사자"){
                     profileimgview.image = UIImage(named: "성락아이콘.png") // 스탭 이미지
                 } else {
-                    profileimgview.image = UIImage(named:"profile.png")
+                    profileimgview.image = UIImage(named:"성락아이콘.png")
                 }
                 profileimgview.layer.cornerRadius = profileimgview.frame.width / 2
                 cellview.addSubview(profileimgview)
@@ -244,9 +243,9 @@ class MassageTabViewController: UIViewController {
                 if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
                     textview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
                 } else if (FirebaseModel.messages[count - i - 1].isStaff == "봉사자"){
-                    textview.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+                    textview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
                 } else{
-                    textview.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 0.95)
+                    textview.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1)
                 }
                 
                 
@@ -364,9 +363,9 @@ class MassageTabViewController: UIViewController {
     
     override func viewDidLoad() {
         if(CBAInfoTabViewController.isNotiMessage == false){
-            FirebaseModel().getMessages(messageTitle: "noti")
-        } else{
             FirebaseModel().getMessages(messageTitle: "message")
+        } else{
+            FirebaseModel().getMessages(messageTitle: "noti")
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)

@@ -24,6 +24,7 @@ class MyData: Object{
 
 class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
     // move TabBar
+    @IBOutlet weak var loadingPage: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var slideshow: ImageSlideshow!
@@ -90,20 +91,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     @IBOutlet weak var NoticeLabel: UILabel!
     
     var url = URL(string:"http://cba.sungrak.or.kr/HomePage/Index")
-    
-    @objc func viewload(_ notification: Notification){
-        print("viewDidload_INFO")
-        
-        let count = FirebaseModel.messages.count
-        
-        for i in (0..<count).reversed(){
-            if(FirebaseModel.messages[i].isStaff == "공지"){
-                NoticeLabel.text = FirebaseModel.messages[i].text
-                print("message : " + FirebaseModel.messages[i].text)
-                break
-            }
-        }
-    }
     
     func CallGetMyInfo(){
         // DataPassing
@@ -258,15 +245,16 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         var testLabel = UITextView()
         testLabel.textColor = UIColor.darkGray
         //testLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        testLabel.frame = CGRect(x:5,y:viewH! * 0.12, width:300, height: 60)
-        testLabel.font = UIFont(name: "NotoSansUI"
-            , size: 13)
+        testLabel.frame = CGRect(x:5,y:viewH! * 0.12, width:viewW! * 0.6, height: viewH! * 0.2)
+        testLabel.font = UIFont(name: "NotoSansUI-Regular"
+            , size: viewH!)
         testLabel.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 0)
         testLabel.text = """
         예수 그리스도는
-        어제나 오늘이나 동일하시다    (히13:8)
+        어제나 오늘이나 동일하시다
+                                    (히13:8)
         """
-        testLabel.sizeToFit()
+        //testLabel.sizeToFit()
         BackImageView.addSubview(testLabel)
         
         let ImageButton = UIButton()
@@ -428,7 +416,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             make.centerX.equalTo(main_popupView)
             make.top.equalTo(main_popupView).offset(30)
         }
-        popupView_toptext.font = UIFont(name: "System"
+        popupView_toptext.font = UIFont(name: "NotoSansUI-Regular"
             , size: 20)
         popupView_toptext.textAlignment = NSTextAlignment.center
         popupView_toptext.adjustsFontSizeToFitWidth = true
@@ -446,7 +434,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_cbaButton.slideOut()
         popupView_cbaButton.backgroundColor = UIColor.white
         popupView_cbaButton.addTarget(self, action: #selector(self.SetCBA(_:)), for: .touchUpInside)
-        popupView_cbaButton.setImage(UIImage(named: "CBA선택.png"), for: UIControlState.normal)
+        popupView_cbaButton.setImage(UIImage(named: "CBA선택.png"), for: UIControl.State.normal)
         popupView_cbaButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
             make.width.width.equalTo(230)
@@ -458,7 +446,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_mongsanpoButton.slideOut()
         popupView_mongsanpoButton.backgroundColor = UIColor.white
         popupView_mongsanpoButton.addTarget(self, action: #selector(self.SetMonsanpo(_:)), for: .touchUpInside)
-        popupView_mongsanpoButton.setImage(UIImage(named: "몽산포선택.png"), for: UIControlState.normal)
+        popupView_mongsanpoButton.setImage(UIImage(named: "몽산포선택.png"), for: UIControl.State.normal)
         popupView_mongsanpoButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
             make.width.width.equalTo(230)
@@ -476,14 +464,19 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_bottomtext.text = "클릭하면 해당 페이지로 넘어갑니다"
         popupView_bottomtext.textAlignment = NSTextAlignment.center
         popupView_bottomtext.adjustsFontSizeToFitWidth = true
-        onMenuClose()
+        
     }
     
     @objc func SetPopup(_ sender:UIButton){
-        SetPopupView()
-        //self.menu.expandMenu()
         
-        self.menu.reduceMenu()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
+            self.menu.reduce(onController: self)
+        }
+        
+        
+        
+        SetPopupView()
+        
     }
     
     @objc func MoveSegue(_ sender:UIButton){
@@ -504,7 +497,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     @objc func MoveURL(_ sender:UIButton){
         CloseImageView()
         url = URL(string:sender.currentTitle!)
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     func MakeBottomButton(button : Array<ButtonType>){
@@ -534,6 +527,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
+        NoticeLabel.text = FirebaseModel.mainNotiMessages
+        
         hambergerButton.translatesAutoresizingMaskIntoConstraints = false
         hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
         hambergerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
@@ -590,9 +585,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeBanner.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         ResizeBanner.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
-        
-        FirebaseModel().getMessages(messageTitle: "message")
+        // 한번만 없애면 됨
+        if(loadingPage != nil){
+            loadingPage.removeFromSuperview()
+        }
     }
     
     func SetRealmData(defaultAgent : String){
@@ -662,6 +658,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         CBAInfoTabViewController.ScreenWidth = self.view.frame.size.width
         CBAInfoTabViewController.ScreenHeight = self.view.frame.size.height
         
+        loadingPage.frame = CGRect(x:0, y:0, width: Int(viewW!),  height:Int(viewH!))
+        loadingPage.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
+        loadingPage.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         // 2019_CBA_SUMMER
         // 2019_SR_SUMMER
         SettingSidebar()
@@ -673,12 +672,17 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "load main view"), object: nil)
         
-        // load main view
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+        // load main view!!
+        FirebaseModel().FirstLoadView()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

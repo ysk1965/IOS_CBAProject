@@ -35,9 +35,23 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         } else{
             currentTime = "\(month)월\(day)일 오전\(hour):\(minute)"
         }
-        if((Auth.auth().currentUser) != nil){ dbRef.child(AgencySingleton.shared.AgencyTitle! + "/noti").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : MassageTabViewController.mainUser.gbsLevel, "time" : currentTime, "uid" : AgencySingleton.shared.realmUid!])
+        if((Auth.auth().currentUser) != nil){
+            dbRef.child(
+                AgencySingleton.shared.AgencyTitle! + "/message").childByAutoId().setValue([
+                    "author" : textAuthor.text!,
+                    "message" : textMessage.text!,
+                    "isStaff" : MassageTabViewController.mainUser.gbsLevel,
+                    "time" : currentTime,
+                    "uid" : AgencySingleton.shared.realmUid!
+                ])
         } else{
-            dbRef.child(AgencySingleton.shared.AgencyTitle! + "/noti").childByAutoId().setValue(["author" : textAuthor.text!, "message" : textMessage.text!, "isStaff" : "non-staff", "time" : currentTime, "uid" : AgencySingleton.shared.realmUid!])
+            dbRef.child(AgencySingleton.shared.AgencyTitle! + "/message").childByAutoId().setValue([
+                "author" : textAuthor.text!,
+                "message" : textMessage.text!,
+                "isStaff" : "non-staff",
+                "time" : currentTime,
+                "uid" : AgencySingleton.shared.realmUid!
+                ])
         }
         
         dismiss(animated: true, completion: nil)
@@ -50,7 +64,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         
         textMessage.text = "  하고 싶은 말을 남겨주세요"
         textMessage.textColor = UIColor.lightGray
-        textMessage.font = UIFont(name: "verdana", size: 13.0)
+        textMessage.font = UIFont(name: "NotoSansUI-Regular", size: 13.0)
         textMessage.returnKeyType = .done
         
         textMessage.delegate = self
@@ -61,9 +75,9 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         
         //textAuthor.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // Do any additional setup after loading the view.
     }
@@ -94,7 +108,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         if textView.text == "  하고 싶은 말을 남겨주세요" {
             textView.text = ""
             textView.textColor = UIColor.black
-            textView.font = UIFont(name: "verdana", size: 18.0)
+            textView.font = UIFont(name: "NotoSansUI-Regular", size: 18.0)
         }
     }
     
@@ -109,7 +123,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         if textView.text == "" {
             textView.text = "  하고 싶은 말을 남겨주세요"
             textView.textColor = UIColor.lightGray
-            textView.font = UIFont(name: "verdana", size: 13.0)
+            textView.font = UIFont(name: "NotoSansUI-Regular", size: 13.0)
         }
     }
     

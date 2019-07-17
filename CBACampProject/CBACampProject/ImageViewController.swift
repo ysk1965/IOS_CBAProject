@@ -28,7 +28,15 @@ class ImageViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
         
+        self.view.addSubview(Slideshow)
         Slideshow.setImageInputs(FirebaseModel.noticeImage)
+        Slideshow.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        Slideshow.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(self.view.frame.width)
+            make.width.width.equalTo(self.view.frame.width)
+            make.centerX.equalTo(self.view!)
+            make.bottom.equalTo(self.view)
+        }
     }
     
     

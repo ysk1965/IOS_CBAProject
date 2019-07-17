@@ -68,7 +68,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             ///namelabel
             let namelabel = UILabel()
             namelabel.text = "• 이름 :" + MassageTabViewController.mainGBS.members![i].name!
-            namelabel.font = UIFont(name: "NotoSans", size: 17.0)!
+            namelabel.font = UIFont(name: "NotoSansUI-Regular", size: 17.0)!
             namelabel.textColor = UIColor.black
             namelabel.sizeToFit()
             namelabel.frame.origin = CGPoint(x: 20, y: 18)

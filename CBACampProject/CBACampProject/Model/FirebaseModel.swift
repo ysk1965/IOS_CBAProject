@@ -12,6 +12,7 @@ struct ImageInfo {
 
 class FirebaseModel {
     static var messages = [Message]()
+    static var mainNotiMessages = String()
     static var noticeDictionary = Dictionary<String, String>()
     static var sendMessageData = Message(text: "default", time: "default", auth: "default", isStaff : "default")
     static var schedule = ""
@@ -19,8 +20,41 @@ class FirebaseModel {
     var imageNames : Array<String> = []
     static var imageKingfisher : Array<KingfisherSource> = []
     static var noticeImage : Array<KingfisherSource> = []
+    static var youtubeImage : Array<KingfisherSource> = []
     
     var ref: DatabaseReference!
+    
+    func FirstLoadView(){
+        print("First!! Load!!")
+        
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("noti")
+        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot]{
+                FirebaseModel.messages = []
+                for child in result {
+                    let snapshotValue = child.value as! [String: AnyObject]
+                    
+                    let isStaff = snapshotValue["isStaff"] as? String ?? ""
+                    let message = snapshotValue["message"] as? String ?? ""
+                    let time = snapshotValue["time"] as? String ?? ""
+                    let auth = snapshotValue["author"] as? String ?? ""
+                    
+                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
+                }
+                
+                    let count = FirebaseModel.messages.count
+                    
+                    for i in (0..<count).reversed(){
+                        if(FirebaseModel.messages[i].isStaff == "공지"){
+                            FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
+                            break
+                        }
+                    }
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+            }
+        })
+    }
     
     func getMessages(messageTitle : String) {
         print("trying to get messages....")
@@ -36,7 +70,7 @@ class FirebaseModel {
                     let uid = snapshotValue["uid"] as? String ?? ""
                     let isStaff = snapshotValue["isStaff"] as? String ?? ""
                     print(uid)
-                    if(messageTitle == "noti"){
+                    if(messageTitle == "message"){
                         if(uid != AgencySingleton.shared.realmUid){
                             continue
                         }
@@ -47,6 +81,18 @@ class FirebaseModel {
                     let auth = snapshotValue["author"] as? String ?? ""
                     print(message)
                     FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
+                }
+                
+                // 메인 메세지 받기
+                if(messageTitle == "noti"){
+                    let count = FirebaseModel.messages.count
+                    
+                    for i in (0..<count).reversed(){
+                        if(FirebaseModel.messages[i].isStaff == "공지"){
+                            FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
+                            break
+                        }
+                    }
                 }
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got messages"), object: self)
             }
@@ -86,6 +132,38 @@ class FirebaseModel {
         })
     }
     
+    func YoutubeImage(title : String){
+        //self.imageNames.removeAll()
+        FirebaseModel.youtubeImage.removeAll() // 요거면 3번 해결되려나??
+        
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
+        ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot]{
+                for i in result {
+                    self.imageNames.append(i.value as! String)
+                }
+            }
+            var downloadcnt : Int = 1
+            
+            for n in self.imageNames {
+                Storage.storage().reference(withPath: AgencySingleton.shared.AgencyTitle! + "/" + n).downloadURL { (url, error) in
+                    if(url == nil){
+                        print(n + " : url is nil")
+                        return
+                    }
+                    
+                    FirebaseModel.youtubeImage.append(KingfisherSource(url: url!))
+                    
+                    if(downloadcnt == self.imageNames.count){
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "set image"), object: self)
+                    }
+                    
+                    downloadcnt += 1
+                }
+            }
+        })
+    }
+    
     func GetNoticeImageInfo(title : String) {
         FirebaseModel.noticeImage.removeAll()
         let path = "2019_SR_SUMMER/" + title
@@ -101,19 +179,26 @@ class FirebaseModel {
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child("c2")
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            for child in snapshot.children{
+                print(child)
+            }
+            
+            
+            /*
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for n in result{
                     FirebaseModel.noticeDictionary[n.key] = n.value as! String
                 }
             }
+            */
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GetNoticeInfo"), object: self)
         })
     }
     
-    func sendMessage(name: String, message: String) {
+    func sendMessage(name: String, message: String, title: String) {
         let values = ["author":name, "message":message, "uid": AgencySingleton.shared.realmUid]
-        self.ref.child(AgencySingleton.shared.AgencyTitle!).child("message").setValue(values, withCompletionBlock: {(err, ref) in
+        self.ref.child(AgencySingleton.shared.AgencyTitle!).child(title).setValue(values, withCompletionBlock: {(err, ref) in
             if(err == nil){
             }
         })
