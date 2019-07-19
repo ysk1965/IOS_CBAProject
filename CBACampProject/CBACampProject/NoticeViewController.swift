@@ -11,6 +11,7 @@ import Foundation
 
 class NoticeViewController: UIViewController, UIScrollViewDelegate {
     static var OpenStringKey = ""
+    static var OpenStringValue = ""
     
     lazy var backgroundImage = UIImageView()
     
@@ -85,7 +86,7 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseModel().GetNoticeInfo()
+        FirebaseModel().GetNoticeInfo(title: NoticeViewController.OpenStringValue)
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "GetNoticeInfo"), object: nil)
         

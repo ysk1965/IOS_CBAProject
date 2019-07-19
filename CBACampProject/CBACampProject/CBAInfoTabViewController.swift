@@ -161,6 +161,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                         self.performSegue(withIdentifier: n.controlValue!, sender: nil)
                     }
                 }
+            } else if n.type == "info"{
+                tempMenu = SideMenuItemFactory.make(title: n.iconName!){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
+                        NoticeViewController.OpenStringValue = n.controlValue!
+                        
+                        self.performSegue(withIdentifier: "infoSegue", sender: nil)
+                    }
+                }
             }
             menuItemArray.append(tempMenu!)
         }
@@ -485,6 +493,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         self.performSegue(withIdentifier: sender.currentTitle!, sender: nil)
     }
     
+    @objc func InfoSegue(_ sender:UIButton){
+        CloseImageView()
+        
+        NoticeViewController.OpenStringValue = sender.currentTitle!
+        
+        self.performSegue(withIdentifier: "infoSegue", sender: nil)
+    }
+    
     @objc func ChangeImage(_ sender:UIButton){
         FirebaseModel().ChangeImage(title: sender.currentTitle!)
     }
@@ -518,6 +534,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 customButton.addTarget(self, action: #selector(self.DoCall(_:)), for: .touchUpInside)
             } else if n.type == "URL"{
                 customButton.addTarget(self, action: #selector(self.MoveURL(_:)), for: .touchUpInside)
+            } else if n.type == "info"{
+                customButton.addTarget(self, action: #selector(self.InfoSegue(_:)), for: .touchUpInside)
             }
             
             loopcnt += 1

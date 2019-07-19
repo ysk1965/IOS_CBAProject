@@ -89,12 +89,12 @@ class AgencySingleton {
         M_sidebarArray.append(ButtonType(type: "segue",iconName: "초청의 글(원로 감독님)", controlValue: "youtubeSegue"))
         // 환영 글은 youtube 예외처리 필요
         M_sidebarArray.append(ButtonType(type: "segue",iconName: "환영의 글(감독님)", controlValue: "youtubeSegue"))
-        M_sidebarArray.append(ButtonType(type: "segue",iconName: "공지사항", controlValue: "infoSegue"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "프로그램", controlValue: "m3"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "장소안내", controlValue: "c4"))
+        M_sidebarArray.append(ButtonType(type: "info",iconName: "공지사항", controlValue: "c3"))
+        M_sidebarArray.append(ButtonType(type: "info",iconName: "세부 프로그램", controlValue: "c4"))
+        M_sidebarArray.append(ButtonType(type: "info",iconName: "장소안내", controlValue: "c5"))
         M_sidebarArray.append(ButtonType(type: "image",iconName: "안전사고지원", controlValue: "c5"))
         M_sidebarArray.append(ButtonType(type: "image",iconName: "여행자보험 관련 안내", controlValue: "c5"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "협력(후원)기관", controlValue: "c5"))
+        M_sidebarArray.append(ButtonType(type: "info",iconName: "협력(후원)기관", controlValue: "c8"))
         
         var M_bottomArray : Array<ButtonType> = []
         M_bottomArray.removeAll()

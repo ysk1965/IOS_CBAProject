@@ -184,10 +184,11 @@ class FirebaseModel {
         }
     }
     
-    func GetNoticeInfo(){
+    func GetNoticeInfo(title: String){
         self.imageNames.removeAll()
+        FirebaseModel.noticeDictionary.removeAll()
         
-        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child("c3")
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
         ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
             
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
