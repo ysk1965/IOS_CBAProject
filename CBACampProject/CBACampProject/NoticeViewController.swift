@@ -45,7 +45,7 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
             blackLabel.textAlignment = NSTextAlignment.center
             blackLabel.adjustsFontSizeToFitWidth = true
             blackLabel.snp.makeConstraints { (make) -> Void in
-                make.height.height.equalTo(self.view.frame.height / 20)
+                make.height.height.equalTo(self.view.frame.height / 23)
                 make.width.width.equalTo(self.view.frame.width * 0.9 + 2)
                 make.centerX.equalTo(backgroundImage)
                 make.top.equalTo(self.view).offset(offset - 1)
@@ -60,7 +60,7 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
             noticeButton.titleLabel?.adjustsFontSizeToFitWidth = true
             noticeButton.addTarget(self, action: #selector(self.SetStringKey(_:)), for: .touchUpInside)
             noticeButton.snp.makeConstraints { (make) -> Void in
-                make.height.height.equalTo(self.view.frame.height / 20 - 2)
+                make.height.height.equalTo(self.view.frame.height / 23 - 2)
                 make.width.width.equalTo(self.view.frame.width * 0.9)
                 make.centerX.equalTo(backgroundImage)
                 make.top.equalTo(self.view).offset(offset)
@@ -73,7 +73,7 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
             noticeLabel.textAlignment = NSTextAlignment.center
             noticeLabel.adjustsFontSizeToFitWidth = true
             noticeLabel.snp.makeConstraints { (make) -> Void in
-                make.height.height.equalTo(self.view.frame.height / 20 - 2)
+                make.height.height.equalTo(self.view.frame.height / 23 - 2)
                 make.width.width.equalTo(self.view.frame.width * 0.9)
                 make.centerX.equalTo(backgroundImage)
                 make.top.equalTo(self.view).offset(offset)

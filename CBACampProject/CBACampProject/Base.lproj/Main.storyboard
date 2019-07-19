@@ -181,16 +181,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="배너.png" translatesAutoresizingMaskIntoConstraints="NO" id="GSu-0K-OuO">
-                                <rect key="frame" x="0.0" y="240" width="41" height="45"/>
+                                <rect key="frame" x="0.0" y="450" width="41" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tma-Ua-wV8">
-                                <rect key="frame" x="10" y="25" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="8dE-2b-d4Z"/>
-                                    <constraint firstAttribute="width" constant="35" id="AKy-FG-e9Y"/>
-                                </constraints>
-                                <state key="normal" image="19겨울_샌드위치메뉴.png"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tma-Ua-wV8">
+                                <rect key="frame" x="10" y="450" width="10" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="hamberger.png"/>
                                 <connections>
                                     <action selector="HambergerAction:" destination="Gy5-cZ-uVY" eventType="touchUpInside" id="ahu-dB-ADn"/>
                                 </connections>
@@ -270,10 +267,6 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="tma-Ua-wV8" firstAttribute="top" secondItem="VLH-cv-ybK" secondAttribute="top" constant="5" id="g8W-oD-TYc"/>
-                            <constraint firstItem="tma-Ua-wV8" firstAttribute="leading" secondItem="VLH-cv-ybK" secondAttribute="leading" constant="10" id="pxV-JQ-qY2"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VLH-cv-ybK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="수련회정보" image="ic_info" id="WRu-Yx-1mn"/>
@@ -1112,8 +1105,8 @@
         <image name="19겨울_로고.png" width="200" height="42"/>
         <image name="19겨울_메세지배경.png" width="750" height="1104"/>
         <image name="19겨울_메세지상단.png" width="462" height="87"/>
-        <image name="19겨울_샌드위치메뉴.png" width="50" height="50"/>
         <image name="19겨울_조장조원확인.png" width="624" height="122"/>
+        <image name="hamberger.png" width="128" height="110"/>
         <image name="ic_home_outline" width="33" height="33"/>
         <image name="ic_info" width="25" height="25"/>
         <image name="ic_news" width="26" height="26"/>

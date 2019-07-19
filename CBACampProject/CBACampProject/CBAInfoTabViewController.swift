@@ -530,10 +530,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         NoticeLabel.text = FirebaseModel.mainNotiMessages
         
         hambergerButton.translatesAutoresizingMaskIntoConstraints = false
-        hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
-        hambergerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12).isActive = true
-        hambergerButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
-        hambergerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 38).isActive = true
+        hambergerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 13).isActive = true
+        hambergerButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.085).isActive = true
+        hambergerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.11).isActive = true
         
         TopImageButtonOutlet.translatesAutoresizingMaskIntoConstraints = false
         TopImageButtonOutlet.setImage(UIImage(named: AgencySingleton.shared.topTagImageName!), for: .normal)
@@ -604,6 +604,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SetNotificationCenter()
         //CBA Data
         var sidebarArray : Array<ButtonType> = []
         sidebarArray.removeAll()
@@ -658,7 +659,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         CBAInfoTabViewController.ScreenWidth = self.view.frame.size.width
         CBAInfoTabViewController.ScreenHeight = self.view.frame.size.height
         
-        loadingPage.frame = CGRect(x:0, y:0, width: Int(viewW!),  height:Int(viewH!))
+        loadingPage.frame = CGRect(x:0, y:Int(viewH! * 0.25), width: Int(viewW!),  height:Int(viewH! * 0.75))
         loadingPage.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
         loadingPage.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         // 2019_CBA_SUMMER
@@ -668,12 +669,16 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         slideshow.addGestureRecognizer(gestureRecognizer)
         
+        // load main view!!
+        FirebaseModel().FirstLoadView()
+    }
+    
+    func SetNotificationCenter(){
         NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "change image"), object: nil)
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "load main view"), object: nil)
         
-        // load main view!!
-        FirebaseModel().FirstLoadView()
+        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "set youtube"), object: nil)
     }
     
     override func didReceiveMemoryWarning() {

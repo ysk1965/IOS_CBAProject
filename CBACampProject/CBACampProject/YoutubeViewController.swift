@@ -19,7 +19,7 @@ class YoutubeViewController: UIViewController {
     @IBOutlet weak var imageSlideShow: ImageSlideshow!
     
     @objc func ResizeView(_ notification: Notification){
-        youtubeView.load(withVideoId: "PWYhzPSZSbE")
+        //youtubeView.load(withVideoId: FirebaseModel.youtubeURL[0])
         youtubeView.frame = CGRect(x:0, y:0, width: Int(self.view.frame.width), height : Int(self.view.frame.height * 0.33))
         imageSlideShow.frame = CGRect(x:0, y: Int(self.view.frame.height * 0.33), width : Int(self.view.frame.width), height : Int(self.view.frame.height * 0.67))
         //imageSlideShow.backgroundColor = UIColor.gray

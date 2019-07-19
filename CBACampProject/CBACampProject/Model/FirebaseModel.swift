@@ -22,6 +22,9 @@ class FirebaseModel {
     static var noticeImage : Array<KingfisherSource> = []
     static var youtubeImage : Array<KingfisherSource> = []
     
+    static var youtubeURL = ""
+    static var liveYoutubeURL = ""
+    
     var ref: DatabaseReference!
     
     func FirstLoadView(){
@@ -106,21 +109,28 @@ class FirebaseModel {
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
         ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
+                print(result)
                 for i in result {
                     self.imageNames.append(i.value as! String)
                 }
             }
             var downloadcnt : Int = 1
             
-            for n in self.imageNames {
-                Storage.storage().reference(withPath: AgencySingleton.shared.AgencyTitle! + "/" + n).downloadURL { (url, error) in
-                    print(n + " : url is nil")
+            print(self.imageNames)
+            print(self.imageNames.count)
+            
+            for i in 0...self.imageNames.count - 1 {
+                Storage.storage().reference(withPath: AgencySingleton.shared.AgencyTitle! + "/" + self.imageNames[i]).downloadURL { (url, error) in
+                    FirebaseModel.imageKingfisher.append(KingfisherSource(url: url!))
+                    print(FirebaseModel.imageKingfisher)
+                    
+                    print(self.imageNames[i] + " : url is nil")
                     if(url == nil){
                         //print(n + " : url is nil")
                         return
                     }
                 
-                    FirebaseModel.imageKingfisher.append(KingfisherSource(url: url!))
+                    
                     
                     if(downloadcnt == self.imageNames.count){
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "change image"), object: self)
@@ -134,7 +144,7 @@ class FirebaseModel {
     
     func YoutubeImage(title : String){
         //self.imageNames.removeAll()
-        FirebaseModel.youtubeImage.removeAll() // 요거면 3번 해결되려나??
+        FirebaseModel.youtubeImage.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
         ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
@@ -177,20 +187,15 @@ class FirebaseModel {
     func GetNoticeInfo(){
         self.imageNames.removeAll()
         
-        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child("c2")
-        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
-            for child in snapshot.children{
-                print(child)
-            }
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child("c3")
+        ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
             
-            
-            /*
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for n in result{
                     FirebaseModel.noticeDictionary[n.key] = n.value as! String
                 }
             }
-            */
+
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "GetNoticeInfo"), object: self)
         })
@@ -208,5 +213,17 @@ class FirebaseModel {
         Storage.storage().reference(withPath: name).downloadURL { (url, error) in
             imageView.kf.setImage(with: url)
         }
+    }
+    
+    func setYoutubeUrl(){
+        self.imageNames.removeAll()
+        
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("setting")
+        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            for child in snapshot.children{
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetYoutube"), object: self)
+        })
     }
 }

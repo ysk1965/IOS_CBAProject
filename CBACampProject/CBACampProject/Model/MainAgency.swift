@@ -77,6 +77,8 @@ class AgencySingleton {
         AgencySingleton.shared.topTagImageName = "CBA.png" // "몽산포.png"
         AgencySingleton.shared.sidebar_setting = sidebarArray
         AgencySingleton.shared.bottombar_setting = bottomArray
+        
+        FirebaseModel().setYoutubeUrl()
     }
     
     func SetMongsanpoAgency(){
@@ -97,7 +99,7 @@ class AgencySingleton {
         var M_bottomArray : Array<ButtonType> = []
         M_bottomArray.removeAll()
         M_bottomArray.append(ButtonType(type: "url",iconName: "bottom_1.png", controlValue: "campus_place"))
-        M_bottomArray.append(ButtonType(type: "call",iconName: "bottom_2.png", controlValue: "010-6623-2545"))
+        M_bottomArray.append(ButtonType(type: "call",iconName: "bottom_2.png", controlValue: "070-7300-6239"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_3.png", controlValue: "m3"))
         M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_4.png", controlValue: "QnaSegue"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_5.png", controlValue: "m5"))
@@ -108,5 +110,7 @@ class AgencySingleton {
         AgencySingleton.shared.topTagImageName = "몽산포.png"
         AgencySingleton.shared.sidebar_setting = M_sidebarArray
         AgencySingleton.shared.bottombar_setting = M_bottomArray
+        
+        FirebaseModel().setYoutubeUrl()
     }
 }
