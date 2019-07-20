@@ -65,11 +65,11 @@ class AgencySingleton {
         
         var bottomArray : Array<ButtonType> = []
         bottomArray.removeAll()
-        bottomArray.append(ButtonType(type: "image",iconName: "제목-없음-1.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "segue",iconName: "CALL.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "제목-없음-1.png", controlValue: "QnaSegue"))
+        bottomArray.append(ButtonType(type: "call",iconName: "CALL.png", controlValue: "010-6623-2545"))
         bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
-        bottomArray.append(ButtonType(type: "image",iconName: "ONAIR.png", controlValue: "campus_place"))
-        bottomArray.append(ButtonType(type: "image",iconName: "GBS.png", controlValue: "campus_place"))
+        bottomArray.append(ButtonType(type: "url",iconName: "ONAIR.png", controlValue: "https://www.youtube.com/channel/UCW6bF9L0ZK__Tlwl19B0FYQ"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "SearchGBS"))
         
         AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"
@@ -86,19 +86,19 @@ class AgencySingleton {
         //MONGSANPO Data
         var M_sidebarArray : Array<ButtonType> = []
         M_sidebarArray.removeAll()
-        M_sidebarArray.append(ButtonType(type: "segue",iconName: "초청의 글(원로 감독님)", controlValue: "youtubeSegue"))
+        M_sidebarArray.append(ButtonType(type: "youtube",iconName: "초청의 글(원로 감독님)", controlValue: "c1"))
         // 환영 글은 youtube 예외처리 필요
-        M_sidebarArray.append(ButtonType(type: "segue",iconName: "환영의 글(감독님)", controlValue: "youtubeSegue"))
+        M_sidebarArray.append(ButtonType(type: "youtube",iconName: "환영의 글(감독님)", controlValue: "c2"))
         M_sidebarArray.append(ButtonType(type: "info",iconName: "공지사항", controlValue: "c3"))
         M_sidebarArray.append(ButtonType(type: "info",iconName: "세부 프로그램", controlValue: "c4"))
         M_sidebarArray.append(ButtonType(type: "info",iconName: "장소안내", controlValue: "c5"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "안전사고지원", controlValue: "c5"))
-        M_sidebarArray.append(ButtonType(type: "image",iconName: "여행자보험 관련 안내", controlValue: "c5"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "안전사고지원", controlValue: "c6"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "여행자보험 관련 안내", controlValue: "c7"))
         M_sidebarArray.append(ButtonType(type: "info",iconName: "협력(후원)기관", controlValue: "c8"))
         
         var M_bottomArray : Array<ButtonType> = []
         M_bottomArray.removeAll()
-        M_bottomArray.append(ButtonType(type: "url",iconName: "bottom_1.png", controlValue: "campus_place"))
+        M_bottomArray.append(ButtonType(type: "url",iconName: "bottom_1.png", controlValue: "http://cba.sungrak.or.kr:9000/#/register_mongsanpo"))
         M_bottomArray.append(ButtonType(type: "call",iconName: "bottom_2.png", controlValue: "070-7300-6239"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_3.png", controlValue: "m3"))
         M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_4.png", controlValue: "QnaSegue"))

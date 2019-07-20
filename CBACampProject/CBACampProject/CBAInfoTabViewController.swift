@@ -23,6 +23,7 @@ class MyData: Object{
 }
 
 class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenuDelegate {
+    @IBOutlet weak var notiButton: UIButton!
     // move TabBar
     @IBOutlet weak var loadingPage: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -167,6 +168,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                         NoticeViewController.OpenStringValue = n.controlValue!
                         
                         self.performSegue(withIdentifier: "infoSegue", sender: nil)
+                    }
+                }
+            } else if n.type == "youtube"{
+                tempMenu = SideMenuItemFactory.make(title: n.iconName!){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
+                        YoutubeViewController.OpenYoutubeValue = n.controlValue!
+                        
+                        self.performSegue(withIdentifier: "youtubeSegue", sender: nil)
                     }
                 }
             }
@@ -383,11 +392,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func OpenImageView(){
+        slideshow.circular = true
         slideshow.frame = CGRect(x: 0, y: viewW! * 0.2, width: viewW!, height: viewH! - viewW! * 0.4)
+        notiButton.frame.size = CGSize(width: 0, height: 0)
     }
     
     func CloseImageView(){
         slideshow.frame.size = CGSize(width: 0, height: 0)
+        notiButton.frame = CGRect(x: 0, y: viewH! * 0.75 - viewW!/5, width: viewW!, height: viewH! * 0.25)
     }
     
     lazy var main_popupView = UIView()
@@ -403,7 +415,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         main_popupView.backgroundColor = UIColor.black
         main_popupView.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(380)
-            make.width.width.equalTo(270)
+            make.width.width.equalTo(310)
             make.center.equalTo(self.view)
         }
         
@@ -411,7 +423,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         inner_popupView.backgroundColor = UIColor.white
         inner_popupView.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(370)
-            make.width.width.equalTo(260)
+            make.width.width.equalTo(300)
             make.center.equalTo(self.view)
         }
         
@@ -420,7 +432,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_toptext.backgroundColor = UIColor.white
         popupView_toptext.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(50)
-            make.width.width.equalTo(260)
+            make.width.width.equalTo(300)
             make.centerX.equalTo(main_popupView)
             make.top.equalTo(main_popupView).offset(30)
         }
@@ -445,7 +457,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_cbaButton.setImage(UIImage(named: "CBA선택.png"), for: UIControl.State.normal)
         popupView_cbaButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
-            make.width.width.equalTo(230)
+            make.width.width.equalTo(270)
             make.centerX.equalTo(main_popupView)
             make.bottom.equalTo(popupView_blackline).offset(100)
         }
@@ -457,7 +469,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_mongsanpoButton.setImage(UIImage(named: "몽산포선택.png"), for: UIControl.State.normal)
         popupView_mongsanpoButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
-            make.width.width.equalTo(230)
+            make.width.width.equalTo(270)
             make.centerX.equalTo(main_popupView)
             make.bottom.equalTo(popupView_cbaButton).offset(80)
         }
@@ -465,7 +477,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_bottomtext.backgroundColor = UIColor.white
         popupView_bottomtext.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(12)
-            make.width.width.equalTo(200)
+            make.width.width.equalTo(240)
             make.centerX.equalTo(main_popupView)
             make.bottom.equalTo(main_popupView).offset(-30)
         }
@@ -520,6 +532,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         for view in self.ResizeBottomView.subviews {
             view.removeFromSuperview()
         }
+        
         let arrayCnt : CGFloat = CGFloat(button.count)
         var loopcnt : CGFloat = 0
         for n in button {
@@ -532,7 +545,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 customButton.addTarget(self, action: #selector(self.MoveSegue(_:)), for: .touchUpInside)
             } else if n.type == "call"{
                 customButton.addTarget(self, action: #selector(self.DoCall(_:)), for: .touchUpInside)
-            } else if n.type == "URL"{
+            } else if n.type == "url"{
                 customButton.addTarget(self, action: #selector(self.MoveURL(_:)), for: .touchUpInside)
             } else if n.type == "info"{
                 customButton.addTarget(self, action: #selector(self.InfoSegue(_:)), for: .touchUpInside)
@@ -590,7 +603,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ResizeNoti.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         // Noti Button
-        let notiButton = UIButton(frame: CGRect(x: 0, y: viewH! * 0.75 - viewW!/5, width: viewW!, height: viewH! * 0.25))
+        notiButton.frame = CGRect(x: 0, y: viewH! * 0.75 - viewW!/5, width: viewW!, height: viewH! * 0.25)
+        
         //notiButton.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         notiButton.tintColor = UIColor.black
         notiButton.addTarget(self, action: #selector(self.GetNoti(_:)), for: .touchUpInside)
@@ -677,9 +691,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         CBAInfoTabViewController.ScreenWidth = self.view.frame.size.width
         CBAInfoTabViewController.ScreenHeight = self.view.frame.size.height
         
-        loadingPage.frame = CGRect(x:0, y:Int(viewH! * 0.25), width: Int(viewW!),  height:Int(viewH! * 0.75))
+        loadingPage.frame = CGRect(x:0, y:Int(Int(viewH!) - Int(viewW!) - Int(viewW! * 0.2) - Int(viewH! * 0.25)), width: Int(viewW!),  height:Int(viewW!))
         loadingPage.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
         loadingPage.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
+        
         // 2019_CBA_SUMMER
         // 2019_SR_SUMMER
         SettingSidebar()

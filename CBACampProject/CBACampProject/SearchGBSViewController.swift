@@ -123,6 +123,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         scrollView.isScrollEnabled = true
         
         self.view.addSubview(scrollView)
+
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -130,6 +131,16 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(MassageTabViewController.mainGBS.leader == nil){
+        let blankImage = UIImageView()
+        blankImage.image = UIImage(named: "준비중.png")
+        self.view.addSubview(blankImage)
+        blankImage.snp.makeConstraints { (make) -> Void in
+            make.height.height.equalTo(self.view.frame.width * 8/6)
+            make.width.width.equalTo(self.view.frame.width)
+            make.center.equalTo(self.view)
+        }
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)

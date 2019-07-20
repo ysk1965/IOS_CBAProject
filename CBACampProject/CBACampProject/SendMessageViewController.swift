@@ -72,6 +72,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         dbRef = Database.database().reference()
 
         SendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        SendButton.popIn()
         
         //textAuthor.delegate = self
         

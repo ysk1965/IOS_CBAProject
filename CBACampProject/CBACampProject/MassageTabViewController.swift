@@ -277,15 +277,21 @@ class MassageTabViewController: UIViewController {
         
         self.view.addSubview(scrollView)
         
+        let backgroundImage = UIImageView()
+        backgroundImage.frame = CGRect(x:0,y:0,width:self.view.frame.width, height: self.view.frame.height)
+        backgroundImage.alpha = 0.7
+        backgroundImage.image = UIImage(named: "몽산포_배경.png")
+        self.view.addSubview(backgroundImage)
         
         if(CBAInfoTabViewController.isNotiMessage == false){
             SendButton.setTitle(" ", for: .normal)
             SendButton.setTitleColor(UIColor.blue, for: .normal)
             SendButton.frame = CGRect(x: scrollView.frame.width-95, y: scrollView.frame.height-95, width: 75, height: 75)
-            SendButton.setBackgroundImage(UIImage(named: "KakaoTalk_Photo_2019-01-14-11-35-56.png"), for: .normal)
+            SendButton.setBackgroundImage(UIImage(named: "메세지-아이콘.png"), for: .normal)
             SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
             self.view.addSubview(SendButton)
         }
+        
         CBAInfoTabViewController.isNotiMessage = false
         // Do any additional setup after loading the view, typically from a nib.
     }

@@ -26,15 +26,17 @@
 		042761EB2106E41600928EB7 /* CBACampProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */; };
 		042A0DA422DC36CC00DEE34C /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */; };
 		043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A7FF7219A721C00451CE0 /* AuthViewController.swift */; };
-		0459532421FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-33-03.png in Resources */ = {isa = PBXBuildFile; fileRef = 0459532221FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-33-03.png */; };
-		0459532521FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png in Resources */ = {isa = PBXBuildFile; fileRef = 0459532321FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png */; };
+		044A479222E3208E00249822 /* 몽산포선택.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479122E3208E00249822 /* 몽산포선택.png */; };
+		044A479822E37CA000249822 /* 메세지-아이콘.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479722E37CA000249822 /* 메세지-아이콘.png */; };
+		044A479A22E37CC000249822 /* 준비중.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479922E37CC000249822 /* 준비중.png */; };
+		044A47A022E3816D00249822 /* CBA1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479F22E3816D00249822 /* CBA1.png */; };
+		044A47A222E3830800249822 /* CBA.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A47A122E3830700249822 /* CBA.png */; };
 		046C83A3210984AA00176FDE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C83A2210984AA00176FDE /* MapViewController.swift */; };
 		048A3FCE22CFD77500CCEC20 /* CBA가로배너.png in Resources */ = {isa = PBXBuildFile; fileRef = 048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */; };
 		048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF660224B853E00A8D7AD /* CheckViewController.swift */; };
 		04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04950AA921E508CD00213D42 /* SendMessageViewController.swift */; };
 		04955EFB210A24320057FD68 /* MainLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04955EFA210A24320057FD68 /* MainLocation.swift */; };
 		04A9638F22D59D1E00CE91F6 /* MainAgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9638E22D59D1E00CE91F6 /* MainAgency.swift */; };
-		04AE0EB022D97CCE00A9F1F2 /* Q&A.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EA522D97CCE00A9F1F2 /* Q&A.png */; };
 		04AE0EB122D97CCE00A9F1F2 /* 메세지-아이콘.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EA722D97CCE00A9F1F2 /* 메세지-아이콘.png */; };
 		04AE0EB222D97CCE00A9F1F2 /* 아이폰.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EA922D97CCE00A9F1F2 /* 아이폰.png */; };
 		04AE0EB322D97CCE00A9F1F2 /* 안드로이드.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EAA22D97CCE00A9F1F2 /* 안드로이드.png */; };
@@ -45,7 +47,6 @@
 		04AE0EB922D997D400A9F1F2 /* 성락아이콘.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EB822D997D400A9F1F2 /* 성락아이콘.png */; };
 		04AE0EBB22DB7C7200A9F1F2 /* CBA_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EBA22DB7C7100A9F1F2 /* CBA_사이드바.png */; };
 		04AE0EBD22DB7C7B00A9F1F2 /* 몽산포_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EBC22DB7C7B00A9F1F2 /* 몽산포_사이드바.png */; };
-		04B337CF22E0897D00FE999A /* CBA.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B337CE22E0897D00FE999A /* CBA.png */; };
 		04E3727F2107106A00FB7304 /* ScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */; };
 		04E372812107146F00FB7304 /* MassageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372802107146F00FB7304 /* MassageTabViewController.swift */; };
 		04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */; };
@@ -62,14 +63,13 @@
 		04E7FFE822D3927700E87AE9 /* 알림판.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFDE22D3927700E87AE9 /* 알림판.png */; };
 		04E7FFE922D3927700E87AE9 /* 몽산포_배너.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFDF22D3927700E87AE9 /* 몽산포_배너.png */; };
 		04E7FFEB22D3928500E87AE9 /* 몽산포_산호.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFEA22D3928500E87AE9 /* 몽산포_산호.jpeg */; };
-		04E7FFF422D4ADD600E87AE9 /* 사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFED22D4ADD600E87AE9 /* 사이드바.png */; };
 		04E7FFF522D4ADD600E87AE9 /* 로그아웃.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFEF22D4ADD600E87AE9 /* 로그아웃.png */; };
 		04E7FFF622D4ADD600E87AE9 /* 제목-없음-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF022D4ADD600E87AE9 /* 제목-없음-2.png */; };
 		04E7FFF722D4ADD600E87AE9 /* 막대.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF122D4ADD600E87AE9 /* 막대.png */; };
 		04E7FFF822D4ADD600E87AE9 /* 로그인.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF222D4ADD600E87AE9 /* 로그인.png */; };
 		04E7FFF922D4ADD600E87AE9 /* 화살표.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF322D4ADD600E87AE9 /* 화살표.png */; };
 		04F09B2822D78B72006A604E /* CBA선택.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F09B2622D78B72006A604E /* CBA선택.png */; };
-		04F09B2922D78B72006A604E /* 몽산포선택.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F09B2722D78B72006A604E /* 몽산포선택.png */; };
+		04F09B2922D78B72006A604E /* 몽산포선택1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F09B2722D78B72006A604E /* 몽산포선택1.png */; };
 		04F09B2D22D870B9006A604E /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F09B2C22D870B9006A604E /* NoticeViewController.swift */; };
 		04F09B2F22D8D224006A604E /* 몽산포_배경.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F09B2E22D8D224006A604E /* 몽산포_배경.png */; };
 		04F09B3122D8DB51006A604E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F09B3022D8DB51006A604E /* ImageViewController.swift */; };
@@ -154,15 +154,17 @@
 		042761EC2106E41600928EB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
 		043A7FF7219A721C00451CE0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		0459532221FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-33-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2019-01-14-11-33-03.png"; path = "../../../Desktop/유상건/KakaoTalk_Photo_2019-01-14-11-33-03.png"; sourceTree = "<group>"; };
-		0459532321FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2019-01-14-11-35-56.png"; path = "../../../Desktop/유상건/KakaoTalk_Photo_2019-01-14-11-35-56.png"; sourceTree = "<group>"; };
+		044A479122E3208E00249822 /* 몽산포선택.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포선택.png"; sourceTree = "<group>"; };
+		044A479722E37CA000249822 /* 메세지-아이콘.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "메세지-아이콘.png"; sourceTree = "<group>"; };
+		044A479922E37CC000249822 /* 준비중.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "준비중.png"; sourceTree = "<group>"; };
+		044A479F22E3816D00249822 /* CBA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA1.png; path = "Resource/19_여름_메인/상단/CBA1.png"; sourceTree = SOURCE_ROOT; };
+		044A47A122E3830700249822 /* CBA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA.png; path = "Resource/19_여름_메인/CBA.png"; sourceTree = SOURCE_ROOT; };
 		046C83A2210984AA00176FDE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA가로배너.png"; sourceTree = "<group>"; };
 		048AF660224B853E00A8D7AD /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		04950AA921E508CD00213D42 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		04955EFA210A24320057FD68 /* MainLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocation.swift; sourceTree = "<group>"; };
 		04A9638E22D59D1E00CE91F6 /* MainAgency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAgency.swift; sourceTree = "<group>"; };
-		04AE0EA522D97CCE00A9F1F2 /* Q&A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q&A.png"; sourceTree = "<group>"; };
 		04AE0EA722D97CCE00A9F1F2 /* 메세지-아이콘.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "메세지-아이콘.png"; sourceTree = "<group>"; };
 		04AE0EA922D97CCE00A9F1F2 /* 아이폰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "아이폰.png"; sourceTree = "<group>"; };
 		04AE0EAA22D97CCE00A9F1F2 /* 안드로이드.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "안드로이드.png"; sourceTree = "<group>"; };
@@ -173,7 +175,6 @@
 		04AE0EB822D997D400A9F1F2 /* 성락아이콘.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "성락아이콘.png"; sourceTree = "<group>"; };
 		04AE0EBA22DB7C7100A9F1F2 /* CBA_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA_사이드바.png"; sourceTree = "<group>"; };
 		04AE0EBC22DB7C7B00A9F1F2 /* 몽산포_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_사이드바.png"; sourceTree = "<group>"; };
-		04B337CE22E0897D00FE999A /* CBA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA.png; path = "Resource/19_여름_메인/CBA.png"; sourceTree = SOURCE_ROOT; };
 		04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
 		04E372802107146F00FB7304 /* MassageTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageTabViewController.swift; sourceTree = "<group>"; };
 		04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAInfoTabViewController.swift; sourceTree = "<group>"; };
@@ -190,14 +191,13 @@
 		04E7FFDE22D3927700E87AE9 /* 알림판.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "알림판.png"; sourceTree = "<group>"; };
 		04E7FFDF22D3927700E87AE9 /* 몽산포_배너.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_배너.png"; sourceTree = "<group>"; };
 		04E7FFEA22D3928500E87AE9 /* 몽산포_산호.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "몽산포_산호.jpeg"; sourceTree = "<group>"; };
-		04E7FFED22D4ADD600E87AE9 /* 사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "사이드바.png"; sourceTree = "<group>"; };
 		04E7FFEF22D4ADD600E87AE9 /* 로그아웃.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "로그아웃.png"; sourceTree = "<group>"; };
 		04E7FFF022D4ADD600E87AE9 /* 제목-없음-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "제목-없음-2.png"; sourceTree = "<group>"; };
 		04E7FFF122D4ADD600E87AE9 /* 막대.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "막대.png"; sourceTree = "<group>"; };
 		04E7FFF222D4ADD600E87AE9 /* 로그인.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "로그인.png"; sourceTree = "<group>"; };
 		04E7FFF322D4ADD600E87AE9 /* 화살표.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "화살표.png"; sourceTree = "<group>"; };
 		04F09B2622D78B72006A604E /* CBA선택.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA선택.png"; sourceTree = "<group>"; };
-		04F09B2722D78B72006A604E /* 몽산포선택.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포선택.png"; sourceTree = "<group>"; };
+		04F09B2722D78B72006A604E /* 몽산포선택1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포선택1.png"; sourceTree = "<group>"; };
 		04F09B2C22D870B9006A604E /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		04F09B2E22D8D224006A604E /* 몽산포_배경.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_배경.png"; sourceTree = "<group>"; };
 		04F09B3022D8DB51006A604E /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -309,7 +309,8 @@
 		0426D78B22CCB6D1006C111A /* 상단 */ = {
 			isa = PBXGroup;
 			children = (
-				04B337CE22E0897D00FE999A /* CBA.png */,
+				044A479F22E3816D00249822 /* CBA1.png */,
+				044A47A122E3830700249822 /* CBA.png */,
 				0426D78D22CCB6D1006C111A /* 메뉴.png */,
 				0426D78E22CCB6D1006C111A /* 로고.png */,
 			);
@@ -400,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				04AE0EB822D997D400A9F1F2 /* 성락아이콘.png */,
-				04AE0EA522D97CCE00A9F1F2 /* Q&A.png */,
 				04AE0EA622D97CCE00A9F1F2 /* 하단 */,
 				04AE0EA822D97CCE00A9F1F2 /* 상단 */,
 				04AE0EAC22D97CCE00A9F1F2 /* 중앙 */,
@@ -447,16 +447,16 @@
 				DB3A886B210E54FD00E6DA14 /* 이미지준비중.jpg */,
 				DB764E5E210E0A3D006E72EB /* applybutton.png */,
 				DB764E56210CB9A1006E72EB /* Icon-60@3x.png */,
+				044A479922E37CC000249822 /* 준비중.png */,
 				DB764E53210C98FD006E72EB /* refresh.png */,
 				DB764E42210C7206006E72EB /* profile.png */,
 				04FC00D1210AEC0000528D7A /* Blank.png */,
 				04FC00D3210AEC0000528D7A /* CampBackground.jpeg */,
 				04FC00DB210AEC0100528D7A /* CBA.jpeg */,
+				044A479722E37CA000249822 /* 메세지-아이콘.png */,
 				04FC00D0210AEC0000528D7A /* hamberger.png */,
 				04FC00D4210AEC0000528D7A /* hamgerger2.png */,
 				04FC00D7210AEC0000528D7A /* Heart.png */,
-				0459532221FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-33-03.png */,
-				0459532321FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -511,7 +511,6 @@
 			isa = PBXGroup;
 			children = (
 				04F09B2522D78B72006A604E /* 선택항목 */,
-				04E7FFED22D4ADD600E87AE9 /* 사이드바.png */,
 				04E7FFEE22D4ADD600E87AE9 /* 박스 */,
 				04E7FFF322D4ADD600E87AE9 /* 화살표.png */,
 			);
@@ -533,7 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				04F09B2622D78B72006A604E /* CBA선택.png */,
-				04F09B2722D78B72006A604E /* 몽산포선택.png */,
+				044A479122E3208E00249822 /* 몽산포선택.png */,
+				04F09B2722D78B72006A604E /* 몽산포선택1.png */,
 			);
 			path = "선택항목";
 			sourceTree = "<group>";
@@ -736,7 +736,6 @@
 				0426D79922CCB6D3006C111A /* 로고.png in Resources */,
 				04E7FFE722D3927700E87AE9 /* 몽산포.png in Resources */,
 				0426D79822CCB6D3006C111A /* 메뉴.png in Resources */,
-				04AE0EB022D97CCE00A9F1F2 /* Q&A.png in Resources */,
 				04E7FFF722D4ADD600E87AE9 /* 막대.png in Resources */,
 				DBF11FB2211B35F700EE9B98 /* 또래별강의.jpeg in Resources */,
 				04FC00E9210AEC0100528D7A /* Heart.png in Resources */,
@@ -746,7 +745,6 @@
 				048A3FCE22CFD77500CCEC20 /* CBA가로배너.png in Resources */,
 				DBF11FCE211B479300EE9B98 /* gbs장소2.png in Resources */,
 				DBF11FB0211B35F100EE9B98 /* 청소구역.jpeg in Resources */,
-				0459532521FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-35-56.png in Resources */,
 				042761D52106E41600928EB7 /* LaunchScreen.storyboard in Resources */,
 				04E7FFF522D4ADD600E87AE9 /* 로그아웃.png in Resources */,
 				04E7FFEB22D3928500E87AE9 /* 몽산포_산호.jpeg in Resources */,
@@ -756,7 +754,9 @@
 				DBF11FCA211B470C00EE9B98 /* 숙소3.jpg in Resources */,
 				04AE0EB222D97CCE00A9F1F2 /* 아이폰.png in Resources */,
 				DB764E57210CB9A1006E72EB /* Icon-60@3x.png in Resources */,
-				04B337CF22E0897D00FE999A /* CBA.png in Resources */,
+				044A479222E3208E00249822 /* 몽산포선택.png in Resources */,
+				044A47A022E3816D00249822 /* CBA1.png in Resources */,
+				044A47A222E3830800249822 /* CBA.png in Resources */,
 				DB764E4F210C87EA006E72EB /* NotoSansKR_Regular.woff in Resources */,
 				042761D22106E41600928EB7 /* Assets.xcassets in Resources */,
 				DBF11FD2211B524400EE9B98 /* 이미지준비중.png in Resources */,
@@ -770,13 +770,12 @@
 				04AE0EBD22DB7C7B00A9F1F2 /* 몽산포_사이드바.png in Resources */,
 				04AE0EB322D97CCE00A9F1F2 /* 안드로이드.png in Resources */,
 				04FC00ED210AEC0100528D7A /* CBA.jpeg in Resources */,
-				04E7FFF422D4ADD600E87AE9 /* 사이드바.png in Resources */,
 				042761D02106E41400928EB7 /* Main.storyboard in Resources */,
 				04AE0EBB22DB7C7200A9F1F2 /* CBA_사이드바.png in Resources */,
 				DBF11FD0211B479900EE9B98 /* gbs장소3.png in Resources */,
 				0426D79222CCB6D3006C111A /* 제목-없음-1.png in Resources */,
 				DB3A886C210E54FD00E6DA14 /* 이미지준비중.jpg in Resources */,
-				04F09B2922D78B72006A604E /* 몽산포선택.png in Resources */,
+				04F09B2922D78B72006A604E /* 몽산포선택1.png in Resources */,
 				04E7FFE222D3927700E87AE9 /* bottom_2.png in Resources */,
 				04FC00E5210AEC0100528D7A /* CampBackground.jpeg in Resources */,
 				04E7FFE622D3927700E87AE9 /* 로고.png in Resources */,
@@ -786,6 +785,7 @@
 				04F09B2F22D8D224006A604E /* 몽산포_배경.png in Resources */,
 				04AE0EB422D97CCE00A9F1F2 /* Q&A.png in Resources */,
 				DBF11FC6211B46FF00EE9B98 /* 숙소1.jpg in Resources */,
+				044A479822E37CA000249822 /* 메세지-아이콘.png in Resources */,
 				DB764E45210C74BC006E72EB /* GoogleService-Info.plist in Resources */,
 				DB764E50210C87EA006E72EB /* NotoSansUI-Regular.ttf in Resources */,
 				0426D79322CCB6D3006C111A /* ONAIR.png in Resources */,
@@ -802,7 +802,7 @@
 				04E7FFE522D3927700E87AE9 /* 메뉴.png in Resources */,
 				04E7FFF922D4ADD600E87AE9 /* 화살표.png in Resources */,
 				DBF11FC8211B470600EE9B98 /* 숙소2.jpg in Resources */,
-				0459532421FC7521006FE016 /* KakaoTalk_Photo_2019-01-14-11-33-03.png in Resources */,
+				044A479A22E37CC000249822 /* 준비중.png in Resources */,
 				04F09B2822D78B72006A604E /* CBA선택.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1183,6 +1183,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CBACampProject/CBACampProject.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZJXHH5P6P4;
@@ -1204,6 +1205,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CBACampProject/CBACampProject.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZJXHH5P6P4;
