@@ -72,6 +72,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     // Optionally function onMenuClose(), fired when user closes menu
     func onMenuClose() {
+        self.menu.reduceMenu()
         print("Action on Close Menu")
     }
     
@@ -266,11 +267,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         testLabel.font = UIFont(name: "NotoSansUI-Regular"
             , size: viewH!)
         testLabel.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 0)
-        testLabel.text = """
-        예수 그리스도는
-        어제나 오늘이나 동일하시다
-                                    (히13:8)
-        """
+        testLabel.text = ""
         //testLabel.sizeToFit()
         BackImageView.addSubview(testLabel)
         
@@ -311,16 +308,18 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func loadVisiblePages(_ notification: Notification){
+        slideshow.slideIn(from : .right, delay : 0.5)
+        slideshow.fadeIn(duration: 0.3)
         slideshow.setImageInputs(FirebaseModel.imageKingfisher)
         
         let pageIndicator = UIPageControl()
-        pageIndicator.currentPageIndicatorTintColor = UIColor.lightGray
-        pageIndicator.pageIndicatorTintColor = UIColor.black
+        pageIndicator.currentPageIndicatorTintColor = UIColor.black
+        pageIndicator.pageIndicatorTintColor = UIColor.lightGray
         slideshow.pageIndicator = pageIndicator
         
-        slideshow.pageIndicator = LabelPageIndicator()
+        //slideshow.pageIndicator = LabelPageIndicator()
         
-        slideshow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .left(padding: 20), vertical: .bottom)
+        slideshow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
         
         OpenImageView()
     }
@@ -398,8 +397,16 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func CloseImageView(){
-        slideshow.frame.size = CGSize(width: 0, height: 0)
+        slideshow.slideOut(to: .bottom)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+            self.slideshow.frame.size = CGSize(width: 0, height: 0)
+        }
         notiButton.frame = CGRect(x: 0, y: viewH! * 0.75 - viewW!/5, width: viewW!, height: viewH! * 0.25)
+    }
+    
+    @objc func closeTap(_ sender:UIButton) {
+        main_popupView.popOut()
+        //main_popupView.removeFromSuperview()
     }
     
     lazy var main_popupView = UIView()
@@ -409,9 +416,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     lazy var popupView_cbaButton = UIButton()
     lazy var popupView_mongsanpoButton = UIButton()
     lazy var popupView_bottomtext = UILabel()
+    lazy var popupView_cancleButton = UIButton()
     
     func SetPopupView(){
         self.view.addSubview(main_popupView)
+        main_popupView.popIn()
         main_popupView.backgroundColor = UIColor.black
         main_popupView.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(380)
@@ -485,6 +494,21 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_bottomtext.textAlignment = NSTextAlignment.center
         popupView_bottomtext.adjustsFontSizeToFitWidth = true
         
+        // 뒤로가기
+        main_popupView.addSubview(popupView_cancleButton)
+        popupView_cancleButton.popIn()
+        popupView_cancleButton.backgroundColor = UIColor.white
+        popupView_cancleButton.addTarget(self, action: #selector(self.closeTap(_:)), for: .touchUpInside)
+        popupView_cancleButton.setImage(UIImage(named: "refresh.png"), for: UIControl.State.normal)
+        popupView_cancleButton.backgroundColor = UIColor.white
+        popupView_cancleButton.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(main_popupView).offset(20)
+            make.right.equalTo(main_popupView).offset(-20)
+            make.height.height.equalTo(20)
+            make.width.width.equalTo(20)
+            //make.center.equalTo(self.view)
+        }
+        
     }
     
     @objc func SetPopup(_ sender:UIButton){
@@ -536,6 +560,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let arrayCnt : CGFloat = CGFloat(button.count)
         var loopcnt : CGFloat = 0
         for n in button {
+            
             let customButton = UIButton(frame: CGRect(x:viewW! / arrayCnt * loopcnt,y:0,width:viewW! / arrayCnt, height:viewW! / arrayCnt))
             customButton.setImage(UIImage(named: n.iconName!),for: .normal)
             customButton.setTitle(n.controlValue, for: .normal)
@@ -561,17 +586,19 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         NoticeLabel.text = FirebaseModel.mainNotiMessages
         
         hambergerButton.translatesAutoresizingMaskIntoConstraints = false
-        hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 38).isActive = true
-        hambergerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 13).isActive = true
-        hambergerButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.085).isActive = true
-        hambergerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.11).isActive = true
+        hambergerButton.fadeIn(duration: 1)
+        hambergerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 41).isActive = true
+        hambergerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        hambergerButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.07).isActive = true
+        hambergerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.09).isActive = true
         
         TopImageButtonOutlet.translatesAutoresizingMaskIntoConstraints = false
+        TopImageButtonOutlet.fadeIn(duration: 1)
         TopImageButtonOutlet.setImage(UIImage(named: AgencySingleton.shared.topTagImageName!), for: .normal)
-        TopImageButtonOutlet.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
+        TopImageButtonOutlet.topAnchor.constraint(equalTo: view.topAnchor, constant: 37).isActive = true
         TopImageButtonOutlet.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        TopImageButtonOutlet.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
-        TopImageButtonOutlet.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+        TopImageButtonOutlet.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.088).isActive = true
+        TopImageButtonOutlet.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.78).isActive = true
         
         ResizeBanner.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         
@@ -579,6 +606,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         //slideshow
         slideshow.translatesAutoresizingMaskIntoConstraints = false
         slideshow.frame.size = CGSize(width: 0, height: 0)
+        
+        let backgroundView = UIImageView()
+        backgroundView.image = UIImage(named:"몽산포_배경.png")
+        backgroundView.frame = CGRect(x:0,y:(viewW!/5), width:viewW!, height:(viewH! - (viewW!/5)))
+        
+        slideshow.addSubview(backgroundView)
         
         /*
         slideshow.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
@@ -588,6 +621,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         */
         
         ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBottomView.fadeIn(duration: 1)
         ResizeBottomView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         ResizeBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         ResizeBottomView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
@@ -597,6 +631,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         //ResizeNoti.sizeToFit()
         ResizeNoti.translatesAutoresizingMaskIntoConstraints = false
+        ResizeNoti.fadeIn(duration: 1)
         ResizeNoti.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         ResizeNoti.bottomAnchor.constraint(equalTo: ResizeBottomView.topAnchor).isActive = true
         ResizeNoti.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
@@ -611,6 +646,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         view.addSubview(notiButton)
         
         ResizeBanner.translatesAutoresizingMaskIntoConstraints = false
+        ResizeBanner.fadeIn(duration: 1)
         ResizeBanner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         //ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor, constant: viewH! * -0.02).isActive = true
         ResizeBanner.bottomAnchor.constraint(equalTo: ResizeNoti.topAnchor).isActive = true
@@ -692,6 +728,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         CBAInfoTabViewController.ScreenHeight = self.view.frame.size.height
         
         loadingPage.frame = CGRect(x:0, y:Int(Int(viewH!) - Int(viewW!) - Int(viewW! * 0.2) - Int(viewH! * 0.25)), width: Int(viewW!),  height:Int(viewW!))
+        loadingPage.popIn(fromScale: 2, duration: 2, delay: 0)
         loadingPage.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
         loadingPage.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         
@@ -702,8 +739,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         slideshow.addGestureRecognizer(gestureRecognizer)
         
+        //FirebaseModel().getMessages(messageTitle: "noti")
         // load main view!!
         FirebaseModel().FirstLoadView()
+        
     }
     
     func SetNotificationCenter(){

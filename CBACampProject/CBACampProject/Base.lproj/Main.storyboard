@@ -39,7 +39,8 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="r1C-uJ-GHK">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_home_outline" style="plain" id="Jxm-zi-Kx1">
+                        <barButtonItem key="leftBarButtonItem" tag="1" style="plain" systemItem="reply" id="Jxm-zi-Kx1">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="Back:" destination="YR7-ln-v5b" id="9Px-ra-PQc"/>
                             </connections>
@@ -65,6 +66,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="몽산포_배경.png" translatesAutoresizingMaskIntoConstraints="NO" id="6th-n2-MXT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <textField opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="  이름을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-Sr-z7D">
                                 <rect key="frame" x="30" y="149" width="260" height="30"/>
@@ -314,6 +316,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1WN-jJ-FFi">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="ic_home_outline" style="plain" id="y2C-zJ-tBl">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="Back:" destination="KWH-da-21d" id="4OD-PT-Q1w"/>
                             </connections>
@@ -678,7 +681,8 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="b1e-kA-O93">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_home_outline" style="plain" id="p4i-Ac-cL6">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="reply" id="p4i-Ac-cL6">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="Back:" destination="gaf-He-Zwe" id="060-Mx-NUg"/>
                             </connections>
@@ -736,7 +740,8 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="OWc-Lc-Iep">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_home_outline" style="plain" id="n1O-Fy-MBE">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="reply" id="n1O-Fy-MBE">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="Back:" destination="rgt-Jy-0Z5" id="SlE-FN-aed"/>
                             </connections>
@@ -967,7 +972,8 @@
                         <viewLayoutGuide key="safeArea" id="6fD-7T-1tX"/>
                     </view>
                     <navigationItem key="navigationItem" id="VbN-Py-sN9">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_home_outline" style="plain" id="lRL-QB-bT4">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="reply" id="lRL-QB-bT4">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="BackButton:" destination="S0a-ba-2gE" id="Juk-9y-BhW"/>
                             </connections>
@@ -993,7 +999,8 @@
                         <viewLayoutGuide key="safeArea" id="AEf-o6-39A"/>
                     </view>
                     <navigationItem key="navigationItem" id="tcH-Oy-n5P">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_home_outline" style="plain" id="IKW-6q-7H1">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="reply" id="IKW-6q-7H1">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="BackButton:" destination="DHX-vg-nv2" id="oc3-hk-1jA"/>
                             </connections>
@@ -1049,7 +1056,8 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="VVi-Vj-woN">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_home_outline" style="plain" id="sea-DO-fgE">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="reply" id="sea-DO-fgE">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="BackImage:" destination="7Wq-zk-PEH" id="uhv-Ma-OAV"/>
                             </connections>
@@ -1113,4 +1121,5 @@
         <image name="몽산포_배경.png" width="638" height="1134"/>
         <image name="배너.png" width="16" height="16"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

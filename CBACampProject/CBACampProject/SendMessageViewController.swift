@@ -131,4 +131,61 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     func textFieldDidBeginEditing(_ textField: UITextField) {
         mainView.setContentOffset(CGPoint(x: 0, y: 50), animated: true)
     }
+    
+    /*
+    func textFCM(){
+        //변환해줘야 해
+        if(Auth.auth().currentUser != nil){
+            let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
+            let date : String = "2019-05-05" // 현재 날짜
+            let campusName : String = selectedCampus!
+            
+            let params : Parameters = [
+                "date" : date,
+                "campus" : campusName
+            ]
+            
+            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
+            let alamo = Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: header)
+            
+            alamo.responseJSON { response in
+                let json = JSON(response.result.value!)
+                let results = json["data"].arrayValue
+                if let status = response.response?.statusCode{
+                    switch(status){
+                    case 200..<300:
+                        print("success")
+                        print("JSON: \(json)")
+                        
+                        for result in results {
+                            var test = AttendanceInfo.init()
+                            
+                            /*
+                             let id = result["id"].stringValue
+                             let date = result["date"].stringValue
+                             let name = result["name"].stringValue
+                             let mobile = result["mobile"].stringValue
+                             let status = result["status"].stringValue
+                             let note = result["note"].stringValue
+                             */
+                            
+                            test.id = result["id"].stringValue
+                            test.date = result["date"].stringValue
+                            test.name = result["name"].stringValue
+                            test.mobile = result["mobile"].stringValue
+                            test.status = result["status"].stringValue
+                            test.note = result["note"].stringValue
+                            
+                            self.currentAttendanceInfo.append(test)
+                        }
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+                    default:
+                        print("error with response status: \(status)")
+                    }
+                }
+            }
+        }
+    }
+    */
 }

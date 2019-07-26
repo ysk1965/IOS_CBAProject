@@ -46,14 +46,14 @@ class FirebaseModel {
                     FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
                 }
                 
-                    let count = FirebaseModel.messages.count
+                let count = FirebaseModel.messages.count
                     
-                    for i in (0..<count).reversed(){
-                        if(FirebaseModel.messages[i].isStaff == "공지"){
-                            FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
+                for i in (0..<count).reversed(){
+                    if(FirebaseModel.messages[i].isStaff == "공지"){
+                        FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
                             break
-                        }
                     }
+                }
                 
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
             }
@@ -200,7 +200,7 @@ class FirebaseModel {
         FirebaseModel.noticeDictionary.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
-        ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
+        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 /*
@@ -208,9 +208,10 @@ class FirebaseModel {
                     FirebaseModel.noticeDictionary[n.key] = n.value as! String
                 }
                 */
+                print("확인해봐!!!")
                 for i in (0..<result.count){
                     print(FirebaseModel.noticeDictionary)
-                    FirebaseModel.noticeDictionary[result[i].key] = (result[i].value as! String)
+                    FirebaseModel.noticeDictionary[result[i].value as! String] = result[i].key
                 }
             }
             let a = FirebaseModel.noticeDictionary.sorted(by: <)

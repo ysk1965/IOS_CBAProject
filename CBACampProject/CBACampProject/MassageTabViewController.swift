@@ -57,6 +57,7 @@ struct UserInfo: Codable{
 }
 
 class MassageTabViewController: UIViewController {
+    @IBOutlet weak var infoText: UITextField!
     @IBOutlet weak var Hamberger: UIButton!
     @IBAction func HambergerAction(_ sender: Any) {
         Hamberger.popIn(fromScale: 1.5, duration: 2, delay: 0)
@@ -91,7 +92,7 @@ class MassageTabViewController: UIViewController {
         scrollView.addSubview(scrollcontainerView)
         //scrollView.addSubview(buttonView)
         
-        var inypos = 25
+        var inypos = self.view.frame.height/10
         let inxpos = 20
         let count = FirebaseModel.messages.count
         
@@ -102,6 +103,7 @@ class MassageTabViewController: UIViewController {
                 let cellview = UIView()
                 let infoLabel = UILabel()
                 let messageImage = UIImageView()
+                
                 //info Label
                 infoLabel.text = FirebaseModel.messages[count - i - 1].auth + "   " + FirebaseModel.messages[count - i - 1].time
                 infoLabel.font = UIFont(name:"NotoSansUI", size: 14.0)!
@@ -115,14 +117,14 @@ class MassageTabViewController: UIViewController {
                     messageImage.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     cellview.addSubview(messageImage)
                     
-                    cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width * 0.8), height: 80)
+                    cellview.frame = CGRect(x: 0, y: Int(inypos), width : Int(scrollView.frame.width * 0.8), height: 80)
                     
                     infoLabel.frame.origin = CGPoint(x: Int(self.view.frame.width/15), y: nextypos - 20)
                 } else{
                     messageImage.image = UIImage(named : "내가-보낼때.png")
                     messageImage.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     cellview.addSubview(messageImage)
-                    cellview.frame = CGRect(x: Int(scrollView.frame.width * 0.2), y: inypos, width : Int(scrollView.frame.width * 0.8), height: 80)
+                    cellview.frame = CGRect(x: Int(scrollView.frame.width * 0.2), y: Int(inypos), width : Int(scrollView.frame.width * 0.8), height: 80)
                     
                     
                     ///InfoLabel
@@ -138,8 +140,16 @@ class MassageTabViewController: UIViewController {
                 if(FirebaseModel.messages[count - i - 1].isStaff == "공지"){
                     textView.textColor = UIColor.white
                     textView.frame.origin = CGPoint(x:inxpos + Int(self.view.frame.width * 0.02), y:nextypos)
+                    textView.bounceIn(from:.left,delay:0.3)
+                    cellview.bounceIn(from:.left,delay:0.3)
+                    infoLabel.bounceIn(from:.left,delay:0.3)
+                    messageImage.bounceIn(from:.left,delay:0.3)
                 } else{
                     textView.frame.origin = CGPoint(x:inxpos, y:nextypos)
+                    textView.bounceIn(from:.right,delay:0.3)
+                    cellview.bounceIn(from:.right,delay:0.3)
+                    infoLabel.bounceIn(from:.right,delay:0.3)
+                    messageImage.bounceIn(from:.right,delay:0.3)
                 }
                 textView.frame.size = CGSize(width: Int(self.view.frame.width * 0.7), height: 30)
                 let contentSize = textView.sizeThatFits(textView.bounds.size)
@@ -156,7 +166,7 @@ class MassageTabViewController: UIViewController {
                 nextypos += Int(infoLabel.frame.size.height) - 10
                 
                 cellview.frame.size.height = CGFloat(nextypos)
-                inypos += 35 + Int(cellview.frame.size.height) //다음 CellView의 위치
+                inypos += 35 + cellview.frame.size.height //다음 CellView의 위치
                 cellview.addSubview(textView)
             }
 
@@ -176,7 +186,7 @@ class MassageTabViewController: UIViewController {
                 }
                 cellview.layer.borderWidth = 0
                 
-                cellview.frame = CGRect(x: 0, y: inypos, width : Int(scrollView.frame.width), height: 80)
+                cellview.frame = CGRect(x: 0, y: Int(inypos), width : Int(scrollView.frame.width), height: 80)
                 scrollView.addSubview(cellview)
                 
                 //profile image, rank name label, name label //////////////////////////////
@@ -265,12 +275,12 @@ class MassageTabViewController: UIViewController {
                 
                 
                 cellview.frame.size.height = CGFloat(nextypos)
-                inypos += 7 + Int(cellview.frame.size.height) //다음 CellView의 위치
+                inypos += 7 + cellview.frame.size.height //다음 CellView의 위치
                 cellview.addSubview(textview)
             }
             
         }
-        scrollView.contentSize = CGSize(width: scrollView.frame.width-1, height: max(CGFloat(inypos),scrollView.frame.height+1))
+        scrollView.contentSize = CGSize(width: scrollView.frame.width-1, height: max(CGFloat(inypos),scrollView.frame.height-inypos))
         scrollView.tintColor = UIColor.white
         
         scrollView.isScrollEnabled = true
@@ -283,9 +293,25 @@ class MassageTabViewController: UIViewController {
         backgroundImage.image = UIImage(named: "몽산포_배경.png")
         self.view.addSubview(backgroundImage)
         
+        
         if(CBAInfoTabViewController.isNotiMessage == false){
+            let infoText = UILabel()
+            infoText.text = """
+            작성하신 내용은 작성자와 관리자만 확인되면
+            처리 경과를 확인하실 수 있습니다.
+            """
+            infoText.frame = CGRect(x:0, y:self.view.frame.height/9, width:self.view.frame.width, height:self.view.frame.height/13)
+            infoText.font = UIFont(name: "System"
+                , size: 12)
+            infoText.adjustsFontSizeToFitWidth = true
+            infoText.textColor = UIColor.lightGray
+            infoText.textAlignment = .center
+            infoText.numberOfLines = 2
+            view.addSubview(infoText)
+            
             SendButton.setTitle(" ", for: .normal)
             SendButton.setTitleColor(UIColor.blue, for: .normal)
+            SendButton.popIn()
             SendButton.frame = CGRect(x: scrollView.frame.width-95, y: scrollView.frame.height-95, width: 75, height: 75)
             SendButton.setBackgroundImage(UIImage(named: "메세지-아이콘.png"), for: .normal)
             SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)

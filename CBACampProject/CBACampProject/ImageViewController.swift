@@ -19,20 +19,22 @@ class ImageViewController: UIViewController {
     @objc func ResizeView(){
         let mainView = UIImageView()
         
-        self.view.addSubview(mainView)
-        mainView.image = UIImage(named : "몽산포_배경.png")
-        mainView.snp.makeConstraints { (make) -> Void in
-            make.width.height.equalTo(self.view.frame.width * 1.777)
+        self.view.addSubview(Slideshow)
+        Slideshow.slideIn(from : .right, delay : 0.5)
+        Slideshow.setImageInputs(FirebaseModel.noticeImage)
+        Slideshow.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        Slideshow.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(self.view.frame.width)
             make.width.width.equalTo(self.view.frame.width)
             make.centerX.equalTo(self.view!)
             make.bottom.equalTo(self.view)
         }
         
-        self.view.addSubview(Slideshow)
-        Slideshow.setImageInputs(FirebaseModel.noticeImage)
-        Slideshow.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        Slideshow.snp.makeConstraints { (make) -> Void in
-            make.width.height.equalTo(self.view.frame.width)
+        self.view.addSubview(mainView)
+        mainView.image = UIImage(named : "몽산포_배경.png")
+        mainView.alpha = 0.3
+        mainView.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(self.view.frame.width * 1.777)
             make.width.width.equalTo(self.view.frame.width)
             make.centerX.equalTo(self.view!)
             make.bottom.equalTo(self.view)
@@ -50,6 +52,15 @@ class ImageViewController: UIViewController {
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         Slideshow.addGestureRecognizer(gestureRecognizer)
+        
+        let pageIndicator = UIPageControl()
+        pageIndicator.currentPageIndicatorTintColor = UIColor.black
+        pageIndicator.pageIndicatorTintColor = UIColor.lightGray
+        Slideshow.pageIndicator = pageIndicator
+        
+        //slideshow.pageIndicator = LabelPageIndicator()
+        
+        Slideshow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
         
         FirebaseModel().GetNoticeImageInfo(title : NoticeViewController.OpenStringKey)
         

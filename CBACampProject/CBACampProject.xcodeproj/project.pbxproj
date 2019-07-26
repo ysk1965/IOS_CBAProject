@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04044C0122E89F05003E2E04 /* icons8-back-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 04044C0022E89F05003E2E04 /* icons8-back-50.png */; };
+		04044C0322E8A084003E2E04 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 04044C0222E8A084003E2E04 /* back.png */; };
+		04044C0522E8A120003E2E04 /* back2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04044C0422E8A11F003E2E04 /* back2.png */; };
 		0404F7D12289A06C00B527F0 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */; };
 		0404F7D32289ADA100B527F0 /* MainAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404F7D22289ADA100B527F0 /* MainAttendance.swift */; };
 		0426D79222CCB6D3006C111A /* 제목-없음-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0426D78622CCB6D1006C111A /* 제목-없음-1.png */; };
@@ -26,11 +29,13 @@
 		042761EB2106E41600928EB7 /* CBACampProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */; };
 		042A0DA422DC36CC00DEE34C /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */; };
 		043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A7FF7219A721C00451CE0 /* AuthViewController.swift */; };
+		0442A2C922EA7EC00035EA9A /* CBA_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */; };
 		044A479222E3208E00249822 /* 몽산포선택.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479122E3208E00249822 /* 몽산포선택.png */; };
 		044A479822E37CA000249822 /* 메세지-아이콘.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479722E37CA000249822 /* 메세지-아이콘.png */; };
 		044A479A22E37CC000249822 /* 준비중.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479922E37CC000249822 /* 준비중.png */; };
 		044A47A022E3816D00249822 /* CBA1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479F22E3816D00249822 /* CBA1.png */; };
 		044A47A222E3830800249822 /* CBA.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A47A122E3830700249822 /* CBA.png */; };
+		044A47A422E3938500249822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044A47A322E3938400249822 /* Assets.xcassets */; };
 		046C83A3210984AA00176FDE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C83A2210984AA00176FDE /* MapViewController.swift */; };
 		048A3FCE22CFD77500CCEC20 /* CBA가로배너.png in Resources */ = {isa = PBXBuildFile; fileRef = 048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */; };
 		048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF660224B853E00A8D7AD /* CheckViewController.swift */; };
@@ -45,8 +50,6 @@
 		04AE0EB622D97CCE00A9F1F2 /* 다른-영혼이-보낼때.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EAE22D97CCE00A9F1F2 /* 다른-영혼이-보낼때.png */; };
 		04AE0EB722D97CCE00A9F1F2 /* 본부에서보낼때.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EAF22D97CCE00A9F1F2 /* 본부에서보낼때.png */; };
 		04AE0EB922D997D400A9F1F2 /* 성락아이콘.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EB822D997D400A9F1F2 /* 성락아이콘.png */; };
-		04AE0EBB22DB7C7200A9F1F2 /* CBA_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EBA22DB7C7100A9F1F2 /* CBA_사이드바.png */; };
-		04AE0EBD22DB7C7B00A9F1F2 /* 몽산포_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EBC22DB7C7B00A9F1F2 /* 몽산포_사이드바.png */; };
 		04E3727F2107106A00FB7304 /* ScheduleTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */; };
 		04E372812107146F00FB7304 /* MassageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372802107146F00FB7304 /* MassageTabViewController.swift */; };
 		04E372832107148C00FB7304 /* CBAInfoTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */; };
@@ -86,6 +89,8 @@
 		04FCBCB422C7AA9800FAC5F6 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FCBCB322C7AA9800FAC5F6 /* ImageSlideshow.framework */; };
 		04FD79F021F87C8100936F87 /* MainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD79EF21F87C8100936F87 /* MainUser.swift */; };
 		04FD79F321F8857400936F87 /* MainGBS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD79F221F8857400936F87 /* MainGBS.swift */; };
+		04FD7C6522E74EF200B04F2A /* 몽산포_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FD7C6422E74EF200B04F2A /* 몽산포_사이드바.png */; };
+		04FD7C6722E7707E00B04F2A /* 불편접수.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FD7C6622E7707E00B04F2A /* 불편접수.png */; };
 		1AD9D5F1822C40ABE5FF98FB /* Pods_CBACampProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3040CAA0E4FAE4C600640207 /* Pods_CBACampProjectTests.framework */; };
 		32C4B11CCBC1A9A487B45DA0 /* Pods_CBACampProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914A824F90EADCF5792B13A /* Pods_CBACampProjectUITests.framework */; };
 		DB3A8868210E3A7000E6DA14 /* MainMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3A8867210E3A7000E6DA14 /* MainMessage.swift */; };
@@ -129,6 +134,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04044C0022E89F05003E2E04 /* icons8-back-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-back-50.png"; sourceTree = "<group>"; };
+		04044C0222E8A084003E2E04 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		04044C0422E8A11F003E2E04 /* back2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back2.png; sourceTree = "<group>"; };
 		0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		0404F7D22289ADA100B527F0 /* MainAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendance.swift; sourceTree = "<group>"; };
 		0426D78622CCB6D1006C111A /* 제목-없음-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "제목-없음-1.png"; sourceTree = "<group>"; };
@@ -154,11 +162,13 @@
 		042761EC2106E41600928EB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
 		043A7FF7219A721C00451CE0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA_사이드바.png"; sourceTree = "<group>"; };
 		044A479122E3208E00249822 /* 몽산포선택.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포선택.png"; sourceTree = "<group>"; };
 		044A479722E37CA000249822 /* 메세지-아이콘.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "메세지-아이콘.png"; sourceTree = "<group>"; };
 		044A479922E37CC000249822 /* 준비중.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "준비중.png"; sourceTree = "<group>"; };
 		044A479F22E3816D00249822 /* CBA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA1.png; path = "Resource/19_여름_메인/상단/CBA1.png"; sourceTree = SOURCE_ROOT; };
 		044A47A122E3830700249822 /* CBA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA.png; path = "Resource/19_여름_메인/CBA.png"; sourceTree = SOURCE_ROOT; };
+		044A47A322E3938400249822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		046C83A2210984AA00176FDE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA가로배너.png"; sourceTree = "<group>"; };
 		048AF660224B853E00A8D7AD /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -173,8 +183,6 @@
 		04AE0EAE22D97CCE00A9F1F2 /* 다른-영혼이-보낼때.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "다른-영혼이-보낼때.png"; sourceTree = "<group>"; };
 		04AE0EAF22D97CCE00A9F1F2 /* 본부에서보낼때.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "본부에서보낼때.png"; sourceTree = "<group>"; };
 		04AE0EB822D997D400A9F1F2 /* 성락아이콘.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "성락아이콘.png"; sourceTree = "<group>"; };
-		04AE0EBA22DB7C7100A9F1F2 /* CBA_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA_사이드바.png"; sourceTree = "<group>"; };
-		04AE0EBC22DB7C7B00A9F1F2 /* 몽산포_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_사이드바.png"; sourceTree = "<group>"; };
 		04E3727E2107106A00FB7304 /* ScheduleTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewController.swift; sourceTree = "<group>"; };
 		04E372802107146F00FB7304 /* MassageTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageTabViewController.swift; sourceTree = "<group>"; };
 		04E372822107148C00FB7304 /* CBAInfoTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBAInfoTabViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +225,8 @@
 		04FCBCB322C7AA9800FAC5F6 /* ImageSlideshow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImageSlideshow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD79EF21F87C8100936F87 /* MainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUser.swift; sourceTree = "<group>"; };
 		04FD79F221F8857400936F87 /* MainGBS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGBS.swift; sourceTree = "<group>"; };
+		04FD7C6422E74EF200B04F2A /* 몽산포_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_사이드바.png"; sourceTree = "<group>"; };
+		04FD7C6622E7707E00B04F2A /* 불편접수.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "불편접수.png"; sourceTree = "<group>"; };
 		124EBD3FEB940942CFFD7D83 /* Pods-CBACampProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3040CAA0E4FAE4C600640207 /* Pods_CBACampProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBACampProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4914A824F90EADCF5792B13A /* Pods_CBACampProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBACampProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,8 +294,13 @@
 		0426D78422CCB6D1006C111A /* 19_여름_메인 */ = {
 			isa = PBXGroup;
 			children = (
+				04044C0222E8A084003E2E04 /* back.png */,
+				04044C0422E8A11F003E2E04 /* back2.png */,
+				04044C0022E89F05003E2E04 /* icons8-back-50.png */,
+				0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */,
+				04FD7C6622E7707E00B04F2A /* 불편접수.png */,
 				048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */,
-				04AE0EBC22DB7C7B00A9F1F2 /* 몽산포_사이드바.png */,
+				04FD7C6422E74EF200B04F2A /* 몽산포_사이드바.png */,
 				0426D78522CCB6D1006C111A /* 하단 */,
 				0426D78B22CCB6D1006C111A /* 상단 */,
 				0426D78F22CCB6D1006C111A /* 중앙 */,
@@ -439,6 +454,7 @@
 		04E3728421071B0300FB7304 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				044A47A322E3938400249822 /* Assets.xcassets */,
 				04AE0EA422D97CCE00A9F1F2 /* 메세지 */,
 				04E7FFEC22D4ADD600E87AE9 /* 사이드바 */,
 				04E7FFCE22D3924C00E87AE9 /* 19_몽산포 */,
@@ -464,7 +480,6 @@
 		04E7FFCE22D3924C00E87AE9 /* 19_몽산포 */ = {
 			isa = PBXGroup;
 			children = (
-				04AE0EBA22DB7C7100A9F1F2 /* CBA_사이드바.png */,
 				04E7FFD922D3927700E87AE9 /* 상단 */,
 				04E7FFDD22D3927700E87AE9 /* 중앙 */,
 				04E7FFD322D3927700E87AE9 /* 하단 */,
@@ -735,12 +750,14 @@
 				0426D79A22CCB6D3006C111A /* 알림판.png in Resources */,
 				0426D79922CCB6D3006C111A /* 로고.png in Resources */,
 				04E7FFE722D3927700E87AE9 /* 몽산포.png in Resources */,
+				04FD7C6722E7707E00B04F2A /* 불편접수.png in Resources */,
 				0426D79822CCB6D3006C111A /* 메뉴.png in Resources */,
 				04E7FFF722D4ADD600E87AE9 /* 막대.png in Resources */,
 				DBF11FB2211B35F700EE9B98 /* 또래별강의.jpeg in Resources */,
 				04FC00E9210AEC0100528D7A /* Heart.png in Resources */,
 				DB764E4E210C87EA006E72EB /* NotoSans-Regular.ttf in Resources */,
 				DB764E5F210E0A3D006E72EB /* applybutton.png in Resources */,
+				0442A2C922EA7EC00035EA9A /* CBA_사이드바.png in Resources */,
 				DBF11FCC211B478F00EE9B98 /* gbs장소1.png in Resources */,
 				048A3FCE22CFD77500CCEC20 /* CBA가로배너.png in Resources */,
 				DBF11FCE211B479300EE9B98 /* gbs장소2.png in Resources */,
@@ -748,6 +765,7 @@
 				042761D52106E41600928EB7 /* LaunchScreen.storyboard in Resources */,
 				04E7FFF522D4ADD600E87AE9 /* 로그아웃.png in Resources */,
 				04E7FFEB22D3928500E87AE9 /* 몽산포_산호.jpeg in Resources */,
+				04044C0322E8A084003E2E04 /* back.png in Resources */,
 				04AE0EB722D97CCE00A9F1F2 /* 본부에서보낼때.png in Resources */,
 				04E7FFE122D3927700E87AE9 /* bottom_3.png in Resources */,
 				04AE0EB522D97CCE00A9F1F2 /* 내가-보낼때.png in Resources */,
@@ -761,21 +779,23 @@
 				042761D22106E41600928EB7 /* Assets.xcassets in Resources */,
 				DBF11FD2211B524400EE9B98 /* 이미지준비중.png in Resources */,
 				04AE0EB122D97CCE00A9F1F2 /* 메세지-아이콘.png in Resources */,
+				044A47A422E3938500249822 /* Assets.xcassets in Resources */,
 				0426D79522CCB6D3006C111A /* TIMETABLE.png in Resources */,
 				04E7FFE322D3927700E87AE9 /* bottom_5.png in Resources */,
 				04E7FFF622D4ADD600E87AE9 /* 제목-없음-2.png in Resources */,
 				DB764E54210C98FD006E72EB /* refresh.png in Resources */,
 				04E7FFD022D3925900E87AE9 /* 몽산포_가로배너.png in Resources */,
 				04FC00E2210AEC0100528D7A /* hamberger.png in Resources */,
-				04AE0EBD22DB7C7B00A9F1F2 /* 몽산포_사이드바.png in Resources */,
 				04AE0EB322D97CCE00A9F1F2 /* 안드로이드.png in Resources */,
 				04FC00ED210AEC0100528D7A /* CBA.jpeg in Resources */,
 				042761D02106E41400928EB7 /* Main.storyboard in Resources */,
-				04AE0EBB22DB7C7200A9F1F2 /* CBA_사이드바.png in Resources */,
+				04FD7C6522E74EF200B04F2A /* 몽산포_사이드바.png in Resources */,
 				DBF11FD0211B479900EE9B98 /* gbs장소3.png in Resources */,
+				04044C0522E8A120003E2E04 /* back2.png in Resources */,
 				0426D79222CCB6D3006C111A /* 제목-없음-1.png in Resources */,
 				DB3A886C210E54FD00E6DA14 /* 이미지준비중.jpg in Resources */,
 				04F09B2922D78B72006A604E /* 몽산포선택1.png in Resources */,
+				04044C0122E89F05003E2E04 /* icons8-back-50.png in Resources */,
 				04E7FFE222D3927700E87AE9 /* bottom_2.png in Resources */,
 				04FC00E5210AEC0100528D7A /* CampBackground.jpeg in Resources */,
 				04E7FFE622D3927700E87AE9 /* 로고.png in Resources */,
@@ -1181,7 +1201,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8AA70A5C2F43BEBFFC6F7D6 /* Pods-CBACampProject.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon1;
 				CODE_SIGN_ENTITLEMENTS = CBACampProject/CBACampProject.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1203,7 +1223,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5A9910A5EB74008CEDE0AD6 /* Pods-CBACampProject.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon1;
 				CODE_SIGN_ENTITLEMENTS = CBACampProject/CBACampProject.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseMessaging
 
 struct ButtonType {
     // type : Image or Segue or Call or URL
@@ -54,6 +55,13 @@ class AgencySingleton {
     }
     
     func SetCBAAgency(){
+        Messaging.messaging().subscribe(toTopic: "2019_CBA_SUMMER") { error in
+            print("Subscribed to 2019winter topic")
+        }
+        Messaging.messaging().unsubscribe(fromTopic: "2019_SR_SUMMER") { error in
+            print("Subscribed to 2019winter topic")
+        }
+        
         //CBA Data
         var sidebarArray : Array<ButtonType> = []
         sidebarArray.removeAll()
@@ -82,16 +90,22 @@ class AgencySingleton {
     }
     
     func SetMongsanpoAgency(){
+        Messaging.messaging().subscribe(toTopic: "2019_SR_SUMMER") { error in
+            print("Subscribed to 2019winter topic")
+        }
+        Messaging.messaging().unsubscribe(fromTopic: "2019_CBA_SUMMER") { error in
+            print("Subscribed to 2019winter topic")
+        }
         
         //MONGSANPO Data
         var M_sidebarArray : Array<ButtonType> = []
         M_sidebarArray.removeAll()
-        M_sidebarArray.append(ButtonType(type: "youtube",iconName: "초청의 글(원로 감독님)", controlValue: "c1"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "초청 인사", controlValue: "c1"))
         // 환영 글은 youtube 예외처리 필요
-        M_sidebarArray.append(ButtonType(type: "youtube",iconName: "환영의 글(감독님)", controlValue: "c2"))
+        M_sidebarArray.append(ButtonType(type: "youtube",iconName: "환영 인사", controlValue: "c2"))
         M_sidebarArray.append(ButtonType(type: "info",iconName: "공지사항", controlValue: "c3"))
         M_sidebarArray.append(ButtonType(type: "info",iconName: "세부 프로그램", controlValue: "c4"))
-        M_sidebarArray.append(ButtonType(type: "info",iconName: "장소안내", controlValue: "c5"))
+        M_sidebarArray.append(ButtonType(type: "image",iconName: "장소안내", controlValue: "c5"))
         M_sidebarArray.append(ButtonType(type: "image",iconName: "안전사고지원", controlValue: "c6"))
         M_sidebarArray.append(ButtonType(type: "image",iconName: "여행자보험 관련 안내", controlValue: "c7"))
         M_sidebarArray.append(ButtonType(type: "info",iconName: "협력(후원)기관", controlValue: "c8"))
@@ -101,7 +115,7 @@ class AgencySingleton {
         M_bottomArray.append(ButtonType(type: "url",iconName: "bottom_1.png", controlValue: "http://cba.sungrak.or.kr:9000/#/register_mongsanpo"))
         M_bottomArray.append(ButtonType(type: "call",iconName: "bottom_2.png", controlValue: "070-7300-6239"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_3.png", controlValue: "m3"))
-        M_bottomArray.append(ButtonType(type: "segue",iconName: "bottom_4.png", controlValue: "QnaSegue"))
+        M_bottomArray.append(ButtonType(type: "segue",iconName: "불편접수.png", controlValue: "QnaSegue"))
         M_bottomArray.append(ButtonType(type: "image",iconName: "bottom_5.png", controlValue: "m5"))
         
         AgencySingleton.shared.AgencyTitle = "2019_SR_SUMMER"

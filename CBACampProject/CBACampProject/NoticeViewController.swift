@@ -42,6 +42,7 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
             let blackLabel = UILabel()
             
             self.view.addSubview(blackLabel)
+            blackLabel.hop(amount: 0.1, duration: 1, delay: 0.2)
             blackLabel.backgroundColor = UIColor.black
             blackLabel.textAlignment = NSTextAlignment.center
             blackLabel.adjustsFontSizeToFitWidth = true
@@ -55,7 +56,8 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
             let noticeButton = UIButton()
             
             self.view.addSubview(noticeButton)
-            noticeButton.titleLabel!.text = n.value
+            noticeButton.hop(amount: 0.1, duration: 1, delay: 0.2)
+            noticeButton.titleLabel!.text = n.key
             noticeButton.backgroundColor = UIColor.white
             noticeButton.titleLabel?.textAlignment = NSTextAlignment.center
             noticeButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -70,7 +72,8 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
             let noticeLabel = UILabel()
             
             self.view.addSubview(noticeLabel)
-            noticeLabel.text = n.key
+            noticeLabel.hop(amount: 0.1, duration: 1, delay: 0.2)
+            noticeLabel.text = n.value
             noticeLabel.textAlignment = NSTextAlignment.center
             noticeLabel.adjustsFontSizeToFitWidth = true
             noticeLabel.snp.makeConstraints { (make) -> Void in
