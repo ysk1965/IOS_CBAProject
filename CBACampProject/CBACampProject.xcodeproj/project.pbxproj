@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04044C0122E89F05003E2E04 /* icons8-back-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 04044C0022E89F05003E2E04 /* icons8-back-50.png */; };
-		04044C0322E8A084003E2E04 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 04044C0222E8A084003E2E04 /* back.png */; };
-		04044C0522E8A120003E2E04 /* back2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04044C0422E8A11F003E2E04 /* back2.png */; };
 		0404F7D12289A06C00B527F0 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */; };
 		0404F7D32289ADA100B527F0 /* MainAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404F7D22289ADA100B527F0 /* MainAttendance.swift */; };
 		0426D79222CCB6D3006C111A /* 제목-없음-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0426D78622CCB6D1006C111A /* 제목-없음-1.png */; };
@@ -134,9 +131,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04044C0022E89F05003E2E04 /* icons8-back-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-back-50.png"; sourceTree = "<group>"; };
-		04044C0222E8A084003E2E04 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		04044C0422E8A11F003E2E04 /* back2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back2.png; sourceTree = "<group>"; };
 		0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		0404F7D22289ADA100B527F0 /* MainAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendance.swift; sourceTree = "<group>"; };
 		0426D78622CCB6D1006C111A /* 제목-없음-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "제목-없음-1.png"; sourceTree = "<group>"; };
@@ -294,9 +288,6 @@
 		0426D78422CCB6D1006C111A /* 19_여름_메인 */ = {
 			isa = PBXGroup;
 			children = (
-				04044C0222E8A084003E2E04 /* back.png */,
-				04044C0422E8A11F003E2E04 /* back2.png */,
-				04044C0022E89F05003E2E04 /* icons8-back-50.png */,
 				0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */,
 				04FD7C6622E7707E00B04F2A /* 불편접수.png */,
 				048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */,
@@ -765,7 +756,6 @@
 				042761D52106E41600928EB7 /* LaunchScreen.storyboard in Resources */,
 				04E7FFF522D4ADD600E87AE9 /* 로그아웃.png in Resources */,
 				04E7FFEB22D3928500E87AE9 /* 몽산포_산호.jpeg in Resources */,
-				04044C0322E8A084003E2E04 /* back.png in Resources */,
 				04AE0EB722D97CCE00A9F1F2 /* 본부에서보낼때.png in Resources */,
 				04E7FFE122D3927700E87AE9 /* bottom_3.png in Resources */,
 				04AE0EB522D97CCE00A9F1F2 /* 내가-보낼때.png in Resources */,
@@ -791,11 +781,9 @@
 				042761D02106E41400928EB7 /* Main.storyboard in Resources */,
 				04FD7C6522E74EF200B04F2A /* 몽산포_사이드바.png in Resources */,
 				DBF11FD0211B479900EE9B98 /* gbs장소3.png in Resources */,
-				04044C0522E8A120003E2E04 /* back2.png in Resources */,
 				0426D79222CCB6D3006C111A /* 제목-없음-1.png in Resources */,
 				DB3A886C210E54FD00E6DA14 /* 이미지준비중.jpg in Resources */,
 				04F09B2922D78B72006A604E /* 몽산포선택1.png in Resources */,
-				04044C0122E89F05003E2E04 /* icons8-back-50.png in Resources */,
 				04E7FFE222D3927700E87AE9 /* bottom_2.png in Resources */,
 				04FC00E5210AEC0100528D7A /* CampBackground.jpeg in Resources */,
 				04E7FFE622D3927700E87AE9 /* 로고.png in Resources */,

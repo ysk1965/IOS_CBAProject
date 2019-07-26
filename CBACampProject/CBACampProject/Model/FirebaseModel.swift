@@ -94,6 +94,8 @@ class FirebaseModel {
                     for i in (0..<count).reversed(){
                         if(FirebaseModel.messages[i].isStaff == "공지"){
                             FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
+                            
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
                             break
                         }
                     }

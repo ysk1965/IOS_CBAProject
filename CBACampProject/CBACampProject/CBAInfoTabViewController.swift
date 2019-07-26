@@ -362,7 +362,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         RenewRealmData(title: "CBA")
         AgencySingleton.shared.SetCBAAgency()
         main_popupView.removeFromSuperview()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+        FirebaseModel().getMessages(messageTitle: "noti")
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
     }
     
     @objc func SetMonsanpo(_ sender:UIButton){
@@ -370,7 +371,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         RenewRealmData(title: "MONGSANPO")
         AgencySingleton.shared.SetMongsanpoAgency()
         main_popupView.removeFromSuperview()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+        FirebaseModel().getMessages(messageTitle: "noti")
+        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
     }
     
     @objc func GetNoti(_ sender:UIButton){
@@ -750,7 +752,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "load main view"), object: nil)
         
-        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "set youtube"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.ResizeView), name: NSNotification.Name(rawValue: "got messages"), object: nil)
     }
     
     override func didReceiveMemoryWarning() {
