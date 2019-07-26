@@ -31,7 +31,7 @@ class ImageViewController: UIViewController {
         }
         
         self.view.addSubview(mainView)
-        mainView.image = UIImage(named : "몽산포_배경.png")
+        mainView.image = UIImage(named : AgencySingleton.shared.backgroundImageName!)
         mainView.alpha = 0.3
         mainView.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(self.view.frame.width * 1.777)

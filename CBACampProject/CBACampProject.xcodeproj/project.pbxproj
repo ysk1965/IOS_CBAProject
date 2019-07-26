@@ -27,10 +27,12 @@
 		042A0DA422DC36CC00DEE34C /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */; };
 		043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A7FF7219A721C00451CE0 /* AuthViewController.swift */; };
 		0442A2C922EA7EC00035EA9A /* CBA_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */; };
+		0442A2CB22EB3EC80035EA9A /* CBA_배경.png in Resources */ = {isa = PBXBuildFile; fileRef = 0442A2CA22EB3EC80035EA9A /* CBA_배경.png */; };
+		0442A2CD22EB43590035EA9A /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0442A2CC22EB43590035EA9A /* cancel.png */; };
+		0442A2CF22EB45970035EA9A /* CBA1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0442A2CE22EB45970035EA9A /* CBA1.png */; };
 		044A479222E3208E00249822 /* 몽산포선택.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479122E3208E00249822 /* 몽산포선택.png */; };
 		044A479822E37CA000249822 /* 메세지-아이콘.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479722E37CA000249822 /* 메세지-아이콘.png */; };
 		044A479A22E37CC000249822 /* 준비중.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479922E37CC000249822 /* 준비중.png */; };
-		044A47A022E3816D00249822 /* CBA1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A479F22E3816D00249822 /* CBA1.png */; };
 		044A47A222E3830800249822 /* CBA.png in Resources */ = {isa = PBXBuildFile; fileRef = 044A47A122E3830700249822 /* CBA.png */; };
 		044A47A422E3938500249822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044A47A322E3938400249822 /* Assets.xcassets */; };
 		046C83A3210984AA00176FDE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C83A2210984AA00176FDE /* MapViewController.swift */; };
@@ -157,10 +159,12 @@
 		042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
 		043A7FF7219A721C00451CE0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA_사이드바.png"; sourceTree = "<group>"; };
+		0442A2CA22EB3EC80035EA9A /* CBA_배경.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CBA_배경.png"; path = "Resource/19_몽산포/CBA_배경.png"; sourceTree = SOURCE_ROOT; };
+		0442A2CC22EB43590035EA9A /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		0442A2CE22EB45970035EA9A /* CBA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA1.png; path = "Resource/19_여름_메인/상단/CBA1.png"; sourceTree = SOURCE_ROOT; };
 		044A479122E3208E00249822 /* 몽산포선택.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포선택.png"; sourceTree = "<group>"; };
 		044A479722E37CA000249822 /* 메세지-아이콘.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "메세지-아이콘.png"; sourceTree = "<group>"; };
 		044A479922E37CC000249822 /* 준비중.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "준비중.png"; sourceTree = "<group>"; };
-		044A479F22E3816D00249822 /* CBA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA1.png; path = "Resource/19_여름_메인/상단/CBA1.png"; sourceTree = SOURCE_ROOT; };
 		044A47A122E3830700249822 /* CBA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA.png; path = "Resource/19_여름_메인/CBA.png"; sourceTree = SOURCE_ROOT; };
 		044A47A322E3938400249822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		046C83A2210984AA00176FDE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 		0426D78422CCB6D1006C111A /* 19_여름_메인 */ = {
 			isa = PBXGroup;
 			children = (
+				0442A2CA22EB3EC80035EA9A /* CBA_배경.png */,
 				0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */,
 				04FD7C6622E7707E00B04F2A /* 불편접수.png */,
 				048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */,
@@ -315,7 +320,7 @@
 		0426D78B22CCB6D1006C111A /* 상단 */ = {
 			isa = PBXGroup;
 			children = (
-				044A479F22E3816D00249822 /* CBA1.png */,
+				0442A2CE22EB45970035EA9A /* CBA1.png */,
 				044A47A122E3830700249822 /* CBA.png */,
 				0426D78D22CCB6D1006C111A /* 메뉴.png */,
 				0426D78E22CCB6D1006C111A /* 로고.png */,
@@ -451,6 +456,7 @@
 				04E7FFCE22D3924C00E87AE9 /* 19_몽산포 */,
 				0426D78422CCB6D1006C111A /* 19_여름_메인 */,
 				DBF11FD1211B524400EE9B98 /* 이미지준비중.png */,
+				0442A2CC22EB43590035EA9A /* cancel.png */,
 				DB3A886B210E54FD00E6DA14 /* 이미지준비중.jpg */,
 				DB764E5E210E0A3D006E72EB /* applybutton.png */,
 				DB764E56210CB9A1006E72EB /* Icon-60@3x.png */,
@@ -758,12 +764,12 @@
 				04E7FFEB22D3928500E87AE9 /* 몽산포_산호.jpeg in Resources */,
 				04AE0EB722D97CCE00A9F1F2 /* 본부에서보낼때.png in Resources */,
 				04E7FFE122D3927700E87AE9 /* bottom_3.png in Resources */,
+				0442A2CB22EB3EC80035EA9A /* CBA_배경.png in Resources */,
 				04AE0EB522D97CCE00A9F1F2 /* 내가-보낼때.png in Resources */,
 				DBF11FCA211B470C00EE9B98 /* 숙소3.jpg in Resources */,
 				04AE0EB222D97CCE00A9F1F2 /* 아이폰.png in Resources */,
 				DB764E57210CB9A1006E72EB /* Icon-60@3x.png in Resources */,
 				044A479222E3208E00249822 /* 몽산포선택.png in Resources */,
-				044A47A022E3816D00249822 /* CBA1.png in Resources */,
 				044A47A222E3830800249822 /* CBA.png in Resources */,
 				DB764E4F210C87EA006E72EB /* NotoSansKR_Regular.woff in Resources */,
 				042761D22106E41600928EB7 /* Assets.xcassets in Resources */,
@@ -773,7 +779,9 @@
 				0426D79522CCB6D3006C111A /* TIMETABLE.png in Resources */,
 				04E7FFE322D3927700E87AE9 /* bottom_5.png in Resources */,
 				04E7FFF622D4ADD600E87AE9 /* 제목-없음-2.png in Resources */,
+				0442A2CD22EB43590035EA9A /* cancel.png in Resources */,
 				DB764E54210C98FD006E72EB /* refresh.png in Resources */,
+				0442A2CF22EB45970035EA9A /* CBA1.png in Resources */,
 				04E7FFD022D3925900E87AE9 /* 몽산포_가로배너.png in Resources */,
 				04FC00E2210AEC0100528D7A /* hamberger.png in Resources */,
 				04AE0EB322D97CCE00A9F1F2 /* 안드로이드.png in Resources */,

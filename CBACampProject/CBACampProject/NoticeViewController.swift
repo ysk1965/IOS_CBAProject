@@ -26,7 +26,7 @@ class NoticeViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func ResizeView(){
         self.view.addSubview(backgroundImage)
-        backgroundImage.image = UIImage(named: "몽산포_배경.png")
+        backgroundImage.image = UIImage(named: AgencySingleton.shared.backgroundImageName!)
         backgroundImage.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(self.view.frame.width * 1.777)
             make.width.width.equalTo(self.view.frame.width)

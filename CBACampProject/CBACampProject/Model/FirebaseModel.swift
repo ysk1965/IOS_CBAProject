@@ -28,7 +28,7 @@ class FirebaseModel {
     
     var ref: DatabaseReference!
     
-    func FirstLoadView(){
+    func FIR_FirstLoadView(){
         print("First!! Load!!")
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("noti")
@@ -51,16 +51,58 @@ class FirebaseModel {
                 for i in (0..<count).reversed(){
                     if(FirebaseModel.messages[i].isStaff == "공지"){
                         FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
-                            break
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: self)
+                        
+                        break
                     }
                 }
                 
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: self)
             }
         })
     }
     
-    func getMessages(messageTitle : String) {
+    func FIR_ReloadMessage() {
+        print("trying to get messages....")
+        FirebaseModel.messages.removeAll()
+        
+        ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("noti")
+        ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot]{
+                FirebaseModel.messages = []
+                
+                for child in result {
+                    let snapshotValue = child.value as! [String: AnyObject]
+                    
+                    let uid = snapshotValue["uid"] as? String ?? ""
+                    let isStaff = snapshotValue["isStaff"] as? String ?? ""
+                    print(uid)
+                    let message = snapshotValue["message"] as? String ?? ""
+                    let time = snapshotValue["time"] as? String ?? ""
+                    let auth = snapshotValue["author"] as? String ?? ""
+                    print(message)
+                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
+                }
+                
+                // 메인 메세지 받기
+                let count = FirebaseModel.messages.count
+                
+                for i in (0..<count).reversed(){
+                    if(FirebaseModel.messages[i].isStaff == "공지"){
+                        FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: self)
+                        break
+                    }
+                }
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: self)
+            }
+        })
+    }
+    
+    func FIR_GetMessage(messageTitle : String) {
         print("trying to get messages....")
         FirebaseModel.messages.removeAll()
         
@@ -94,18 +136,15 @@ class FirebaseModel {
                     for i in (0..<count).reversed(){
                         if(FirebaseModel.messages[i].isStaff == "공지"){
                             FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
-                            
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
-                            break
                         }
                     }
                 }
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got messages"), object: self)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_GetMessage"), object: self)
             }
         })
     }
     
-    func ChangeImage(title : String){
+    func FIR_ChangeImage(title : String){
         self.imageNames.removeAll()
         FirebaseModel.imageKingfisher.removeAll() // 요거면 3번 해결되려나??
         settingImage.removeAll()
@@ -138,7 +177,7 @@ class FirebaseModel {
                             FirebaseModel.imageKingfisher.append(i.value)
                         }
                         print("마지막 애 받으면 넘겨")
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "change image"), object: self)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ChangeImage"), object: self)
                     }
                     
                     downloadcnt += 1
@@ -147,7 +186,7 @@ class FirebaseModel {
         })
     }
     
-    func YoutubeImage(title : String){
+    func FIR_YoutubeImage(title : String){
         //self.imageNames.removeAll()
         FirebaseModel.youtubeImage.removeAll()
         settingImage.removeAll()

@@ -290,7 +290,7 @@ class MassageTabViewController: UIViewController {
         let backgroundImage = UIImageView()
         backgroundImage.frame = CGRect(x:0,y:0,width:self.view.frame.width, height: self.view.frame.height)
         backgroundImage.alpha = 0.7
-        backgroundImage.image = UIImage(named: "몽산포_배경.png")
+        backgroundImage.image = UIImage(named: AgencySingleton.shared.backgroundImageName!)
         self.view.addSubview(backgroundImage)
         
         
@@ -395,12 +395,12 @@ class MassageTabViewController: UIViewController {
     
     override func viewDidLoad() {
         if(CBAInfoTabViewController.isNotiMessage == false){
-            FirebaseModel().getMessages(messageTitle: "message")
+            FirebaseModel().FIR_GetMessage(messageTitle: "message")
         } else{
-            FirebaseModel().getMessages(messageTitle: "noti")
+            FirebaseModel().FIR_GetMessage(messageTitle: "noti")
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got messages"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "FIR_GetMessage"), object: nil)
         
         Messaging.messaging().subscribe(toTopic: "2019winter") { error in
             print("Subscribed to 2019winter topic")

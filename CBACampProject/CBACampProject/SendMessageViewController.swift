@@ -11,6 +11,7 @@ import Firebase
 
 class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     var dbRef : DatabaseReference!
+    @IBOutlet weak var backgroundView: UIImageView!
     
     @IBOutlet var mainView: UIScrollView!
     @IBOutlet weak var textAuthor: UITextField!
@@ -59,6 +60,8 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundView.image = UIImage(named: AgencySingleton.shared.backgroundImageName!)
         
         textMessage.returnKeyType = .done
         

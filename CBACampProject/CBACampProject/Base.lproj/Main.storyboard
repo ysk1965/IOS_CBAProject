@@ -161,6 +161,7 @@
                     </view>
                     <connections>
                         <outlet property="SendButton" destination="xMq-nP-dLM" id="xI9-nk-X7C"/>
+                        <outlet property="backgroundView" destination="6th-n2-MXT" id="g3K-Sa-cBc"/>
                         <outlet property="mainView" destination="bxI-EC-ce0" id="ftt-nS-6u3"/>
                         <outlet property="textAuthor" destination="sCl-Sr-z7D" id="pNV-5L-IXZ"/>
                         <outlet property="textMessage" destination="4MJ-ef-22v" id="piZ-Mc-CNh"/>

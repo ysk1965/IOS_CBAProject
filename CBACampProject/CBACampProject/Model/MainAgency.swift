@@ -34,6 +34,7 @@ class AgencySingleton {
     var viewBannerName : String? // View 배너 이미지 이름
     var sidebarBannerName : String? // 사이드 바 배너 이미지 이름
     var topTagImageName : String? // View 중앙 상단 이미지 이름
+    var backgroundImageName : String? // View 중앙 상단 이미지 이름
     
     // SIDEBAR 메뉴에 들어갈 내용들 추가
     var sidebar_setting : Array<ButtonType> = []
@@ -76,13 +77,15 @@ class AgencySingleton {
         bottomArray.append(ButtonType(type: "segue",iconName: "제목-없음-1.png", controlValue: "QnaSegue"))
         bottomArray.append(ButtonType(type: "call",iconName: "CALL.png", controlValue: "010-6623-2545"))
         bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
-        bottomArray.append(ButtonType(type: "url",iconName: "ONAIR.png", controlValue: "https://www.youtube.com/channel/UCW6bF9L0ZK__Tlwl19B0FYQ"))
+        bottomArray.append(ButtonType(type: "youtube",iconName: "ONAIR.png", controlValue: "c1"))
         bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "SearchGBS"))
         
         AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"
         AgencySingleton.shared.sidebarBannerName = "CBA_사이드바.png" // "몽산포_가로배너.png"
         AgencySingleton.shared.topTagImageName = "CBA.png" // "몽산포.png"
+        AgencySingleton.shared.backgroundImageName = "CBA_배경.png"
+        
         AgencySingleton.shared.sidebar_setting = sidebarArray
         AgencySingleton.shared.bottombar_setting = bottomArray
         
@@ -122,6 +125,7 @@ class AgencySingleton {
         AgencySingleton.shared.viewBannerName = "몽산포_배너.png"
         AgencySingleton.shared.sidebarBannerName = "몽산포_사이드바.png"
         AgencySingleton.shared.topTagImageName = "몽산포.png"
+        AgencySingleton.shared.backgroundImageName = "몽산포_배경.png"
         AgencySingleton.shared.sidebar_setting = M_sidebarArray
         AgencySingleton.shared.bottombar_setting = M_bottomArray
         

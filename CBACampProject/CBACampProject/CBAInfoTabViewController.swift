@@ -155,7 +155,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             var tempMenu : SideMenuItem?
             if n.type == "image"{
                 tempMenu = SideMenuItemFactory.make(title: n.iconName!){
-                    FirebaseModel().ChangeImage(title: n.controlValue!)
+                    FirebaseModel().FIR_ChangeImage(title: n.controlValue!)
                 }
             } else if n.type == "segue"{
                 tempMenu = SideMenuItemFactory.make(title: n.iconName!){
@@ -362,8 +362,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         RenewRealmData(title: "CBA")
         AgencySingleton.shared.SetCBAAgency()
         main_popupView.removeFromSuperview()
-        FirebaseModel().getMessages(messageTitle: "noti")
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+        FirebaseModel().FIR_ReloadMessage()
     }
     
     @objc func SetMonsanpo(_ sender:UIButton){
@@ -371,8 +370,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         RenewRealmData(title: "MONGSANPO")
         AgencySingleton.shared.SetMongsanpoAgency()
         main_popupView.removeFromSuperview()
-        FirebaseModel().getMessages(messageTitle: "noti")
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load main view"), object: self)
+        FirebaseModel().FIR_ReloadMessage()
     }
     
     @objc func GetNoti(_ sender:UIButton){
@@ -501,13 +499,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_cancleButton.popIn()
         popupView_cancleButton.backgroundColor = UIColor.white
         popupView_cancleButton.addTarget(self, action: #selector(self.closeTap(_:)), for: .touchUpInside)
-        popupView_cancleButton.setImage(UIImage(named: "refresh.png"), for: UIControl.State.normal)
+        popupView_cancleButton.setImage(UIImage(named: "cancel.png"), for: UIControl.State.normal)
         popupView_cancleButton.backgroundColor = UIColor.white
         popupView_cancleButton.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(main_popupView).offset(20)
             make.right.equalTo(main_popupView).offset(-20)
-            make.height.height.equalTo(20)
-            make.width.width.equalTo(20)
+            make.height.height.equalTo(18)
+            make.width.width.equalTo(18)
             //make.center.equalTo(self.view)
         }
         
@@ -540,18 +538,26 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func ChangeImage(_ sender:UIButton){
-        FirebaseModel().ChangeImage(title: sender.currentTitle!)
+        FirebaseModel().FIR_ChangeImage(title: sender.currentTitle!)
     }
+    
     @objc func DoCall(_ sender:UIButton){
         let urlString = "tel://" + sender.currentTitle!
         let numberURL = NSURL(string: urlString)
         UIApplication.shared.open(numberURL! as URL)
         CloseImageView()
     }
+    
     @objc func MoveURL(_ sender:UIButton){
         CloseImageView()
         url = URL(string:sender.currentTitle!)
         UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+    }
+    
+    @objc func Youtube(_ sender:UIButton){
+        CloseImageView()
+        
+        self.performSegue(withIdentifier: "youtubeSegue", sender: nil)
     }
     
     func MakeBottomButton(button : Array<ButtonType>){
@@ -576,6 +582,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 customButton.addTarget(self, action: #selector(self.MoveURL(_:)), for: .touchUpInside)
             } else if n.type == "info"{
                 customButton.addTarget(self, action: #selector(self.InfoSegue(_:)), for: .touchUpInside)
+            } else if n.type == "youtube"{
+                customButton.addTarget(self, action: #selector(self.Youtube(_:)), for: .touchUpInside)
             }
             
             loopcnt += 1
@@ -610,7 +618,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         slideshow.frame.size = CGSize(width: 0, height: 0)
         
         let backgroundView = UIImageView()
-        backgroundView.image = UIImage(named:"몽산포_배경.png")
+        backgroundView.image = UIImage(named:AgencySingleton.shared.backgroundImageName!)
         backgroundView.frame = CGRect(x:0,y:(viewW!/5), width:viewW!, height:(viewH! - (viewW!/5)))
         
         slideshow.addSubview(backgroundView)
@@ -743,16 +751,18 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         //FirebaseModel().getMessages(messageTitle: "noti")
         // load main view!!
-        FirebaseModel().FirstLoadView()
+        FirebaseModel().FIR_FirstLoadView()
         
     }
     
     func SetNotificationCenter(){
-        NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "change image"), object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "FIR_ChangeImage"), object: nil)
         
+        /*
         NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "load main view"), object: nil)
+        */
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.ResizeView), name: NSNotification.Name(rawValue: "got messages"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.ResizeView), name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: nil)
     }
     
     override func didReceiveMemoryWarning() {

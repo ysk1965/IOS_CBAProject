@@ -59,7 +59,7 @@ class YoutubeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseModel().YoutubeImage(title: YoutubeViewController.OpenYoutubeValue)
+        FirebaseModel().FIR_YoutubeImage(title: YoutubeViewController.OpenYoutubeValue)
         
         let pageIndicator = UIPageControl()
         pageIndicator.currentPageIndicatorTintColor = UIColor.black
