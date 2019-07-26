@@ -28,6 +28,7 @@
   * 탭 바 제거 및 UI, UX개선
   * 데이터 기반으로 이미지 받아오도록 개선
   * 몽산포 수련회 관련 추가 업데이트
+  * Youtube 기능 추가
   
 - 개발docx : docs.google.com/spreadsheets/d/1bKv5PoJOsUbqKWwOhkd3rpRBAymicw8oerMh8_-gzyg/edit#gid=0
 - 앱 소개 : https://blog.naver.com/enter_maintanance/221451792626
