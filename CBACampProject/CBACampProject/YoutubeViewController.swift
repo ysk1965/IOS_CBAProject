@@ -73,7 +73,7 @@ class YoutubeViewController: UIViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         imageSlideShow.addGestureRecognizer(gestureRecognizer)
         
-        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "set image"), object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "FIR_SetImage"), object: nil)
         
         //getVideo(vidioCode : "PWYhzPSZSbE")
         // Do any additional setup after loading the view.

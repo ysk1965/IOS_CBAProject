@@ -289,17 +289,13 @@ class MassageTabViewController: UIViewController {
         
         let backgroundImage = UIImageView()
         backgroundImage.frame = CGRect(x:0,y:0,width:self.view.frame.width, height: self.view.frame.height)
-        backgroundImage.alpha = 0.7
+        backgroundImage.alpha = 0.3
         backgroundImage.image = UIImage(named: AgencySingleton.shared.backgroundImageName!)
         self.view.addSubview(backgroundImage)
         
         
-        if(CBAInfoTabViewController.isNotiMessage == false){
+        if(CBAInfoTabViewController.isNotiMessage == false) {
             let infoText = UILabel()
-            infoText.text = """
-            작성하신 내용은 작성자와 관리자만 확인되면
-            처리 경과를 확인하실 수 있습니다.
-            """
             infoText.frame = CGRect(x:0, y:self.view.frame.height/9, width:self.view.frame.width, height:self.view.frame.height/13)
             infoText.font = UIFont(name: "System"
                 , size: 12)
@@ -307,6 +303,17 @@ class MassageTabViewController: UIViewController {
             infoText.textColor = UIColor.lightGray
             infoText.textAlignment = .center
             infoText.numberOfLines = 2
+            if(AgencySingleton.shared.backgroundImageName == "2019_SR_SUMMER"){
+                infoText.text = """
+                작성하신 내용은 작성자와 관리자만 확인되면
+                처리 경과를 확인하실 수 있습니다.
+                """
+            } else{
+                infoText.text = """
+                수련회 동안 생활하는 데 불편사항 및 건의를
+                보내주시면 확인후 답변을 해드립니다.
+                """
+            }
             view.addSubview(infoText)
             
             SendButton.setTitle(" ", for: .normal)

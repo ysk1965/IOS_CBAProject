@@ -324,19 +324,21 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         } catch{
             
         }
-        
         SettingSidebar()
         
         dismiss(animated: true, completion: nil)
     }
     
     @objc func LogIn(_ sender:UIButton){
-        if(!((Auth.auth().currentUser?.email) != nil)){
-            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            if(!((Auth.auth().currentUser?.email) != nil)){
+                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+            }
+            else{
+                // 이럴 일 없음??
+            }
         }
-        else{
-            // 이럴 일 없음??
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func RenewRealmData(title : String){
@@ -504,15 +506,10 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func SetPopup(_ sender:UIButton){
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
             self.menu.reduce(onController: self)
         }
-        
-        
-        
         SetPopupView()
-        
     }
     
     @objc func MoveSegue(_ sender:UIButton){

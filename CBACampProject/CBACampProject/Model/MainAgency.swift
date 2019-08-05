@@ -89,7 +89,7 @@ class AgencySingleton {
         AgencySingleton.shared.sidebar_setting = sidebarArray
         AgencySingleton.shared.bottombar_setting = bottomArray
         
-        FirebaseModel().setYoutubeUrl()
+        FirebaseModel().FIR_setYoutubeUrl()
     }
     
     func SetMongsanpoAgency(){
@@ -129,6 +129,6 @@ class AgencySingleton {
         AgencySingleton.shared.sidebar_setting = M_sidebarArray
         AgencySingleton.shared.bottombar_setting = M_bottomArray
         
-        FirebaseModel().setYoutubeUrl()
+        FirebaseModel().FIR_setYoutubeUrl()
     }
 }

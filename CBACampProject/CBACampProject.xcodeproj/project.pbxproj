@@ -89,7 +89,6 @@
 		04FCBCB422C7AA9800FAC5F6 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FCBCB322C7AA9800FAC5F6 /* ImageSlideshow.framework */; };
 		04FD79F021F87C8100936F87 /* MainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD79EF21F87C8100936F87 /* MainUser.swift */; };
 		04FD79F321F8857400936F87 /* MainGBS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD79F221F8857400936F87 /* MainGBS.swift */; };
-		04FD7C6522E74EF200B04F2A /* 몽산포_사이드바.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FD7C6422E74EF200B04F2A /* 몽산포_사이드바.png */; };
 		04FD7C6722E7707E00B04F2A /* 불편접수.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FD7C6622E7707E00B04F2A /* 불편접수.png */; };
 		1AD9D5F1822C40ABE5FF98FB /* Pods_CBACampProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3040CAA0E4FAE4C600640207 /* Pods_CBACampProjectTests.framework */; };
 		32C4B11CCBC1A9A487B45DA0 /* Pods_CBACampProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4914A824F90EADCF5792B13A /* Pods_CBACampProjectUITests.framework */; };
@@ -225,7 +224,6 @@
 		04FCBCB322C7AA9800FAC5F6 /* ImageSlideshow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImageSlideshow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD79EF21F87C8100936F87 /* MainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUser.swift; sourceTree = "<group>"; };
 		04FD79F221F8857400936F87 /* MainGBS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGBS.swift; sourceTree = "<group>"; };
-		04FD7C6422E74EF200B04F2A /* 몽산포_사이드바.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_사이드바.png"; sourceTree = "<group>"; };
 		04FD7C6622E7707E00B04F2A /* 불편접수.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "불편접수.png"; sourceTree = "<group>"; };
 		124EBD3FEB940942CFFD7D83 /* Pods-CBACampProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProjectUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBACampProjectUITests/Pods-CBACampProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3040CAA0E4FAE4C600640207 /* Pods_CBACampProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBACampProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,7 +296,6 @@
 				0442A2C822EA7EC00035EA9A /* CBA_사이드바.png */,
 				04FD7C6622E7707E00B04F2A /* 불편접수.png */,
 				048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */,
-				04FD7C6422E74EF200B04F2A /* 몽산포_사이드바.png */,
 				0426D78522CCB6D1006C111A /* 하단 */,
 				0426D78B22CCB6D1006C111A /* 상단 */,
 				0426D78F22CCB6D1006C111A /* 중앙 */,
@@ -791,7 +788,6 @@
 				04AE0EB322D97CCE00A9F1F2 /* 안드로이드.png in Resources */,
 				04FC00ED210AEC0100528D7A /* CBA.jpeg in Resources */,
 				042761D02106E41400928EB7 /* Main.storyboard in Resources */,
-				04FD7C6522E74EF200B04F2A /* 몽산포_사이드바.png in Resources */,
 				DBF11FD0211B479900EE9B98 /* gbs장소3.png in Resources */,
 				0426D79222CCB6D3006C111A /* 제목-없음-1.png in Resources */,
 				DB3A886C210E54FD00E6DA14 /* 이미지준비중.jpg in Resources */,

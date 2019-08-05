@@ -37,7 +37,6 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         scrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: scrollView.frame)
         scrollView.addSubview(scrollcontainerView)
-        //scrollView.addSubview(buttonView)
         
         var inypos = 1
         let inxpos = 20
@@ -50,13 +49,12 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         
         GBSLevelLabel.text = MassageTabViewController.mainGBS.gbsLevel!
         
-        
-        
         for i in 0..<count {
             var nextypos = 0
             let cellview = UIView()
             cellview.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.5).cgColor
             cellview.layer.borderWidth = 0
+            cellview.backgroundColor = UIColor.gray
                 
             
             cellview.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.4)
@@ -131,7 +129,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(MassageTabViewController.mainGBS.leader == nil){
+        if(MassageTabViewController.mainGBS.leader != nil){
             let blankImage = UIImageView()
             blankImage.image = UIImage(named: "준비중.png")
             self.view.addSubview(blankImage)

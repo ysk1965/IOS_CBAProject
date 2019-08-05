@@ -96,7 +96,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
-        self.view.frame.origin.y = -150 // Move view 150 points upward
+        self.view.frame.origin.y = -100 // Move view 150 points upward
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {

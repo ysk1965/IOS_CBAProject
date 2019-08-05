@@ -116,9 +116,12 @@ class FirebaseModel {
                     let uid = snapshotValue["uid"] as? String ?? ""
                     let isStaff = snapshotValue["isStaff"] as? String ?? ""
                     print(uid)
-                    if(messageTitle == "message"){
-                        if(uid != AgencySingleton.shared.realmUid){
-                            continue
+                    // 성락교회 앱의 경우 자신에게 온 메세지만 받으면 됨
+                    if(AgencySingleton.shared.AgencyTitle == "2019_SR_SUMMER"){
+                        if(messageTitle == "message"){
+                            if(uid != AgencySingleton.shared.realmUid){
+                                continue
+                            }
                         }
                     }
                     
@@ -217,7 +220,7 @@ class FirebaseModel {
                             FirebaseModel.youtubeImage.append(i.value)
                         }
                         print("마지막 애 받으면 넘겨")
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "set image"), object: self)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_SetImage"), object: self)
                     }
                     
                     downloadcnt += 1
@@ -232,7 +235,7 @@ class FirebaseModel {
         Storage.storage().reference(withPath: path).downloadURL { (url, error) in
             FirebaseModel.noticeImage.append(KingfisherSource(url: url!))
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "set image"), object: self)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_SetImage"), object: self)
         }
     }
     
@@ -277,7 +280,7 @@ class FirebaseModel {
         }
     }
     
-    func setYoutubeUrl(){
+    func FIR_setYoutubeUrl(){
         self.imageNames.removeAll()
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("setting")

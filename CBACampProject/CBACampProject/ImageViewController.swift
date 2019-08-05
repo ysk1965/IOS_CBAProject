@@ -64,7 +64,7 @@ class ImageViewController: UIViewController {
         
         FirebaseModel().GetNoticeImageInfo(title : NoticeViewController.OpenStringKey)
         
-        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "set image"), object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "FIR_SetImage"), object: nil)
 
         // Do any additional setup after loading the view.
     }
