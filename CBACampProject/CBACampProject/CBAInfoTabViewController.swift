@@ -224,18 +224,27 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         //headerLabel.font = UIFont(name: "NotoSansUI-Regular.ttf", size: 5.0)
         headerLabel.adjustsFontSizeToFitWidth = true
         
-        headerLabel.frame = CGRect(x : BackImageView.frame.origin.x, y : viewY!+BackImageView.frame.height * 0.2, width : BackImageView.frame.width * 0.88, height : viewH! * 0.13)
+        headerLabel.frame = CGRect(
+            x : 0,
+            y : viewY!,
+            width : BackImageView.frame.width * 0.88,
+            height : viewH! * 0.13)
         
+        BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         let headerButton = UIButton()
         headerButton.setTitle(" ", for: .normal)
         headerButton.setTitleColor(UIColor.black, for: .normal)
-        headerButton.backgroundColor = UIColor.white
-        headerButton.frame = CGRect(x: BackImageView.frame.origin.x + BackImageView.frame.width * 0.075, y: BackImageView.frame.origin.y + BackImageView.frame.width * 0.075 , width: BackImageView.frame.width * 0.46, height: BackImageView.frame.height * 0.3)
+        headerButton.frame = CGRect(
+            x: viewW! * 0.1,
+            y: viewH! * 0.12,
+            width: viewH! * 0.04 * 3.26,
+            height: viewH! * 0.04
+        )
         
         if((Auth.auth().currentUser) != nil){
             //print(Auth.auth().currentUser?.email!)
             headerButton.setTitle(" ", for: .normal)
-            headerButton.setImage(UIImage(named: "19겨울_로그아웃글씨.png"), for: .normal)
+            headerButton.setImage(UIImage(named: "로그아웃.png"), for: .normal)
             //print(MassageTabViewController.mainUser?.name)
             if(MassageTabViewController.mainUser.name == ""){
                 headerLabel.text = "은혜 많이 받으세요 :)"
@@ -245,31 +254,18 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle(" ", for: .normal)
-            headerButton.setImage(UIImage(named: "19겨울_로그인텍스트.png"), for: .normal)
+            headerButton.setImage(UIImage(named: "로그인.png"), for: .normal)
             
-            headerLabel.text = "로그인 해주세요."
+            headerLabel.text = "\n로그인 해주세요."
             headerButton.addTarget(self, action: #selector(self.LogIn(_:)), for: .touchUpInside)
         }
         
         //headerLabel.backgroundColor = UIColor.darkGray
-        headerLabel.textAlignment = NSTextAlignment.left
-        //headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        //headerButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        headerLabel.textAlignment = NSTextAlignment.center
+        headerLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        headerLabel.numberOfLines = 2
         let headerView: UIView = UIView()
-        
-        
-        //BackImageView.frame = CGRect(x:0, y:30, width: 267, height: 30)
-        BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        var testLabel = UITextView()
-        testLabel.textColor = UIColor.darkGray
-        //testLabel.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        testLabel.frame = CGRect(x:5,y:viewH! * 0.12, width:viewW! * 0.6, height: viewH! * 0.2)
-        testLabel.font = UIFont(name: "NotoSansUI-Regular"
-            , size: viewH!)
-        testLabel.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 0)
-        testLabel.text = ""
-        //testLabel.sizeToFit()
-        BackImageView.addSubview(testLabel)
         
         let ImageButton = UIButton()
         //ImageButton.setTitle("QnaSegue", for: .normal)
@@ -278,13 +274,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         ImageButton.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         ImageButton.addTarget(self, action: #selector(self.SetPopup(_:)), for: .touchUpInside)
         headerView.addSubview(ImageButton)
-        //BackImageView.frame = CGRect(x : 0, y : 0, width : viewW! * viewH! / 10000 + viewH!/4, height : viewW! * 0.6 * 0.4)
-        headerView.backgroundColor = UIColor.white
         
-        //BackImageView.addSubview(headerLabel)
+        if(AgencySingleton.shared.AgencyTitle == "2019_CBA_SUMMER"){
+            BackImageView.addSubview(headerLabel)
+            BackImageView.addSubview(headerButton)
+        }
         headerView.addSubview(BackImageView)
         //headerView.addSubview(whiteLine)
-        //headerView.addSubview(headerButton)
         
         let menuheader = SideMenuHeaderFactory.make(view: headerView)
         
@@ -303,7 +299,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         self.menu = menuBuild.build()
         
-        print(headerView.frame)
         menu.delegate = self
     }
     
