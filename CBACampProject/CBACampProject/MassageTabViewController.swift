@@ -9,53 +9,6 @@
 import UIKit
 import Firebase
 
-struct MyInfo: Codable {
-    let campus : String?
-    let name : String?
-    let mobile : String?
-    let age : Int?
-    let gbsLevel : String?
-    let grade : String?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        campus = try values.decodeIfPresent(String.self, forKey: .campus)
-        name = try values.decodeIfPresent(String.self, forKey: .name)
-        mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
-        age = try values.decodeIfPresent(Int.self, forKey: .age)
-        gbsLevel = try values.decodeIfPresent(String.self, forKey: .gbsLevel)
-        grade = try values.decodeIfPresent(String.self, forKey: .grade)
-    }
-}
-
-struct MyGBS: Codable {
-    let gbsLevel : String?
-    let leader: UserInfo?
-    let members : [UserInfo]?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        gbsLevel = try values.decodeIfPresent(String.self, forKey: .gbsLevel)
-        leader = try values.decodeIfPresent(UserInfo.self, forKey: .leader)
-        members = try values.decodeIfPresent([UserInfo].self, forKey: .members)
-    }
-}
-
-struct UserInfo: Codable{
-    let name : String?
-    let age : Int?
-    let campus : String?
-    let mobile : String?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        name = try values.decodeIfPresent(String.self, forKey: .name)
-        age = try values.decodeIfPresent(Int.self, forKey: .age)
-        campus = try values.decodeIfPresent(String.self, forKey: .campus)
-        mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
-    }
-}
-
 class MassageTabViewController: UIViewController {
     @IBOutlet weak var infoText: UITextField!
     @IBOutlet weak var Hamberger: UIButton!
@@ -71,9 +24,6 @@ class MassageTabViewController: UIViewController {
     }
     
     var url = URL(string:"http://cba.sungrak.or.kr/RetreatSite/RetreatAdd")
-    static var mainUser = MainUser(age: 0, campus: "", mobile: "", name: "", gbsLevel : "", grade: "")
-    static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
-    static var memberCount = Int(0)
     
     @IBOutlet weak var ApplicationOutlet: UIButton!
     @IBAction func ApplicationAction(_ sender: Any) {
@@ -327,56 +277,6 @@ class MassageTabViewController: UIViewController {
         
         CBAInfoTabViewController.isNotiMessage = false
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    func parsing(){
-        // DataPassing
-        print("parsing start")
-        
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    var myinfos = try decoder.decode(MyInfo.self, from: data)
-                    
-                    if(myinfos.age != nil){
-                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, gbsLevel: myinfos.gbsLevel!, grade: myinfos.grade!)
-                    }
-                    
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
-        
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getGBSInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    let myinfos = try decoder.decode(MyGBS.self, from: data)
-                    
-                    if(myinfos.gbsLevel != nil){
-                        MassageTabViewController.mainGBS.setGBS(gbsLevel: myinfos.gbsLevel!, leader: myinfos.leader!, members: myinfos.members!)
-                        MassageTabViewController.memberCount = myinfos.members!.count
-                    }
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-            }.resume()
-        }
     }
     
     override func didReceiveMemoryWarning() {

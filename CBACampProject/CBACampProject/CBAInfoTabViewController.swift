@@ -56,6 +56,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     static var ScreenWidth : CGFloat?
     static var ScreenHeight : CGFloat?
     
+    //GBS & My Info
+    static var mainUser = MainUser(campus: "", mobile: "", name: "", retreatGbs : "", grade: "")
+    static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
+    static var memberCount = Int(0)
+    
     func addMyData(uid: String, agent : String) {
         let myData = MyData()
         
@@ -93,57 +98,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     @IBOutlet weak var NoticeLabel: UILabel!
     
     var url = URL(string:"http://cba.sungrak.or.kr/HomePage/Index")
-    
-    func CallGetMyInfo(){
-        // DataPassing
-        print("parsing start")
-        
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    var myinfos = try decoder.decode(MyInfo.self, from: data)
-                    
-                    if(myinfos.age != nil){
-                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, gbsLevel: myinfos.gbsLevel!, grade: myinfos.grade!)
-                    }
-                    
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
-        
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getGBSInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    let myinfos = try decoder.decode(MyGBS.self, from: data)
-                    
-                    if(myinfos.gbsLevel != nil){
-                        MassageTabViewController.mainGBS.setGBS(gbsLevel: myinfos.gbsLevel!, leader: myinfos.leader!, members: myinfos.members!)
-                        MassageTabViewController.memberCount = myinfos.members!.count
-                    }
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
-    }
     
     func SettingSidebar(){
         userID = Auth.auth().currentUser?.email
@@ -230,14 +184,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         headerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         headerLabel.adjustsFontSizeToFitWidth = true
         if((Auth.auth().currentUser) != nil){
-            //print(Auth.auth().currentUser?.email!)
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "로그아웃.png"), for: .normal)
             //print(MassageTabViewController.mainUser?.name)
-            if(MassageTabViewController.mainUser.name == ""){
+            if(CBAInfoTabViewController.mainUser.name == ""){
                 headerLabel.text = "은혜 많이 받으세요 :)"
             }else{
-                headerLabel.text = MassageTabViewController.mainUser.name + "(" + MassageTabViewController.mainUser.campus + ")님 환영합니다!"
+                headerLabel.text = CBAInfoTabViewController.mainUser.name + " | " + CBAInfoTabViewController.mainUser.retreatGbs + " | " + CBAInfoTabViewController.mainUser.grade
             }
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
@@ -582,6 +535,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
+        //Firebase에서 내 정보 가져오기
+        GetGBSData()
+        
         NoticeLabel.text = FirebaseModel.mainNotiMessages
         
         hambergerButton.translatesAutoresizingMaskIntoConstraints = false

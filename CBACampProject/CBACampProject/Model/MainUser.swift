@@ -8,29 +8,26 @@
 
 import Foundation
 
-class MainUser {
-    var age : Int
+class MainUser{
     var campus : String
     var mobile : String
     var name : String
-    var gbsLevel : String
+    var retreatGbs : String
     var grade : String
     
-    init(age: Int, campus:String, mobile:String, name : String, gbsLevel : String, grade : String) {
-        self.age = age
+    init(campus:String, mobile:String, name : String, retreatGbs : String, grade : String) {
         self.campus = campus
         self.mobile = mobile
         self.name = name
-        self.gbsLevel = gbsLevel
+        self.retreatGbs = retreatGbs
         self.grade = grade
     }
     
-    func setUser(age: Int, campus:String, mobile:String, name : String, gbsLevel : String, grade : String){
-        self.age = age
+    func setUser(campus:String, mobile:String, name : String, retreatGbs : String, grade : String){
         self.campus = campus
         self.mobile = mobile
         self.name = name
-        self.gbsLevel = gbsLevel
+        self.retreatGbs = retreatGbs
         self.grade = grade
     }
 }

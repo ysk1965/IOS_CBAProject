@@ -40,14 +40,14 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         
         var inypos = 1
         let inxpos = 20
-        let count = MassageTabViewController.memberCount
+        let count = CBAInfoTabViewController.memberCount
         
-        leaderName.text = MassageTabViewController.mainGBS.leader?.name
-        leaderAge.text = "\(MassageTabViewController.mainGBS.leader?.age ?? 0)"
-        leaderCampus.text = MassageTabViewController.mainGBS.leader?.campus
-        leaderMobile.text = MassageTabViewController.mainGBS.leader?.mobile
+        leaderName.text = CBAInfoTabViewController.mainGBS.leader?.name
+        leaderAge.text = "\(CBAInfoTabViewController.mainGBS.leader?.age ?? 0)"
+        leaderCampus.text = CBAInfoTabViewController.mainGBS.leader?.campus
+        leaderMobile.text = CBAInfoTabViewController.mainGBS.leader?.mobile
         
-        GBSLevelLabel.text = MassageTabViewController.mainGBS.gbsLevel!
+        GBSLevelLabel.text = CBAInfoTabViewController.mainGBS.gbsLevel!
         
         for i in 0..<count {
             var nextypos = 0
@@ -65,7 +65,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///namelabel
             let namelabel = UILabel()
-            namelabel.text = "• 이름 :" + MassageTabViewController.mainGBS.members![i].name!
+            namelabel.text = "• 이름 :" + CBAInfoTabViewController.mainGBS.members![i].name!
             namelabel.font = UIFont(name: "NotoSansUI-Regular", size: 17.0)!
             namelabel.textColor = UIColor.black
             namelabel.sizeToFit()
@@ -74,7 +74,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///agelabel
             let agelabel = UILabel()
-            agelabel.text = "• 나이 :\(MassageTabViewController.mainGBS.members![i].age!)"
+            agelabel.text = "• 나이 :\(CBAInfoTabViewController.mainGBS.members![i].age!)"
             agelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             agelabel.textColor = UIColor.black
             agelabel.sizeToFit()
@@ -83,7 +83,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///campuslabel
             let campuslabel = UILabel()
-            campuslabel.text = "• 캠퍼스 :\(MassageTabViewController.mainGBS.members![i].campus!)"
+            campuslabel.text = "• 캠퍼스 :\(CBAInfoTabViewController.mainGBS.members![i].campus!)"
             campuslabel.font = UIFont(name: "NotoSans", size: 17.0)!
             campuslabel.textColor = UIColor.black
             campuslabel.sizeToFit()
@@ -92,7 +92,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             
             ///mobilelabel
             let mobilelabel = UILabel()
-            mobilelabel.text = "• 연락처 :\(MassageTabViewController.mainGBS.members![i].mobile!)"
+            mobilelabel.text = "• 연락처 :\(CBAInfoTabViewController.mainGBS.members![i].mobile!)"
             mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             mobilelabel.textColor = UIColor.black
             mobilelabel.sizeToFit()
@@ -129,7 +129,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(MassageTabViewController.mainGBS.leader != nil){
+        if(CBAInfoTabViewController.mainGBS.leader != nil){
             let blankImage = UIImageView()
             blankImage.image = UIImage(named: "준비중.png")
             self.view.addSubview(blankImage)

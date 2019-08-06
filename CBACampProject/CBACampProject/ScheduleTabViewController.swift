@@ -21,8 +21,6 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
     var image : UIImage?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        parsing()
-        
         if segue.identifier == "SegueToSideMenu"{
             if let navController = segue.destination as? UINavigationController{
                 if let SideMenuController = navController.topViewController as?
@@ -145,54 +143,4 @@ class ScheduleTabViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func parsing(){
-        // DataPassing
-        print("parsing start")
-        
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getMyInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    var myinfos = try decoder.decode(MyInfo.self, from: data)
-                    
-                    if(myinfos.age != nil){
-                        MassageTabViewController.mainUser.setUser(age: myinfos.age!, campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, gbsLevel: myinfos.gbsLevel!, grade: myinfos.grade!)
-                    }
-                    
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
-        
-        if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:8888/getGBSInfo/" + (Auth.auth().currentUser?.uid)!
-            let urlObj = URL(string: url)
-            
-            URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-                guard let data = data else {return}
-                
-                do {
-                    let decoder = JSONDecoder()
-                    let myinfos = try decoder.decode(MyGBS.self, from: data)
-                    
-                    if(myinfos.gbsLevel != nil){
-                        MassageTabViewController.mainGBS.setGBS(gbsLevel: myinfos.gbsLevel!, leader: myinfos.leader!, members: myinfos.members!)
-                        MassageTabViewController.memberCount = myinfos.members!.count
-                    }
-                } catch{
-                    print(url)
-                    print("We got an error", error.localizedDescription)
-                }
-                
-                }.resume()
-        }
-    }
 }
