@@ -190,7 +190,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             if(CBAInfoTabViewController.mainUser.name == ""){
                 headerLabel.text = "은혜 많이 받으세요 :)"
             }else{
-                headerLabel.text = CBAInfoTabViewController.mainUser.name + " | " + CBAInfoTabViewController.mainUser.retreatGbs + " | " + CBAInfoTabViewController.mainUser.grade
+		var tempGrade = ""
+		if(CBAInfoTabViewController.mainUser.grade == "MEMEBER"){
+			tempGrade = "조원"
+		} else{
+			tempGrade = "조장"
+		}
+                headerLabel.text = CBAInfoTabViewController.mainUser.name + "  |  " + CBAInfoTabViewController.mainUser.retreatGbs + "  |  " + tempGrade
             }
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
