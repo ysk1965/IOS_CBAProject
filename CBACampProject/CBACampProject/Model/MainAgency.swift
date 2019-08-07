@@ -75,7 +75,7 @@ class AgencySingleton {
         var bottomArray : Array<ButtonType> = []
         bottomArray.removeAll()
         bottomArray.append(ButtonType(type: "segue",iconName: "제목-없음-1.png", controlValue: "QnaSegue"))
-        bottomArray.append(ButtonType(type: "call",iconName: "CALL.png", controlValue: "010-6623-2545"))
+        bottomArray.append(ButtonType(type: "call",iconName: "CALL.png", controlValue: "010-3225-3652"))
         bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
         bottomArray.append(ButtonType(type: "url",iconName: "ONAIR.png", controlValue: "https://www.youtube.com/channel/UCW6bF9L0ZK__Tlwl19B0FYQ"))
         bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "SearchGBS"))
