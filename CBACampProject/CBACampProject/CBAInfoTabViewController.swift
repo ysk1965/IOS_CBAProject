@@ -161,9 +161,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             }
         }
         */
+	    
         // SIDE BAR SETTING
-        
-        //let menuheader = SideMenuHeaderFactory.make(title: "환언, 우리의 사명")
         let whiteLine = UILabel()
         whiteLine.frame = CGRect(x : viewX! + viewW!*0.035, y : viewY! + viewH!*0.03, width : viewW! * 0.58, height : viewH! * 0.001)
         whiteLine.backgroundColor = UIColor.black
@@ -269,8 +268,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         pageIndicator.currentPageIndicatorTintColor = UIColor.black
         pageIndicator.pageIndicatorTintColor = UIColor.lightGray
         slideshow.pageIndicator = pageIndicator
-        
-        //slideshow.pageIndicator = LabelPageIndicator()
         
         slideshow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
         
@@ -563,7 +560,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         ResizeBanner.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         
-        
         //slideshow
         slideshow.translatesAutoresizingMaskIntoConstraints = false
         slideshow.frame.size = CGSize(width: 0, height: 0)
@@ -573,13 +569,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         backgroundView.frame = CGRect(x:0,y:(viewW!/5), width:viewW!, height:(viewH! - (viewW!/5)))
         
         slideshow.addSubview(backgroundView)
-        
-        /*
-        slideshow.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
-        slideshow.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        slideshow.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0).isActive = true
-        slideshow.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        */
         
         ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
         ResizeBottomView.fadeIn(duration: 1)
@@ -662,8 +651,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         )
         
         // uuid, agent 생성
-        SetRealmData(defaultAgent: "MONGSANPO");
-        
+        SetRealmData(defaultAgent: "CBA");
         
         // CBAInfoTabViewController.currentAgency 요거 Realm에 넣어놔야 함. 그걸로 nil체크!
         if(AgencySingleton.shared.realmAgent != nil){
@@ -674,6 +662,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             }
         }
         
+	// realm 제거 할 때 사용
         /*
          try! realm.write {
          realm.deleteAll()
@@ -700,7 +689,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
         slideshow.addGestureRecognizer(gestureRecognizer)
         
-        //FirebaseModel().getMessages(messageTitle: "noti")
         // load main view!!
         FirebaseModel().FIR_FirstLoadView()
         
@@ -708,11 +696,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     func SetNotificationCenter(){
         NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "FIR_ChangeImage"), object: nil)
-        
-        /*
-        NotificationCenter.default.addObserver(self,selector: #selector(self.ResizeView),name: NSNotification.Name(rawValue: "load main view"), object: nil)
-        */
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.ResizeView), name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: nil)
     }
     
