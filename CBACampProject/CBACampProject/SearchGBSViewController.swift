@@ -47,7 +47,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         leaderCampus.text = CBAInfoTabViewController.mainGBS.leader?.campus
         leaderMobile.text = CBAInfoTabViewController.mainGBS.leader?.mobile
         
-        GBSLevelLabel.text = CBAInfoTabViewController.mainGBS.gbsLevel!
+        GBSLevelLabel.text = CBAInfoTabViewController.mainGBS.gbsLevel! + "조"
         
         for i in 0..<count {
             var nextypos = 0
@@ -62,42 +62,94 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
             scrollView.addSubview(cellview)
             
             //profile image, rank name label, name label //////////////////////////////
+            //profile image
+            let profileImage = UIImageView()
+            profileImage.image = UIImage(named: "조원.png")
+            profileImage.frame = CGRect(
+                x: 30,
+                y: 35,
+                width: 55,
+                height: 65
+            )
+            cellview.addSubview(profileImage)
             
             ///namelabel
+            let nametitle = UILabel()
+            nametitle.text = "이름"
+            nametitle.font = UIFont(name: "NotoSans", size: 13.0)!
+            nametitle.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
+            nametitle.sizeToFit()
+            nametitle.frame.origin = CGPoint(x: 115, y: 18)
+            cellview.addSubview(nametitle)
+            
             let namelabel = UILabel()
-            namelabel.text = "• 이름 :" + CBAInfoTabViewController.mainGBS.members![i].name!
-            namelabel.font = UIFont(name: "NotoSansUI-Regular", size: 17.0)!
-            namelabel.textColor = UIColor.black
+            namelabel.text =  CBAInfoTabViewController.mainGBS.members![i].name!
+            namelabel.font = UIFont(name: "NotoSans", size: 13.0)!
+            namelabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
             namelabel.sizeToFit()
-            namelabel.frame.origin = CGPoint(x: 20, y: 18)
+            namelabel.frame.origin = CGPoint(x: 190, y: 18)
             cellview.addSubview(namelabel)
             
             ///agelabel
-            let agelabel = UILabel()
-            agelabel.text = "• 나이 :\(CBAInfoTabViewController.mainGBS.members![i].age!)"
-            agelabel.font = UIFont(name: "NotoSans", size: 17.0)!
-            agelabel.textColor = UIColor.black
-            agelabel.sizeToFit()
-            agelabel.frame.origin = CGPoint(x: 20, y: 41)
-            cellview.addSubview(agelabel)
+            let agetitle = UILabel()
+            agetitle.text = "나이"
+            agetitle.font = UIFont(name: "NotoSans", size: 13.0)!
+            agetitle.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
+            agetitle.sizeToFit()
+            agetitle.frame.origin = CGPoint(x: 115, y: 41)
+            cellview.addSubview(agetitle)
+            
+            let birthlabel = UILabel()
+            birthlabel.text = "\(CBAInfoTabViewController.mainGBS.members![i].age!)"
+            birthlabel.font = UIFont(name: "NotoSans", size: 13.0)!
+            birthlabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
+            birthlabel.sizeToFit()
+            birthlabel.frame.origin = CGPoint(x: 190, y: 41)
+            cellview.addSubview(birthlabel)
             
             ///campuslabel
-            let campuslabel = UILabel()
-            campuslabel.text = "• 캠퍼스 :\(CBAInfoTabViewController.mainGBS.members![i].campus!)"
-            campuslabel.font = UIFont(name: "NotoSans", size: 17.0)!
-            campuslabel.textColor = UIColor.black
-            campuslabel.sizeToFit()
-            campuslabel.frame.origin = CGPoint(x: 20, y: 64)
-            cellview.addSubview(campuslabel)
+            let campustitle = UILabel()
+            campustitle.text = "연락처"
+            campustitle.font = UIFont(name: "NotoSans", size: 13.0)!
+            campustitle.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
+            campustitle.sizeToFit()
+            campustitle.frame.origin = CGPoint(x: 115, y: 64)
+            cellview.addSubview(campustitle)
+            
+            let mobilelabel = UILabel()
+            mobilelabel.text = "\(CBAInfoTabViewController.mainGBS.members![i].mobile!)"
+            mobilelabel.font = UIFont(name: "NotoSans", size: 13.0)!
+            mobilelabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
+            mobilelabel.sizeToFit()
+            mobilelabel.frame.origin = CGPoint(x: 190, y: 64)
+            cellview.addSubview(mobilelabel)
             
             ///mobilelabel
-            let mobilelabel = UILabel()
-            mobilelabel.text = "• 연락처 :\(CBAInfoTabViewController.mainGBS.members![i].mobile!)"
-            mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
-            mobilelabel.textColor = UIColor.black
-            mobilelabel.sizeToFit()
-            mobilelabel.frame.origin = CGPoint(x: 20, y: 87)
-            cellview.addSubview(mobilelabel)
+            let mobiletitle = UILabel()
+            mobiletitle.text = "캠퍼스"
+            mobiletitle.font = UIFont(name: "NotoSans", size: 13.0)!
+            mobiletitle.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
+            mobiletitle.sizeToFit()
+            mobiletitle.frame.origin = CGPoint(x: 115, y: 87)
+            cellview.addSubview(mobiletitle)
+            
+            let campuslabel = UILabel()
+            campuslabel.text = "\(CBAInfoTabViewController.mainGBS.members![i].campus!)"
+            campuslabel.font = UIFont(name: "NotoSans", size: 13.0)!
+            campuslabel.textColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 0.9)
+            campuslabel.sizeToFit()
+            campuslabel.frame.origin = CGPoint(x: 190, y: 87)
+            cellview.addSubview(campuslabel)
+            
+            let blackline = UILabel()
+            blackline.backgroundColor = UIColor.lightGray
+            blackline.frame = CGRect(
+                x: 20,
+                y: 127,
+                width : 260,
+                height : 1.5
+            )
+            cellview.addSubview(blackline)
             
             //textview///////////////////////////////////////
             let textview = UITextView()
@@ -129,7 +181,7 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(CBAInfoTabViewController.mainGBS.leader != nil){
+        if(CBAInfoTabViewController.mainGBS.leader == nil){
             let blankImage = UIImageView()
             blankImage.image = UIImage(named: "준비중.png")
             self.view.addSubview(blankImage)
