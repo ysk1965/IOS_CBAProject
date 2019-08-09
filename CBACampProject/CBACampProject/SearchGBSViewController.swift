@@ -173,15 +173,13 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         scrollView.isScrollEnabled = true
         
         self.view.addSubview(scrollView)
-
-        
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         if(CBAInfoTabViewController.mainGBS.leader == nil){
+            let blankBackgroud = UILabel()
+            blankBackgroud.backgroundColor = UIColor.white
+            blankBackgroud.frame = CGRect(x:0,y:0,width:self.view.frame.width, height:self.view.frame.height)
+            self.view.addSubview(blankBackgroud)
+            
             let blankImage = UIImageView()
             blankImage.image = UIImage(named: "준비중.png")
             self.view.addSubview(blankImage)
@@ -191,6 +189,13 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
                 make.center.equalTo(self.view)
             }
         }
+        
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "got GBS"), object: nil)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "got GBS"), object: self)

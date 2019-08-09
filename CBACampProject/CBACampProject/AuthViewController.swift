@@ -42,6 +42,8 @@ class AuthViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDele
                 
                 self.present(alert, animated: true, completion: nil)
             } else{
+                GetGBSData()
+                
                 let alert = UIAlertController(title: "로그인 성공", message:"["+(user?.user.email)! + "] \n 로그인에 성공하셨습니다.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "확인", style:UIAlertAction.Style.default, handler: nil))
                 

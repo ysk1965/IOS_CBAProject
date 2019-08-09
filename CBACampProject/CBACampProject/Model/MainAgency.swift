@@ -45,11 +45,12 @@ class AgencySingleton {
     private init() {
     }
     
-    init(AgencyTitle : String, viewBannerName : String, sidebarBannerName : String, topTagImageName : String, sidebar_setting: Array<ButtonType>, bottombar_setting : Array<ButtonType>){
+    init(AgencyTitle : String, viewBannerName : String, sidebarBannerName : String, topTagImageName : String, backgroundImageName : String, sidebar_setting: Array<ButtonType>, bottombar_setting : Array<ButtonType>){
         AgencySingleton.shared.AgencyTitle = AgencyTitle
         AgencySingleton.shared.viewBannerName = viewBannerName
         AgencySingleton.shared.sidebarBannerName = sidebarBannerName
         AgencySingleton.shared.topTagImageName = topTagImageName
+        AgencySingleton.shared.backgroundImageName = backgroundImageName
         
         AgencySingleton.shared.sidebar_setting = sidebar_setting
         AgencySingleton.shared.bottombar_setting = bottombar_setting
@@ -67,23 +68,25 @@ class AgencySingleton {
         var sidebarArray : Array<ButtonType> = []
         sidebarArray.removeAll()
         sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "GBS 장소", controlValue: "gbs_place"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
         sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "cleaning"))
+        sidebarArray.append(ButtonType(type: "info",iconName: "숙소", controlValue: "room"))
+        sidebarArray.append(ButtonType(type: "info",iconName: "GBS 장소", controlValue: "gbs_place"))
+        sidebarArray.append(ButtonType(type: "info",iconName: "캠모 장소", controlValue: "campus_place"))
         
         var bottomArray : Array<ButtonType> = []
         bottomArray.removeAll()
         bottomArray.append(ButtonType(type: "segue",iconName: "제목-없음-1.png", controlValue: "QnaSegue"))
         bottomArray.append(ButtonType(type: "call",iconName: "CALL.png", controlValue: "010-3225-3652"))
         bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
-        bottomArray.append(ButtonType(type: "url",iconName: "ONAIR.png", controlValue: "https://www.youtube.com/channel/UCW6bF9L0ZK__Tlwl19B0FYQ"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "ONAIR.png", controlValue: "StreamingSegue"))
         bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "SearchGBS"))
         
         AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"
         AgencySingleton.shared.sidebarBannerName = "CBA_사이드바.png" // "몽산포_가로배너.png"
-        AgencySingleton.shared.topTagImageName = "CBA.png" // "몽산포.png"
+        AgencySingleton.shared.topTagImageName = "CBA1.png" // "몽산포.png"
         AgencySingleton.shared.backgroundImageName = "CBA_배경.png"
         
         AgencySingleton.shared.sidebar_setting = sidebarArray

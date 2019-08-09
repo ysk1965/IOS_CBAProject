@@ -15,7 +15,7 @@ class FirebaseModel {
     static var mainNotiMessages = String()
     static var noticeDictionary = Dictionary<String, String>()
     static var noticeArray = [(key: String, value: String)]()
-    static var sendMessageData = Message(text: "default", time: "default", auth: "default", isStaff : "default")
+    static var sendMessageData = Message(text: "default", time: "default", auth: "default", isStaff : "default", uid : "default")
     static var schedule = ""
     
     var imageNames : Array<String> = []
@@ -42,8 +42,9 @@ class FirebaseModel {
                     let message = snapshotValue["message"] as? String ?? ""
                     let time = snapshotValue["time"] as? String ?? ""
                     let auth = snapshotValue["author"] as? String ?? ""
+                    let uid = snapshotValue["uid"] as? String ?? ""
                     
-                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
+                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff, uid : uid))
                 }
                 
                 let count = FirebaseModel.messages.count
@@ -81,8 +82,7 @@ class FirebaseModel {
                     let message = snapshotValue["message"] as? String ?? ""
                     let time = snapshotValue["time"] as? String ?? ""
                     let auth = snapshotValue["author"] as? String ?? ""
-                    print(message)
-                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
+                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff, uid : uid))
                 }
                 
                 // 메인 메세지 받기
@@ -128,8 +128,7 @@ class FirebaseModel {
                     let message = snapshotValue["message"] as? String ?? ""
                     let time = snapshotValue["time"] as? String ?? ""
                     let auth = snapshotValue["author"] as? String ?? ""
-                    print(message)
-                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff))
+                    FirebaseModel.messages.append(Message(text: message, time: time, auth: auth, isStaff: isStaff, uid : uid))
                 }
                 
                 // 메인 메세지 받기
@@ -231,7 +230,7 @@ class FirebaseModel {
     
     func GetNoticeImageInfo(title : String) {
         FirebaseModel.noticeImage.removeAll()
-        let path = "2019_SR_SUMMER/" + title
+        let path = AgencySingleton.shared.AgencyTitle! + "/" + title
         Storage.storage().reference(withPath: path).downloadURL { (url, error) in
             FirebaseModel.noticeImage.append(KingfisherSource(url: url!))
             

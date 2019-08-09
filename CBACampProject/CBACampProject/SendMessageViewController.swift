@@ -17,6 +17,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     @IBOutlet weak var textAuthor: UITextField!
     @IBOutlet weak var textMessage: UITextView!
     @IBOutlet weak var SendButton: UIButton!
+    @IBOutlet weak var sungrakCI: UIImageView!
     var currentTime: String?
     
     @IBAction func CancleButton(_ sender: Any) {
@@ -60,6 +61,12 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(AgencySingleton.shared.AgencyTitle != "2019_SR_SUMMER"){
+            sungrakCI.alpha = 0
+        } else {
+            sungrakCI.alpha = 1
+        }
         
         backgroundView.image = UIImage(named: AgencySingleton.shared.backgroundImageName!)
         

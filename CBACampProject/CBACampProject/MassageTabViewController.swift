@@ -70,7 +70,15 @@ class MassageTabViewController: UIViewController {
                     cellview.frame = CGRect(x: 0, y: Int(inypos), width : Int(scrollView.frame.width * 0.8), height: 80)
                     
                     infoLabel.frame.origin = CGPoint(x: Int(self.view.frame.width/15), y: nextypos - 20)
-                } else{
+                } else if(FirebaseModel.messages[count - i - 1].uid != AgencySingleton.shared.realmUid){
+                    messageImage.image = UIImage(named : "다른-영혼이-보낼때.png")
+                    messageImage.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    cellview.addSubview(messageImage)
+                    
+                    cellview.frame = CGRect(x: 0, y: Int(inypos), width : Int(scrollView.frame.width * 0.8), height: 80)
+                    
+                    infoLabel.frame.origin = CGPoint(x: Int(self.view.frame.width/15), y: nextypos - 20)
+                }else{
                     messageImage.image = UIImage(named : "내가-보낼때.png")
                     messageImage.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     cellview.addSubview(messageImage)
@@ -248,12 +256,12 @@ class MassageTabViewController: UIViewController {
             let infoText = UILabel()
             infoText.frame = CGRect(x:0, y:self.view.frame.height/9, width:self.view.frame.width, height:self.view.frame.height/13)
             infoText.font = UIFont(name: "System"
-                , size: 12)
+                , size: 11)
             infoText.adjustsFontSizeToFitWidth = true
             infoText.textColor = UIColor.lightGray
             infoText.textAlignment = .center
             infoText.numberOfLines = 2
-            if(AgencySingleton.shared.backgroundImageName == "2019_SR_SUMMER"){
+            if(AgencySingleton.shared.AgencyTitle == "2019_SR_SUMMER"){
                 infoText.text = """
                 작성하신 내용은 작성자와 관리자만 확인되면
                 처리 경과를 확인하실 수 있습니다.
@@ -261,7 +269,7 @@ class MassageTabViewController: UIViewController {
             } else{
                 infoText.text = """
                 수련회 동안 생활하는 데 불편사항 및 건의를
-                보내주시면 확인후 답변을 해드립니다.
+                보내주시면 확인후 답변해드립니다.
                 """
             }
             view.addSubview(infoText)

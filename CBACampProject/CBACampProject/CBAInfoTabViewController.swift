@@ -39,6 +39,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     @IBAction func TopImageButton(_ sender: Any) {
         CloseImageView()
     }
+    let backgroundView = UIImageView()
     
     static var isNotiMessage = false
     
@@ -190,9 +191,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 headerLabel.text = "은혜 많이 받으세요 :)"
             }else{
 		var tempGrade = ""
-		if(CBAInfoTabViewController.mainUser.grade == "MEMEBER"){
+		if(CBAInfoTabViewController.mainUser.grade == "MEMBER"){
 			tempGrade = "조원"
-		} else{
+        } else if(CBAInfoTabViewController.mainUser.grade == "STAFF"){
+            tempGrade = "스탭"
+        } else{
 			tempGrade = "조장"
 		}
                 headerLabel.text = CBAInfoTabViewController.mainUser.name + "  |  " + CBAInfoTabViewController.mainUser.retreatGbs + "  |  " + tempGrade
@@ -339,7 +342,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func OpenImageView(){
-        slideshow.circular = true
+        slideshow.circular = false
         slideshow.frame = CGRect(x: 0, y: viewW! * 0.2, width: viewW!, height: viewH! - viewW! * 0.4)
         notiButton.frame.size = CGSize(width: 0, height: 0)
     }
@@ -470,6 +473,11 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     @objc func MoveSegue(_ sender:UIButton){
         CloseImageView()
+        if(sender.currentTitle! == "SearchGBS"){
+            if(Auth.auth().currentUser == nil){
+                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+            }
+        }
         
         self.performSegue(withIdentifier: sender.currentTitle!, sender: nil)
     }
@@ -538,6 +546,13 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
+        backgroundView.removeFromSuperview()
+        backgroundView.image = UIImage(named:AgencySingleton.shared.backgroundImageName!)
+        backgroundView.frame = CGRect(x:0,y:-(viewW!/5), width:viewW!, height:viewH!-(viewW!/10))
+        backgroundView.alpha = 0.5
+        
+        slideshow.addSubview(backgroundView)
+        
         //Firebase에서 내 정보 가져오기
         GetGBSData()
         
@@ -563,12 +578,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         //slideshow
         slideshow.translatesAutoresizingMaskIntoConstraints = false
         slideshow.frame.size = CGSize(width: 0, height: 0)
-        
-        let backgroundView = UIImageView()
-        backgroundView.image = UIImage(named:AgencySingleton.shared.backgroundImageName!)
-        backgroundView.frame = CGRect(x:0,y:(viewW!/5), width:viewW!, height:(viewH! - (viewW!/5)))
-        
-        slideshow.addSubview(backgroundView)
         
         ResizeBottomView.translatesAutoresizingMaskIntoConstraints = false
         ResizeBottomView.fadeIn(duration: 1)
@@ -646,6 +655,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             viewBannerName : "배너.png", // "몽산포_배너.png"
             sidebarBannerName : "CBA가로배너.png", // "몽산포_가로배너.png"
             topTagImageName : "CBA.jpeg", // "몽산포.png"
+            backgroundImageName : "CBA_배경.png",
             sidebar_setting: sidebarArray,
             bottombar_setting : bottomArray
         )
@@ -691,7 +701,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         // load main view!!
         FirebaseModel().FIR_FirstLoadView()
-        
     }
     
     func SetNotificationCenter(){
