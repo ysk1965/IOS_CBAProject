@@ -136,7 +136,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
+		0404F7D02289A06C00B527F0 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		0404F7D22289ADA100B527F0 /* MainAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAttendance.swift; sourceTree = "<group>"; };
 		0426D78D22CCB6D1006C111A /* 메뉴.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "메뉴.png"; sourceTree = "<group>"; };
 		0426D78E22CCB6D1006C111A /* 로고.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "로고.png"; sourceTree = "<group>"; };

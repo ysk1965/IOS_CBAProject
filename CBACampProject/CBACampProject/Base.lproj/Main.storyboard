@@ -289,7 +289,7 @@
                                             <constraint firstAttribute="height" constant="70" id="iuu-fc-nC0"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="wbL-yK-rie" kind="show" id="xHp-ET-NUU"/>
+                                            <segue destination="wbL-yK-rie" kind="show" identifier="testSegue" id="xHp-ET-NUU"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -877,6 +877,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFZ-81-N7C">
+                                <rect key="frame" x="110" y="252" width="99" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="makeAttendanceAction:" destination="I6V-OP-OAt" eventType="touchUpInside" id="cgD-Pv-g3j"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qh-ZZ-6GM">
                                 <rect key="frame" x="280" y="79" width="35" height="35"/>
                                 <constraints>
@@ -911,9 +919,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jk3-m3-ZMS">
-                                <rect key="frame" x="10" y="169" width="300" height="295"/>
-                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKT-gm-8Vg">
                                 <rect key="frame" x="270" y="129" width="30" height="30"/>
                                 <constraints>
@@ -953,6 +958,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jk3-m3-ZMS">
+                                <rect key="frame" x="10" y="169" width="300" height="295"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -981,6 +989,7 @@
                         <outlet property="attendanceScrollView" destination="jk3-m3-ZMS" id="9jH-Om-Pyn"/>
                         <outlet property="campusName" destination="eej-Mn-sHZ" id="h69-Qm-ZZn"/>
                         <outlet property="datePicker" destination="5cS-Vb-zWF" id="ZTf-2e-1RU"/>
+                        <outlet property="makeAttendanceButton" destination="IFZ-81-N7C" id="hWR-40-Trr"/>
                         <outlet property="statsText" destination="xQa-oo-hmH" id="ASi-qa-eaC"/>
                     </connections>
                 </viewController>

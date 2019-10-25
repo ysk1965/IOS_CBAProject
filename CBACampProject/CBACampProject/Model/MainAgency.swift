@@ -81,7 +81,7 @@ class AgencySingleton {
         bottomArray.append(ButtonType(type: "call",iconName: "CALL.png", controlValue: "010-3225-3652"))
         bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
         bottomArray.append(ButtonType(type: "segue",iconName: "ONAIR.png", controlValue: "StreamingSegue"))
-        bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "SearchGBS"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "testSegue"))
         
         AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"

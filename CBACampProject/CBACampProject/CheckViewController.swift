@@ -35,7 +35,7 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
-    }
+    } //760
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return campusArray.count
@@ -48,7 +48,8 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func loadcampusData(){
         //Alamofire
         if(Auth.auth().currentUser != nil){
-            let testuid : String = "0005"
+            
+            let testuid : String = Auth.auth().currentUser!.uid
             let url = "http://cba.sungrak.or.kr:9000/leaders/\(testuid)/campus/list"
             //let param: Parameters = ["name" : "test"]
             let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
