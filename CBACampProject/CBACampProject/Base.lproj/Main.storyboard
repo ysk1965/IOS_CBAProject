@@ -877,14 +877,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFZ-81-N7C">
-                                <rect key="frame" x="110" y="252" width="99" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="makeAttendanceAction:" destination="I6V-OP-OAt" eventType="touchUpInside" id="cgD-Pv-g3j"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qh-ZZ-6GM">
                                 <rect key="frame" x="280" y="79" width="35" height="35"/>
                                 <constraints>
@@ -944,9 +936,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zga-C4-ceS">
                                 <rect key="frame" x="134" y="484" width="52" height="30"/>
                                 <state key="normal" title="출석완료"/>
-                                <connections>
-                                    <action selector="ConfirmButton:" destination="I6V-OP-OAt" eventType="touchUpInside" id="klQ-Je-vi1"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eej-Mn-sHZ">
                                 <rect key="frame" x="5" y="129" width="45" height="30"/>
@@ -988,8 +977,8 @@
                     <connections>
                         <outlet property="attendanceScrollView" destination="jk3-m3-ZMS" id="9jH-Om-Pyn"/>
                         <outlet property="campusName" destination="eej-Mn-sHZ" id="h69-Qm-ZZn"/>
+                        <outlet property="confirmButton" destination="Zga-C4-ceS" id="RNf-xq-BPF"/>
                         <outlet property="datePicker" destination="5cS-Vb-zWF" id="ZTf-2e-1RU"/>
-                        <outlet property="makeAttendanceButton" destination="IFZ-81-N7C" id="hWR-40-Trr"/>
                         <outlet property="statsText" destination="xQa-oo-hmH" id="ASi-qa-eaC"/>
                     </connections>
                 </viewController>
