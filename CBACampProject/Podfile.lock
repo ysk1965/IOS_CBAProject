@@ -72,7 +72,7 @@ PODS:
   - ImageSlideshow/Kingfisher (1.6.1):
     - ImageSlideshow/Core
     - Kingfisher (> 3.0)
-  - Kingfisher (4.8.0)
+  - Kingfisher (5.7.0)
   - leveldb-library (1.20)
   - MenuSlider (0.1.7)
   - nanopb (0.3.8):
@@ -103,7 +103,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - ImageSlideshow (~> 1.6)
   - ImageSlideshow/Kingfisher
-  - Kingfisher (~> 4.0)
+  - Kingfisher (~> 5.0)
   - MenuSlider (~> 0.1.5)
   - RealmSwift
   - SimpleAnimation
@@ -156,7 +156,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: e8b6512c896235149df975c41d9a36c868ab7fba
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   ImageSlideshow: f0f33e1a20668e83d77f5fb7729e4ae4437c0759
-  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MenuSlider: 8f2cb5df91196fa77f3c28c67d1350bd35099bcf
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -169,6 +169,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: df77d5aeacd5493e8c3b2ae1b5cf5f44f742eee9
+PODFILE CHECKSUM: d3d05dd98053416ed754e3ef961a2d2dfa8f54cb
 
 COCOAPODS: 1.5.3

@@ -603,7 +603,7 @@ class AttendanceViewController: UIViewController {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        currentDate = dateFormatter.string(from: date) // --- 3
+        currentDate = dateFormatter.string(from: date)
     }
     
     override func viewDidLoad() {
