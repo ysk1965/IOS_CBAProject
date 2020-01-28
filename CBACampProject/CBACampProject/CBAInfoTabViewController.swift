@@ -219,14 +219,26 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let headerView: UIView = UIView()
         
         let BackImageView: UIImageView = UIImageView()
-        BackImageView.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
+        //BackImageView.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
         BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         let ImageButton = UIButton()
-        if(AgencySingleton.shared.AgencyTitle == "2019_CBA_SUMMER"){
+        if(AgencySingleton.shared.AgencyTitle == "2020_CBA_SUMMER"){
             BackImageView.addSubview(headerLabel)
             headerView.addSubview(BackImageView)
-            ImageButton.frame = CGRect(x:0,y:0,width:viewW!*0.68, height:viewH!*0.123)
+            //ImageButton.imageView!.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
+            ImageButton.backgroundColor = .blue
+            ImageButton.frame = CGRect(x:0,y:0,width: viewW!-124, height:viewH!*0.123)
+            print(viewW!)
+            // 375      250.66666667    22  331     11
+            // 414      266.66666667    38  76      11
+            
+            // 40
+            // -228
+            // 250
+            // 266.6667
+            // -228
+            //print("YSK : ", SideMenuHeader.getView(T##self: SideMenuHeader##SideMenuHeader))
             
             headerView.addSubview(headerButton)
         }
@@ -416,7 +428,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_cbaButton.slideOut()
         popupView_cbaButton.backgroundColor = UIColor.white
         popupView_cbaButton.addTarget(self, action: #selector(self.SetCBA(_:)), for: .touchUpInside)
-        popupView_cbaButton.setImage(UIImage(named: "CBA선택.png"), for: UIControl.State.normal)
+        popupView_cbaButton.setImage(UIImage(named: "2020Winter_SelectImage.png"), for: UIControl.State.normal)
         popupView_cbaButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
             make.width.width.equalTo(270)
@@ -466,7 +478,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     @objc func SetPopup(_ sender:UIButton){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
-            self.menu.reduce(onController: self)
+            //self.menu.reduce(onController: self)
         }
         SetPopupView()
     }
@@ -546,12 +558,19 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
+        if (AgencySingleton.shared.realmAgent == "CBA"){
+            // 이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
+            self.view.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
+        } else {
+            self.view.backgroundColor = .white
+        }
+        
         backgroundView.removeFromSuperview()
         backgroundView.image = UIImage(named:AgencySingleton.shared.backgroundImageName!)
         backgroundView.frame = CGRect(x:0,y:-(viewW!/5), width:viewW!, height:viewH!-(viewW!/10))
         backgroundView.alpha = 0.5
         
-        slideshow.addSubview(backgroundView)
+        //slideshow.addSubview(backgroundView)
         
         //Firebase에서 내 정보 가져오기
         GetGBSData()
@@ -651,9 +670,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         
         let currentAgency = AgencySingleton(
-            AgencyTitle : "2019_CBA_SUMMER", // 2019_SR_SUMMER
-            viewBannerName : "배너.png", // "몽산포_배너.png"
-            sidebarBannerName : "CBA가로배너.png", // "몽산포_가로배너.png"
+            AgencyTitle : "2020_CBA_SUMMER", // 2019_SR_SUMMER
+            viewBannerName : "2020Winter_BackImage.png", // "몽산포_배너.png"
+            sidebarBannerName : "2020Winter_TopImage.png", // "몽산포_가로배너.png"
             topTagImageName : "CBA.jpeg", // "몽산포.png"
             backgroundImageName : "CBA_배경.png",
             sidebar_setting: sidebarArray,
@@ -692,7 +711,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         loadingPage.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
         loadingPage.image = UIImage(named: AgencySingleton.shared.viewBannerName!)
         
-        // 2019_CBA_SUMMER
+        // 2020_CBA_SUMMER
         // 2019_SR_SUMMER
         SettingSidebar()
         

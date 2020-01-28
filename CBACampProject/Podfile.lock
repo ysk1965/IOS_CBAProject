@@ -1,95 +1,151 @@
 PODS:
-  - Alamofire (4.7.3)
-  - Firebase/Analytics (5.4.0):
+  - Alamofire (4.9.1)
+  - AppAuth (1.3.0):
+    - AppAuth/Core (= 1.3.0)
+    - AppAuth/ExternalUserAgent (= 1.3.0)
+  - AppAuth/Core (1.3.0)
+  - AppAuth/ExternalUserAgent (1.3.0)
+  - Firebase/Analytics (6.15.0):
     - Firebase/Core
-  - Firebase/Auth (5.4.0):
+  - Firebase/Auth (6.15.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (= 5.0.2)
-  - Firebase/Core (5.4.0):
+    - FirebaseAuth (~> 6.4.2)
+  - Firebase/Core (6.15.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.0.1)
-  - Firebase/CoreOnly (5.4.0):
-    - FirebaseCore (= 5.0.5)
-  - Firebase/Database (5.4.0):
+    - FirebaseAnalytics (= 6.2.1)
+  - Firebase/CoreOnly (6.15.0):
+    - FirebaseCore (= 6.6.0)
+  - Firebase/Database (6.15.0):
     - Firebase/CoreOnly
-    - FirebaseDatabase (= 5.0.2)
-  - Firebase/Messaging (5.4.0):
+    - FirebaseDatabase (~> 6.1.4)
+  - Firebase/Messaging (6.15.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.0.3)
-  - Firebase/Storage (5.4.0):
+    - FirebaseMessaging (~> 4.2.0)
+  - Firebase/Storage (6.15.0):
     - Firebase/CoreOnly
-    - FirebaseStorage (= 3.0.0)
-  - FirebaseAnalytics (5.0.1):
-    - FirebaseCore (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - nanopb (~> 0.3)
-  - FirebaseAuth (5.0.2):
-    - FirebaseCore (~> 5.0)
+    - FirebaseStorage (~> 3.5.0)
+  - FirebaseAnalytics (6.2.1):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleAppMeasurement (= 6.2.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseAuth (6.4.2):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
+    - GoogleUtilities/Environment (~> 6.2)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (5.0.5):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseDatabase (5.0.2):
-    - FirebaseCore (~> 5.0)
-    - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (3.1.1):
-    - FirebaseCore (~> 5.0)
-  - FirebaseMessaging (3.0.3):
-    - FirebaseCore (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
-    - GoogleToolboxForMac/Logger (~> 2.1)
-    - Protobuf (~> 3.1)
-  - FirebaseStorage (3.0.0):
-    - FirebaseCore (~> 5.0)
+  - FirebaseAuthInterop (1.0.0)
+  - FirebaseCore (6.6.0):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.0):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseDatabase (6.1.4):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - leveldb-library (~> 1.22)
+  - FirebaseInstallations (1.1.0):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.3.0):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+  - FirebaseMessaging (4.2.0):
+    - FirebaseAnalyticsInterop (~> 1.5)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Reachability (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - Protobuf (>= 3.9.2, ~> 3.9)
+  - FirebaseStorage (3.5.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleSignIn (4.1.2):
-    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
-    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
-    - GTMOAuth2 (~> 1.0)
+  - GoogleAppMeasurement (6.2.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - GoogleDataTransport (3.3.0)
+  - GoogleDataTransportCCTSupport (1.3.0):
+    - GoogleDataTransport (~> 3.3)
+    - nanopb (~> 0.3.901)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleToolboxForMac/DebugUtils (2.1.4):
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-  - GoogleToolboxForMac/Defines (2.1.4)
-  - GoogleToolboxForMac/Logger (2.1.4):
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.4)":
-    - GoogleToolboxForMac/DebugUtils (= 2.1.4)
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.4)"
-  - "GoogleToolboxForMac/NSString+URLArguments (2.1.4)"
-  - GTMOAuth2 (1.1.6):
+  - GoogleUtilities/AppDelegateSwizzler (6.5.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.5.0)
+  - GoogleUtilities/Logger (6.5.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.5.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.5.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.5.0)"
+  - GoogleUtilities/Reachability (6.5.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.5.0):
+    - GoogleUtilities/Logger
+  - GTMAppAuth (1.0.0):
+    - AppAuth/Core (~> 1.0)
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.15):
-    - GTMSessionFetcher/Full (= 1.1.15)
-  - GTMSessionFetcher/Core (1.1.15)
-  - GTMSessionFetcher/Full (1.1.15):
-    - GTMSessionFetcher/Core (= 1.1.15)
-  - ImageSlideshow (1.6.1):
-    - ImageSlideshow/Core (= 1.6.1)
-  - ImageSlideshow/Core (1.6.1)
-  - ImageSlideshow/Kingfisher (1.6.1):
+  - GTMSessionFetcher (1.3.1):
+    - GTMSessionFetcher/Full (= 1.3.1)
+  - GTMSessionFetcher/Core (1.3.1)
+  - GTMSessionFetcher/Full (1.3.1):
+    - GTMSessionFetcher/Core (= 1.3.1)
+  - ImageSlideshow (1.8.1):
+    - ImageSlideshow/Core (= 1.8.1)
+  - ImageSlideshow/Core (1.8.1)
+  - ImageSlideshow/Kingfisher (1.8.1):
     - ImageSlideshow/Core
     - Kingfisher (> 3.0)
-  - Kingfisher (5.7.0)
-  - leveldb-library (1.20)
+  - Kingfisher (5.12.0):
+    - Kingfisher/Core (= 5.12.0)
+  - Kingfisher/Core (5.12.0)
+  - leveldb-library (1.22)
   - MenuSlider (0.1.7)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - Protobuf (3.6.0)
-  - Realm (3.17.0):
-    - Realm/Headers (= 3.17.0)
-  - Realm/Headers (3.17.0)
-  - RealmSwift (3.17.0):
-    - Realm (= 3.17.0)
-  - SimpleAnimation (0.4.0)
-  - SnapKit (5.0.0)
-  - SwiftyJSON (4.1.0)
-  - TextFieldEffects (1.4.0)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - PromisesObjC (1.2.8)
+  - Protobuf (3.11.2)
+  - Realm (4.3.1):
+    - Realm/Headers (= 4.3.1)
+  - Realm/Headers (4.3.1)
+  - RealmSwift (4.3.1):
+    - Realm (= 4.3.1)
+  - SimpleAnimation (0.4.2)
+  - SnapKit (5.0.1)
+  - SwiftyJSON (5.0.0)
+  - TextFieldEffects (1.6.0)
   - YoutubePlayer-in-WKWebView (0.2.5)
 
 DEPENDENCIES:
@@ -113,25 +169,35 @@ DEPENDENCIES:
   - YoutubePlayer-in-WKWebView (~> 0.2.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
+    - AppAuth
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
     - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
     - FirebaseDatabase
+    - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
     - FirebaseStorage
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
     - GoogleSignIn
-    - GoogleToolboxForMac
-    - GTMOAuth2
+    - GoogleUtilities
+    - GTMAppAuth
     - GTMSessionFetcher
     - ImageSlideshow
     - Kingfisher
     - leveldb-library
     - MenuSlider
     - nanopb
+    - PromisesObjC
     - Protobuf
     - Realm
     - RealmSwift
@@ -142,33 +208,43 @@ SPEC REPOS:
     - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
-  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
-  FirebaseAuth: 096e457cdd4274412a66c4a35874787e411f5a03
-  FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
-  FirebaseDatabase: 27be5ac5bc75e0b17537b2bbfada8258addcc8cd
-  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
-  FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
-  FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
-  GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
-  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  GTMOAuth2: e8b6512c896235149df975c41d9a36c868ab7fba
-  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
-  ImageSlideshow: f0f33e1a20668e83d77f5fb7729e4ae4437c0759
-  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
-  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
+  Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
+  FirebaseAnalytics: e83e64b1231dedcd9ddd4bdecd9bcfd6ba341679
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseAuth: ce45d7c5d46bed90159f3a73b6efbe8976ed3573
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
+  FirebaseCore: 4aeb81ff53dcd9a3634ca725dc1fb8c2a4622046
+  FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
+  FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
+  FirebaseMessaging: 448cf4c727f3c95f4f90816907d67306ba785cfe
+  FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
+  GoogleAppMeasurement: a08a43b8677b95ed51fcef880e36737334d804fd
+  GoogleDataTransport: 574a983e829327d7c18f2627f65d9e80164ea8a4
+  GoogleDataTransportCCTSupport: cad3cd6cdbdbad6b5c2c9206ec413402755faaaa
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GoogleUtilities: f8de7ddf8c706f58e9b405d53e38bbdaa2731e5a
+  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
+  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  ImageSlideshow: 634865d7d4e96f21e3830a31b51bde768cc94cea
+  Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   MenuSlider: 8f2cb5df91196fa77f3c28c67d1350bd35099bcf
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
-  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
-  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
-  SimpleAnimation: a3473da5421c65100d68f98a44fc853b81091249
-  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
-  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
+  Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
+  RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
+  SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
 PODFILE CHECKSUM: d3d05dd98053416ed754e3ef961a2d2dfa8f54cb
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

@@ -14,7 +14,7 @@ import GoogleSignIn
 import FirebaseAuth
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, GIDSignInUIDelegate, UITextViewDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UITextViewDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
@@ -56,19 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, GIDSig
     }
     
     @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      return GIDSignIn.sharedInstance().handle(url)
     }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: sourceApplication,
-                                                 annotation: annotation)
-    }
-    
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...

@@ -57,7 +57,7 @@ class AgencySingleton {
     }
     
     func SetCBAAgency(){
-        Messaging.messaging().subscribe(toTopic: "2019_CBA_SUMMER") { error in
+        Messaging.messaging().subscribe(toTopic: "2020_CBA_SUMMER") { error in
             print("Subscribed to 2019winter topic")
         }
         Messaging.messaging().unsubscribe(fromTopic: "2019_SR_SUMMER") { error in
@@ -83,11 +83,11 @@ class AgencySingleton {
         bottomArray.append(ButtonType(type: "segue",iconName: "ONAIR.png", controlValue: "StreamingSegue"))
         bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "testSegue"))
         
-        AgencySingleton.shared.AgencyTitle = "2019_CBA_SUMMER" // 2019_SR_SUMMER
-        AgencySingleton.shared.viewBannerName = "배너.png" // "몽산포_배너.png"
-        AgencySingleton.shared.sidebarBannerName = "CBA_사이드바.png" // "몽산포_가로배너.png"
+        AgencySingleton.shared.AgencyTitle = "2020_CBA_SUMMER" // 2019_SR_SUMMER
+        AgencySingleton.shared.viewBannerName = "2020Winter_BaseImage.png" // "몽산포_배너.png"
+        AgencySingleton.shared.sidebarBannerName = "2020Winter_TopImage.png" // "몽산포_가로배너.png"
         AgencySingleton.shared.topTagImageName = "CBA1.png" // "몽산포.png"
-        AgencySingleton.shared.backgroundImageName = "CBA_배경.png"
+        AgencySingleton.shared.backgroundImageName = "2020Winter_BackImage.png"
         
         AgencySingleton.shared.sidebar_setting = sidebarArray
         AgencySingleton.shared.bottombar_setting = bottomArray
@@ -99,7 +99,7 @@ class AgencySingleton {
         Messaging.messaging().subscribe(toTopic: "2019_SR_SUMMER") { error in
             print("Subscribed to 2019winter topic")
         }
-        Messaging.messaging().unsubscribe(fromTopic: "2019_CBA_SUMMER") { error in
+        Messaging.messaging().unsubscribe(fromTopic: "2020_CBA_SUMMER") { error in
             print("Subscribed to 2019winter topic")
         }
         
