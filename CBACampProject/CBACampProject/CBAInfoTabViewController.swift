@@ -42,6 +42,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     let backgroundView = UIImageView()
     
     static var isNotiMessage = false
+    static var isSendNotiMessage = false // 공지 보내기 기능 on off
     
     let realm = try! Realm()
     
@@ -58,7 +59,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     static var ScreenHeight : CGFloat?
     
     //GBS & My Info
-    static var mainUser = MainUser(campus: "", mobile: "", name: "", retreatGbs : "", grade: "")
+    static var mainUser = MainUser(campus: "", mobile: "", name: "", retreatGbs : "", grade: "", position: "")
     static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
     static var memberCount = Int(0)
     
@@ -108,7 +109,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         var menuItemArray : Array<SideMenuItem> = []
         for n in AgencySingleton.shared.sidebar_setting{
             var tempMenu : SideMenuItem?
-            if n.type == "image"{
+            if n.type == "image" {
                 tempMenu = SideMenuItemFactory.make(title: n.iconName!){
                     FirebaseModel().FIR_ChangeImage(title: n.controlValue!)
                 }
@@ -191,12 +192,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 headerLabel.text = "은혜 많이 받으세요 :)"
             }else{
 		var tempGrade = ""
-		if(CBAInfoTabViewController.mainUser.grade == "MEMBER"){
+                if(CBAInfoTabViewController.mainUser.position == "조원"){
 			tempGrade = "조원"
-        } else if(CBAInfoTabViewController.mainUser.grade == "STAFF"){
-            tempGrade = "스탭"
+        } else if(CBAInfoTabViewController.mainUser.position == "조장"){
+            tempGrade = "조장"
         } else{
-			tempGrade = "조장"
+			tempGrade = ""
 		}
                 headerLabel.text = CBAInfoTabViewController.mainUser.name + "  |  " + CBAInfoTabViewController.mainUser.retreatGbs + "  |  " + tempGrade
             }
@@ -219,15 +220,15 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let headerView: UIView = UIView()
         
         let BackImageView: UIImageView = UIImageView()
-        //BackImageView.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
+        BackImageView.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
         BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         let ImageButton = UIButton()
-        if(AgencySingleton.shared.AgencyTitle == "2020_CBA_SUMMER"){
+        if(AgencySingleton.shared.AgencyTitle == "2020_CBA_WINTER"){
             BackImageView.addSubview(headerLabel)
             headerView.addSubview(BackImageView)
-            //ImageButton.imageView!.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
-            ImageButton.backgroundColor = .blue
+            ImageButton.imageView!.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
+            //ImageButton.backgroundColor = .blue
             ImageButton.frame = CGRect(x:0,y:0,width: viewW!-124, height:viewH!*0.123)
             print(viewW!)
             // 375      250.66666667    22  331     11
@@ -275,6 +276,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func loadVisiblePages(_ notification: Notification){
+        // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
+        if (AgencySingleton.shared.realmAgent == "CBA"){
+            // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
+            slideshow.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
+        }
+        
         slideshow.slideIn(from : .right, delay : 0.5)
         slideshow.fadeIn(duration: 0.3)
         slideshow.setImageInputs(FirebaseModel.imageKingfisher)
@@ -343,7 +350,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     @objc func GetCall(_ sender: Any) {
-        let urlString = "tel://" + "010-3397-4842"
+        let urlString = "tel://" + "010-3925-7313"
         let numberURL = NSURL(string: urlString)
         UIApplication.shared.open(numberURL! as URL)
         CloseImageView()
@@ -501,9 +508,21 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         self.performSegue(withIdentifier: "infoSegue", sender: nil)
     }
-    
+
+    var isOpenTimeTable = false
     @objc func ChangeImage(_ sender:UIButton){
-        FirebaseModel().FIR_ChangeImage(title: sender.currentTitle!)
+        
+        if(sender.currentTitle == "timetable"){
+            if(isOpenTimeTable == true){
+                CloseImageView()
+                isOpenTimeTable = false
+            } else{
+                FirebaseModel().FIR_ChangeImage(title: sender.currentTitle!)
+                isOpenTimeTable = true
+            }
+        } else{
+            FirebaseModel().FIR_ChangeImage(title: sender.currentTitle!)
+        }
     }
     
     @objc func DoCall(_ sender:UIButton){
@@ -559,7 +578,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
         if (AgencySingleton.shared.realmAgent == "CBA"){
-            // 이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
+            // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
             self.view.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
         } else {
             self.view.backgroundColor = .white
@@ -670,7 +689,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         
         let currentAgency = AgencySingleton(
-            AgencyTitle : "2020_CBA_SUMMER", // 2019_SR_SUMMER
+            AgencyTitle : "2020_CBA_WINTER", // 2019_SR_SUMMER
             viewBannerName : "2020Winter_BackImage.png", // "몽산포_배너.png"
             sidebarBannerName : "2020Winter_TopImage.png", // "몽산포_가로배너.png"
             topTagImageName : "CBA.jpeg", // "몽산포.png"

@@ -175,10 +175,8 @@ class FirebaseModel {
                         let temp = self.settingImage.sorted(by: { $0.key < $1.key })
                         
                         for i in temp{
-                            print(i.key)
                             FirebaseModel.imageKingfisher.append(i.value)
                         }
-                        print("마지막 애 받으면 넘겨")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ChangeImage"), object: self)
                     }
                     
@@ -215,10 +213,8 @@ class FirebaseModel {
                         let temp = self.settingImage.sorted(by: { $0.key < $1.key })
                         
                         for i in temp{
-                            print(i.key)
                             FirebaseModel.youtubeImage.append(i.value)
                         }
-                        print("마지막 애 받으면 넘겨")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_SetImage"), object: self)
                     }
                     
@@ -251,7 +247,6 @@ class FirebaseModel {
                     FirebaseModel.noticeDictionary[n.key] = n.value as! String
                 }
                 */
-                print("확인해봐!!!")
                 for i in (0..<result.count){
                     print(FirebaseModel.noticeDictionary)
                     FirebaseModel.noticeDictionary[result[i].value as! String] = result[i].key
@@ -270,7 +265,11 @@ class FirebaseModel {
         self.ref.child(AgencySingleton.shared.AgencyTitle!).child(title).setValue(values, withCompletionBlock: {(err, ref) in
             if(err == nil){
             }
+            print("success")
         })
+        
+        
+        
     }
     
     func downloadImage(name: String, imageView:UIImageView){
@@ -287,12 +286,87 @@ class FirebaseModel {
             
             if let result = snapshot.children.allObjects as? [DataSnapshot]{
                 for i in result {
-                    FirebaseModel.youtubeURL.append(i.value as! String)
+                    FirebaseModel.youtubeURL.append(i.value as? String ?? "")
                 }
             }
             print(FirebaseModel.youtubeURL)
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SetYoutube"), object: self)
         })
+    }
+    
+    class PushNotificationSender {
+        /*
+                   //요기에 alamofire추기
+                   if(Auth.auth().currentUser != nil){
+                       let url = "https://fcm.googleapis.com/v1/projects/myproject-b5ae1/messages:send HTTP/1.1"
+                       let message : String = SettingDate() // 현재 날짜
+                       let campusName : String = selectedCampus!
+                       
+                       
+                       let params : Parameters = [
+                           "date" : date,
+                           "campus" : campusName
+                       ]
+                       
+                       print(date)
+                       
+                       let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
+                       let alamo = Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
+                       
+                       alamo.responseJSON { response in
+                           print("JSON_Alamo=\(response.result.value!)")
+                           
+                           if(response.result.error != nil) {
+                               print(response.result.error!)
+                               return;
+                           }
+                           let json = JSON(response.result.value!)
+                           let results = json["data"].arrayValue
+                           
+                           print(json)
+                           if let status = response.response?.statusCode{
+                               switch(status){
+                               case 200..<300:
+                                   
+                                   print("success")
+                                   print("JSON: \(json)")
+                                   
+                               default:
+                                   print("error with response status: \(status)")
+                               }
+                           }
+                       }
+                   }
+                    */
+        
+        func sendPushNotification(to subject: String, title: String, body: String) {
+            let urlString = "https://fcm.googleapis.com/v1/projects/cba-retreat/messages:send"
+            let url = NSURL(string: urlString)!
+            let message: [String : Any] = ["topic" : subject,
+                                               "notification" : ["title" : title, "body" : body]
+            ]
+            print(message)
+            
+            
+            let request = NSMutableURLRequest(url: url as URL)
+            request.httpMethod = "POST"
+            request.httpBody = try? JSONSerialization.data(withJSONObject:message, options: [.prettyPrinted])
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("Bearer AAAA-PRsYvs:APA91bFiNlDHb8bBp5N4CJJuhtNSiV4Ej1KIh3tkIRsUbfrmHcCPvJvphxAWwg2oLohhgll1Ui0owWyRSP3nrkSDSrnr6M3ktjo75p2YFeqSl24naWo5ILf0yXVbWu08EvbqX0w8SoGSFFml6SmwIOh12ZmAgP1bMg", forHTTPHeaderField: "Authorization")
+            let task =  URLSession.shared.dataTask(with: request as URLRequest)  { (data, response, error) in
+                do {
+                    if let jsonData = data {
+                        if let jsonDataDict  = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject]
+                        {
+                            NSLog("Received data:\n\(jsonDataDict))")
+                        }
+                    }
+                } catch let err as NSError {
+                    print(err.debugDescription)
+                }
+            }
+            task.resume()
+        }
     }
 }

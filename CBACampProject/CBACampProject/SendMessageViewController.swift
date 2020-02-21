@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import Alamofire
+import SwiftyJSON
 
 class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     var dbRef : DatabaseReference!
@@ -26,6 +28,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
     
     let date = Date()
     let calendar = Calendar.current
+    var isStaff = false
     
     @objc func sendMessage(){
         let month = calendar.component(.month, from: date)
@@ -37,8 +40,32 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
         } else{
             currentTime = "\(month)월\(day)일 오전\(hour):\(minute)"
         }
+        
         if((Auth.auth().currentUser) != nil){
-            dbRef.child(
+            // 공지보내는 사람 핸드폰
+            if(CBAInfoTabViewController.isSendNotiMessage == true){ // 조건 만들자
+                if(textAuthor.text == ""){
+                    dbRef.child(
+                    AgencySingleton.shared.AgencyTitle! + "/noti").childByAutoId().setValue([
+                        "author" : "CBA 본부",
+                        "message" : textMessage.text!,
+                        "isStaff" : "공지",
+                        "time" : currentTime,
+                        "uid" : AgencySingleton.shared.realmUid!
+                    ])
+                } else{
+                    dbRef.child(
+                    AgencySingleton.shared.AgencyTitle! + "/noti").childByAutoId().setValue([
+                        "author" : textAuthor.text!,
+                        "message" : textMessage.text!,
+                        "isStaff" : "공지",
+                        "time" : currentTime,
+                        "uid" : AgencySingleton.shared.realmUid!
+                    ])
+                }
+                CBAInfoTabViewController.isSendNotiMessage = false
+            } else{
+                dbRef.child(
                 AgencySingleton.shared.AgencyTitle! + "/message").childByAutoId().setValue([
                     "author" : textAuthor.text!,
                     "message" : textMessage.text!,
@@ -46,6 +73,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
                     "time" : currentTime,
                     "uid" : AgencySingleton.shared.realmUid!
                 ])
+            }
         } else{
             dbRef.child(AgencySingleton.shared.AgencyTitle! + "/message").childByAutoId().setValue([
                 "author" : textAuthor.text!,
@@ -54,6 +82,11 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
                 "time" : currentTime,
                 "uid" : AgencySingleton.shared.realmUid!
                 ])
+            
+
+            //let sender = FirebaseModel.PushNotificationSender()
+            
+            //sender.sendPushNotification(to: "cba_admin", title: "title", body: "body")
         }
         
         dismiss(animated: true, completion: nil)

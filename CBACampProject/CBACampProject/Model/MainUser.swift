@@ -14,20 +14,23 @@ class MainUser{
     var name : String
     var retreatGbs : String
     var grade : String
+    var position : String
     
-    init(campus:String, mobile:String, name : String, retreatGbs : String, grade : String) {
+    init(campus:String, mobile:String, name : String, retreatGbs : String, grade : String, position : String) {
         self.campus = campus
         self.mobile = mobile
         self.name = name
         self.retreatGbs = retreatGbs
         self.grade = grade
+        self.position = position
     }
     
-    func setUser(campus:String, mobile:String, name : String, retreatGbs : String, grade : String){
+    func setUser(campus:String, mobile:String, name : String, retreatGbs : String, grade : String, position : String){
         self.campus = campus
         self.mobile = mobile
         self.name = name
         self.retreatGbs = retreatGbs
         self.grade = grade
+        self.position = position
     }
 }

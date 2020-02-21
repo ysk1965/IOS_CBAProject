@@ -34,6 +34,7 @@ struct MyInfo: Codable {
     let mobile : String?
     let retreatGbs : String?
     let grade : String?
+    let position : String?
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -42,6 +43,7 @@ struct MyInfo: Codable {
         mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
         retreatGbs = try values.decodeIfPresent(String.self, forKey: .retreatGbs)
         grade = try values.decodeIfPresent(String.self, forKey: .grade)
+        position = try values.decodeIfPresent(String.self, forKey: .position)
     }
 }
 
@@ -80,17 +82,25 @@ func GetGBSData(){
     if(Auth.auth().currentUser != nil){
         let url = "http://cba.sungrak.or.kr:9000/getMyInfo/" + (Auth.auth().currentUser?.uid)!
         let urlObj = URL(string: url)
+        print(url)
         
         URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
             guard let data = data else {return}
             
             do {
                 let decoder = JSONDecoder()
-                var myinfos = try decoder.decode(MyInfo.self, from: data)
+                let myinfos = try decoder.decode(MyInfo.self, from: data)
                 print(myinfos)
                 
                 if(myinfos.name != nil){
-                    CBAInfoTabViewController.mainUser.setUser(campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, retreatGbs: myinfos.retreatGbs!, grade: myinfos.grade!)
+                    CBAInfoTabViewController.mainUser.setUser(
+                        campus: myinfos.campus ?? "" ,
+                        mobile: myinfos.mobile ?? "" ,
+                        name: myinfos.name ?? "",
+                        retreatGbs: myinfos.retreatGbs ?? "",
+                        grade: myinfos.grade ?? "",
+                        position: myinfos.position ?? ""
+                    )
                 }
                 print(CBAInfoTabViewController.mainUser.name)
                 
@@ -114,7 +124,11 @@ func GetGBSData(){
                 let myinfos = try decoder.decode(MyGBS.self, from: data)
                 
                 if(myinfos.gbsLevel != nil){
-                    CBAInfoTabViewController.mainGBS.setGBS(gbsLevel: myinfos.gbsLevel!, leader: myinfos.leader!, members: myinfos.members!)
+                    CBAInfoTabViewController.mainGBS.setGBS(
+                        gbsLevel: myinfos.gbsLevel ?? "",
+                        leader: myinfos.leader!,
+                        members: myinfos.members!
+                    )
                     CBAInfoTabViewController.memberCount = myinfos.members!.count
                 }
             } catch{
@@ -135,10 +149,17 @@ func GetMyData(){
             
             do {
                 let decoder = JSONDecoder()
-                var myinfos = try decoder.decode(MyInfo.self, from: data)
+                let myinfos = try decoder.decode(MyInfo.self, from: data)
                 
                 if(myinfos.name != nil){
-                    CBAInfoTabViewController.mainUser.setUser(campus: myinfos.campus!, mobile: myinfos.mobile!, name: myinfos.name!, retreatGbs: myinfos.retreatGbs!, grade: myinfos.grade!)
+                    CBAInfoTabViewController.mainUser.setUser(
+                        campus: myinfos.campus ?? "",
+                        mobile: myinfos.mobile ?? "",
+                        name: myinfos.name ?? "",
+                        retreatGbs: myinfos.retreatGbs ?? "",
+                        grade: myinfos.grade ?? "",
+                        position : myinfos.position ?? ""
+                    )
                 }
                 
             } catch{

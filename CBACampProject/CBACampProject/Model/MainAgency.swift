@@ -57,16 +57,17 @@ class AgencySingleton {
     }
     
     func SetCBAAgency(){
-        Messaging.messaging().subscribe(toTopic: "2020_CBA_SUMMER") { error in
-            print("Subscribed to 2019winter topic")
+        Messaging.messaging().subscribe(toTopic: "2020_CBA_WINTER") { error in
+            print("Subscribed to 2020_CBA_WINTER topic")
         }
         Messaging.messaging().unsubscribe(fromTopic: "2019_SR_SUMMER") { error in
-            print("Subscribed to 2019winter topic")
+            print("unSubscribed to 2019winter topic")
         }
         
         //CBA Data
         var sidebarArray : Array<ButtonType> = []
         sidebarArray.removeAll()
+        sidebarArray.append(ButtonType(type: "segue",iconName: "출석 관리", controlValue: "testSegue"))
         sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
@@ -81,9 +82,9 @@ class AgencySingleton {
         bottomArray.append(ButtonType(type: "call",iconName: "CALL.png", controlValue: "010-3225-3652"))
         bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
         bottomArray.append(ButtonType(type: "segue",iconName: "ONAIR.png", controlValue: "StreamingSegue"))
-        bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "testSegue"))
+        bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "SearchGBS")) // GBS Attandance : testSegue
         
-        AgencySingleton.shared.AgencyTitle = "2020_CBA_SUMMER" // 2019_SR_SUMMER
+        AgencySingleton.shared.AgencyTitle = "2020_CBA_WINTER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "2020Winter_BaseImage.png" // "몽산포_배너.png"
         AgencySingleton.shared.sidebarBannerName = "2020Winter_TopImage.png" // "몽산포_가로배너.png"
         AgencySingleton.shared.topTagImageName = "CBA1.png" // "몽산포.png"
@@ -99,8 +100,8 @@ class AgencySingleton {
         Messaging.messaging().subscribe(toTopic: "2019_SR_SUMMER") { error in
             print("Subscribed to 2019winter topic")
         }
-        Messaging.messaging().unsubscribe(fromTopic: "2020_CBA_SUMMER") { error in
-            print("Subscribed to 2019winter topic")
+        Messaging.messaging().unsubscribe(fromTopic: "2020_CBA_WINTER") { error in
+            print("unSubscribed to 2020winter topic")
         }
         
         //MONGSANPO Data

@@ -42,7 +42,7 @@ class MassageTabViewController: UIViewController {
         scrollView.addSubview(scrollcontainerView)
         //scrollView.addSubview(buttonView)
         
-        var inypos = self.view.frame.height/10
+        var inypos = self.view.frame.height/8
         let inxpos = 20
         let count = FirebaseModel.messages.count
         
@@ -254,9 +254,9 @@ class MassageTabViewController: UIViewController {
         
         if(CBAInfoTabViewController.isNotiMessage == false) {
             let infoText = UILabel()
-            infoText.frame = CGRect(x:0, y:self.view.frame.height/9, width:self.view.frame.width, height:self.view.frame.height/13)
+            infoText.frame = CGRect(x:0, y:self.view.frame.height/13, width:self.view.frame.width, height:self.view.frame.height/12)
             infoText.font = UIFont(name: "System"
-                , size: 11)
+                , size: 8)
             infoText.adjustsFontSizeToFitWidth = true
             infoText.textColor = UIColor.lightGray
             infoText.textAlignment = .center
@@ -281,6 +281,19 @@ class MassageTabViewController: UIViewController {
             SendButton.setBackgroundImage(UIImage(named: "메세지-아이콘.png"), for: .normal)
             SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
             self.view.addSubview(SendButton)
+        } else {
+            if (CBAInfoTabViewController.mainUser.retreatGbs == "봉사자") {
+                // 관리자일때만 오픈되도록!
+            CBAInfoTabViewController.isSendNotiMessage = true
+                
+            SendButton.setTitle(" ", for: .normal)
+            SendButton.setTitleColor(UIColor.blue, for: .normal)
+            SendButton.popIn()
+            SendButton.frame = CGRect(x: scrollView.frame.width-95, y: scrollView.frame.height-95, width: 75, height: 75)
+            SendButton.setBackgroundImage(UIImage(named: "메세지-아이콘.png"), for: .normal)
+            SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
+            self.view.addSubview(SendButton)
+            }
         }
         
         CBAInfoTabViewController.isNotiMessage = false
@@ -317,9 +330,11 @@ class MassageTabViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "FIR_GetMessage"), object: nil)
         
+        /*
         Messaging.messaging().subscribe(toTopic: "2019winter") { error in
             print("Subscribed to 2019winter topic")
         }
+        */
     }
     /*
     // MARK: - Navigation
