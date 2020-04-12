@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gy5-cZ-uVY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gy5-cZ-uVY">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -119,7 +120,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="로고.png" translatesAutoresizingMaskIntoConstraints="NO" id="xAW-L4-Bir">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="로고.png" translatesAutoresizingMaskIntoConstraints="NO" id="xAW-L4-Bir">
                                 <rect key="frame" x="210" y="68" width="80" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="B4Z-ml-MwD"/>
@@ -890,6 +891,7 @@
                                     <constraint firstAttribute="width" constant="240" id="SlG-am-dSh"/>
                                     <constraint firstAttribute="height" constant="50" id="Y62-Ym-XRl"/>
                                 </constraints>
+                                <locale key="locale" localeIdentifier="ko"/>
                                 <connections>
                                     <action selector="DateValueChange:" destination="I6V-OP-OAt" eventType="valueChanged" id="dUa-pK-N71"/>
                                 </connections>
@@ -1237,7 +1239,7 @@
         <image name="ic_home_outline" width="33.333332061767578" height="33.333332061767578"/>
         <image name="ic_info" width="25" height="25"/>
         <image name="ic_news" width="26.666666030883789" height="26.666666030883789"/>
-        <image name="로고.png" width="16" height="16"/>
+        <image name="로고.png" width="164" height="45"/>
         <image name="배너.png" width="16" height="16"/>
         <image name="조장.png" width="16" height="16"/>
     </resources>

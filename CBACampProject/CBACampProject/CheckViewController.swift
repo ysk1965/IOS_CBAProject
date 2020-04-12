@@ -53,25 +53,35 @@ class CheckViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             let url = "http://cba.sungrak.or.kr:9000/leaders/\(testuid)/campus/list"
             //let param: Parameters = ["name" : "test"]
             let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
-            let alamo = Alamofire.request(url, method: .get, encoding: URLEncoding.default, headers: header)
+            let alamo = AF.request(url, method: .get, encoding: URLEncoding.default, headers: header)
             
             alamo.responseJSON { response in
-                let json = JSON(response.result.value!)
-                let results = json["names"].arrayValue
+                switch response.result{
+                case .success(let value):
+                    print("success")
+                    let json = JSON(value)
+                    let results = json["names"].arrayValue
+
+                    for result in results {
+                        let test = result.stringValue
+                        self.campusArray.append(test)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                /*
+                
+                let json = JSON(response.result.value)
                 if let status = response.response?.statusCode{
                     switch(status){
                     case 200..<300:
-                        print("success")
                         print("JSON: \(json)")
                         
-                        for result in results {
-                            let test = result.stringValue
-                            self.campusArray.append(test)
-                        }
                     default:
                         print("error with response status: \(status)")
                     }
                 }
+                 */
                 
                 DispatchQueue.main.async {
                     self.CampusPicker.reloadAllComponents()

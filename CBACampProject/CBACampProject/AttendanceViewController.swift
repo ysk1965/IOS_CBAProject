@@ -39,15 +39,15 @@ struct AttendanceInfo: Codable {
     }
 }
 
-struct testAPI : Codable {
-    let id : String
-    let status : String
-    let note : String
+struct ReportAttendancePost: Encodable {
+    var checkList : Array<AttendanceData>
+    var leaderUid : String
 }
 
-struct checkAPI : Codable{
-    let checkList : [testAPI]
-    let leaderUid : String
+struct AttendanceData: Encodable {
+    var id : Int
+    var status : String
+    var note : String
 }
 
 class AttendanceViewController: UIViewController {
@@ -71,56 +71,49 @@ class AttendanceViewController: UIViewController {
                 "campus" : campusName
             ]
             
-            print(date)
+            let header: HTTPHeaders = [
+                "Content-Type": "application/json",
+                "Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"
+            ]
+            let alamo = AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
             
-            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
-            let alamo = Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
+            print(params)
             
             alamo.responseJSON { response in
-                print("JSON_Alamo=\(response.result.value!)")
-                
-                if(response.result.error != nil) {
-                    print(response.result.error!)
-                    return;
-                }
-                let json = JSON(response.result.value!)
-                let results = json["data"].arrayValue
-                
-                print(json)
-                if let status = response.response?.statusCode{
-                    switch(status){
-                    case 200..<300:
-                        self.currentAttendanceInfo.removeAll()
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    print("success MAKE")
+                    print("JSON: \(json)")
+                    let results = json["data"].arrayValue
+                    
+                    self.currentAttendanceInfo.removeAll()
+                    
+                    for result in results {
+                        var test = AttendanceInfo.init()
                         
-                        print("success")
-                        print("JSON: \(json)")
+                        /*
+                         let id = result["id"].stringValue
+                         let date = result["date"].stringValue
+                         let name = result["name"].stringValue
+                         let mobile = result["mobile"].stringValue
+                         let status = result["status"].stringValue
+                         let note = result["note"].stringValue
+                         */
                         
-                        for result in results {
-                            var test = AttendanceInfo.init()
-                            
-                            /*
-                             let id = result["id"].stringValue
-                             let date = result["date"].stringValue
-                             let name = result["name"].stringValue
-                             let mobile = result["mobile"].stringValue
-                             let status = result["status"].stringValue
-                             let note = result["note"].stringValue
-                             */
-                            
-                            test.id = result["id"].stringValue
-                            test.date = result["date"].stringValue
-                            test.name = result["name"].stringValue
-                            test.mobile = result["mobile"].stringValue
-                            test.status = result["status"].stringValue
-                            test.note = result["note"].stringValue
-                            
-                            self.currentAttendanceInfo[String(test.id!)] = test
-                        }
+                        test.id = result["id"].stringValue
+                        test.date = result["date"].stringValue
+                        test.name = result["name"].stringValue
+                        test.mobile = result["mobile"].stringValue
+                        test.status = result["status"].stringValue
+                        test.note = result["note"].stringValue
                         
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
-                    default:
-                        print("error with response status: \(status)")
+                        self.currentAttendanceInfo[String(test.id!)] = test
                     }
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+                case .failure(let error):
+                    print(error)
                 }
             }
         }
@@ -131,9 +124,9 @@ class AttendanceViewController: UIViewController {
     
     var selectedCampus : String?
     var currentAttendanceInfo : Dictionary<String, AttendanceInfo> = [:]
-    var checkAttendanceDic : Dictionary<String, Parameters> = [:]
+    var sendAttendanceArray : Array<AttendanceData> = []
     var checkAttendance : Array<Parameters> = []
-    var buttonArray : Array<UIButton> = []
+    var attendButtonArray : Array<UIButton> = []
     var textArray : Array<UITextView> = []
     
     var errorCode = 999 // attend value error
@@ -179,103 +172,46 @@ class AttendanceViewController: UIViewController {
         //confirm을 누를 때 세부사항 text저장 후 아래서 보내 줌
         //status는 누를 때마다 상태가 변경되기에 여기서 저장 안해도 됨 (renewAttend)
         
-        var index = 0
-        for (key, value) in currentAttendanceInfo {
-            currentAttendanceInfo[key]?.note = textArray[index].text
-            
-            index += 1
-        }
-        
-        for (key, value) in checkAttendanceDic{
-            checkAttendance.append(value)
-        }
-        
         if(Auth.auth().currentUser != nil){
             let url = "http://cba.sungrak.or.kr:9000/attendance/list/report"
             
             let date : String = SettingDate() // [NEEDED] DatePicker의 날자로 적용되어야 함
             let campusName : String = selectedCampus!
-            //
-            let params : Parameters = [
-                "checkList" : checkAttendance,
-                "leaderUid" : Auth.auth().currentUser!.uid// [NEEDED] leader의 uid로 차후에 수정해야 함
-            ]
             
-            let test1 : Parameters = [
-                "id" : 1964,
-                "status" : "ATTENDED",
-                "note" : "냥냥!!"
-            ]
+            var params = ReportAttendancePost(checkList: sendAttendanceArray, leaderUid: Auth.auth().currentUser!.uid)
             
-            //test Data
-            let testParams : Parameters = [
-                "checkList" : test1,
-                "leaderUid" : "4ed2fc5f-9b48-44aa-b7eb-cb9950d6a011"
-            ]
-            
-            print(date)
+            print("Confirm Param")
             print(params)
             
-            print(testParams)
+            let header: HTTPHeaders = [
+                "Content-Type": "application/json",
+                "Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"
+            ]
             
-            let myTest = testAPI(id: "123", status: "", note:"")
-            
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
-            let testEncoding = checkAPI(checkList: [myTest], leaderUid: Auth.auth().currentUser!.uid)
-            let jsonData = try? encoder.encode(testEncoding)
-            /*
-            if let jsonData = jsonData, let jsonString = String(data:jsonData, encoding: .utf8){
-                print(jsonString)
-            }
-            */
-            
-            /*
-            var request = URLRequest(url: URL(string: "http://cba.sungrak.or.kr:9000/attendance/list/report")!)
-            request.httpMethod = "POST"
-            do{
-                try request.httpBody = jsonData
-            } catch {
-                return
+            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response {
+                response in debugPrint(response)
             }
             
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            request.addValue("Basic YWRtaW46ZGh3bHJybGVoISEh", forHTTPHeaderField: "Authorization")
+            /*
+            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header)
             
-            URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                if let response = response as? HTTPURLResponse, 200...299 ~= response.statusCode {
-                    print("SUCCESS")
-                    //SUCCESS
-                }else{
-                    print("FAILURE")
-                    //Failure
-                }
-                print(error)
-            })
-            */
- 
-            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
- 
-            let alamo = Alamofire.request(url, method: .post, encoding: testEncoding as! ParameterEncoding, headers: header).responseJSON(completionHandler: { response in
+            alamo.responseJSON(completionHandler: { response in
                 switch response.result{
                 case .success :
-                    print("success POST")
-                    if let values = response.result.value{
-                        let json = JSON(values)
-                        print(json)
-                    }
+                    print("success Confirm POST")
                 case .failure(let error) :
+                    print("failure Confirm POST")
                     print(error)
                 }
             })
- 
+             */
             
             // [NEEDED]변경이 완료되었습니다! 같은 Alert가 필요할듯
         }
     }
     
     @IBAction func editButton(_ sender: Any) {
+        // edit는 회원 여부 수정 할 때 필요함
         // 다른 곳에서 쓰고 있고 해당 코드는 나중에 다른 작업으로 바뀌어야 함
         /*
         // 출석부 생성해서 받아와야 해
@@ -395,10 +331,59 @@ class AttendanceViewController: UIViewController {
             ]
             print(date)
             let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
-            let alamo = Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header)
+            let alamo = AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header)
             
             print(params)
             alamo.responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    let results = json["data"].arrayValue
+                    
+                    if (results.count != 0){
+                        var dateCheck = ""
+                        print("success LOAD")
+                        print("JSON: \(json)")
+                        self.currentAttendanceInfo.removeAll()
+
+                        for result in results {
+                            var test = AttendanceInfo.init()
+                            
+                            test.id = result["id"].stringValue
+                            test.date = result["date"].stringValue
+                            test.name = result["name"].stringValue
+                            test.mobile = result["mobile"].stringValue
+                            test.status = result["status"].stringValue
+                            test.note = result["note"].stringValue
+                            
+                            self.currentAttendanceInfo[String(test.id!)] = test
+                            dateCheck = test.date!
+                        }
+                        
+                        self.datePicker.date = self.SettingString2Date(a: dateCheck)
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+                    } else{
+                        if nav != "CURRENT" {
+                            return
+                        }
+                        print("didn`t exist")
+                        self.currentAttendanceInfo.removeAll()
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+                        // alert라도 띄워주자 앞이나 뒤 정보가 더 없음
+                    }
+                case .failure(let error):
+                    // Empty
+                    self.isEmptyFlag = true
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+                    
+                    print(error)
+                }
+                
+                
+                /*
                 let json = JSON(response.result.value!)
                 let results = json["data"].arrayValue
                 if (results.count != 0){
@@ -448,13 +433,14 @@ class AttendanceViewController: UIViewController {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
                     // alert라도 띄워주자 앞이나 뒤 정보가 더 없음
                 }
+                */
             }
         }
     }
     
     @objc func viewload(_ notification: Notification) {
         // 뷰가 바뀌는거면 체크 하던거 의미 없어지니 지워
-        checkAttendanceDic.removeAll()
+        sendAttendanceArray.removeAll()
         checkAttendance.removeAll()
         
         attendanceScrollView.subviews.forEach({$0.removeFromSuperview()})
@@ -477,7 +463,7 @@ class AttendanceViewController: UIViewController {
             return
         }
         
-        var inypos = 1
+        var inypos = 0
         let inxpos = 20
         let count = currentAttendanceInfo.count
         
@@ -485,12 +471,15 @@ class AttendanceViewController: UIViewController {
         for (key, value) in currentAttendanceInfo {
             var nextypos = 0
             let cellview = UIView()
-            cellview.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.5).cgColor
-            cellview.layer.borderWidth = 0
             
+            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            backgroundImage.image = UIImage(named: "몽산포_가로배너.png")
+            backgroundImage.contentMode = .scaleAspectFill
+            cellview.insertSubview(backgroundImage, at: 0)
             
-            cellview.backgroundColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.4)
+            //cellview.backgroundColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.4)
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(attendanceScrollView.frame.width), height: 80)
+            
             attendanceScrollView.addSubview(cellview)
             
             //profile image, rank name label, name label //////////////////////////////
@@ -501,7 +490,7 @@ class AttendanceViewController: UIViewController {
             namelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             namelabel.textColor = UIColor.black
             namelabel.sizeToFit()
-            namelabel.frame.origin = CGPoint(x: 20, y: 18)
+            namelabel.frame.origin = CGPoint(x: 15, y: 13)
             cellview.addSubview(namelabel)
             
             ///agelabel
@@ -510,25 +499,29 @@ class AttendanceViewController: UIViewController {
             mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             mobilelabel.textColor = UIColor.black
             mobilelabel.sizeToFit()
-            mobilelabel.frame.origin = CGPoint(x: 90, y: 18)
+            mobilelabel.frame.origin = CGPoint(x: 90, y: 13)
             cellview.addSubview(mobilelabel)
             
-            buttonArray.append(UIButton.init())
-            buttonArray[i].setTitle(key, for: .normal)
+            
+            attendButtonArray.append(UIButton.init())
+            attendButtonArray[i].setTitle(key, for: .normal)
             if(currentAttendanceInfo[key]?.status == "ATTENDED"){
-                buttonArray[i].setTitleColor(UIColor.black, for: .normal)
-                buttonArray[i].backgroundColor = UIColor.black
+                attendButtonArray[i].setTitleColor(UIColor.black, for: .normal)
+                attendButtonArray[i].backgroundColor = UIColor.black
+                //buttonArray[i].setImage(UIImage(named: "cancel.png"), for: .normal)
             } else{
-                buttonArray[i].setTitleColor(UIColor.blue, for: .normal)
-                buttonArray[i].backgroundColor = UIColor.blue
+                attendButtonArray[i].setTitleColor(UIColor.blue, for: .normal)
+                attendButtonArray[i].backgroundColor = UIColor.blue
+                //buttonArray[i].setImage(UIImage(named: "cancel.png"), for: .normal)
             }
-            buttonArray[i].frame = CGRect(x: 220, y: 18 , width: 25, height: 25)
-            buttonArray[i].addTarget(self, action: #selector(self.Attend(_:)), for: .touchUpInside)
+            attendButtonArray[i].frame = CGRect(x: 210, y: 10 , width: 30, height: 30)
+            attendButtonArray[i].addTarget(self, action: #selector(self.AttendAction(_:)), for: .touchUpInside)
+            cellview.addSubview(attendButtonArray[i])
             
             //textview///////////////////////////////////////
             textArray.append(UITextView.init())
-            textArray[i].frame.origin = CGPoint(x:250, y:18)
-            textArray[i].frame.size = CGSize(width: 100, height: 25)
+            textArray[i].frame.origin = CGPoint(x:250, y:10)
+            textArray[i].frame.size = CGSize(width: 100, height: 30)
             textArray[i].backgroundColor = UIColor.white
             textArray[i].text = currentAttendanceInfo[key]?.note
             cellview.addSubview(textArray[i])
@@ -544,13 +537,12 @@ class AttendanceViewController: UIViewController {
             textview.isScrollEnabled = false
             textview.isEditable = false
             textview.isUserInteractionEnabled = true
-            nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
             textview.backgroundColor = UIColor.init(white: 0, alpha: 0)
             
+            nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
             cellview.frame.size.height = CGFloat(nextypos)
-            inypos += Int(cellview.frame.size.height) //다음 CellView의 위치
-            cellview.addSubview(buttonArray[i])
-            cellview.addSubview(textview)
+            inypos += 3 + Int(cellview.frame.size.height) //다음 CellView의 위치
+            //cellview.addSubview(textview)
             
             i += 1 // index
         }
@@ -574,29 +566,33 @@ class AttendanceViewController: UIViewController {
     // gray : NOT CHECKED
     // blue : ATTENDED
     // black : ABSENT
-    @objc func Attend(_ sender:UIButton){
-        if(sender.backgroundColor == UIColor.black){
+    @objc func AttendAction(_ sender:UIButton){
+        let keyNumber = sender.currentTitle
+        let checkMember = self.currentAttendanceInfo[String(keyNumber!)]
+
+        if (checkMember?.status == "ATTENDED"){
             sender.backgroundColor = UIColor.blue
-            renewAttend(idx: sender.currentTitle!, check: "ABSENT")
-        } else if (sender.backgroundColor == UIColor.gray){
-            sender.backgroundColor = UIColor.blue
-            renewAttend(idx: sender.currentTitle!, check: "NOT_CHECKED")
+            SettingSendAttendData(idx: sender.currentTitle!, check: "ABSENT")
         } else{
             sender.backgroundColor = UIColor.black
-            renewAttend(idx: sender.currentTitle!, check: "ATTENDED")
+            SettingSendAttendData(idx: sender.currentTitle!, check: "ATTENDED")
         }
     }
     
-    func renewAttend(idx : String, check : String){
-        let json = [
-            "id" : Int(idx)!,
-            "status" : currentAttendanceInfo[idx]?.status ?? "",
-            "note" : ""
-            ] as Parameters
+    func SettingSendAttendData(idx : String, check : String){
+        // Client 에서 출석 상태 변경
+        if(check == "ATTENDED"){
+            self.currentAttendanceInfo[idx]?.status = "ATTENDED"
+        } else{
+            self.currentAttendanceInfo[idx]?.status = "ABSENT"
+        }
         
-        checkAttendanceDic[idx] = json
+        // 서버로 보낼 데이터 저장
+        let json = AttendanceData(id : Int(idx)!, status : check, note : currentAttendanceInfo[idx]?.note ?? "")
         
-        print(checkAttendanceDic)
+        sendAttendanceArray.append(json)
+        
+        print(sendAttendanceArray)
     }
     
     func saveCurrentDate(){

@@ -104,7 +104,6 @@
 		E1959C7523DAE4C800CAE9AC /* 2020Winter_BackImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7123DAE4C700CAE9AC /* 2020Winter_BackImage.png */; };
 		E1959C7723DAE4C800CAE9AC /* 2020Winter_BaseImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7323DAE4C700CAE9AC /* 2020Winter_BaseImage.png */; };
 		E1959C7823DAE4C800CAE9AC /* 2020Winter_SelectImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7423DAE4C700CAE9AC /* 2020Winter_SelectImage.png */; };
-		E1959C7C23E34E1F00CAE9AC /* 2020Winter_TopImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7B23E34E1F00CAE9AC /* 2020Winter_TopImage.png */; };
 		E1959C7F23E5EA5500CAE9AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7E23E5EA5400CAE9AC /* GoogleService-Info.plist */; };
 		EB9DBBBDB2D80197962D0D9C /* Pods_CBACampProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D2F86E3A2F0AD34F90D79C /* Pods_CBACampProjectUITests.framework */; };
 /* End PBXBuildFile section */
@@ -243,7 +242,6 @@
 		E1959C7123DAE4C700CAE9AC /* 2020Winter_BackImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Winter_BackImage.png; sourceTree = "<group>"; };
 		E1959C7323DAE4C700CAE9AC /* 2020Winter_BaseImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Winter_BaseImage.png; sourceTree = "<group>"; };
 		E1959C7423DAE4C700CAE9AC /* 2020Winter_SelectImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Winter_SelectImage.png; sourceTree = "<group>"; };
-		E1959C7B23E34E1F00CAE9AC /* 2020Winter_TopImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2020Winter_TopImage.png; path = "Resource/19_여름_메인/2020Winter_TopImage.png"; sourceTree = SOURCE_ROOT; };
 		E1959C7D23E5D7E600CAE9AC /* CBACampProjectRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CBACampProjectRelease.entitlements; sourceTree = "<group>"; };
 		E1959C7E23E5EA5400CAE9AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1259F087ED8F4BA9808592E /* Pods-CBACampProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProject.release.xcconfig"; path = "Target Support Files/Pods-CBACampProject/Pods-CBACampProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -605,7 +603,6 @@
 				E1959C7123DAE4C700CAE9AC /* 2020Winter_BackImage.png */,
 				E1959C7323DAE4C700CAE9AC /* 2020Winter_BaseImage.png */,
 				E1959C7423DAE4C700CAE9AC /* 2020Winter_SelectImage.png */,
-				E1959C7B23E34E1F00CAE9AC /* 2020Winter_TopImage.png */,
 			);
 			path = InformationPosters;
 			sourceTree = "<group>";
@@ -777,7 +774,6 @@
 				04733D3622FAEA380085756A /* CBA_배경.png in Resources */,
 				04733D3222FAEA000085756A /* CALL.png in Resources */,
 				04E7FFE222D3927700E87AE9 /* bottom_2.png in Resources */,
-				E1959C7C23E34E1F00CAE9AC /* 2020Winter_TopImage.png in Resources */,
 				04733D3322FAEA000085756A /* ONAIR.png in Resources */,
 				04FC00E5210AEC0100528D7A /* CampBackground.jpeg in Resources */,
 				04E7FFE622D3927700E87AE9 /* 로고.png in Resources */,

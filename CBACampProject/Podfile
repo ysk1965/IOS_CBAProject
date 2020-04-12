@@ -17,7 +17,7 @@ pod 'ImageSlideshow/Kingfisher'
 pod 'GoogleSignIn'
 pod 'Firebase/Auth'
 pod "TextFieldEffects"
-pod 'Alamofire'
+pod 'Alamofire', '~> 5.0'
 pod 'SwiftyJSON'
 pod 'SnapKit', '~> 5.0.0'
 pod 'RealmSwift'
