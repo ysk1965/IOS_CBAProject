@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import Alamofire
 import SwiftyJSON
+import MBRadioCheckboxButton
 
 struct AttendanceInfo: Codable {
     var id : String?
@@ -92,15 +93,6 @@ class AttendanceViewController: UIViewController {
                     for result in results {
                         var test = AttendanceInfo.init()
                         
-                        /*
-                         let id = result["id"].stringValue
-                         let date = result["date"].stringValue
-                         let name = result["name"].stringValue
-                         let mobile = result["mobile"].stringValue
-                         let status = result["status"].stringValue
-                         let note = result["note"].stringValue
-                         */
-                        
                         test.id = result["id"].stringValue
                         test.date = result["date"].stringValue
                         test.name = result["name"].stringValue
@@ -124,9 +116,9 @@ class AttendanceViewController: UIViewController {
     
     var selectedCampus : String?
     var currentAttendanceInfo : Dictionary<String, AttendanceInfo> = [:]
-    var sendAttendanceArray : Array<AttendanceData> = []
+    var sendAttendanceArray : Array<AttendanceData> = [:]
     var checkAttendance : Array<Parameters> = []
-    var attendButtonArray : Array<UIButton> = []
+    var attendButtonArray : Array<RadioButton> = []
     var textArray : Array<UITextView> = []
     
     var errorCode = 999 // attend value error
@@ -192,94 +184,13 @@ class AttendanceViewController: UIViewController {
                 response in debugPrint(response)
             }
             
-            /*
-            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header)
-            
-            alamo.responseJSON(completionHandler: { response in
-                switch response.result{
-                case .success :
-                    print("success Confirm POST")
-                case .failure(let error) :
-                    print("failure Confirm POST")
-                    print(error)
-                }
-            })
-             */
-            
-            // [NEEDED]변경이 완료되었습니다! 같은 Alert가 필요할듯
+            // TODO : 변경이 완료되었습니다! 같은 Alert가 필요할듯
         }
     }
     
     @IBAction func editButton(_ sender: Any) {
         // edit는 회원 여부 수정 할 때 필요함
         // 다른 곳에서 쓰고 있고 해당 코드는 나중에 다른 작업으로 바뀌어야 함
-        /*
-        // 출석부 생성해서 받아와야 해
-            if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
-            let date : String = SettingDate() // 현재 날짜
-            let campusName : String = selectedCampus!
-                
-                
-            let params : Parameters = [
-                "date" : date,
-                "campus" : campusName
-            ]
-            
-            print(date)
-                
-            let header: HTTPHeaders = ["Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"]
-            let alamo = Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
-            
-            alamo.responseJSON { response in
-                print("JSON_Alamo=\(response.result.value!)")
-                
-                if(response.result.error != nil) {
-                    print(response.result.error!)
-                    return;
-                }
-                let json = JSON(response.result.value!)
-                let results = json["data"].arrayValue
-                
-                print(json)
-                if let status = response.response?.statusCode{
-                    switch(status){
-                    case 200..<300:
-                        self.currentAttendanceInfo.removeAll()
-                        
-                        print("success")
-                        print("JSON: \(json)")
-                        
-                        for result in results {
-                            var test = AttendanceInfo.init()
-                            
-                            /*
-                            let id = result["id"].stringValue
-                            let date = result["date"].stringValue
-                            let name = result["name"].stringValue
-                            let mobile = result["mobile"].stringValue
-                            let status = result["status"].stringValue
-                            let note = result["note"].stringValue
-                            */
-                            
-                            test.id = result["id"].stringValue
-                            test.date = result["date"].stringValue
-                            test.name = result["name"].stringValue
-                            test.mobile = result["mobile"].stringValue
-                            test.status = result["status"].stringValue
-                            test.note = result["note"].stringValue
-                            
-                            self.currentAttendanceInfo.append(test)
-                        }
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
-                    default:
-                        print("error with response status: \(status)")
-                    }
-                }
-            }
-        }
-        */
     }
     
     @IBAction func prevButton(_ sender: Any) {
@@ -381,59 +292,6 @@ class AttendanceViewController: UIViewController {
                     
                     print(error)
                 }
-                
-                
-                /*
-                let json = JSON(response.result.value!)
-                let results = json["data"].arrayValue
-                if (results.count != 0){
-                if let status = response.response?.statusCode{
-                    switch(status){
-                    case 200..<300:
-                        var dateCheck = ""
-                        print("success")
-                        print("JSON: \(json)")
-                        self.currentAttendanceInfo.removeAll()
-
-                        for result in results {
-                            var test = AttendanceInfo.init()
-                            
-                            test.id = result["id"].stringValue
-                            test.date = result["date"].stringValue
-                            test.name = result["name"].stringValue
-                            test.mobile = result["mobile"].stringValue
-                            test.status = result["status"].stringValue
-                            test.note = result["note"].stringValue
-                            
-                            self.currentAttendanceInfo[String(test.id!)] = test
-                            dateCheck = test.date!
-                        }
-                        
-                        self.datePicker.date = self.SettingString2Date(a: dateCheck)
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
-                        break
-                    case 404:
-                        // Empty
-                        self.isEmptyFlag = true
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
-                        break
-                    default:
-                        print("error with response status: \(status)")
-                    }
-                }
-                } else{
-                    if nav != "CURRENT" {
-                        return
-                    }
-                    print("didn`t exist")
-                    self.currentAttendanceInfo.removeAll()
-                    
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
-                    // alert라도 띄워주자 앞이나 뒤 정보가 더 없음
-                }
-                */
             }
         }
     }
@@ -472,13 +330,13 @@ class AttendanceViewController: UIViewController {
             var nextypos = 0
             let cellview = UIView()
             
-            let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-            backgroundImage.image = UIImage(named: "몽산포_가로배너.png")
-            backgroundImage.contentMode = .scaleAspectFill
-            cellview.insertSubview(backgroundImage, at: 0)
-            
             //cellview.backgroundColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.4)
             cellview.frame = CGRect(x: 0, y: inypos, width : Int(attendanceScrollView.frame.width), height: 80)
+            
+            //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            //backgroundImage.image = UIImage(named: "몽산포_가로배너.png")
+            
+            cellview.backgroundColor = UIColor(red: 100, green: 100, blue: 100, alpha: 0.5)
             
             attendanceScrollView.addSubview(cellview)
             
@@ -490,7 +348,7 @@ class AttendanceViewController: UIViewController {
             namelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             namelabel.textColor = UIColor.black
             namelabel.sizeToFit()
-            namelabel.frame.origin = CGPoint(x: 15, y: 13)
+            namelabel.frame.origin = CGPoint(x: 15, y: 7)
             cellview.addSubview(namelabel)
             
             ///agelabel
@@ -499,28 +357,29 @@ class AttendanceViewController: UIViewController {
             mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
             mobilelabel.textColor = UIColor.black
             mobilelabel.sizeToFit()
-            mobilelabel.frame.origin = CGPoint(x: 90, y: 13)
+            mobilelabel.frame.origin = CGPoint(x: 90, y: 7)
             cellview.addSubview(mobilelabel)
             
             
-            attendButtonArray.append(UIButton.init())
+            attendButtonArray.append(RadioButton.init())
+            attendButtonArray[i].radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
+            attendButtonArray[i].style = .square
             attendButtonArray[i].setTitle(key, for: .normal)
             if(currentAttendanceInfo[key]?.status == "ATTENDED"){
                 attendButtonArray[i].setTitleColor(UIColor.black, for: .normal)
-                attendButtonArray[i].backgroundColor = UIColor.black
-                //buttonArray[i].setImage(UIImage(named: "cancel.png"), for: .normal)
+                attendButtonArray[i].isOn = true
             } else{
                 attendButtonArray[i].setTitleColor(UIColor.blue, for: .normal)
-                attendButtonArray[i].backgroundColor = UIColor.blue
-                //buttonArray[i].setImage(UIImage(named: "cancel.png"), for: .normal)
+                attendButtonArray[i].radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
+                attendButtonArray[i].isOn = false
             }
-            attendButtonArray[i].frame = CGRect(x: 210, y: 10 , width: 30, height: 30)
+            attendButtonArray[i].frame = CGRect(x: 210, y: 4 , width: 30, height: 30)
             attendButtonArray[i].addTarget(self, action: #selector(self.AttendAction(_:)), for: .touchUpInside)
             cellview.addSubview(attendButtonArray[i])
             
             //textview///////////////////////////////////////
             textArray.append(UITextView.init())
-            textArray[i].frame.origin = CGPoint(x:250, y:10)
+            textArray[i].frame.origin = CGPoint(x:250, y:4)
             textArray[i].frame.size = CGSize(width: 100, height: 30)
             textArray[i].backgroundColor = UIColor.white
             textArray[i].text = currentAttendanceInfo[key]?.note
@@ -532,7 +391,7 @@ class AttendanceViewController: UIViewController {
             textview.frame.size = CGSize(width: Int(attendanceScrollView.frame.width) - inxpos * 2, height: 120)
             let contentSize = textview.sizeThatFits(textview.bounds.size)
             var frame = textview.frame
-            frame.size.height = max(contentSize.height, 12)
+            frame.size.height = max(contentSize.height, 10)
             textview.frame = frame
             textview.isScrollEnabled = false
             textview.isEditable = false
@@ -566,15 +425,16 @@ class AttendanceViewController: UIViewController {
     // gray : NOT CHECKED
     // blue : ATTENDED
     // black : ABSENT
-    @objc func AttendAction(_ sender:UIButton){
+    @objc func AttendAction(_ sender:RadioButton){
         let keyNumber = sender.currentTitle
         let checkMember = self.currentAttendanceInfo[String(keyNumber!)]
 
         if (checkMember?.status == "ATTENDED"){
-            sender.backgroundColor = UIColor.blue
+            sender.radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
+            sender.isOn = false
             SettingSendAttendData(idx: sender.currentTitle!, check: "ABSENT")
         } else{
-            sender.backgroundColor = UIColor.black
+            sender.bounceIn()
             SettingSendAttendData(idx: sender.currentTitle!, check: "ATTENDED")
         }
     }

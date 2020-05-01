@@ -22,7 +22,7 @@ pod 'SwiftyJSON'
 pod 'SnapKit', '~> 5.0.0'
 pod 'RealmSwift'
 pod "YoutubePlayer-in-WKWebView", "~> 0.2.0"
-
+pod 'MBRadioCheckboxButton'
   # Pods for CBACampProject
 
   target 'CBACampProjectTests' do

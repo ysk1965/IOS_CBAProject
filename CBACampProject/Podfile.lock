@@ -129,6 +129,7 @@ PODS:
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
   - leveldb-library (1.22)
+  - MBRadioCheckboxButton (2.0)
   - MenuSlider (0.1.7)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -160,6 +161,7 @@ DEPENDENCIES:
   - ImageSlideshow (~> 1.6)
   - ImageSlideshow/Kingfisher
   - Kingfisher (~> 5.0)
+  - MBRadioCheckboxButton
   - MenuSlider (~> 0.1.5)
   - RealmSwift
   - SimpleAnimation
@@ -195,6 +197,7 @@ SPEC REPOS:
     - ImageSlideshow
     - Kingfisher
     - leveldb-library
+    - MBRadioCheckboxButton
     - MenuSlider
     - nanopb
     - PromisesObjC
@@ -233,6 +236,7 @@ SPEC CHECKSUMS:
   ImageSlideshow: 634865d7d4e96f21e3830a31b51bde768cc94cea
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MBRadioCheckboxButton: 6e2a2cdc441e292e45b64c4e65eb8fc1fc05eef2
   MenuSlider: 8f2cb5df91196fa77f3c28c67d1350bd35099bcf
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
@@ -245,6 +249,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: 132a8beebd1607150a1582c9568150d48cb17945
+PODFILE CHECKSUM: 1574589a759318a6b195d46c3e31a01e07e42317
 
 COCOAPODS: 1.9.1

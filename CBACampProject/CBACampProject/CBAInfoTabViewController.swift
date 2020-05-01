@@ -710,7 +710,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             }
         }
         
-	// realm 제거 할 때 사용
+        // realm 제거 할 때 사용
         /*
          try! realm.write {
          realm.deleteAll()
