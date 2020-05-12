@@ -39,6 +39,8 @@
 		048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF660224B853E00A8D7AD /* CheckViewController.swift */; };
 		04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04950AA921E508CD00213D42 /* SendMessageViewController.swift */; };
 		04955EFB210A24320057FD68 /* MainLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04955EFA210A24320057FD68 /* MainLocation.swift */; };
+		049F94D824646C5D00324912 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F94D724646C5D00324912 /* CheckView.swift */; };
+		049F94DB246478C400324912 /* GBSAttandanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F94DA246478C400324912 /* GBSAttandanceController.swift */; };
 		04A9638F22D59D1E00CE91F6 /* MainAgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9638E22D59D1E00CE91F6 /* MainAgency.swift */; };
 		04AE0EB122D97CCE00A9F1F2 /* 메세지-아이콘.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EA722D97CCE00A9F1F2 /* 메세지-아이콘.png */; };
 		04AE0EB222D97CCE00A9F1F2 /* 아이폰.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AE0EA922D97CCE00A9F1F2 /* 아이폰.png */; };
@@ -168,6 +170,8 @@
 		048AF660224B853E00A8D7AD /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		04950AA921E508CD00213D42 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		04955EFA210A24320057FD68 /* MainLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocation.swift; sourceTree = "<group>"; };
+		049F94D724646C5D00324912 /* CheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
+		049F94DA246478C400324912 /* GBSAttandanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GBSAttandanceController.swift; sourceTree = "<group>"; };
 		04A9638E22D59D1E00CE91F6 /* MainAgency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAgency.swift; sourceTree = "<group>"; };
 		04AE0EA722D97CCE00A9F1F2 /* 메세지-아이콘.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "메세지-아이콘.png"; sourceTree = "<group>"; };
 		04AE0EA922D97CCE00A9F1F2 /* 아이폰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "아이폰.png"; sourceTree = "<group>"; };
@@ -353,6 +357,8 @@
 		042761C92106E41400928EB7 /* CBACampProject */ = {
 			isa = PBXGroup;
 			children = (
+				049F94D62464696500324912 /* Controller */,
+				049F94D52464695800324912 /* View */,
 				E1959C7D23E5D7E600CAE9AC /* CBACampProjectRelease.entitlements */,
 				04F29E5722C08A1A00799F6F /* Model */,
 				DB764E55210CA1CD006E72EB /* CBACampProject.entitlements */,
@@ -376,6 +382,7 @@
 				04F09B3022D8DB51006A604E /* ImageViewController.swift */,
 				042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */,
 				04733D3722FB19A10085756A /* StreamingViewController.swift */,
+				049F94DA246478C400324912 /* GBSAttandanceController.swift */,
 			);
 			path = CBACampProject;
 			sourceTree = "<group>";
@@ -396,6 +403,21 @@
 				042761EC2106E41600928EB7 /* Info.plist */,
 			);
 			path = CBACampProjectUITests;
+			sourceTree = "<group>";
+		};
+		049F94D52464695800324912 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				049F94D724646C5D00324912 /* CheckView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		049F94D62464696500324912 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		04AE0EA422D97CCE00A9F1F2 /* 메세지 */ = {
@@ -912,6 +934,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-CBACampProject/Pods-CBACampProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -919,6 +942,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBRadioCheckboxButton/MBRadioCheckboxButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MenuSlider/MenuSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupViewController/PopupViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -935,6 +959,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -942,6 +967,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBRadioCheckboxButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -1002,8 +1028,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049F94D824646C5D00324912 /* CheckView.swift in Sources */,
 				04F0F54D2109FBD6001B953B /* UIView+SimpleAnimation.swift in Sources */,
 				048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */,
+				049F94DB246478C400324912 /* GBSAttandanceController.swift in Sources */,
 				04F09B3122D8DB51006A604E /* ImageViewController.swift in Sources */,
 				04955EFB210A24320057FD68 /* MainLocation.swift in Sources */,
 				DB764E52210C8A2E006E72EB /* FirebaseModel.swift in Sources */,

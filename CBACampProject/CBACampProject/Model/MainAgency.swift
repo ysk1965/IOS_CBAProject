@@ -68,6 +68,7 @@ class AgencySingleton {
         var sidebarArray : Array<ButtonType> = []
         sidebarArray.removeAll()
         sidebarArray.append(ButtonType(type: "segue",iconName: "출석 관리", controlValue: "testSegue"))
+        sidebarArray.append(ButtonType(type: "segue",iconName: "GBS 출석 관리", controlValue: "GBSAttandance"))
         sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))

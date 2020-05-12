@@ -5,6 +5,7 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.3.0)
   - AppAuth/Core (1.3.0)
   - AppAuth/ExternalUserAgent (1.3.0)
+  - Cartography (1.0.1)
   - Firebase/Analytics (6.15.0):
     - Firebase/Core
   - Firebase/Auth (6.15.0):
@@ -136,6 +137,8 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - PopupViewController (0.1.5):
+    - Cartography (~> 1.0.1)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.2)
   - Realm (4.3.1):
@@ -163,6 +166,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - MBRadioCheckboxButton
   - MenuSlider (~> 0.1.5)
+  - PopupViewController
   - RealmSwift
   - SimpleAnimation
   - SnapKit (~> 5.0.0)
@@ -174,6 +178,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AppAuth
+    - Cartography
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
@@ -200,6 +205,7 @@ SPEC REPOS:
     - MBRadioCheckboxButton
     - MenuSlider
     - nanopb
+    - PopupViewController
     - PromisesObjC
     - Protobuf
     - Realm
@@ -213,6 +219,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
+  Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
   Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
   FirebaseAnalytics: e83e64b1231dedcd9ddd4bdecd9bcfd6ba341679
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
@@ -239,6 +246,7 @@ SPEC CHECKSUMS:
   MBRadioCheckboxButton: 6e2a2cdc441e292e45b64c4e65eb8fc1fc05eef2
   MenuSlider: 8f2cb5df91196fa77f3c28c67d1350bd35099bcf
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  PopupViewController: b6e7ad47e2209fbcc2ea6c21fe5649cd40eabef7
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
@@ -249,6 +257,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: 1574589a759318a6b195d46c3e31a01e07e42317
+PODFILE CHECKSUM: 800b0ef6b64d1060913425d291ed0179377ab18c
 
 COCOAPODS: 1.9.1
