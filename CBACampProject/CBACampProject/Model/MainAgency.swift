@@ -67,8 +67,8 @@ class AgencySingleton {
         //CBA Data
         var sidebarArray : Array<ButtonType> = []
         sidebarArray.removeAll()
-        sidebarArray.append(ButtonType(type: "segue",iconName: "출석 관리", controlValue: "testSegue"))
-        sidebarArray.append(ButtonType(type: "segue",iconName: "GBS 출석 관리", controlValue: "GBSAttandance"))
+        sidebarArray.append(ButtonType(type: "segue",iconName: "출석 관리", controlValue: "AttendSegue"))
+        sidebarArray.append(ButtonType(type: "segue",iconName: "GBS 출석 관리", controlValue: "GbsAttendSegue"))
         sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
         sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
@@ -87,7 +87,7 @@ class AgencySingleton {
         
         AgencySingleton.shared.AgencyTitle = "2020_CBA_WINTER" // 2019_SR_SUMMER
         AgencySingleton.shared.viewBannerName = "2020Winter_BaseImage.png" // "몽산포_배너.png"
-        AgencySingleton.shared.sidebarBannerName = "2020Winter_TopImage.png" // "몽산포_가로배너.png"
+        AgencySingleton.shared.sidebarBannerName = "Harmony_Sidebar.png" // "몽산포_가로배너.png"
         AgencySingleton.shared.topTagImageName = "CBA1.png" // "몽산포.png"
         AgencySingleton.shared.backgroundImageName = "2020Winter_BackImage.png"
         

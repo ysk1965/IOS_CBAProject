@@ -267,9 +267,6 @@ class FirebaseModel {
             }
             print("success")
         })
-        
-        
-        
     }
     
     func downloadImage(name: String, imageView:UIImageView){

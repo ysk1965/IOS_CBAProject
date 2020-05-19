@@ -59,7 +59,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     static var ScreenHeight : CGFloat?
     
     //GBS & My Info
-    static var mainUser = MainUser(campus: "", mobile: "", name: "", retreatGbs : "", grade: "", position: "")
+    static var mainUser = MainUser(memId: 0, campus: "", mobile: "", name: "", grade: "", retreatGbsInfo: nil, gbsInfo: nil)
     static var mainGBS = MainGBS(gbsLevel: "", leader: nil, members: nil)
     static var memberCount = Int(0)
     
@@ -103,11 +103,21 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     func SettingSidebar(){
         userID = Auth.auth().currentUser?.email
-        //userID = "enter_maintanance@naver.com"
         
         // SideMenuItem Array
         var menuItemArray : Array<SideMenuItem> = []
         for n in AgencySingleton.shared.sidebar_setting{
+            if n.controlValue == "AttendSegue"{
+                if (!(CBAInfoTabViewController.mainUser.grade == "LEADER")){
+                    continue
+                }
+            }
+            if (n.controlValue == "GbsAttendSegue"){
+                if (!(CBAInfoTabViewController.mainUser.gbsInfo?.position == "조장")){
+                    continue
+                }
+            }
+            
             var tempMenu : SideMenuItem?
             if n.type == "image" {
                 tempMenu = SideMenuItemFactory.make(title: n.iconName!){
@@ -138,31 +148,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             }
             menuItemArray.append(tempMenu!)
         }
-        
-        /*
-        let menuItem8 = SideMenuItemFactory.make(title: "  출석체크") {
-            self.SelectMenu = true;
-            MassageTabViewController.mainUser.grade = "MISSION" // 임시
-            
-            for view in self.pageViews {
-                view?.removeFromSuperview()
-            }
-            
-            if(!((Auth.auth().currentUser?.email) != nil)){
-                self.performSegue(withIdentifier: "LoginSegue", sender: nil)
-            }
-            else{
-                
-                if (MassageTabViewController.mainUser.grade == "LEADER" ||
-                    MassageTabViewController.mainUser.grade == "MISSION"){
-                    self.performSegue(withIdentifier: "CheckGBSSegue", sender: nil)
-                }
-                else {
-                    debugPrint("grade : " + MassageTabViewController.mainUser.grade)
-                }
-            }
-        }
-        */
 	    
         // SIDE BAR SETTING
         let whiteLine = UILabel()
@@ -191,15 +176,28 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
             if(CBAInfoTabViewController.mainUser.name == ""){
                 headerLabel.text = "은혜 많이 받으세요 :)"
             }else{
-		var tempGrade = ""
-                if(CBAInfoTabViewController.mainUser.position == "조원"){
-			tempGrade = "조원"
-        } else if(CBAInfoTabViewController.mainUser.position == "조장"){
-            tempGrade = "조장"
-        } else{
-			tempGrade = ""
-		}
-                headerLabel.text = CBAInfoTabViewController.mainUser.name + "  |  " + CBAInfoTabViewController.mainUser.retreatGbs + "  |  " + tempGrade
+                var tempGrade = ""
+                switch(CBAInfoTabViewController.mainUser.grade)
+                {
+                case "MISSION" :
+                    tempGrade = "사역자"
+                    break
+                case "LEADER" :
+                    tempGrade = "리더"
+                    break
+                case "ADMIN" :
+                    tempGrade = "ADMIN"
+                    break
+                case "MEMBER" :
+                    tempGrade = "일반"
+                    break
+                case "GANSA" :
+                    tempGrade = "간사"
+                    break
+                default:
+                    tempGrade = "일반"
+                }
+                headerLabel.text = CBAInfoTabViewController.mainUser.name + "  |  " + CBAInfoTabViewController.mainUser.campus + "  |  " + tempGrade
             }
             headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
         } else{
@@ -299,6 +297,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     @objc func Logout(_ sender:UIButton){
         do {
             try Auth.auth().signOut()
+            CBAInfoTabViewController.mainUser.setUser(memId: 0, campus: "", mobile: "", name: "", grade: "", retreatGbsInfo: RetreatGBSInfo(retreatId: 0, gbs: "", position: ""), gbsInfo: GBSInfo(gbsName: "", position: ""))
         } catch{
             
         }
@@ -552,7 +551,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         let arrayCnt : CGFloat = CGFloat(button.count)
         var loopcnt : CGFloat = 0
         for n in button {
-            
             let customButton = UIButton(frame: CGRect(x:viewW! / arrayCnt * loopcnt,y:0,width:viewW! / arrayCnt, height:viewW! / arrayCnt))
             customButton.setImage(UIImage(named: n.iconName!),for: .normal)
             customButton.setTitle(n.controlValue, for: .normal)
@@ -577,6 +575,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     lazy var titleNameButton = UIButton()
     @objc func ResizeView(_ notification: Notification){
+        print("RELOAD VIEW (ResizeView)")
         if (AgencySingleton.shared.realmAgent == "CBA"){
             // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
             self.view.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
@@ -590,9 +589,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         backgroundView.alpha = 0.5
         
         //slideshow.addSubview(backgroundView)
-        
         //Firebase에서 내 정보 가져오기
-        GetGBSData()
+        GetBaseMyData()
         
         NoticeLabel.text = FirebaseModel.mainNotiMessages
         
@@ -686,17 +684,6 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         bottomArray.append(ButtonType(type: "image",iconName: "TIMETABLE.png", controlValue: "timetable"))
         bottomArray.append(ButtonType(type: "image",iconName: "ONAIR.png", controlValue: "campus_place"))
         bottomArray.append(ButtonType(type: "image",iconName: "GBS.png", controlValue: "campus_place"))
-        
-        
-        let currentAgency = AgencySingleton(
-            AgencyTitle : "2020_CBA_WINTER", // 2019_SR_SUMMER
-            viewBannerName : "2020Winter_BackImage.png", // "몽산포_배너.png"
-            sidebarBannerName : "2020Winter_TopImage.png", // "몽산포_가로배너.png"
-            topTagImageName : "CBA.jpeg", // "몽산포.png"
-            backgroundImageName : "CBA_배경.png",
-            sidebar_setting: sidebarArray,
-            bottombar_setting : bottomArray
-        )
         
         // uuid, agent 생성
         SetRealmData(defaultAgent: "CBA");

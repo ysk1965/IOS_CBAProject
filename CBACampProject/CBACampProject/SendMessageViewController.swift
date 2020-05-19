@@ -69,7 +69,7 @@ class SendMessageViewController: UIViewController, UITextViewDelegate, UITextFie
                 AgencySingleton.shared.AgencyTitle! + "/message").childByAutoId().setValue([
                     "author" : textAuthor.text!,
                     "message" : textMessage.text!,
-                    "isStaff" : CBAInfoTabViewController.mainUser.retreatGbs,
+                    "isStaff" : CBAInfoTabViewController.mainUser.grade,
                     "time" : currentTime,
                     "uid" : AgencySingleton.shared.realmUid!
                 ])

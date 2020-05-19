@@ -227,9 +227,16 @@ class AttendanceViewController: UIViewController {
                 "Content-Type": "application/json",
                 "Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"
             ]
-            
-            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response {
-                response in debugPrint(response)
+
+            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response { response in
+                switch response.result {
+                case .success(let value):
+                    print(value)
+                    self.LoadAttendanceList(nav: "CURRENT")
+                case .failure(let error):
+                    print(error)
+                    self.LoadAttendanceList(nav: "CURRENT")
+                }
             }
             // TODO : 변경이 완료되었습니다! 같은 Alert가 필요할듯
         }
@@ -257,8 +264,15 @@ class AttendanceViewController: UIViewController {
                       "Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"
                 ]
                   
-            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response {
-                response in debugPrint(response)
+            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response { response in
+                switch response.result {
+                case .success(let value):
+                    print(value)
+                    self.LoadAttendanceList(nav: "CURRENT")
+                case .failure(let error):
+                    print(error)
+                    self.LoadAttendanceList(nav: "CURRENT")
+                }
             }
                   // TODO : 변경이 완료되었습니다! 같은 Alert가 필요할듯
         }
@@ -462,12 +476,11 @@ class AttendanceViewController: UIViewController {
             
             let attendText = UITextView.init()
             attendText.frame.origin = CGPoint(x:250, y:4)
-            attendText.frame.size = CGSize(width: 100, height: 30)
-            attendText.backgroundColor = UIColor.white
+            attendText.frame.size = CGSize(width: mainScrollView.frame.width / 3, height: 30)
             attendText.text = dailyAllAttendanceInfo[key]?.note
             attendText.backgroundColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 0.4)
+            cellview.addSubview(attendText)
             attendTextDictionary[key] = attendText
-            cellview.addSubview(attendTextDictionary[key]!)
             
             //textview///////////////////////////////////////
             let textview = UITextView()

@@ -282,7 +282,7 @@ class MassageTabViewController: UIViewController {
             SendButton.addTarget(self, action: #selector(self.Send(_:)), for: .touchUpInside)
             self.view.addSubview(SendButton)
         } else {
-            if (CBAInfoTabViewController.mainUser.retreatGbs == "봉사자") {
+            if (CBAInfoTabViewController.mainUser.grade == "LEADER") {
                 // 관리자일때만 오픈되도록!
             CBAInfoTabViewController.isSendNotiMessage = true
                 

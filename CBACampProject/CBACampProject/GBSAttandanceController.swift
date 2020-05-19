@@ -12,7 +12,60 @@ import Alamofire
 import SwiftyJSON
 import MBRadioCheckboxButton
 
-class GBSAttancanceContoller: UIViewController {
+/*
+struct AttendanceInfo: Codable {
+    var id : String?
+    var date : String?
+    var name : String?
+    var mobile : String?
+    var status : String?
+    var note : String?
+    var hidden : Bool?
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(String.self, forKey: .id)
+        date = try values.decodeIfPresent(String.self, forKey: .date)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
+        status = try values.decodeIfPresent(String.self, forKey: .status)
+        note = try values.decodeIfPresent(String.self, forKey: .note)
+        hidden = try values.decodeIfPresent(Bool.self, forKey: .hidden)
+    }
+    
+    init() {
+        id = " "
+        date = " "
+        name = " "
+        mobile = " "
+        status = " "
+        note = " "
+    }
+}
+
+struct ReportAttendancePost: Encodable {
+    var checkList : Array<AttendanceData>
+    var leaderUid : String
+}
+
+struct AttendanceData: Encodable {
+    var id : Int
+    var status : String
+    var note : String
+}
+
+struct ReportEditPost: Encodable {
+    var editActions : Array<EditData>
+    var leaderUid : String
+}
+
+struct EditData: Encodable {
+    var id : Int
+    var action : String
+}
+*/
+
+class GBSAttandanceController: UIViewController {
     @IBOutlet weak var statsText: UILabel!
     @IBOutlet weak var campusName: UILabel!
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -20,17 +73,59 @@ class GBSAttancanceContoller: UIViewController {
     @IBOutlet weak var makeAttendanceButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     
+    @IBAction func Back(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    @IBAction func DeleteAlertAction(_ sender: UIButton) {
+        let alert = UIAlertController(title: "출석부 삭제", message: "OK버튼을 누르면 현재 날짜의 출석부가 삭제됩니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: DeleteAttandenceAction(_:)))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func DeleteAttandenceAction(_ sender: Any) {
+        if(Auth.auth().currentUser != nil){
+            let url = "http://cba.sungrak.or.kr:9000/gbs/attendance/list"
+            let date : String = SettingDate() // [NEEDED] DatePicker의 날자로 변경되어야 함
+            let leaderUid : String = Auth.auth().currentUser!.uid
+            
+            let params : Parameters = [
+                "date" : date,
+                "leaderUid" : leaderUid
+            ]
+            
+            let header: HTTPHeaders = [
+                "Content-Type": "application/json",
+                "Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"
+            ]
+            
+            let alamo = AF.request(url, method: .delete, parameters: params, encoding: JSONEncoding.default, headers: header)
+            
+            alamo.responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    self.LoadAttendanceList(nav: "CURRENT")
+                    print(value)
+                case .failure(let error):
+                    self.LoadAttendanceList(nav: "CURRENT")
+                    print(error)
+                }
+            }
+        }
+    }
+    
     @objc func MakeAttendance(_ sender:UIButton){
         // 출석부 생성해서 받아와야 해
         if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:9000/attendance/list/new"
+            let url = "http://cba.sungrak.or.kr:9000/gbs/attendance/list/new"
             let date : String = SettingDate() // 현재 날짜
-            let campusName : String = selectedCampus!
+            let memberId : Int = CBAInfoTabViewController.mainUser.memId
             
             
             let params : Parameters = [
                 "date" : date,
-                "campus" : campusName
+                "leaderMemberId" : memberId
             ]
             
             let header: HTTPHeaders = [
@@ -75,7 +170,10 @@ class GBSAttancanceContoller: UIViewController {
     var selectedCampus : String?
     var dailyAllAttendanceInfo : Dictionary<String, AttendanceInfo> = [:]
     var attendRadioButtonArray : Array<RadioButton> = []
-    var attendTextArray : Array<UITextView> = []
+    var deleteRadioButtonArray : Array<RadioButton> = []
+    var hiddenRadioButtonArray : Array<RadioButton> = []
+    var editDictionary : Dictionary<String, EditData> = [:]
+    var attendTextDictionary : Dictionary<String, UITextView> = [:]
     
     var errorCode = 999 // attend value error
     var isEmptyFlag : Bool = false
@@ -121,33 +219,31 @@ class GBSAttancanceContoller: UIViewController {
         //status는 누를 때마다 상태가 변경되기에 여기서 저장 안해도 됨 (renewAttend)
         
         if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:9000/attendance/list/report"
+            let url = "http://cba.sungrak.or.kr:9000/gbs/attendance/list/report"
             
             let date : String = SettingDate() // [NEEDED] DatePicker의 날자로 적용되어야 함
-            let campusName : String = selectedCampus!
             
-            var paramList = SettingSendAttandanceList()
+            let paramList = SettingSendAttandanceList()
             
-            var params = ReportAttendancePost(checkList: paramList, leaderUid: Auth.auth().currentUser!.uid)
-            
-            print("Confirm Param")
-            print(params)
+            let params = ReportAttendancePost(checkList: paramList, leaderUid: Auth.auth().currentUser!.uid)
             
             let header: HTTPHeaders = [
                 "Content-Type": "application/json",
                 "Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"
             ]
-            
-            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response {
-                response in debugPrint(response)
+
+            let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response { response in
+                switch response.result {
+                case .success(let value):
+                    print(value as Any)
+                    self.LoadAttendanceList(nav: "CURRENT")
+                case .failure(let error):
+                    print(error)
+                    self.LoadAttendanceList(nav: "CURRENT")
+                }
             }
             // TODO : 변경이 완료되었습니다! 같은 Alert가 필요할듯
         }
-    }
-    
-    @IBAction func editButton(_ sender: Any) {
-        // edit는 회원 여부 수정 할 때 필요함
-        // 다른 곳에서 쓰고 있고 해당 코드는 나중에 다른 작업으로 바뀌어야 함
     }
     
     @IBAction func prevButton(_ sender: Any) {
@@ -158,7 +254,7 @@ class GBSAttancanceContoller: UIViewController {
         LoadAttendanceList(nav: "NEXT")
     }
     
-    func setStats(){
+    func SetStats(){
         var attendCnt = 0
         var allCnt = 0
         var attendPercent = 0.0
@@ -170,6 +266,9 @@ class GBSAttancanceContoller: UIViewController {
             return
         }
         for (key, value) in dailyAllAttendanceInfo {
+            if(dailyAllAttendanceInfo[key]?.hidden == true){
+                allCnt -= 1
+            }
             if(dailyAllAttendanceInfo[key]?.status == "ATTENDED"){
                 attendCnt += 1
             }
@@ -186,15 +285,17 @@ class GBSAttancanceContoller: UIViewController {
         // 서버에 지금 캠퍼스와 날짜를 보내줘야 함
         // 그러면 날짜 목록을 서버가 보내 줌
         //Alamofire
+       
         if(Auth.auth().currentUser != nil){
-            let url = "http://cba.sungrak.or.kr:9000/attendance/list"
+            //
+            let url = "http://cba.sungrak.or.kr:9000/gbs/attendance/list"
             let date : String = SettingDate() // [NEEDED] DatePicker의 날자로 변경되어야 함
-            let campusName : String = selectedCampus!
+            let memberId : Int = CBAInfoTabViewController.mainUser.memId
             let navpoint : String = nav
             
             let params : Parameters = [
                 "date" : date,
-                "campus" : campusName,
+                "leaderMemberId" : memberId,
                 "nav" : navpoint
             ]
             print(date)
@@ -215,17 +316,18 @@ class GBSAttancanceContoller: UIViewController {
                         self.dailyAllAttendanceInfo.removeAll()
 
                         for result in results {
-                            var test = AttendanceInfo.init()
+                            var temp = AttendanceInfo.init()
                             
-                            test.id = result["id"].stringValue
-                            test.date = result["date"].stringValue
-                            test.name = result["name"].stringValue
-                            test.mobile = result["mobile"].stringValue
-                            test.status = result["status"].stringValue
-                            test.note = result["note"].stringValue
+                            temp.id = result["id"].stringValue
+                            temp.date = result["date"].stringValue
+                            temp.name = result["name"].stringValue
+                            temp.mobile = result["mobile"].stringValue
+                            temp.status = result["status"].stringValue
+                            temp.note = result["note"].stringValue
+                            temp.hidden = result["hidden"].bool
                             
-                            self.dailyAllAttendanceInfo[String(test.id!)] = test
-                            dateCheck = test.date!
+                            self.dailyAllAttendanceInfo[String(temp.id!)] = temp
+                            dateCheck = temp.date!
                         }
                         
                         self.datePicker.date = self.SettingString2Date(a: dateCheck)
@@ -276,10 +378,12 @@ class GBSAttancanceContoller: UIViewController {
         
         var inypos = 0
         let inxpos = 20
-        let count = dailyAllAttendanceInfo.count
         var addCount = 0
         let sortedKeys = self.dailyAllAttendanceInfo.keys.sorted(by: <)
         for (key) in sortedKeys {
+            if (dailyAllAttendanceInfo[key]?.hidden == true) {
+                continue
+            }
             var nextypos = 0
             let cellview = UIView()
             cellview.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 0.4)
@@ -330,13 +434,14 @@ class GBSAttancanceContoller: UIViewController {
             cellview.addSubview(attendRadioButtonArray[addCount])
             
             //textview///////////////////////////////////////
-            attendTextArray.append(UITextView.init())
-            attendTextArray[addCount].frame.origin = CGPoint(x:250, y:4)
-            attendTextArray[addCount].frame.size = CGSize(width: 100, height: 30)
-            attendTextArray[addCount].backgroundColor = UIColor.white
-            attendTextArray[addCount].text = dailyAllAttendanceInfo[key]?.note
-            attendTextArray[addCount].backgroundColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 0.4)
-            cellview.addSubview(attendTextArray[addCount])
+            
+            let attendText = UITextView.init()
+            attendText.frame.origin = CGPoint(x:250, y:4)
+            attendText.frame.size = CGSize(width: mainScrollView.frame.width / 3, height: 30)
+            attendText.text = dailyAllAttendanceInfo[key]?.note
+            attendText.backgroundColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 0.4)
+            cellview.addSubview(attendText)
+            attendTextDictionary[key] = attendText
             
             //textview///////////////////////////////////////
             let textview = UITextView()
@@ -373,119 +478,7 @@ class GBSAttancanceContoller: UIViewController {
             self.confirmButton.addTarget(self, action: #selector(self.ConfirmButton(_:)), for: .touchUpInside)
         }
         
-        setStats() // Title 표시
-        self.view.addSubview(mainScrollView)
-    }
-    
-    @objc func viewload_edit(_ notification: Notification) {
-        mainScrollView.subviews.forEach({$0.removeFromSuperview()})
-        let scrollcontainerView = UIView(frame: mainScrollView.frame)
-        mainScrollView.addSubview(scrollcontainerView)
-        //scrollView.addSubview(buttonView)
-        
-        //makeAttendanceButton!.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        var makeButton = UIButton()
-        
-        var inypos = 0
-        let inxpos = 20
-        let count = dailyAllAttendanceInfo.count
-        var addCount = 0
-        let sortedKeys = self.dailyAllAttendanceInfo.keys.sorted(by: <)
-        for (key) in sortedKeys {
-            var nextypos = 0
-            let cellview = UIView()
-            cellview.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 0.4)
-            cellview.frame = CGRect(x: 0, y: inypos, width : Int(mainScrollView.frame.width), height: 80)
-            
-            //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-            //backgroundImage.image = UIImage(named: "몽산포_가로배너.png")
-            
-            //cellview.backgroundColor = UIColor(red: 100, green: 100, blue: 100, alpha: 0.5)
-            
-            mainScrollView.addSubview(cellview)
-            
-            //profile image, rank name label, name label //////////////////////////////
-            
-            ///namelabel
-            let namelabel = UILabel()
-            namelabel.text = dailyAllAttendanceInfo[key]?.name!
-            namelabel.font = UIFont(name: "NotoSans", size: 17.0)!
-            namelabel.textColor = UIColor.black
-            namelabel.sizeToFit()
-            namelabel.frame.origin = CGPoint(x: 15, y: 7)
-            cellview.addSubview(namelabel)
-            
-            ///agelabel
-            let mobilelabel = UILabel()
-            mobilelabel.text = dailyAllAttendanceInfo[key]?.mobile!
-            mobilelabel.font = UIFont(name: "NotoSans", size: 17.0)!
-            mobilelabel.textColor = UIColor.black
-            mobilelabel.sizeToFit()
-            mobilelabel.frame.origin = CGPoint(x: 90, y: 7)
-            cellview.addSubview(mobilelabel)
-            
-            
-            attendRadioButtonArray.append(RadioButton.init())
-            attendRadioButtonArray[addCount].radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
-            attendRadioButtonArray[addCount].style = .rounded(radius: 4.0)
-            attendRadioButtonArray[addCount].setTitle(key, for: .normal)
-            if(dailyAllAttendanceInfo[key]?.status == "ATTENDED"){
-                attendRadioButtonArray[addCount].setTitleColor(UIColor.white, for: .normal)
-                attendRadioButtonArray[addCount].isOn = true
-            } else{
-                attendRadioButtonArray[addCount].setTitleColor(UIColor.white, for: .normal)
-                attendRadioButtonArray[addCount].radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
-                attendRadioButtonArray[addCount].isOn = false
-            }
-            attendRadioButtonArray[addCount].frame = CGRect(x: 210, y: 4 , width: 30, height: 30)
-            attendRadioButtonArray[addCount].addTarget(self, action: #selector(self.AttendAction(_:)), for: .touchUpInside)
-            cellview.addSubview(attendRadioButtonArray[addCount])
-            
-            //textview///////////////////////////////////////
-            attendTextArray.append(UITextView.init())
-            attendTextArray[addCount].frame.origin = CGPoint(x:250, y:4)
-            attendTextArray[addCount].frame.size = CGSize(width: 100, height: 30)
-            attendTextArray[addCount].backgroundColor = UIColor.white
-            attendTextArray[addCount].text = dailyAllAttendanceInfo[key]?.note
-            attendTextArray[addCount].backgroundColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 0.4)
-            cellview.addSubview(attendTextArray[addCount])
-            
-            //textview///////////////////////////////////////
-            let textview = UITextView()
-            textview.frame.origin = CGPoint(x:inxpos, y:nextypos)
-            textview.frame.size = CGSize(width: Int(mainScrollView.frame.width) - inxpos * 2, height: 120)
-            let contentSize = textview.sizeThatFits(textview.bounds.size)
-            var frame = textview.frame
-            frame.size.height = max(contentSize.height, 10)
-            textview.frame = frame
-            textview.isScrollEnabled = false
-            textview.isEditable = false
-            textview.isUserInteractionEnabled = true
-            textview.backgroundColor = UIColor.init(white: 0, alpha: 0)
-            
-            nextypos = Int(textview.frame.origin.y + textview.frame.size.height + 8)
-            cellview.frame.size.height = CGFloat(nextypos)
-            inypos += 3 + Int(cellview.frame.size.height) //다음 CellView의 위치
-            //cellview.addSubview(textview)
-            
-            addCount += 1 // index
-        }
-        mainScrollView.contentSize = CGSize(width: mainScrollView.frame.width-1, height: max(CGFloat(inypos),mainScrollView.frame.height+1))
-        mainScrollView.isScrollEnabled = true
-        
-        if(dailyAllAttendanceInfo.count == 0){
-            self.confirmButton.isEnabled = true
-            self.confirmButton.setTitle("출석부 생성", for: .normal)
-            self.confirmButton.removeTarget(nil, action: nil, for: .allEvents)
-            self.confirmButton.addTarget(self, action: #selector(self.MakeAttendance(_:)), for: .touchUpInside)
-        } else{
-            self.confirmButton.isEnabled = true
-            self.confirmButton.setTitle("출석 확인", for: .normal)
-            self.confirmButton.removeTarget(nil, action: nil, for: .allEvents)
-            self.confirmButton.addTarget(self, action: #selector(self.ConfirmButton(_:)), for: .touchUpInside)
-        }
-        
-        setStats() // Title 표시
+        SetStats()
         self.view.addSubview(mainScrollView)
     }
     
@@ -506,6 +499,41 @@ class GBSAttancanceContoller: UIViewController {
         }
     }
     
+    // SHOW
+    // HIDE
+    // DELETE
+    @objc func HiddenAction(_ sender:RadioButton){
+        let keyNumber = sender.currentTitle
+        var temp = EditData(id: Int(keyNumber!)!, action: "")
+        if dailyAllAttendanceInfo[String(keyNumber!)]?.hidden == false {
+            dailyAllAttendanceInfo[String(keyNumber!)]?.hidden = true
+            sender.radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
+            sender.isOn = true
+            temp.action = "HIDE"
+        } else{
+            dailyAllAttendanceInfo[String(keyNumber!)]?.hidden = false
+            sender.radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
+            sender.isOn = false
+            temp.action = "SHOW"
+        }
+        self.editDictionary[String(keyNumber!)] = temp
+    }
+    
+    @objc func DeleteAction(_ sender:RadioButton){
+        let keyNumber = sender.currentTitle
+        var temp = EditData(id: Int(keyNumber!)!, action: "")
+        if(editDictionary[keyNumber!]?.action == "DELETE"){
+            sender.radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
+            sender.isOn = false
+            temp.action = "SHOW"
+        } else{
+            sender.radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
+            sender.isOn = true
+            temp.action = "DELETE"
+        }
+        self.editDictionary[String(keyNumber!)] = temp
+    }
+    
     func SettingSendAttendData(idx : String, check : String){
         // Client 에서 출석 상태 변경
         if(check == "ATTENDED"){
@@ -513,7 +541,7 @@ class GBSAttancanceContoller: UIViewController {
         } else{
             self.dailyAllAttendanceInfo[idx]?.status = "ABSENT"
         }
-        setStats()
+        SetStats()
     }
     
     func SettingSendAttandanceList() -> Array<AttendanceData> {
@@ -522,7 +550,10 @@ class GBSAttancanceContoller: UIViewController {
         var addCount = 0
         let sortedKeys = self.dailyAllAttendanceInfo.keys.sorted(by: <)
         for (key) in sortedKeys{
-            data = AttendanceData(id: Int((dailyAllAttendanceInfo[key]?.id!)!)!, status: (dailyAllAttendanceInfo[key]?.status!)!, note: ((attendTextArray[addCount].text)!))
+            if(dailyAllAttendanceInfo[key]?.hidden == true){
+                continue
+            }
+            data = AttendanceData(id: Int((dailyAllAttendanceInfo[key]?.id!)!)!, status: (dailyAllAttendanceInfo[key]?.status!)!, note: ((attendTextDictionary[key]!.text)!))
             sendAttendanceArray.append(data)
             addCount+=1
         }
@@ -541,7 +572,6 @@ class GBSAttancanceContoller: UIViewController {
         super.viewDidLoad()
         
         saveCurrentDate() // [NEEDED] DatePicker로 계속 변경되어야 하고 처음에는 오늘날자로 적용 되도록
-        campusName.text = selectedCampus
         
         LoadAttendanceList(nav: "CURRENT")
         NotificationCenter.default.addObserver(self, selector: #selector(viewload), name: NSNotification.Name(rawValue: "update AttendanceBook"), object: nil)

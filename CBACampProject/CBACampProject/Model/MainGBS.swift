@@ -9,6 +9,8 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import Alamofire
+import SwiftyJSON
 
 class MainGBS {
     var gbsLevel : String?
@@ -29,6 +31,7 @@ class MainGBS {
 }
 
 struct MyInfo: Codable {
+    let memId : Int?
     let campus : String?
     let name : String?
     let mobile : String?
@@ -38,6 +41,7 @@ struct MyInfo: Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        memId = try values.decodeIfPresent(Int.self, forKey: .memId)
         campus = try values.decodeIfPresent(String.self, forKey: .campus)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
@@ -75,43 +79,7 @@ struct UserInfo: Codable{
     }
 }
 
-func GetGBSData(){
-    // DataPassing
-    print("parsing start")
-    
-    if(Auth.auth().currentUser != nil){
-        let url = "http://cba.sungrak.or.kr:9000/getMyInfo/" + (Auth.auth().currentUser?.uid)!
-        let urlObj = URL(string: url)
-        print(url)
-        
-        URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-            guard let data = data else {return}
-            
-            do {
-                let decoder = JSONDecoder()
-                let myinfos = try decoder.decode(MyInfo.self, from: data)
-                print(myinfos)
-                
-                if(myinfos.name != nil){
-                    CBAInfoTabViewController.mainUser.setUser(
-                        campus: myinfos.campus ?? "" ,
-                        mobile: myinfos.mobile ?? "" ,
-                        name: myinfos.name ?? "",
-                        retreatGbs: myinfos.retreatGbs ?? "",
-                        grade: myinfos.grade ?? "",
-                        position: myinfos.position ?? ""
-                    )
-                }
-                print(CBAInfoTabViewController.mainUser.name)
-                
-            } catch{
-                print(url)
-                print("We got an error", error.localizedDescription)
-            }
-            
-            }.resume()
-    }
-    
+func GetBaseMyData(){
     if(Auth.auth().currentUser != nil){
         let url = "http://cba.sungrak.or.kr:9000/getGBSInfo/" + (Auth.auth().currentUser?.uid)!
         let urlObj = URL(string: url)
@@ -131,6 +99,8 @@ func GetGBSData(){
                     )
                     CBAInfoTabViewController.memberCount = myinfos.members!.count
                 }
+                
+                GetMyData()
             } catch{
                 print(url)
                 print("We got an error", error.localizedDescription)
@@ -141,32 +111,44 @@ func GetGBSData(){
 
 func GetMyData(){
     if(Auth.auth().currentUser != nil){
-        let url = "http://cba.sungrak.or.kr:9000/getMyInfo/" + (Auth.auth().currentUser?.uid)!
-        let urlObj = URL(string: url)
+        let url = "http://cba.sungrak.or.kr:9000/members/info"
+        print("TEST : " +  url)
+        let header: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization" : "Basic YWRtaW46ZGh3bHJybGVoISEh"
+        ]
+        let uid : String = (Auth.auth().currentUser?.uid)!
+        let params : Parameters = [
+            "uid" : uid
+        ]
+        let alamo = AF.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: header)
         
-        URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
-            guard let data = data else {return}
-            
-            do {
-                let decoder = JSONDecoder()
-                let myinfos = try decoder.decode(MyInfo.self, from: data)
+        alamo.responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
                 
-                if(myinfos.name != nil){
-                    CBAInfoTabViewController.mainUser.setUser(
-                        campus: myinfos.campus ?? "",
-                        mobile: myinfos.mobile ?? "",
-                        name: myinfos.name ?? "",
-                        retreatGbs: myinfos.retreatGbs ?? "",
-                        grade: myinfos.grade ?? "",
-                        position : myinfos.position ?? ""
-                    )
-                }
+                let memId = json["memId"].intValue
+                let name = json["name"].stringValue
+                let campus = json["campus"].stringValue
+                let dt_birth = json["dt_birth"].stringValue
+                let mobile = json["mobile"].stringValue
+                let uid = json["uid"].stringValue
+                let grade = json["grade"].stringValue
                 
-            } catch{
-                print(url)
-                print("We got an error", error.localizedDescription)
+                let retreatGbsInfo_retreateId = json["retreatGbsInfo"]["retreatId"].intValue
+                let retreatGbsInfo_gbs = json["retreatGbsInfo"]["gbs"].stringValue
+                let retreatGbsInfo_position = json["retreatGbsInfo"]["position"].stringValue
+                let retreatGBSInfoSend = RetreatGBSInfo(retreatId: retreatGbsInfo_retreateId, gbs: retreatGbsInfo_gbs, position:  retreatGbsInfo_position)
+                
+                let gbsInfo_gbs = json["gbsInfo"]["gbs"].stringValue
+                let gbsInfo_position = json["gbsInfo"]["position"].stringValue
+                let GBSInfoSend = GBSInfo(gbsName: gbsInfo_gbs, position: gbsInfo_position)
+                
+                CBAInfoTabViewController.mainUser.setUser(memId: memId, campus: campus, mobile: mobile, name: name, grade: grade, retreatGbsInfo: retreatGBSInfoSend, gbsInfo: GBSInfoSend)
+            case .failure(let error):
+                print(error)
             }
-            
-            }.resume()
+        }
     }
 }
