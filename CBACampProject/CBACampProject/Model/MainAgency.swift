@@ -57,8 +57,8 @@ class AgencySingleton {
     }
     
     func SetCBAAgency(){
-        Messaging.messaging().subscribe(toTopic: "2020_CBA_WINTER") { error in
-            print("Subscribed to 2020_CBA_WINTER topic")
+        Messaging.messaging().subscribe(toTopic: "2020_CBA_SUMMER") { error in
+            print("Subscribed to 2020_CBA_SUMMER topic")
         }
         Messaging.messaging().unsubscribe(fromTopic: "2019_SR_SUMMER") { error in
             print("unSubscribed to 2019winter topic")
@@ -69,13 +69,13 @@ class AgencySingleton {
         sidebarArray.removeAll()
         sidebarArray.append(ButtonType(type: "segue",iconName: "출석 관리", controlValue: "AttendSegue"))
         sidebarArray.append(ButtonType(type: "segue",iconName: "GBS 출석 관리", controlValue: "GbsAttendSegue"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
-        sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "cleaning"))
-        sidebarArray.append(ButtonType(type: "info",iconName: "숙소", controlValue: "room"))
-        sidebarArray.append(ButtonType(type: "info",iconName: "GBS 장소", controlValue: "gbs_place"))
-        sidebarArray.append(ButtonType(type: "info",iconName: "캠모 장소", controlValue: "campus_place"))
+        //sidebarArray.append(ButtonType(type: "image",iconName: "또래별 강의", controlValue: "lecture"))
+        //sidebarArray.append(ButtonType(type: "image",iconName: "식단", controlValue: "menu"))
+        //sidebarArray.append(ButtonType(type: "image",iconName: "식사/간식 봉사", controlValue: "mealwork"))
+        //sidebarArray.append(ButtonType(type: "image",iconName: "청소 구역", controlValue: "cleaning"))
+        //sidebarArray.append(ButtonType(type: "info",iconName: "숙소", controlValue: "room"))
+        //sidebarArray.append(ButtonType(type: "info",iconName: "GBS 장소", controlValue: "gbs_place"))
+        //sidebarArray.append(ButtonType(type: "info",iconName: "캠모 장소", controlValue: "campus_place"))
         
         var bottomArray : Array<ButtonType> = []
         bottomArray.removeAll()
@@ -85,11 +85,11 @@ class AgencySingleton {
         bottomArray.append(ButtonType(type: "segue",iconName: "ONAIR.png", controlValue: "StreamingSegue"))
         bottomArray.append(ButtonType(type: "segue",iconName: "GBS.png", controlValue: "SearchGBS")) // GBS Attandance : testSegue
         
-        AgencySingleton.shared.AgencyTitle = "2020_CBA_WINTER" // 2019_SR_SUMMER
-        AgencySingleton.shared.viewBannerName = "2020Winter_BaseImage.png" // "몽산포_배너.png"
+        AgencySingleton.shared.AgencyTitle = "2020_CBA_SUMMER" // 2019_SR_SUMMER
+        AgencySingleton.shared.viewBannerName = "2020Summer_BaseImage.png" // "몽산포_배너.png"
         AgencySingleton.shared.sidebarBannerName = "Harmony_Sidebar.png" // "몽산포_가로배너.png"
         AgencySingleton.shared.topTagImageName = "CBA1.png" // "몽산포.png"
-        AgencySingleton.shared.backgroundImageName = "2020Winter_BackImage.png"
+        AgencySingleton.shared.backgroundImageName = "2020Summer_BackImage.png"
         
         AgencySingleton.shared.sidebar_setting = sidebarArray
         AgencySingleton.shared.bottombar_setting = bottomArray
@@ -101,8 +101,8 @@ class AgencySingleton {
         Messaging.messaging().subscribe(toTopic: "2019_SR_SUMMER") { error in
             print("Subscribed to 2019winter topic")
         }
-        Messaging.messaging().unsubscribe(fromTopic: "2020_CBA_WINTER") { error in
-            print("unSubscribed to 2020winter topic")
+        Messaging.messaging().unsubscribe(fromTopic: "2020_CBA_SUMMER") { error in
+            print("unSubscribed to 2020summer topic")
         }
         
         //MONGSANPO Data

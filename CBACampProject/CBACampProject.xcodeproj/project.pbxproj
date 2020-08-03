@@ -18,6 +18,11 @@
 		042761EB2106E41600928EB7 /* CBACampProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042761EA2106E41600928EB7 /* CBACampProjectUITests.swift */; };
 		042A0DA422DC36CC00DEE34C /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */; };
 		043A7FF8219A721C00451CE0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A7FF7219A721C00451CE0 /* AuthViewController.swift */; };
+		044039B4247BAD3400D6FA97 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 044039B2247BAD3400D6FA97 /* right.png */; };
+		044039B5247BAD3400D6FA97 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 044039B3247BAD3400D6FA97 /* left.png */; };
+		044039B7247BAE6300D6FA97 /* portable-document-format.png in Resources */ = {isa = PBXBuildFile; fileRef = 044039B6247BAE6300D6FA97 /* portable-document-format.png */; };
+		044039B9247BAE6900D6FA97 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = 044039B8247BAE6900D6FA97 /* trash.png */; };
+		044039BB247BAF1C00D6FA97 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 044039BA247BAF1C00D6FA97 /* stop.png */; };
 		0442A2CD22EB43590035EA9A /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0442A2CC22EB43590035EA9A /* cancel.png */; };
 		0442A2CF22EB45970035EA9A /* CBA1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0442A2CE22EB45970035EA9A /* CBA1.png */; };
 		04468FA222EC37E200E63183 /* 몽산포_사이드바배너.png in Resources */ = {isa = PBXBuildFile; fileRef = 04468FA122EC37E100E63183 /* 몽산포_사이드바배너.png */; };
@@ -37,7 +42,6 @@
 		04733D3822FB19A10085756A /* StreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04733D3722FB19A10085756A /* StreamingViewController.swift */; };
 		048A3FCE22CFD77500CCEC20 /* CBA가로배너.png in Resources */ = {isa = PBXBuildFile; fileRef = 048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */; };
 		048AF661224B853E00A8D7AD /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048AF660224B853E00A8D7AD /* CheckViewController.swift */; };
-		0493A095246C515C0047CD7D /* HarmonyInJesus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0493A094246C515B0047CD7D /* HarmonyInJesus.jpg */; };
 		0493A097246C53930047CD7D /* Harmony_Sidebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493A096246C53930047CD7D /* Harmony_Sidebar.png */; };
 		04950AAA21E508CD00213D42 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04950AA921E508CD00213D42 /* SendMessageViewController.swift */; };
 		04955EFB210A24320057FD68 /* MainLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04955EFA210A24320057FD68 /* MainLocation.swift */; };
@@ -73,6 +77,9 @@
 		04E7FFF722D4ADD600E87AE9 /* 막대.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF122D4ADD600E87AE9 /* 막대.png */; };
 		04E7FFF822D4ADD600E87AE9 /* 로그인.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF222D4ADD600E87AE9 /* 로그인.png */; };
 		04E7FFF922D4ADD600E87AE9 /* 화살표.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E7FFF322D4ADD600E87AE9 /* 화살표.png */; };
+		04EFDCD524D47990007760D9 /* 2020Summer_SelectImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDCD224D47990007760D9 /* 2020Summer_SelectImage.png */; };
+		04EFDCD624D47990007760D9 /* 2020Summer_BackImage__.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDCD324D47990007760D9 /* 2020Summer_BackImage__.png */; };
+		04EFDCD724D47990007760D9 /* 2020Summer_BaseImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFDCD424D47990007760D9 /* 2020Summer_BaseImage.png */; };
 		04F09B2822D78B72006A604E /* CBA선택.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F09B2622D78B72006A604E /* CBA선택.png */; };
 		04F09B2922D78B72006A604E /* 몽산포선택1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F09B2722D78B72006A604E /* 몽산포선택1.png */; };
 		04F09B2D22D870B9006A604E /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F09B2C22D870B9006A604E /* NoticeViewController.swift */; };
@@ -105,9 +112,7 @@
 		DB764E57210CB9A1006E72EB /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E56210CB9A1006E72EB /* Icon-60@3x.png */; };
 		DB764E5F210E0A3D006E72EB /* applybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = DB764E5E210E0A3D006E72EB /* applybutton.png */; };
 		DBF11FD2211B524400EE9B98 /* 이미지준비중.png in Resources */ = {isa = PBXBuildFile; fileRef = DBF11FD1211B524400EE9B98 /* 이미지준비중.png */; };
-		E1959C7523DAE4C800CAE9AC /* 2020Winter_BackImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7123DAE4C700CAE9AC /* 2020Winter_BackImage.png */; };
-		E1959C7723DAE4C800CAE9AC /* 2020Winter_BaseImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7323DAE4C700CAE9AC /* 2020Winter_BaseImage.png */; };
-		E1959C7823DAE4C800CAE9AC /* 2020Winter_SelectImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7423DAE4C700CAE9AC /* 2020Winter_SelectImage.png */; };
+		E1959C7523DAE4C800CAE9AC /* 2020Summer_BackImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7123DAE4C700CAE9AC /* 2020Summer_BackImage.png */; };
 		E1959C7F23E5EA5500CAE9AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1959C7E23E5EA5400CAE9AC /* GoogleService-Info.plist */; };
 		EB9DBBBDB2D80197962D0D9C /* Pods_CBACampProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D2F86E3A2F0AD34F90D79C /* Pods_CBACampProjectUITests.framework */; };
 /* End PBXBuildFile section */
@@ -150,6 +155,11 @@
 		042761EC2106E41600928EB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		042A0DA322DC36CC00DEE34C /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
 		043A7FF7219A721C00451CE0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		044039B2247BAD3400D6FA97 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
+		044039B3247BAD3400D6FA97 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
+		044039B6247BAE6300D6FA97 /* portable-document-format.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portable-document-format.png"; sourceTree = "<group>"; };
+		044039B8247BAE6900D6FA97 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
+		044039BA247BAF1C00D6FA97 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		0442A2CC22EB43590035EA9A /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
 		0442A2CE22EB45970035EA9A /* CBA1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CBA1.png; path = "Resource/19_여름_메인/상단/CBA1.png"; sourceTree = SOURCE_ROOT; };
 		04468FA122EC37E100E63183 /* 몽산포_사이드바배너.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포_사이드바배너.png"; sourceTree = "<group>"; };
@@ -170,7 +180,6 @@
 		04733D3722FB19A10085756A /* StreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingViewController.swift; sourceTree = "<group>"; };
 		048A3FCD22CFD77500CCEC20 /* CBA가로배너.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA가로배너.png"; sourceTree = "<group>"; };
 		048AF660224B853E00A8D7AD /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
-		0493A094246C515B0047CD7D /* HarmonyInJesus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = HarmonyInJesus.jpg; path = "Resource/19_여름_메인/중앙/HarmonyInJesus.jpg"; sourceTree = SOURCE_ROOT; };
 		0493A096246C53930047CD7D /* Harmony_Sidebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Harmony_Sidebar.png; sourceTree = "<group>"; };
 		04950AA921E508CD00213D42 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
 		04955EFA210A24320057FD68 /* MainLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocation.swift; sourceTree = "<group>"; };
@@ -206,6 +215,9 @@
 		04E7FFF122D4ADD600E87AE9 /* 막대.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "막대.png"; sourceTree = "<group>"; };
 		04E7FFF222D4ADD600E87AE9 /* 로그인.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "로그인.png"; sourceTree = "<group>"; };
 		04E7FFF322D4ADD600E87AE9 /* 화살표.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "화살표.png"; sourceTree = "<group>"; };
+		04EFDCD224D47990007760D9 /* 2020Summer_SelectImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Summer_SelectImage.png; sourceTree = "<group>"; };
+		04EFDCD324D47990007760D9 /* 2020Summer_BackImage__.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Summer_BackImage__.png; sourceTree = "<group>"; };
+		04EFDCD424D47990007760D9 /* 2020Summer_BaseImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Summer_BaseImage.png; sourceTree = "<group>"; };
 		04F09B2622D78B72006A604E /* CBA선택.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CBA선택.png"; sourceTree = "<group>"; };
 		04F09B2722D78B72006A604E /* 몽산포선택1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "몽산포선택1.png"; sourceTree = "<group>"; };
 		04F09B2C22D870B9006A604E /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
@@ -247,9 +259,7 @@
 		DB764E56210CB9A1006E72EB /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
 		DB764E5E210E0A3D006E72EB /* applybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applybutton.png; sourceTree = "<group>"; };
 		DBF11FD1211B524400EE9B98 /* 이미지준비중.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "이미지준비중.png"; sourceTree = "<group>"; };
-		E1959C7123DAE4C700CAE9AC /* 2020Winter_BackImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Winter_BackImage.png; sourceTree = "<group>"; };
-		E1959C7323DAE4C700CAE9AC /* 2020Winter_BaseImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Winter_BaseImage.png; sourceTree = "<group>"; };
-		E1959C7423DAE4C700CAE9AC /* 2020Winter_SelectImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Winter_SelectImage.png; sourceTree = "<group>"; };
+		E1959C7123DAE4C700CAE9AC /* 2020Summer_BackImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2020Summer_BackImage.png; sourceTree = "<group>"; };
 		E1959C7D23E5D7E600CAE9AC /* CBACampProjectRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CBACampProjectRelease.entitlements; sourceTree = "<group>"; };
 		E1959C7E23E5EA5400CAE9AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1259F087ED8F4BA9808592E /* Pods-CBACampProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBACampProject.release.xcconfig"; path = "Target Support Files/Pods-CBACampProject/Pods-CBACampProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -466,14 +476,13 @@
 		04E3728421071B0300FB7304 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				04EFDCD124D47974007760D9 /* 2020Summer */,
 				044A47A322E3938400249822 /* Assets.xcassets */,
 				04AE0EA422D97CCE00A9F1F2 /* 메세지 */,
 				04E7FFEC22D4ADD600E87AE9 /* 사이드바 */,
 				04E7FFCE22D3924C00E87AE9 /* 19_몽산포 */,
-				0426D78422CCB6D1006C111A /* 19_여름_메인 */,
 				DBF11FD1211B524400EE9B98 /* 이미지준비중.png */,
 				0493A096246C53930047CD7D /* Harmony_Sidebar.png */,
-				0493A094246C515B0047CD7D /* HarmonyInJesus.jpg */,
 				0442A2CC22EB43590035EA9A /* cancel.png */,
 				DB3A886B210E54FD00E6DA14 /* 이미지준비중.jpg */,
 				DB764E5E210E0A3D006E72EB /* applybutton.png */,
@@ -490,6 +499,11 @@
 				04FC00D0210AEC0000528D7A /* hamberger.png */,
 				04FC00D4210AEC0000528D7A /* hamgerger2.png */,
 				04FC00D7210AEC0000528D7A /* Heart.png */,
+				044039B3247BAD3400D6FA97 /* left.png */,
+				044039B2247BAD3400D6FA97 /* right.png */,
+				044039B8247BAE6900D6FA97 /* trash.png */,
+				044039BA247BAF1C00D6FA97 /* stop.png */,
+				044039B6247BAE6300D6FA97 /* portable-document-format.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -497,6 +511,7 @@
 		04E7FFCE22D3924C00E87AE9 /* 19_몽산포 */ = {
 			isa = PBXGroup;
 			children = (
+				0426D78422CCB6D1006C111A /* 19_여름_메인 */,
 				04E7FFD922D3927700E87AE9 /* 상단 */,
 				04E7FFDD22D3927700E87AE9 /* 중앙 */,
 				04E7FFD322D3927700E87AE9 /* 하단 */,
@@ -559,6 +574,13 @@
 				04E7FFF222D4ADD600E87AE9 /* 로그인.png */,
 			);
 			path = "박스";
+			sourceTree = "<group>";
+		};
+		04EFDCD124D47974007760D9 /* 2020Summer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 2020Summer;
 			sourceTree = "<group>";
 		};
 		04F09B2522D78B72006A604E /* 선택항목 */ = {
@@ -628,9 +650,10 @@
 		DBF11FAE211B358500EE9B98 /* InformationPosters */ = {
 			isa = PBXGroup;
 			children = (
-				E1959C7123DAE4C700CAE9AC /* 2020Winter_BackImage.png */,
-				E1959C7323DAE4C700CAE9AC /* 2020Winter_BaseImage.png */,
-				E1959C7423DAE4C700CAE9AC /* 2020Winter_SelectImage.png */,
+				04EFDCD424D47990007760D9 /* 2020Summer_BaseImage.png */,
+				04EFDCD224D47990007760D9 /* 2020Summer_SelectImage.png */,
+				04EFDCD324D47990007760D9 /* 2020Summer_BackImage__.png */,
+				E1959C7123DAE4C700CAE9AC /* 2020Summer_BackImage.png */,
 			);
 			path = InformationPosters;
 			sourceTree = "<group>";
@@ -760,13 +783,12 @@
 			files = (
 				04E7FFF822D4ADD600E87AE9 /* 로그인.png in Resources */,
 				04E7FFE722D3927700E87AE9 /* 몽산포.png in Resources */,
+				044039B7247BAE6300D6FA97 /* portable-document-format.png in Resources */,
 				04FD7C6722E7707E00B04F2A /* 불편접수.png in Resources */,
 				04E7FFF722D4ADD600E87AE9 /* 막대.png in Resources */,
 				04FC00E9210AEC0100528D7A /* Heart.png in Resources */,
 				DB764E4E210C87EA006E72EB /* NotoSans-Regular.ttf in Resources */,
-				0493A095246C515C0047CD7D /* HarmonyInJesus.jpg in Resources */,
 				DB764E5F210E0A3D006E72EB /* applybutton.png in Resources */,
-				E1959C7823DAE4C800CAE9AC /* 2020Winter_SelectImage.png in Resources */,
 				048A3FCE22CFD77500CCEC20 /* CBA가로배너.png in Resources */,
 				042761D52106E41600928EB7 /* LaunchScreen.storyboard in Resources */,
 				0493A097246C53930047CD7D /* Harmony_Sidebar.png in Resources */,
@@ -783,28 +805,32 @@
 				044A479222E3208E00249822 /* 몽산포선택.png in Resources */,
 				044A47A222E3830800249822 /* CBA.png in Resources */,
 				DB764E4F210C87EA006E72EB /* NotoSansKR_Regular.woff in Resources */,
+				044039B4247BAD3400D6FA97 /* right.png in Resources */,
 				042761D22106E41600928EB7 /* Assets.xcassets in Resources */,
 				DBF11FD2211B524400EE9B98 /* 이미지준비중.png in Resources */,
 				04AE0EB122D97CCE00A9F1F2 /* 메세지-아이콘.png in Resources */,
 				044A47A422E3938500249822 /* Assets.xcassets in Resources */,
 				E1959C7F23E5EA5500CAE9AC /* GoogleService-Info.plist in Resources */,
 				04E7FFE322D3927700E87AE9 /* bottom_5.png in Resources */,
+				04EFDCD524D47990007760D9 /* 2020Summer_SelectImage.png in Resources */,
 				04E7FFF622D4ADD600E87AE9 /* 제목-없음-2.png in Resources */,
+				044039B5247BAD3400D6FA97 /* left.png in Resources */,
 				0442A2CD22EB43590035EA9A /* cancel.png in Resources */,
 				DB764E54210C98FD006E72EB /* refresh.png in Resources */,
 				0442A2CF22EB45970035EA9A /* CBA1.png in Resources */,
+				044039B9247BAE6900D6FA97 /* trash.png in Resources */,
 				04E7FFD022D3925900E87AE9 /* 몽산포_가로배너.png in Resources */,
 				04FC00E2210AEC0100528D7A /* hamberger.png in Resources */,
 				04AE0EB322D97CCE00A9F1F2 /* 안드로이드.png in Resources */,
 				04FC00ED210AEC0100528D7A /* CBA.jpeg in Resources */,
 				042761D02106E41400928EB7 /* Main.storyboard in Resources */,
 				DB3A886C210E54FD00E6DA14 /* 이미지준비중.jpg in Resources */,
-				E1959C7723DAE4C800CAE9AC /* 2020Winter_BaseImage.png in Resources */,
 				04F09B2922D78B72006A604E /* 몽산포선택1.png in Resources */,
 				04733D3622FAEA380085756A /* CBA_배경.png in Resources */,
 				04733D3222FAEA000085756A /* CALL.png in Resources */,
 				04E7FFE222D3927700E87AE9 /* bottom_2.png in Resources */,
 				04733D3322FAEA000085756A /* ONAIR.png in Resources */,
+				04EFDCD724D47990007760D9 /* 2020Summer_BaseImage.png in Resources */,
 				04FC00E5210AEC0100528D7A /* CampBackground.jpeg in Resources */,
 				04E7FFE622D3927700E87AE9 /* 로고.png in Resources */,
 				04E7FFE422D3927700E87AE9 /* bottom_4.png in Resources */,
@@ -816,6 +842,7 @@
 				04E7FFE922D3927700E87AE9 /* 몽산포_배너.png in Resources */,
 				04E7FFE022D3927700E87AE9 /* bottom_1.png in Resources */,
 				04733D2922FA87E50085756A /* 조장.png in Resources */,
+				04EFDCD624D47990007760D9 /* 2020Summer_BackImage__.png in Resources */,
 				04E7FFE822D3927700E87AE9 /* 알림판.png in Resources */,
 				04FC00E3210AEC0100528D7A /* Blank.png in Resources */,
 				0426D79B22CCB6D3006C111A /* 배너.png in Resources */,
@@ -823,12 +850,13 @@
 				04733D3422FAEA000085756A /* 제목-없음-1.png in Resources */,
 				DB764E4D210C87EA006E72EB /* NotoSans-Bold.ttf in Resources */,
 				04FC00E6210AEC0100528D7A /* hamgerger2.png in Resources */,
+				044039BB247BAF1C00D6FA97 /* stop.png in Resources */,
 				04733D3122FAEA000085756A /* GBS.png in Resources */,
 				04E7FFE522D3927700E87AE9 /* 메뉴.png in Resources */,
 				04E7FFF922D4ADD600E87AE9 /* 화살표.png in Resources */,
 				044A479A22E37CC000249822 /* 준비중.png in Resources */,
 				04F09B2822D78B72006A604E /* CBA선택.png in Resources */,
-				E1959C7523DAE4C800CAE9AC /* 2020Winter_BackImage.png in Resources */,
+				E1959C7523DAE4C800CAE9AC /* 2020Summer_BackImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1240,12 +1268,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZJXHH5P6P4;
 				INFOPLIST_FILE = CBACampProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = CBA.CBACampProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1264,12 +1292,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZJXHH5P6P4;
 				INFOPLIST_FILE = CBACampProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = CBA.CBACampProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";

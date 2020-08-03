@@ -141,7 +141,7 @@ class GBSAttandanceController: UIViewController {
                 case .success(let value):
                     let json = JSON(value)
                     print("success MAKE")
-                    print("JSON: \(json)")
+                    //print("JSON: \(json)")
                     let results = json["data"].arrayValue
                     
                     self.dailyAllAttendanceInfo.removeAll()
@@ -235,11 +235,17 @@ class GBSAttandanceController: UIViewController {
             let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response { response in
                 switch response.result {
                 case .success(let value):
-                    print(value as Any)
+                    //print(value)
                     self.LoadAttendanceList(nav: "CURRENT")
+                    let alert = UIAlertController(title: "출석 완료", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 case .failure(let error):
                     print(error)
                     self.LoadAttendanceList(nav: "CURRENT")
+                    let alert = UIAlertController(title: "출석 완료", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
             // TODO : 변경이 완료되었습니다! 같은 Alert가 필요할듯
@@ -312,7 +318,7 @@ class GBSAttandanceController: UIViewController {
                     if (results.count != 0){
                         var dateCheck = ""
                         print("success LOAD")
-                        print("JSON: \(json)")
+                        //print("JSON: \(json)")
                         self.dailyAllAttendanceInfo.removeAll()
 
                         for result in results {
@@ -440,6 +446,7 @@ class GBSAttandanceController: UIViewController {
             attendText.frame.size = CGSize(width: mainScrollView.frame.width / 3, height: 30)
             attendText.text = dailyAllAttendanceInfo[key]?.note
             attendText.backgroundColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 0.4)
+            attendText.endEditing(true)
             cellview.addSubview(attendText)
             attendTextDictionary[key] = attendText
             

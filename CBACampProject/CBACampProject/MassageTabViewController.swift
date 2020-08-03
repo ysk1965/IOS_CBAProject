@@ -42,7 +42,7 @@ class MassageTabViewController: UIViewController {
         scrollView.addSubview(scrollcontainerView)
         //scrollView.addSubview(buttonView)
         
-        var inypos = self.view.frame.height/8
+        var inypos = self.view.frame.height/10
         let inxpos = 20
         let count = FirebaseModel.messages.count
         
@@ -253,27 +253,6 @@ class MassageTabViewController: UIViewController {
         
         
         if(CBAInfoTabViewController.isNotiMessage == false) {
-            let infoText = UILabel()
-            infoText.frame = CGRect(x:0, y:self.view.frame.height/13, width:self.view.frame.width, height:self.view.frame.height/12)
-            infoText.font = UIFont(name: "System"
-                , size: 8)
-            infoText.adjustsFontSizeToFitWidth = true
-            infoText.textColor = UIColor.lightGray
-            infoText.textAlignment = .center
-            infoText.numberOfLines = 2
-            if(AgencySingleton.shared.AgencyTitle == "2019_SR_SUMMER"){
-                infoText.text = """
-                작성하신 내용은 작성자와 관리자만 확인되면
-                처리 경과를 확인하실 수 있습니다.
-                """
-            } else{
-                infoText.text = """
-                수련회 동안 생활하는 데 불편사항 및 건의를
-                보내주시면 확인후 답변해드립니다.
-                """
-            }
-            view.addSubview(infoText)
-            
             SendButton.setTitle(" ", for: .normal)
             SendButton.setTitleColor(UIColor.blue, for: .normal)
             SendButton.popIn()

@@ -199,7 +199,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
                 }
                 headerLabel.text = CBAInfoTabViewController.mainUser.name + "  |  " + CBAInfoTabViewController.mainUser.campus + "  |  " + tempGrade
             }
-            headerButton.addTarget(self, action: #selector(self.Logout(_:)), for: .touchUpInside)
+            headerButton.addTarget(self, action: #selector(self.LogoutAction(_:)), for: .touchUpInside)
         } else{
             headerButton.setTitle(" ", for: .normal)
             headerButton.setImage(UIImage(named: "로그인.png"), for: .normal)
@@ -222,7 +222,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         BackImageView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         let ImageButton = UIButton()
-        if(AgencySingleton.shared.AgencyTitle == "2020_CBA_WINTER"){
+        if(AgencySingleton.shared.AgencyTitle == "2020_CBA_SUMMER"){
             BackImageView.addSubview(headerLabel)
             headerView.addSubview(BackImageView)
             ImageButton.imageView!.image = UIImage(named: AgencySingleton.shared.sidebarBannerName!)
@@ -273,12 +273,14 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         menu.delegate = self
     }
     
-    @objc func loadVisiblePages(_ notification: Notification){
+    @objc func LoadImageView(_ notification: Notification){
         // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
+        /*
         if (AgencySingleton.shared.realmAgent == "CBA"){
             // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
             slideshow.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
         }
+         */
         
         slideshow.slideIn(from : .right, delay : 0.5)
         slideshow.fadeIn(duration: 0.3)
@@ -294,7 +296,19 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         OpenImageView()
     }
     
-    @objc func Logout(_ sender:UIButton){
+    @objc func Logout(_ sender: Any){
+        do {
+            try Auth.auth().signOut()
+            CBAInfoTabViewController.mainUser.setUser(memId: 0, campus: "", mobile: "", name: "", grade: "", retreatGbsInfo: RetreatGBSInfo(retreatId: 0, gbs: "", position: ""), gbsInfo: GBSInfo(gbsName: "", position: ""))
+        } catch{
+            
+        }
+        SettingSidebar()
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func LogoutAction(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
             CBAInfoTabViewController.mainUser.setUser(memId: 0, campus: "", mobile: "", name: "", grade: "", retreatGbsInfo: RetreatGBSInfo(retreatId: 0, gbs: "", position: ""), gbsInfo: GBSInfo(gbsName: "", position: ""))
@@ -434,7 +448,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         popupView_cbaButton.slideOut()
         popupView_cbaButton.backgroundColor = UIColor.white
         popupView_cbaButton.addTarget(self, action: #selector(self.SetCBA(_:)), for: .touchUpInside)
-        popupView_cbaButton.setImage(UIImage(named: "2020Winter_SelectImage.png"), for: UIControl.State.normal)
+        popupView_cbaButton.setImage(UIImage(named: "2020Summer_SelectImage.png"), for: UIControl.State.normal)
         popupView_cbaButton.snp.makeConstraints { (make) -> Void in
             make.height.height.equalTo(80)
             make.width.width.equalTo(270)
@@ -574,11 +588,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     lazy var titleNameButton = UIButton()
-    @objc func ResizeView(_ notification: Notification){
-        print("RELOAD VIEW (ResizeView)")
+    @objc func LoadMainView(_ notification: Notification){
+        print("RELOAD VIEW (LoadMainView)")
         if (AgencySingleton.shared.realmAgent == "CBA"){
             // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
-            self.view.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
+            //self.view.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
+            self.view.backgroundColor = .white
         } else {
             self.view.backgroundColor = .white
         }
@@ -667,6 +682,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Messaging.messaging().isAutoInitEnabled = true
         SetNotificationCenter()
         //CBA Data
         var sidebarArray : Array<ButtonType> = []
@@ -729,9 +745,9 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     }
     
     func SetNotificationCenter(){
-        NotificationCenter.default.addObserver(self,selector: #selector(self.loadVisiblePages),name: NSNotification.Name(rawValue: "FIR_ChangeImage"), object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.LoadImageView),name: NSNotification.Name(rawValue: "FIR_ChangeImage"), object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.ResizeView), name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.LoadMainView), name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: nil)
     }
     
     override func didReceiveMemoryWarning() {

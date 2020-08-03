@@ -136,7 +136,7 @@ class AttendanceViewController: UIViewController {
                 case .success(let value):
                     let json = JSON(value)
                     print("success MAKE")
-                    print("JSON: \(json)")
+                    //print("JSON: \(json)")
                     let results = json["data"].arrayValue
                     
                     self.dailyAllAttendanceInfo.removeAll()
@@ -174,6 +174,7 @@ class AttendanceViewController: UIViewController {
     var isEmptyFlag : Bool = false
     
     var currentDate : String?
+    var isEditPage : Bool = false
     
     func SettingDate() -> String {
         let formatter = DateFormatter()
@@ -231,11 +232,17 @@ class AttendanceViewController: UIViewController {
             let alamo = AF.request(url, method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: header).response { response in
                 switch response.result {
                 case .success(let value):
-                    print(value)
+                    //print(value)
                     self.LoadAttendanceList(nav: "CURRENT")
+                    let alert = UIAlertController(title: "출석 완료", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 case .failure(let error):
                     print(error)
                     self.LoadAttendanceList(nav: "CURRENT")
+                    let alert = UIAlertController(title: "출석 완료", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
             // TODO : 변경이 완료되었습니다! 같은 Alert가 필요할듯
@@ -282,9 +289,12 @@ class AttendanceViewController: UIViewController {
     @IBAction func editButton(_ sender: Any) {
         // edit는 회원 여부 수정 할 때 필요함
         // 다른 곳에서 쓰고 있고 해당 코드는 나중에 다른 작업으로 바뀌어야 함
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(viewload_edit), name: NSNotification.Name(rawValue: "update editBook"), object: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update editBook"), object: self) // 초기화면 로드 (당일이 나와야 함)
+        if self.isEditPage == false {
+            NotificationCenter.default.addObserver(self, selector: #selector(viewload_edit), name: NSNotification.Name(rawValue: "update editBook"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update editBook"), object: self)
+        } else{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "update AttendanceBook"), object: self)
+        }
     }
     
     @IBAction func prevButton(_ sender: Any) {
@@ -351,7 +361,7 @@ class AttendanceViewController: UIViewController {
                     if (results.count != 0){
                         var dateCheck = ""
                         print("success LOAD")
-                        print("JSON: \(json)")
+                        //print("JSON: \(json)")
                         self.dailyAllAttendanceInfo.removeAll()
 
                         for result in results {
@@ -395,6 +405,7 @@ class AttendanceViewController: UIViewController {
     }
     
     @objc func viewload(_ notification: Notification) {
+        self.isEditPage = false
         mainScrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: mainScrollView.frame)
         mainScrollView.addSubview(scrollcontainerView)
@@ -461,10 +472,8 @@ class AttendanceViewController: UIViewController {
             attendRadioButtonArray[addCount].style = .rounded(radius: 4.0)
             attendRadioButtonArray[addCount].setTitle(key, for: .normal)
             if(dailyAllAttendanceInfo[key]?.status == "ATTENDED"){
-                attendRadioButtonArray[addCount].setTitleColor(UIColor.white, for: .normal)
                 attendRadioButtonArray[addCount].isOn = true
             } else{
-                attendRadioButtonArray[addCount].setTitleColor(UIColor.white, for: .normal)
                 attendRadioButtonArray[addCount].radioCircle = .init(outerCircle: 20.0, innerCircle: 15.0)
                 attendRadioButtonArray[addCount].isOn = false
             }
@@ -479,6 +488,7 @@ class AttendanceViewController: UIViewController {
             attendText.frame.size = CGSize(width: mainScrollView.frame.width / 3, height: 30)
             attendText.text = dailyAllAttendanceInfo[key]?.note
             attendText.backgroundColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 0.4)
+            attendText.endEditing(true)
             cellview.addSubview(attendText)
             attendTextDictionary[key] = attendText
             
@@ -522,6 +532,7 @@ class AttendanceViewController: UIViewController {
     }
     
     @objc func viewload_edit(_ notification: Notification) {
+        self.isEditPage = true
         mainScrollView.subviews.forEach({$0.removeFromSuperview()})
         let scrollcontainerView = UIView(frame: mainScrollView.frame)
         mainScrollView.addSubview(scrollcontainerView)

@@ -48,6 +48,7 @@ class ImageViewController: UIViewController {
  
     
     override func viewDidLoad() {
+        print("image view controller")
         super.viewDidLoad()
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))

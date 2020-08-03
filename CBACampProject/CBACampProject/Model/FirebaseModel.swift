@@ -29,7 +29,7 @@ class FirebaseModel {
     var ref: DatabaseReference!
     
     func FIR_FirstLoadView(){
-        print("First!! Load!!")
+        print("First View Loaded")
         
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("noti")
         ref.queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
@@ -49,11 +49,10 @@ class FirebaseModel {
                 
                 let count = FirebaseModel.messages.count
                     
+                // 공지 글 받아오기
                 for i in (0..<count).reversed(){
                     if(FirebaseModel.messages[i].isStaff == "공지"){
                         FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: self)
                         
                         break
                     }
@@ -63,6 +62,7 @@ class FirebaseModel {
             }
         })
     }
+    
     
     func FIR_ReloadMessage() {
         print("trying to get messages....")
@@ -78,7 +78,7 @@ class FirebaseModel {
                     
                     let uid = snapshotValue["uid"] as? String ?? ""
                     let isStaff = snapshotValue["isStaff"] as? String ?? ""
-                    print(uid)
+                    //print(uid)
                     let message = snapshotValue["message"] as? String ?? ""
                     let time = snapshotValue["time"] as? String ?? ""
                     let auth = snapshotValue["author"] as? String ?? ""
@@ -92,7 +92,6 @@ class FirebaseModel {
                     if(FirebaseModel.messages[i].isStaff == "공지"){
                         FirebaseModel.mainNotiMessages = FirebaseModel.messages[i].text
                         
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FIR_ReloadMessage"), object: self)
                         break
                     }
                 }
@@ -101,6 +100,7 @@ class FirebaseModel {
             }
         })
     }
+    
     
     func FIR_GetMessage(messageTitle : String) {
         print("trying to get messages....")
@@ -115,7 +115,7 @@ class FirebaseModel {
                     
                     let uid = snapshotValue["uid"] as? String ?? ""
                     let isStaff = snapshotValue["isStaff"] as? String ?? ""
-                    print(uid)
+                    //print(uid)
                     // 성락교회 앱의 경우 자신에게 온 메세지만 받으면 됨
                     if(AgencySingleton.shared.AgencyTitle == "2019_SR_SUMMER"){
                         if(messageTitle == "message"){
@@ -147,10 +147,7 @@ class FirebaseModel {
     }
     
     func FIR_ChangeImage(title : String){
-        self.imageNames.removeAll()
-        FirebaseModel.imageKingfisher.removeAll() // 요거면 3번 해결되려나??
-        settingImage.removeAll()
-        
+        print("Image Setting")
         ref = Database.database().reference().child(AgencySingleton.shared.AgencyTitle!).child("images").child(title)
         ref.queryOrderedByValue().observe(DataEventType.value, with: { (snapshot) in
             
@@ -161,8 +158,11 @@ class FirebaseModel {
                 }
             }
             var downloadcnt : Int = 1
-            
+
+            FirebaseModel.imageKingfisher.removeAll()
+            self.settingImage.removeAll()
             for n in self.imageNames {
+                print(downloadcnt)
                 Storage.storage().reference(withPath: AgencySingleton.shared.AgencyTitle! + "/" + n).downloadURL { (url, error) in
                     
                     if(url == nil){
@@ -270,8 +270,9 @@ class FirebaseModel {
     }
     
     func downloadImage(name: String, imageView:UIImageView){
+        let processor = RoundCornerImageProcessor(cornerRadius: 20)
         Storage.storage().reference(withPath: name).downloadURL { (url, error) in
-            imageView.kf.setImage(with: url)
+            imageView.kf.setImage(with: url, placeholder:nil, options:[.processor(processor)])
         }
     }
     
