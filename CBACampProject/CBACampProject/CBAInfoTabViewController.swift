@@ -275,12 +275,12 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     
     @objc func LoadImageView(_ notification: Notification){
         // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
-        /*
+        
         if (AgencySingleton.shared.realmAgent == "CBA"){
             // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
-            slideshow.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
+            slideshow.backgroundColor = UIColor(red: 209/255, green: 233/255, blue: 237/255, alpha: 1)
         }
-         */
+        
         
         slideshow.slideIn(from : .right, delay : 0.5)
         slideshow.fadeIn(duration: 0.3)
@@ -311,6 +311,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
     @IBAction func LogoutAction(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
+            CBAInfoTabViewController.mainGBS.self = MainGBS(gbsLevel: "", leader: nil, members: nil)
             CBAInfoTabViewController.mainUser.setUser(memId: 0, campus: "", mobile: "", name: "", grade: "", retreatGbsInfo: RetreatGBSInfo(retreatId: 0, gbs: "", position: ""), gbsInfo: GBSInfo(gbsName: "", position: ""))
         } catch{
             
@@ -592,8 +593,8 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         print("RELOAD VIEW (LoadMainView)")
         if (AgencySingleton.shared.realmAgent == "CBA"){
             // [색보정]이미지 뒤에 색이 분홍색이라 CBA만 보정해줍니다.
-            //self.view.backgroundColor = UIColor(red: 244/255, green: 185/255, blue: 189/255, alpha: 1)
-            self.view.backgroundColor = .white
+            slideshow.backgroundColor = UIColor(red: 209/255, green: 233/255, blue: 237/255, alpha: 1)
+            //self.view.backgroundColor = .white
         } else {
             self.view.backgroundColor = .white
         }
@@ -605,7 +606,7 @@ class CBAInfoTabViewController: UIViewController, UIScrollViewDelegate, SideMenu
         
         //slideshow.addSubview(backgroundView)
         //Firebase에서 내 정보 가져오기
-        GetBaseMyData()
+        GetMyData()
         
         NoticeLabel.text = FirebaseModel.mainNotiMessages
         

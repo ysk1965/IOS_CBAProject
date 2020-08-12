@@ -65,8 +65,8 @@ struct MyGBS: Codable {
 }
 
 struct UserInfo: Codable{
-    let name : String?
-    let age : Int?
+    var name : String?
+    var age : Int?
     let campus : String?
     let mobile : String?
     
@@ -79,7 +79,7 @@ struct UserInfo: Codable{
     }
 }
 
-func GetBaseMyData(){
+func GetGBSData(){
     if(Auth.auth().currentUser != nil){
         let url = "http://cba.sungrak.or.kr:9000/getGBSInfo/" + (Auth.auth().currentUser?.uid)!
         let urlObj = URL(string: url)
@@ -99,8 +99,6 @@ func GetBaseMyData(){
                     )
                     CBAInfoTabViewController.memberCount = myinfos.members!.count
                 }
-                
-                GetMyData()
             } catch{
                 print(url)
                 print("We got an error", error.localizedDescription)
@@ -146,6 +144,9 @@ func GetMyData(){
                 let GBSInfoSend = GBSInfo(gbsName: gbsInfo_gbs, position: gbsInfo_position)
                 
                 CBAInfoTabViewController.mainUser.setUser(memId: memId, campus: campus, mobile: mobile, name: name, grade: grade, retreatGbsInfo: retreatGBSInfoSend, gbsInfo: GBSInfoSend)
+                if(retreatGbsInfo_gbs != nil){
+                    GetGBSData()
+                }
             case .failure(let error):
                 print(error)
             }

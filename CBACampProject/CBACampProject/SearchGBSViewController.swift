@@ -38,6 +38,23 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         let scrollcontainerView = UIView(frame: scrollView.frame)
         scrollView.addSubview(scrollcontainerView)
         
+        if(CBAInfoTabViewController.mainGBS.leader == nil){
+            let blankBackgroud = UILabel()
+            blankBackgroud.backgroundColor = UIColor.white
+            blankBackgroud.frame = CGRect(x:0,y:0,width:self.view.frame.width, height:self.view.frame.height)
+            self.view.addSubview(blankBackgroud)
+            
+            let blankImage = UIImageView()
+            blankImage.image = UIImage(named: "준비중.png")
+            self.view.addSubview(blankImage)
+            blankImage.snp.makeConstraints { (make) -> Void in
+                make.height.height.equalTo(self.view.frame.width * 8/6)
+                make.width.width.equalTo(self.view.frame.width)
+                make.center.equalTo(self.view)
+            }
+            return
+        }
+        
         var inypos = 1
         let inxpos = 20
         let count = CBAInfoTabViewController.memberCount
@@ -173,22 +190,6 @@ class SearchGBSViewController: UIViewController, UIScrollViewDelegate {
         scrollView.isScrollEnabled = true
         
         self.view.addSubview(scrollView)
-        
-        if(CBAInfoTabViewController.mainGBS.leader == nil){
-            let blankBackgroud = UILabel()
-            blankBackgroud.backgroundColor = UIColor.white
-            blankBackgroud.frame = CGRect(x:0,y:0,width:self.view.frame.width, height:self.view.frame.height)
-            self.view.addSubview(blankBackgroud)
-            
-            let blankImage = UIImageView()
-            blankImage.image = UIImage(named: "준비중.png")
-            self.view.addSubview(blankImage)
-            blankImage.snp.makeConstraints { (make) -> Void in
-                make.height.height.equalTo(self.view.frame.width * 8/6)
-                make.width.width.equalTo(self.view.frame.width)
-                make.center.equalTo(self.view)
-            }
-        }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
